@@ -194,7 +194,8 @@ return [
     */
 
     'attributes' => [
-        
+       'login'=>'Login',
+       'password'=>'Password',
     ],
 
 ];

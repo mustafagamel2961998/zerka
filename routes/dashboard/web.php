@@ -2,15 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\V1\Auth\AuthController;
-Route::prefix("v1/dashboard")->as("dashboard.")->group(function () {
+Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
     // Unauthenticated Routes
     //****************************************-:START:-****************************************/
+    //------------------------------------------------------------------------------------------ 
     //-Auth Routes 
     Route::get('login/index',[AuthController::class,'index'])->name('login.index');
-    Route::post('login',[AuthController::class,'login'])->name('login');
+    Route::post('login',[AuthController::class,'login'])->name('login')->middleware('throttle:login');
     //------------------------------------------------------------------------------------------ 
 
 
@@ -25,8 +26,16 @@ Route::prefix("v1/dashboard")->as("dashboard.")->group(function () {
 
     // Authenticated Routes
     //****************************************-:START:-****************************************/
-    Route::get('dashboard/home',function(){
-        return view('dashboard.home.index');
+    Route::middleware('checkRole')->group(function(){
+
+    //****************************************-:START:-****************************************/
+    //------------------------------------------------------------------------------------------ 
+    //-Home Routes 
+        Route::get('home',function(){
+            return view('dashboard.home.index');
+        });
+    //------------------------------------------------------------------------------------------ 
+
     });
     //****************************************-:END:-****************************************/
 

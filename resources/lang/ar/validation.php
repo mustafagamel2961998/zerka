@@ -172,7 +172,8 @@ return [
     */
 
     'attributes' => [
-       
+       'login'=>'تسجيل الدخول',
+       'password'=>'كلمة المرور',
     ],
 
 ];

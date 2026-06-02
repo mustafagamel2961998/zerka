@@ -4,7 +4,9 @@ namespace App\Http\Requests\Dashboard\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Str;
 class LoginRequest extends FormRequest
 {
     /**
@@ -12,7 +14,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,7 +25,10 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'login'=>['required','string'],
+            'password'=>['required','string','min:8'],
         ];
     }
+
+    
 }

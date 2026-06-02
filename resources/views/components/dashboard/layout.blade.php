@@ -1281,13 +1281,24 @@
      <script src="{{ asset('assets/js/dashboard/app.js') }}"></script>
 
      <!-- Vector Map Js -->
-    <script src="{{ asset('assets/js/dashboard/vendor/jsvectormap/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard/vendor/jsvectormap/js/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/vendor/jsvectormap/maps/world-merc.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/vendor/jsvectormap/maps/world.js') }}"></script>
 
     <!-- Dashboard Js -->
     <script src="{{ asset('assets/js/dashboard/pages/dashboard.js') }}"></script>
-
+     @if (session('error'))
+        <script>
+            Swal.fire({
+                title: "{{ __('dashboard.error') }} ❌",
+                text: "{{ session('error') }}",
+                icon: "error",
+                confirmButtonClass: "btn btn-primary w-xs mt-2",
+                buttonsStyling: false,
+                showCloseButton: true
+            });
+        </script>
+     @endif
 
 </body>
 
