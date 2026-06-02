@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Dashboard Routes
+require __DIR__ . '/dashboard/web.php';
