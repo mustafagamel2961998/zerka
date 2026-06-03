@@ -34,12 +34,14 @@
                 @if (app()->getLocale() == 'ar')
                     <a href="{{ route('lang.switch', 'en') }}"
                         class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1">
-                        <iconify-icon icon="circle-flags:us" class="fs-16"></iconify-icon> English
+                        <iconify-icon icon="circle-flags:us" class="fs-16"></iconify-icon> 
+                        {{ __('dashboard.english') }}
                     </a>
                 @else
                     <a href="{{ route('lang.switch', 'ar') }}"
                         class="btn btn-sm btn-outline-secondary d-flex align-items-center gap-1">
-                        <iconify-icon icon="circle-flags:eg" class="fs-16"></iconify-icon> العربية
+                        <iconify-icon icon="circle-flags:eg" class="fs-16"></iconify-icon> 
+                        {{ __('dashboard.arabic') }}
                     </a>
                 @endif
             </div>
@@ -70,7 +72,7 @@
                                 </p>
 
                                 <div class="mb-5">
-                                    <form action="{{ route('v1.dashboard.login') }}" method="POST"
+                                    <form action="{{ route('v1.dashboard.login.action') }}" method="POST"
                                         class="authentication-form">
                                         @csrf
                                         <div class="mb-3">

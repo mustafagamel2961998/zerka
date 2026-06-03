@@ -18,6 +18,24 @@ return [
     
     //permission
     'not_have_permission'=>'Sorry, you do not have permission to access this page!',
-    
-    
+    // language
+    'arabic'=>'Arabic',
+    'english'=>'English',
+    // sidebar
+    'general'=>'General',
+    'dashboard'=>'Dashboard',
+    'countries'=>'Countries',
+    'cities'=>'Cities',
+    'products'=>'Products',
+    'categories'=>'Categories',
+    'inventories'=>'Inventories',
+    'warehouses'=>'Warehouses',
+    'orders'=>'Orders',
+    'purchases'=>'Purchases',
+    'returns'=>'Returns',
+    'invoices'=>'Invoices',
+    'settings'=>'Settings',
+    'roles'=>'Roles',
+    'permissions'=>'Permissions',
+    'customers'=>'Customers',
 ];

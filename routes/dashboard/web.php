@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\V1\Auth\AuthController;
+use App\Http\Controllers\Web\V1\Home\HomeController;
+
 Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -10,8 +12,10 @@ Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
     //****************************************-:START:-****************************************/
     //------------------------------------------------------------------------------------------ 
     //-Auth Routes 
-    Route::get('login/index',[AuthController::class,'index'])->name('login.index');
-    Route::post('login',[AuthController::class,'login'])->name('login')->middleware('throttle:login');
+    Route::get('login',[AuthController::class,'index'])->name('login');
+    Route::post('login',[AuthController::class,'login'])
+            ->name('login.action')
+            ->middleware('throttle:login');
     //------------------------------------------------------------------------------------------ 
 
 
@@ -26,14 +30,12 @@ Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
 
     // Authenticated Routes
     //****************************************-:START:-****************************************/
-    Route::middleware('checkRole')->group(function(){
+    Route::middleware(['checkRole','auth'])->group(function(){
 
     //****************************************-:START:-****************************************/
     //------------------------------------------------------------------------------------------ 
     //-Home Routes 
-        Route::get('home',function(){
-            return view('dashboard.home.index');
-        });
+    Route::get('home',[HomeController::class,'index'])->name('home');
     //------------------------------------------------------------------------------------------ 
 
     });

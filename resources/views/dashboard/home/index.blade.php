@@ -1,4 +1,4 @@
-<x-dashboard.layout>
+<x-dashboard.layout title="{{ __('dashboard.dashboard') }}">
     <!-- Start here.... -->
     <div class="row">
         <div class="col-xxl-5">

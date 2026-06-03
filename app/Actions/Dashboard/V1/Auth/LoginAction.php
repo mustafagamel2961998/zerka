@@ -17,9 +17,7 @@ class LoginAction
                                 ->orWhere('phone',$credentials['login'])
                                 ->first();
             if(!$user || !Hash::check($credentials['password'], $user->password)){
-                throw ValidationException::withMessages([
-                    'error' => __('dashboard.login_failed'),
-                ]);
+                throw new Exception(__('dashboard.login_failed'));
             }
             Auth::login($user, true);
             request()->session()->regenerate();

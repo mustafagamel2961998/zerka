@@ -16,5 +16,25 @@ return [
     'error'=>'خطأ',
     //permission
     'not_have_permission'=>'عذراً، أنت لا تملك الصلاحية لدخول هذه الصفحة!',
-    
+    // language
+    'arabic'=>'العربية',
+    'english'=>'الإنجليزية',
+
+    // sidebar
+    'general'=>'عام',
+    'dashboard'=>'لوحة التحكم',
+    'countries'=>'الدول',
+    'cities'=>'المدن',
+    'products'=>'المنتجات',
+    'categories'=>'التصنيفات',
+    'inventories'=>'المخزونات',
+    'warehouses'=>'المخازن',
+    'orders'=>'الطلبات',
+    'purchases'=>'المشتريات',
+    'returns'=>'المرتجعات',
+    'invoices'=>'الفواتير',
+    'settings'=>'الإعدادات',
+    'roles'=>'الأدوار',
+    'permissions'=>'الأذونات',
+    'customers'=>'العملاء',
 ];

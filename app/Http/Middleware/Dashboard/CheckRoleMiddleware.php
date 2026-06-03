@@ -4,6 +4,7 @@ namespace App\Http\Middleware\Dashboard;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class CheckRoleMiddleware
@@ -21,7 +22,7 @@ class CheckRoleMiddleware
         }
 
         if (!auth()->user()->hasRole('Super Admin')) {
-            // لو مش سوبر أدمن، اطرده بره ورجعه بـ رسالة خطأ (أو واديه صفحة 403)
+            Auth::logout();
             return redirect()->back()
                 ->with('error', __('dashboard.not_have_permission'));
         }

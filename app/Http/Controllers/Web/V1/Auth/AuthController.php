@@ -25,10 +25,6 @@ class AuthController extends Controller
          
             $this->login_action->execute($request->validated());
 
-
-            
-            return 'login success';
-
             return redirect()
                         ->route('v1.dashboard.home')
                         ->with('success',__('dashboard.login_success'));

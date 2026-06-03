@@ -4,7 +4,7 @@
 <head>
      <!-- Title Meta -->
      <meta charset="utf-8" />
-     <title>Dashboard | Larkon - Responsive Admin Dashboard Template</title>
+     <title>{{ $title }}</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="description" content="A fully responsive premium admin dashboard template" />
      <meta name="author" content="Techzaa" />
@@ -13,6 +13,9 @@
      <!-- App favicon -->
      <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
+     <!-- boxicons css (Require in all Page) -->
+     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
      <!-- Vendor css (Require in all Page) -->
      <link href="{{ asset('assets/css/dashboard/vendor/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
@@ -20,8 +23,11 @@
      <link href="{{ asset('assets/css/dashboard/vendor/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
      <!-- App css (Require in all Page) -->
+     @if(app()->getLocale() == 'ar')
+     <link href="{{ asset('assets/css/dashboard/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
+     @else
      <link href="{{ asset('assets/css/dashboard/app.min.css') }}" rel="stylesheet" type="text/css" />
-
+     @endif
      <!-- Theme Config js (Require in all Page) -->
      <script src="{{ asset('assets/js/dashboard/vendor/config.js') }}"></script>
 </head>
@@ -50,7 +56,7 @@
                          </div>
 
                          <div class="d-flex align-items-center gap-1">
-
+                              
                               <!-- Theme Color (Light/Dark) -->
                               <div class="topbar-item">
                                    <button type="button" class="topbar-button" id="light-dark-mode">
@@ -115,7 +121,7 @@
                                                        </div>
                                                        <div class="flex-grow-1">
                                                             <p class="mb-0 fw-semibold">Jacob Gines</p>
-                                                            <p class="mb-0 text-wrap">Answered to your comment on the cash flow forecast's graph 🔔.</p>
+                                                            <p class="mb-0 text-wrap">Answered to your comment on the cash flow forecast' graph 🔔.</p>
                                                        </div>
                                                   </div>
                                              </a>
@@ -162,14 +168,41 @@
                                         <iconify-icon icon="solar:settings-bold-duotone" class="fs-24 align-middle"></iconify-icon>
                                    </button>
                               </div>
-
-                              <!-- Activity -->
+                               <!-- Activity -->
                               <div class="topbar-item d-none d-md-flex">
                                    <button type="button" class="topbar-button" id="theme-settings-btn" data-bs-toggle="offcanvas" data-bs-target="#theme-activity-offcanvas" aria-controls="theme-settings-offcanvas">
                                         <iconify-icon icon="solar:clock-circle-bold-duotone" class="fs-24 align-middle"></iconify-icon>
                                    </button>
                               </div>
 
+                              <!-- Language Dropdown -->
+                              <div class="dropdown topbar-item">
+                                   <a href="{{ route('lang.switch', (app()->getLocale() == 'ar' ? 'en' : 'ar')) }}">
+                                        <button type="button" class="topbar-button" id="page-header-language-dropdown">
+                                             <iconify-icon icon="solar:earth-bold-duotone" class="fs-24 align-middle"></iconify-icon>
+                                        </button>
+                                   </a>
+                                   {{-- <div class="dropdown-menu dropdown-menu-end p-1" style="min-width: 140px;" aria-labelledby="page-header-language-dropdown">
+                                        @if (app()->getLocale() == 'ar')
+                                        <!-- English -->
+                                        <a href="{{ route('lang.switch', 'en') }}" class="dropdown-item d-flex align-items-center justify-content-between py-2 active">
+                                             <span class="align-middle">
+                                                  {{ __('dashboard.english') }}
+                                             </span>
+                                             <iconify-icon icon="twemoji:flag-united-states" class="fs-18"></iconify-icon>
+                                        </a>
+                                        @else
+                                        <!-- Arabic -->
+                                        <a href="{{ route('lang.switch', 'ar') }}" class="dropdown-item d-flex align-items-center justify-content-between py-2">
+                                             <span class="align-middle">
+                                                  {{ __('dashboard.arabic') }}
+                                             </span>
+                                             <iconify-icon icon="twemoji:flag-egypt" class="fs-18"></iconify-icon> <!-- تقدر تغير العلم حسب بلدك -->
+                                        </a>
+                                        @endif
+                                   </div> --}}
+                              </div>
+                             
                               <!-- User -->
                               <div class="dropdown topbar-item">
                                    <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -477,23 +510,43 @@
                <div class="scrollbar" data-simplebar>
                     <ul class="navbar-nav" id="navbar-nav">
 
-                         <li class="menu-title">General</li>
+                         <li class="menu-title">
+                              {{ __('dashboard.general') }}
+                         </li>
 
                          <li class="nav-item">
                               <a class="nav-link" href="index-2.html">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Dashboard </span>
+                                   <span class="nav-text"> 
+                                   {{ __('dashboard.dashboard') }}     
+                                   </span>
                               </a>
                          </li>
+
+                           <li class="nav-item">
+                              <a class="nav-link menu-arrow" href="">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:flag-bold-duotone"></iconify-icon>
+                                   </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.countries') }}     
+                                   </span>
+                              </a>
+                            
+                         </li>
+
+
 
                          <li class="nav-item">
                               <a class="nav-link menu-arrow" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Products </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.products') }}     
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarProducts">
                                    <ul class="nav sub-navbar-nav">
@@ -517,11 +570,13 @@
                          </li>
 
                          <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="#sidebarCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCategory">
+                              <a class="nav-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCategory">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Category </span>
+                                   <span class="nav-text"> 
+                                    {{ __('dashboard.categories') }}       
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarCategory">
                                    <ul class="nav sub-navbar-nav">
@@ -543,13 +598,15 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:box-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Inventory </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.inventories') }}   
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarInventory">
                                    <ul class="nav sub-navbar-nav">
 
                                         <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="inventory-warehouse.html">Warehouse</a>
+                                             <a class="sub-nav-link" href="inventory-warehouse.html">{{ __('dashboard.warehouses') }}  </a>
                                         </li>
                                         <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
@@ -563,7 +620,9 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Orders </span>
+                                   <span class="nav-text"> 
+                                    {{ __('dashboard.orders') }}    
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarOrders">
                                    <ul class="nav sub-navbar-nav">
@@ -578,6 +637,11 @@
                                              <a class="sub-nav-link" href="order-cart.html">Cart</a>
                                         </li>
                                         <li class="sub-nav-item">
+                                             <a class="sub-nav-link" href="purchase-returns.html">
+                                                  {{ __('dashboard.returns') }}        
+                                             </a>
+                                        </li>
+                                        <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="order-checkout.html">Check Out</a>
                                         </li>
                                    </ul>
@@ -589,7 +653,9 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:card-send-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Purchases </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.purchases') }}         
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarPurchases">
                                    <ul class="nav sub-navbar-nav">
@@ -600,7 +666,9 @@
                                              <a class="sub-nav-link" href="purchase-order.html">Order</a>
                                         </li>
                                         <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="purchase-returns.html">Return</a>
+                                             <a class="sub-nav-link" href="purchase-returns.html">
+                                                       {{ __('dashboard.returns') }}        
+                                             </a>
                                         </li>
                                    </ul>
                               </div>
@@ -633,7 +701,9 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:bill-list-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Invoices </span>
+                                   <span class="nav-text"> 
+                                   {{ __('dashboard.invoices') }}     
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarInvoice">
                                    <ul class="nav sub-navbar-nav">
@@ -655,27 +725,43 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:settings-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Settings </span>
+                                   <span class="nav-text"> 
+                                   {{ __('dashboard.settings') }}          
+                                   </span>
                               </a>
                          </li>
 
                          <li class="menu-title mt-2">Users</li>
 
-                         <li class="nav-item">
-                              <a class="nav-link" href="pages-profile.html">
+                        <li class="nav-item">
+                              <a class="nav-link menu-arrow" href="#sidebarCustomers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCustomers">
                                    <span class="nav-icon">
-                                        <iconify-icon icon="solar:chat-square-like-bold-duotone"></iconify-icon>
+                                        <iconify-icon icon="solar:users-group-two-rounded-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Profile </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.customers') }}     
+                                   </span>
                               </a>
-                         </li>
+                              <div class="collapse" id="sidebarCustomers">
+                                   <ul class="nav sub-navbar-nav">
 
+                                        <li class="sub-nav-item">
+                                             <a class="sub-nav-link" href="customer-list.html">List</a>
+                                        </li>
+                                        <li class="sub-nav-item">
+                                             <a class="sub-nav-link" href="customer-detail.html">Details</a>
+                                        </li>
+                                   </ul>
+                              </div>
+                         </li>
                          <li class="nav-item">
                               <a class="nav-link menu-arrow" href="#sidebarRoles" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarRoles">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:user-speak-rounded-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Roles </span>
+                                   <span class="nav-text"> 
+                                   {{ __('dashboard.roles') }}    
+                                   </span>
                               </a>
                               <div class="collapse" id="sidebarRoles">
                                    <ul class="nav sub-navbar-nav">
@@ -699,29 +785,13 @@
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:checklist-minimalistic-bold-duotone"></iconify-icon>
                                    </span>
-                                   <span class="nav-text"> Permissions </span>
-                              </a>
-                         </li>
-
-                         <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="#sidebarCustomers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCustomers">
-                                   <span class="nav-icon">
-                                        <iconify-icon icon="solar:users-group-two-rounded-bold-duotone"></iconify-icon>
+                                   <span class="nav-text"> 
+                                   {{ __('dashboard.permissions') }}       
                                    </span>
-                                   <span class="nav-text"> Customers </span>
                               </a>
-                              <div class="collapse" id="sidebarCustomers">
-                                   <ul class="nav sub-navbar-nav">
-
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="customer-list.html">List</a>
-                                        </li>
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="customer-detail.html">Details</a>
-                                        </li>
-                                   </ul>
-                              </div>
                          </li>
+
+                      
 
                          <li class="nav-item">
                               <a class="nav-link menu-arrow" href="#sidebarSellers" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarSellers">

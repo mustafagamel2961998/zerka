@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\Country\CountryRepositoryInterface;
+use App\Repositories\Eloquent\Country\CountryEloquentRepository;
+use App\View\Components\Dashboard\Layout;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\RateLimiter;
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +18,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(CountryRepositoryInterface::class,CountryEloquentRepository::class);
     }
 
     /**

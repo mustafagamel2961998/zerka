@@ -18,6 +18,11 @@ class Country extends Model
         return $this->hasMany(City::class,'country_id','id');
     }
     // end relationships
+    // start local scope
+    public function scopeActive($query)
+    {
+        return $query->whereStatus('active');
+    }
     protected function casts(): array
     {
         return [
