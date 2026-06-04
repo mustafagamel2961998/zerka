@@ -1,6 +1,8 @@
 <?php 
 
 return [
+    'developer_name'=>'مصطفي جمال',
+    'crafted_by'=>'وضعت بواسطة',
     'back'=>'العودة',
     'fallback_error_msg'=>'حدث خطأ غير متوقع',
     'back_to_home'=>'العودة للرئيسية',
@@ -12,4 +14,18 @@ return [
     'too_many_requests_timer'   => 'يمكنك المحاولة مجدداً بعد',
     'too_many_requests_seconds' => 'ثانية',
     'too_many_requests_done' => 'يمكنك المحاولة الآن ✓',
+    'this_month'=>'هذه الشهر',
+    'pdf'=>'PDF',
+    'excel'=>'excel',
+    'download'=>'تنزيل',
+    'export'=>'تصدير',
+    'import'=>'استيراد',
+    'number'=>'رقم',
+    'name'=>'الإسم',
+    'status'=>'الحالة',
+    'action'=>'تحكم',
+    'add_new'=>'إضافة جديد',
+    'no_data_found'=>'لم يتم العثور على بيانات',
+    'no_records_have_been_added_to_this_table_yet'=>'لم يتم إضافة أي سجلات في هذا الجدول حتى الآن.',
+    'total'=>'اﻹجمالي',
 ];

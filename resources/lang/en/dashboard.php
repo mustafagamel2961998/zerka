@@ -21,6 +21,7 @@ return [
     // language
     'arabic'=>'Arabic',
     'english'=>'English',
+
     // sidebar
     'general'=>'General',
     'dashboard'=>'Dashboard',
@@ -38,4 +39,9 @@ return [
     'roles'=>'Roles',
     'permissions'=>'Permissions',
     'customers'=>'Customers',
+    // sidebar ( singular name ) 
+    'country'=>'Country',
+    // general
+    'table-title'=>'All :name List',
+    'add_btn'=>'Add :name'
 ];

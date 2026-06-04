@@ -65,6 +65,7 @@ class UserSeeder extends Seeder
                 'status'=>'active',
             ]
         );
+        
         $admin->copyMedia(public_path('assets/images/default/avatar.webp'))
               ->toMediaCollection('avatar');
 

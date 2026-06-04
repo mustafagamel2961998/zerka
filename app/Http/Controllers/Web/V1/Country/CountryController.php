@@ -14,8 +14,10 @@ class CountryController extends Controller
      */
     public function index()
     {
-        $countries = $this->get_all_action->execute();
-        return 'country view';
+        $data = $this->get_all_action->execute();
+        $countries = $data['countries'];
+        $counts = $data['counts'];
+        return view('dashboard.country.index',compact('countries','counts'));
     }
 
     /**

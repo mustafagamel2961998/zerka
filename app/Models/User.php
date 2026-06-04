@@ -64,19 +64,20 @@ class User extends Authenticatable implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this->addMediaCollection('avatar')->singleFile();
+       $this->addMediaCollection('avatar')->singleFile();
+       $this->addMediaConversion('optimized')
+            ->format('webp') 
+            ->quality(80)
+            ->width(800)
+            ->height(800)
+            ->sharpen(10)
+            ->performOnCollections('avatar');
 
-         $this->addMediaConversion('optimized')
-              ->format('webp') 
-              ->quality(80)
-              ->width(800)
-              ->height(800)
-              ->sharpen(10);
-              
-         $this->addMediaConversion('thumb')
-              ->format('webp')
-              ->quality(70)
-              ->width(200)
-              ->height(200);
+        $this->addMediaConversion('thumb')
+            ->format('webp')
+            ->quality(70)
+            ->width(200)
+            ->height(200)
+            ->performOnCollections('avatar');
     }
 }

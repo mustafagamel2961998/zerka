@@ -10,7 +10,7 @@ class Country extends Model
      protected $fillable = [
         'name',
         'status',
-    ];
+     ];
 
 
     // start relationships

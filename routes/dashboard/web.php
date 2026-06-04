@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\V1\Auth\AuthController;
+use App\Http\Controllers\Web\V1\Country\CountryController;
 use App\Http\Controllers\Web\V1\Home\HomeController;
 
 Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
@@ -37,7 +38,9 @@ Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
     //-Home Routes 
     Route::get('home',[HomeController::class,'index'])->name('home');
     //------------------------------------------------------------------------------------------ 
-
+    //-Country Routes 
+    Route::resource('countries',CountryController::class);
+    
     });
     //****************************************-:END:-****************************************/
 

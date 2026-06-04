@@ -9,6 +9,7 @@ class GetAllAction
     public function __construct(protected CountryRepositoryInterface $country_repository_interface){}
 
     public function execute(){
-        $this->country_repository_interface->index();
+        return $this->country_repository_interface->index();
+        
     }
 }

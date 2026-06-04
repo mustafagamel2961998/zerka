@@ -1,6 +1,8 @@
 <?php 
 
 return [
+    'developer_name'=>'Mustafa Gamal',
+    'crafted_by'=>'Crafted by',
     'back'=>'Back',
     'fallback_error_msg'=>'An unexpected error occurred',
     'back_to_home'=>'Back to home',
@@ -12,4 +14,18 @@ return [
     'too_many_requests_timer'   => 'You can try again in',
     'too_many_requests_seconds' => 'seconds',
     'too_many_requests_done' => 'You can try again now ✓',
+    'this_month'=>'This Month',
+    'pdf'=>'PDF',
+    'excel'=>'Excel',
+    'download'=>'Download',
+    'export'=>'Export',
+    'import'=>'Import',
+    'number'=>'Number',
+    'name'=>'Name',
+    'status'=>'Status',
+    'action'=>'Control',
+    'add_new'=>'Add new',
+    'no_data_found'=>'No data found',
+    'no_records_have_been_added_to_this_table_yet'=>'No records have been added to this table yet.',
+    'total'=>'Total',
 ];

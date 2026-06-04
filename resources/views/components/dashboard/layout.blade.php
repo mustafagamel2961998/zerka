@@ -207,7 +207,7 @@
                               <div class="dropdown topbar-item">
                                    <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="d-flex align-items-center">
-                                             <img class="rounded-circle" width="32" src="{{ asset('assets/images/dashboard/users/avatar-1.jpg') }}" alt="avatar-3">
+                                             <img class="rounded-circle" width="32" src="{{ auth()->user()->getFirstMediaUrl('avatar') }}" alt="avatar-3">
                                         </span>
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-end">
@@ -515,7 +515,9 @@
                          </li>
 
                          <li class="nav-item">
-                              <a class="nav-link" href="index-2.html">
+                              <a class="nav-link 
+                                   @if(request()->routeIs('v1.dashboard.home')) active @endif" 
+                                   href="{{ route('v1.dashboard.home') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                                    </span>
@@ -525,8 +527,10 @@
                               </a>
                          </li>
 
-                           <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="">
+                         <li class="nav-item">
+                              <a class="nav-link 
+                                   @if(request()->routeIs('v1.dashboard.countries.*')) active @endif"
+                                   href="{{ route('v1.dashboard.countries.index') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:flag-bold-duotone"></iconify-icon>
                                    </span>
@@ -534,7 +538,16 @@
                                         {{ __('dashboard.countries') }}     
                                    </span>
                               </a>
-                            
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link" href="">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:city-bold-duotone"></iconify-icon>                                   
+                                   </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.cities') }}     
+                                   </span>
+                              </a>
                          </li>
 
 
@@ -1328,8 +1341,9 @@
                    <div class="container-fluid">
                        <div class="row">
                            <div class="col-12 text-center">
-                               <script>document.write(new Date().getFullYear())</script> &copy; Larkon. Crafted by <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
-                                   href="#!" class="fw-bold footer-text" target="_blank">Techzaa</a>
+                               <script>document.write(new Date().getFullYear())</script> &copy; Crafted by 
+                               <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
+                                   href="#!" class="fw-bold footer-text" target="_blank">{{ __('global.developer_name') }}</a>
                            </div>
                        </div>
                    </div>

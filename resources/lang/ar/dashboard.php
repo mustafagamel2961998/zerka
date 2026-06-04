@@ -19,8 +19,8 @@ return [
     // language
     'arabic'=>'العربية',
     'english'=>'الإنجليزية',
-
-    // sidebar
+    
+    // sidebar ( plural name ) 
     'general'=>'عام',
     'dashboard'=>'لوحة التحكم',
     'countries'=>'الدول',
@@ -37,4 +37,12 @@ return [
     'roles'=>'الأدوار',
     'permissions'=>'الأذونات',
     'customers'=>'العملاء',
+    // sidebar ( singular name ) 
+    'country'=>'دولة',
+
+
+    
+    // general
+    'table-title'=>'قائمة كل :name',
+    'add_btn'=>'إضافة :name'
 ];

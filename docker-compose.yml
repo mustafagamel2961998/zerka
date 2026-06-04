@@ -8,7 +8,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - zerka_storage:/var/www/storage
+      - ./storage:/var/www/storage
       - zerka_cache:/var/www/bootstrap/cache
       - zerka_vendor:/var/www/vendor
 

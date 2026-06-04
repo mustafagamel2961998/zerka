@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface CountryRepositoryInterface
 {
-    public function index() : Collection;
+    public function index() : array;
 }
