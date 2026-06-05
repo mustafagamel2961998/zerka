@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use Database\Seeders\Currency\CurrencySeeder;
 use Database\Seeders\Country\CountrySeeder;
 use Database\Seeders\User\UserSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         $this->call([
+            CurrencySeeder::class,
             CountrySeeder::class,
             UserSeeder::class,
         ]);

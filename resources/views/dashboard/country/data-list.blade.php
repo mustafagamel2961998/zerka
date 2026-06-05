@@ -10,12 +10,20 @@
                 </th>
                 <th>{{ __('global.number') }}</th>
                 <th>{{ __('global.name') }}</th>
+                <th>{{ __('global.iso2') }}</th>
+                <th>{{ __('global.iso3') }}</th>
+                <th>{{ __('global.phone_code') }}</th>
+                <th>{{ __('global.timezone') }}</th>
+                <th>{{ __('global.currency_name') }}</th>
+                <th>{{ __('global.code') }}</th>
+                <th>{{ __('global.exchange_rate') }}</th>
+                {{-- <th>{{ __('global.decimal_places') }}</th> --}}
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($countries as $key =>$country)
+            @forelse ($countries as $key => $country)
                 <tr>
                     <td>
                         <div class="form-check">
@@ -28,11 +36,47 @@
                     </td>
                     <td>
                         <div class="d-flex align-items-center gap-2">
-                            <p class="text-dark fw-medium fs-15 mb-0">Fashion Men , Women & Kid's</p>
+                            <p class="text-dark fw-medium fs-15 mb-0">
+                                <span class="fi fi-{{ strtolower($country->iso2) }}"></span>
+                                {{ $country->translation->name }}
+                            </p>
                         </div>
-
                     </td>
-                    <td>46233</td>
+                    <td>
+                        {{ $country->iso2 }}
+                    </td>
+                    <td>
+                        {{ $country->iso3 }}
+                    </td>
+                    <td>
+                        {{ $country->phone_code }}
+                    </td>
+                    <td>
+                        {{ $country->timezone }}
+                    </td>
+                    <td>
+                        {{ $country->currency->translation->name }}
+                    </td>
+                    <td>
+                        {{ $country->currency->code }}
+                    </td>
+                  <td class="whitespace-nowrap px-4 py-3 align-middle text-right font-medium text-slate-900">
+                        <span dir="ltr" class="font-semibold text-indigo-600">
+                            {{ number_format($country->currency->exchange_rate, $country->currency->decimal_places) }}
+                        </span>
+                        
+                        <span class="mr-1.5 text-xs text-slate-500 font-normal">
+                            {{ $country->currency->translation->name }} 
+                            <span class="text-slate-400 font-mono uppercase">
+                                ({{ $country->currency->code }})
+                            </span>
+                        </span>
+                    </td>
+                    <td>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($country->status->value === 'active')>
+                        </div>
+                    </td>
                     <td>
                         <div class="d-flex gap-2">
                             <a href="#!" class="btn btn-light btn-sm">

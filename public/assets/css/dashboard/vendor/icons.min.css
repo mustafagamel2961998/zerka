@@ -2,8 +2,8 @@
   font-family: "boxicons";
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/boxicons.eot");
-  src: url("../fonts/boxicons.eot") format("embedded-opentype"), url("../fonts/boxicons.woff2") format("woff2"), url("../fonts/boxicons.woff") format("woff"), url("../fonts/boxicons.ttf") format("truetype"), url("../fonts/boxiconsd41d.svg?#boxicons") format("svg");
+  src: url("../../../fonts/boxicons.eot");
+  src: url("../../../fonts/boxicons.eot") format("embedded-opentype"), url("../../../fonts/boxicons.woff2") format("woff2"), url("../../../fonts/boxicons.woff") format("woff"), url("../../../fonts/boxicons.ttf") format("truetype"), url("../../../fonts/boxiconsd41d.svg?#boxicons") format("svg");
 }
 .bx {
   font-family: "boxicons" !important;
@@ -6945,7 +6945,7 @@
   font-family: "tabler-icons";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/tabler-icons3026.woff2?v3.4.0") format("woff2"), url("../fonts/tabler-iconsd41d.woff?") format("woff"), url("../fonts/tabler-icons3026.ttf?v3.4.0") format("truetype");
+  src: url("../../../fonts/tabler-icons3026.woff2?v3.4.0") format("woff2"), url("../../../fonts/tabler-iconsd41d.woff?") format("woff"), url("../../../fonts/tabler-icons3026.ttf?v3.4.0") format("truetype");
 }
 .ti {
   font-family: "tabler-icons" !important;

@@ -15,13 +15,14 @@
 
      <!-- boxicons css (Require in all Page) -->
      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+     <!-- Flags Icons css (Require in all Page) -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css"/>
 
      <!-- Vendor css (Require in all Page) -->
      <link href="{{ asset('assets/css/dashboard/vendor/vendor.min.css') }}" rel="stylesheet" type="text/css" />
 
      <!-- Icons css (Require in all Page) -->
      <link href="{{ asset('assets/css/dashboard/vendor/icons.min.css') }}" rel="stylesheet" type="text/css" />
-
      <!-- App css (Require in all Page) -->
      @if(app()->getLocale() == 'ar')
      <link href="{{ asset('assets/css/dashboard/app-rtl.min.css') }}" rel="stylesheet" type="text/css" />
@@ -212,9 +213,10 @@
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-end">
                                         <!-- item-->
-                                        <h6 class="dropdown-header">Welcome Gaston!</h6>
+                                        <h6 class="dropdown-header">{{ __('global.welcome') }} {{ auth()->user()->profile->full_name }}</h6>
                                         <a class="dropdown-item" href="pages-profile.html">
-                                             <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i><span class="align-middle">Profile</span>
+                                             <i class="bx bx-user-circle text-muted fs-18 align-middle me-1"></i>
+                                             <span class="align-middle">Profile</span>
                                         </a>
                                         <a class="dropdown-item" href="apps-chat.html">
                                              <i class="bx bx-message-dots text-muted fs-18 align-middle me-1"></i><span class="align-middle">Messages</span>
@@ -349,7 +351,7 @@
                                    </div>
                                    <div class="position-relative ps-4">
                                         <div class="mb-4">
-                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="assets/images/users/avatar-6.jpg" alt="avatar-5" class="avatar-sm rounded-circle"></span>
+                                             <span class="position-absolute start-0 translate-middle-x bg-success bg-gradient d-inline-flex align-items-center justify-content-center rounded-circle text-light fs-20"><img src="{{ asset('assets/images/dashboard/users/avatar-6.jpg') }}" alt="avatar-5" class="avatar-sm rounded-circle"></span>
                                              <div class="ms-2">
                                                   <h5 class="mb-0 text-dark fw-semibold fs-15 lh-base">Rebecca J. added a new team member
                                                   </h5>

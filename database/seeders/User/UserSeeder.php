@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
         $admin->copyMedia(public_path('assets/images/default/avatar.webp'))
               ->toMediaCollection('avatar');
 
-        $country = Country::query()->first();
+        $country = Country::where('iso2','EG')->sole();
         $city = City::query()->first();
         
         if (!$admin->profile()->exists()) {

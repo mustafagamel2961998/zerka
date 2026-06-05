@@ -34,5 +34,10 @@ class Profile extends Model
             'city_id'=>'integer',
         ];
     }
+
+    public function getFullNameAttribute()
+    {
+        return trim("{$this->first_name} {$this->last_name}");
+    }
 }
           

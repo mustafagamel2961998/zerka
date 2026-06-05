@@ -1,6 +1,7 @@
 <?php 
 
 return [
+    'welcome'=>'Welcome',
     'developer_name'=>'Mustafa Gamal',
     'crafted_by'=>'Crafted by',
     'back'=>'Back',
@@ -28,4 +29,12 @@ return [
     'no_data_found'=>'No data found',
     'no_records_have_been_added_to_this_table_yet'=>'No records have been added to this table yet.',
     'total'=>'Total',
+    'iso2'       => 'ISO Code (2-letter)',
+    'iso3'       => 'ISO Code (3-letter)',
+    'phone_code' => 'International Dial Code',
+    'timezone'   => 'Timezone',
+    'code'            => 'Currency Code',
+    'exchange_rate'   => 'Exchange Rate',
+    'decimal_places'  => 'Decimal Places',
+    'currency_name'=> 'Currency Name',
 ];

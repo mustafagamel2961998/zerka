@@ -9,7 +9,6 @@ class City extends Model
 {
     protected $fillable = [
         'country_id',
-        'name',
         'status',
     ];
 
@@ -19,13 +18,15 @@ class City extends Model
     public function country(){
         return $this->belongsTo(Country::class,'country_id','id');
     }
+    public function translations(){
+        return $this->hasMany(CityTranslation::class,'city_id','id');
+    }
     // end relationships
 
     protected function casts(): array
     {
         return [
             'country_id'=>'integer',
-            'name' => 'array',
             'status' => Status::class,
         ];
     }

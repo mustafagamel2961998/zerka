@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->id();
-            $table->json('name');
+            $table->foreignId('currency_id')
+                  ->nullable()
+                  ->constrained('currencies')
+                  ->nullOnDelete();
+            $table->char('iso2', 2)->unique();
+            $table->char('iso3', 3)->unique(); 
+            $table->string('phone_code')->nullable(); 
+            $table->string('timezone')->nullable(); 
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('country_id')
                   ->constrained('countries')
                   ->cascadeOnDelete();
-            $table->json('name');
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();
         });

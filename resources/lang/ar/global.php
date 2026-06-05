@@ -1,6 +1,7 @@
 <?php 
 
 return [
+    'welcome'=>'مرحباَ',
     'developer_name'=>'مصطفي جمال',
     'crafted_by'=>'وضعت بواسطة',
     'back'=>'العودة',
@@ -28,4 +29,12 @@ return [
     'no_data_found'=>'لم يتم العثور على بيانات',
     'no_records_have_been_added_to_this_table_yet'=>'لم يتم إضافة أي سجلات في هذا الجدول حتى الآن.',
     'total'=>'اﻹجمالي',
+    'iso2'       => 'كود الدولة (ثنائي)',
+    'iso3'       => 'كود الدولة (ثلاثي)',
+    'phone_code' => 'مفتاح الهاتف الدولي',
+    'timezone'   => 'النطاق الزمني',
+    'code'            => 'كود العملة',
+    'exchange_rate'   => 'سعر الصرف',
+    'decimal_places'  => 'الخانة العشرية',
+    'currency_name'   => 'اسم العملة',
 ];

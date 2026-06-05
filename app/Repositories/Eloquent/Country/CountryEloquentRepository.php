@@ -12,8 +12,13 @@ class CountryEloquentRepository implements CountryRepositoryInterface
     public function __construct(){}
     
     public function index() : array{
-        $countries =  Country::latest()->paginate(20);
-
+        $countries =  Country::with([
+                'currency.translation',
+                'cities',
+                'translation'
+            ])
+            ->latest()
+            ->paginate(20);
         $counts = Country::selectRaw("
             count(*) as total,
             sum(case when status = '" . Status::ACTIVE->value . "' then 1 else 0 end) as active_count,
@@ -26,7 +31,4 @@ class CountryEloquentRepository implements CountryRepositoryInterface
         ];
     }
 
-    // public function active() : Collection{
-    //     return Country::active()->latest()->get();
-    // }
 }
