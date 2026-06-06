@@ -23,6 +23,7 @@ return [
     // sidebar ( plural name ) 
     'general'=>'عام',
     'dashboard'=>'لوحة التحكم',
+    'currencies'=>'العملات',
     'countries'=>'الدول',
     'cities'=>'المدن',
     'products'=>'المنتجات',
@@ -38,8 +39,11 @@ return [
     'permissions'=>'الأذونات',
     'customers'=>'العملاء',
     // sidebar ( singular name ) 
+    'currency'=>'عملة',
     'country'=>'دولة',
-
+    'city'=>'مدينة',
+    'category'=>'تصنيف',
+    'product'=>'منتج',
 
     
     // general

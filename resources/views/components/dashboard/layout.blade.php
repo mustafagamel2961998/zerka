@@ -518,7 +518,7 @@
 
                          <li class="nav-item">
                               <a class="nav-link 
-                                   @if(request()->routeIs('v1.dashboard.home')) active @endif" 
+                                   @if(request()->routeIs('v1.dashboard.home.*')) active @endif" 
                                    href="{{ route('v1.dashboard.home') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
@@ -528,7 +528,18 @@
                                    </span>
                               </a>
                          </li>
-
+                         <li class="nav-item">
+                              <a class="nav-link 
+                                   @if(request()->routeIs('v1.dashboard.currencies.*')) active @endif"
+                                   href="{{ route('v1.dashboard.currencies.index') }}">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:dollar-minimalistic-bold-duotone"></iconify-icon>                                  
+                                   </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.currency') }}     
+                                   </span>
+                              </a>
+                         </li>
                          <li class="nav-item">
                               <a class="nav-link 
                                    @if(request()->routeIs('v1.dashboard.countries.*')) active @endif"

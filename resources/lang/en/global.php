@@ -2,6 +2,9 @@
 
 return [
     'welcome'=>'Welcome',
+    'add'=> 'Add',
+    'add_new'=>'Add new',
+    'add_with_attribute'=>'Add :attribute',
     'developer_name'=>'Mustafa Gamal',
     'crafted_by'=>'Crafted by',
     'back'=>'Back',
@@ -25,7 +28,6 @@ return [
     'name'=>'Name',
     'status'=>'Status',
     'action'=>'Control',
-    'add_new'=>'Add new',
     'no_data_found'=>'No data found',
     'no_records_have_been_added_to_this_table_yet'=>'No records have been added to this table yet.',
     'total'=>'Total',

@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Repositories\Eloquent\Currency;
+use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
+use App\Models\Currency;
+use Illuminate\Support\Collection;
+class CurrencyEloquentRepository implements CurrencyRepositoryInterface
+{
+    public function __construct()
+    {}
+
+    public function index() : Collection{
+        return Currency::with('translation')->latest()->get();
+    }
+    public function getPaginated($perPage = null) : LengthAwarePaginator{
+        return Currency::with('translation:"id,currency_id,name')->latest()->paginate($perPage);
+    }
+}

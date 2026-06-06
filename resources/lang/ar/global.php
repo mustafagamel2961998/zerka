@@ -2,6 +2,9 @@
 
 return [
     'welcome'=>'مرحباَ',
+    'add'=> 'إضافة',
+    'add_new'=>'إضافة جديد',
+    'add_with_attribute'=>'إضافة :attribute',
     'developer_name'=>'مصطفي جمال',
     'crafted_by'=>'وضعت بواسطة',
     'back'=>'العودة',
@@ -25,7 +28,6 @@ return [
     'name'=>'الإسم',
     'status'=>'الحالة',
     'action'=>'تحكم',
-    'add_new'=>'إضافة جديد',
     'no_data_found'=>'لم يتم العثور على بيانات',
     'no_records_have_been_added_to_this_table_yet'=>'لم يتم إضافة أي سجلات في هذا الجدول حتى الآن.',
     'total'=>'اﻹجمالي',

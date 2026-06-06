@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Contracts\Country;
 
-use Illuminate\Database\Eloquent\Collection;
-
+use Illuminate\Pagination\LengthAwarePaginator;
 interface CountryRepositoryInterface
 {
-    public function index() : array;
+    public function getPaginated($perPage=null) : LengthAwarePaginator;
+    public function getCount() : Object;
 }

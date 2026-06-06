@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\V1\Auth\AuthController;
 use App\Http\Controllers\Web\V1\Country\CountryController;
+use App\Http\Controllers\Web\V1\Currency\CurrencyController;
 use App\Http\Controllers\Web\V1\Home\HomeController;
 
 Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
@@ -40,6 +41,9 @@ Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Country Routes 
     Route::resource('countries',CountryController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Currancy Routes 
+    Route::resource('currencies',CurrencyController::class);
     
     });
     //****************************************-:END:-****************************************/

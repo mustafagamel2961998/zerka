@@ -14,8 +14,8 @@
                         {{ __('dashboard.table-title', ['name' => __('dashboard.' . request()->segment(3))]) }}
                     </h4>
 
-                    <a href="product-add.html" class="btn btn-sm btn-primary">
-                        {{ __('dashboard.add_btn', ['name' => __('dashboard.country')]) }}
+                    <a href="{{ route('v1.dashboard.countries.create') }}" class="btn btn-sm btn-primary">
+                        {{ __('global.add_with_attribute', ['attribute' => __('dashboard.country')]) }}
                     </a>
 
                     <x-dashboard.partial.data-action />

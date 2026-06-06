@@ -25,6 +25,7 @@ return [
     // sidebar
     'general'=>'General',
     'dashboard'=>'Dashboard',
+    'currencies'=>'Currencies',
     'countries'=>'Countries',
     'cities'=>'Cities',
     'products'=>'Products',
@@ -40,7 +41,11 @@ return [
     'permissions'=>'Permissions',
     'customers'=>'Customers',
     // sidebar ( singular name ) 
+    'currency'=>'Currency',
     'country'=>'Country',
+    'city'=>'City',
+    'category'=>'Category',
+    'product'=>'Product',
     // general
     'table-title'=>'All :name List',
     'add_btn'=>'Add :name'
