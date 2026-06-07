@@ -33,5 +33,7 @@
         </div>
     </div>
 
+    <script src="{{ asset('assets/js/dashboard/pages/country/country.js') }}"></script>
+    <script src="{{ asset('assets/js/dashboard/pages/jquery/country/country.js') }}"></script>
 
 </x-dashboard.layout>
