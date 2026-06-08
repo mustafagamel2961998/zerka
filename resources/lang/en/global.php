@@ -39,4 +39,5 @@ return [
     'exchange_rate'   => 'Exchange Rate',
     'decimal_places'  => 'Decimal Places',
     'currency_name'=> 'Currency Name',
+    'example'         => 'Example',
 ];

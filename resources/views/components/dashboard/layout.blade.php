@@ -20,6 +20,8 @@
 
      <!-- Vendor css (Require in all Page) -->
      <link href="{{ asset('assets/css/dashboard/vendor/vendor.min.css') }}" rel="stylesheet" type="text/css" />
+     <!-- Gridjs Plugin css -->
+     <link href="{{ asset('assets/css/dashboard/vendor/theme/grid/mermaid.min.css') }}" rel="stylesheet" type="text/css" />
 
      <!-- Icons css (Require in all Page) -->
      <link href="{{ asset('assets/css/dashboard/vendor/icons.min.css') }}" rel="stylesheet" type="text/css" />
@@ -518,8 +520,8 @@
 
                          <li class="nav-item">
                               <a class="nav-link 
-                                   @if(request()->routeIs('v1.dashboard.home.*')) active @endif" 
-                                   href="{{ route('v1.dashboard.home') }}">
+                                   @if(request()->routeIs('dashboard.v1.home.*')) active @endif" 
+                                   href="{{ route('dashboard.v1.home') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                                    </span>
@@ -530,8 +532,8 @@
                          </li>
                          <li class="nav-item">
                               <a class="nav-link 
-                                   @if(request()->routeIs('v1.dashboard.currencies.*')) active @endif"
-                                   href="{{ route('v1.dashboard.currencies.index') }}">
+                                   @if(request()->routeIs('dashboard.v1.currencies.*')) active @endif"
+                                   href="{{ route('dashboard.v1.currencies.index') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:dollar-minimalistic-bold-duotone"></iconify-icon>                                  
                                    </span>
@@ -542,8 +544,8 @@
                          </li>
                          <li class="nav-item">
                               <a class="nav-link 
-                                   @if(request()->routeIs('v1.dashboard.countries.*')) active @endif"
-                                   href="{{ route('v1.dashboard.countries.index') }}">
+                                   @if(request()->routeIs('dashboard.v1.countries.*')) active @endif"
+                                   href="{{ route('dashboard.v1.countries.index') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:flag-bold-duotone"></iconify-icon>
                                    </span>
@@ -1396,6 +1398,10 @@
             });
         </script>
      @endif
+     @stack('javascript')
+    <!-- Gridjs Demo js -->
+    <script src="{{asset('assets/js/dashboard/vendor/gridjs/gridjs.umd.js')}}"></script>
+    <script src="{{asset('assets/js/dashboard/components/table-gridjs.js')}}"></script>
 </body>
 
 </html>

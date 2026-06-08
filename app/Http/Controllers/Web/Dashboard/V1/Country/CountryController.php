@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Web\V1\Country;
+namespace App\Http\Controllers\Web\Dashboard\V1\Country;
 
+use App\Actions\Dashboard\V1\Country\CreateAction;
 use App\Actions\Dashboard\V1\Country\GetPaginatedAction;
 use App\Actions\Dashboard\V1\Country\GetCountAction;
 use App\Actions\Dashboard\V1\Currency\GetAllAction as GetAllCurrencyAction;
@@ -10,48 +11,39 @@ use App\Http\Requests\Dashboard\Country\CountryRequest;
 use Illuminate\Http\Request;
 use Exception;
 use App\Models\Country;
+use App\DTOs\Dashboard\V1\Country\CreateDTO;
 class CountryController extends Controller
 {
-    public function __construct(
-        protected GetPaginatedAction $get_paginated_action,
-        protected GetCountAction $get_count_action,
-        protected GetAllCurrencyAction $get_all_currency_action,
-    ){}
+    public function __construct(){}
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(GetCountAction $get_count_action,GetPaginatedAction $get_paginated_action)
     {
-        try{
-            $countries = $this->get_paginated_action->execute();
-            $counts = $this->get_count_action->execute();
+            $countries = $get_paginated_action->execute();
+            $counts = $get_count_action->execute();
             return view('dashboard.country.index',compact('countries','counts'));
-        }catch(Exception $e){
-            return redirect()->back()->with('error', $e->getMessage());
-        } 
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(GetCountAction $get_count_action,GetAllCurrencyAction $get_all_currency_action)
     {
-        try{
             $country = new Country();
-            $counts = $this->get_count_action->execute();
-            $currencies = $this->get_all_currency_action->execute();
+            $counts = $get_count_action->execute();
+            $currencies = $get_all_currency_action->execute();
             return view('dashboard.country.create',compact('country','counts','currencies'));
-        }catch(Exception $e){
-            return redirect()->back()->with('error', $e->getMessage());
-        } 
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CountryRequest $request)
+    public function store(CountryRequest $request,CreateAction $create_action)
     {
-        
+            $dto = CreateDTO::fromRequest($request);
+            return $create_action->execute($dto);
+            return redirect()->route('dashboard.v1.countries.index')->with('success',__('crud.created'));
     }
 
     /**

@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Web\V1\Auth\AuthController;
-use App\Http\Controllers\Web\V1\Country\CountryController;
-use App\Http\Controllers\Web\V1\Currency\CurrencyController;
-use App\Http\Controllers\Web\V1\Home\HomeController;
+use App\Http\Controllers\Web\Dashboard\V1\Auth\AuthController;
+use App\Http\Controllers\Web\Dashboard\V1\Country\CountryController;
+use App\Http\Controllers\Web\Dashboard\V1\Currency\CurrencyController;
+use App\Http\Controllers\Web\Dashboard\V1\Home\HomeController;
 
-Route::prefix("v1/dashboard")->as("v1.dashboard.")->group(function () {
+Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 

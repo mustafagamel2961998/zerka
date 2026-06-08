@@ -6,9 +6,15 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Enums\Status;
-
 class CountryRequest extends FormRequest
 {
+    protected function prepareForValidation()
+    {
+        // لو الـ switch مقفول (مش مبعوت)، ضيفه في الـ request بقيمة inactive
+        $this->merge([
+            'status' => $this->has('status') ? 'active' : 'inactive',
+        ]);
+    }
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -26,14 +32,15 @@ class CountryRequest extends FormRequest
     {
         return [
             'currency_id'=>['nullable','exists:currencies,id'],
-            'iso2'=>['required','string','max:2'],
-            'iso3'=>['required','string','max:3'],
+            'iso2'=>['required','string',
+                    'regex:/^[a-zA-Z]{2}$/','max:2'],
+            'iso3'=>['required','string',
+                    'regex:/^[a-zA-Z]{2}$/','max:3'],
             'phone_code'=>['nullable','string','regex:/^\+[0-9]{1,4}$/'],
             'timezone'=>['nullable','string'],
-            // 'status'=>['required',Rule::in(Status::cases())],
-            // 'name.ar'=>['required','string'],
-            // 'name.en'=>['required','string'],
-
+            'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
+            'name.ar'=>['required','string','max:255'],
+            'name.en'=>['required','string','max:255'],
 
         ];
     }

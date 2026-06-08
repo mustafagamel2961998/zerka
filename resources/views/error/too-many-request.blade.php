@@ -45,7 +45,7 @@
 
         <hr class="mb-4">
 
-        <a href="{{ route('v1.dashboard.login') }}" class="btn btn-sm btn-soft-primary d-inline-flex align-items-center justify-content-center gap-2" style="min-width: 100px;">
+        <a href="{{ route('dashboard.v1.login') }}" class="btn btn-sm btn-soft-primary d-inline-flex align-items-center justify-content-center gap-2" style="min-width: 100px;">
             <iconify-icon icon="solar:arrow-right-linear"></iconify-icon>
             {{ __('global.back') }}
         </a>

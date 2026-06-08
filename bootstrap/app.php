@@ -23,11 +23,18 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-       
-    $exceptions->render(function (ThrottleRequestsException $e, Request $request) {
-        $retryAfter = $e->getHeaders()['Retry-After'] ?? 60;
-        return redirect()->route('errors.too-many-request.index')->with(['retryAfter' => $retryAfter],429);
-       
-    });
+        
+        $exceptions->render(function (ThrottleRequestsException $e, Request $request) {
+            $retryAfter = $e->getHeaders()['Retry-After'] ?? 60;
+            return redirect()->route('errors.too-many-request.index')->with(['retryAfter' => $retryAfter],429);
+        
+        });
+        $exceptions->render(function (\Throwable $e, $request) {
+            if (!$request->expectsJson()) { 
+                return redirect()->back()
+                    ->withInput()
+                    ->with('error', $e->getMessage());
+            }
+        });
 
     })->create();

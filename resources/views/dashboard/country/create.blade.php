@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                        
-                        <form action="{{ route('v1.dashboard.countries.store') }}" method="POST">
+                        <form action="{{ route('dashboard.v1.countries.store') }}" method="POST">
                             @csrf
                             @include('dashboard.country._form', [
                                     'country' => $country,
@@ -33,7 +33,8 @@
         </div>
     </div>
 
-    <script src="{{ asset('assets/js/dashboard/pages/country/country.js') }}"></script>
-    <script src="{{ asset('assets/js/dashboard/pages/jquery/country/country.js') }}"></script>
-
+    @push('javascript')
+        <script src="{{ asset('assets/js/dashboard/pages/country/country.js') }}"></script>
+        <script src="{{ asset('assets/js/dashboard/pages/jquery/country/country.js') }}"></script>
+    @endpush
 </x-dashboard.layout>

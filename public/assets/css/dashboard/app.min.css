@@ -3735,7 +3735,7 @@ textarea.form-control-lg {
 }
 
 .invalid-feedback {
-  display: none;
+  /* display: none; */
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875rem;
@@ -22077,7 +22077,19 @@ p.no-span::after {
   width: auto;
   border-radius: 3px;
 }
+/* استايل النجمة للحقول المطلوبة */
+.form-label.required::before {
+    content: "*";
+    color: #dc3545; /* لون أحمر متناسق مع بوتستراب */
+    font-weight: bold;
+    margin-right: 4px; /* مسافة بين النجمة والنص لو الكلام إنجليزي */
+}
 
+/* دعم اتجاه اللغة العربية (RTL) عشان النجمة تيجي قبل الكلام مظبوط */
+[dir="rtl"] .form-label.required::before {
+    margin-right: 0;
+    margin-left: 4px; /* مسافة بين النجمة والنص لو الكلام عربي */
+}
 @media (min-width: 768px) {
   .timeline .timeline-time .time-show {
     -webkit-box-pack: center;

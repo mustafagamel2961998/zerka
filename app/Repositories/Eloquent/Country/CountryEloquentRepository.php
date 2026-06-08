@@ -7,6 +7,7 @@ use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use App\Enums\Status;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Override;
 
 class CountryEloquentRepository implements CountryRepositoryInterface
 {
@@ -29,6 +30,20 @@ class CountryEloquentRepository implements CountryRepositoryInterface
             sum(case when status = '" . Status::ACTIVE->value . "' then 1 else 0 end) as active_count,
             sum(case when status = '" . Status::INACTIVE->value . "' then 1 else 0 end) as inactive_count
         ")->first();
+    }
+
+    public function store(array $data)  
+    {
+        return $data;
+        
+        $country = Country::create($data);
+        foreach($data['name'] as $key => $value){
+            $country->translations()->create([
+                'locale' => $key,
+                'name' => $value
+            ]);
+        }
+        return $country;
     }
 
 }

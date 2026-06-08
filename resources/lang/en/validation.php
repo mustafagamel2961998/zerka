@@ -196,6 +196,19 @@ return [
     'attributes' => [
        'login'=>'Login',
        'password'=>'Password',
+       'email'=>'Email',
+       'phone'=>'Phone',
+       'phone_code'=>'Phone Code',
+       'name'=>'Name',
+       'address'=>'Address',
+       'price'=>'Price',
+       'quantity'=>'Quantity',
+       'description'=>'Description',
+       'iso2'=>'ISO2',
+       'iso3'=>'ISO3',
+       'status'=>'Status',
+       'name.ar'=>'Name Arabic',
+       'name.en'=>'Name English',
     ],
 
 ];

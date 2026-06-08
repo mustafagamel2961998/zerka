@@ -18,7 +18,7 @@
                 <div class="card-body">
                     <div class="row">
                        
-                        <form action="{{ route('v1.dashboard.currencies.store') }}" method="POST">
+                        <form action="{{ route('dashboard.v1.currencies.store') }}" method="POST">
                             @csrf
                             @include('dashboard.currency._form', [
                                     'currency' => $currency,

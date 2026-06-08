@@ -38,6 +38,7 @@ class Country extends Model
     protected function casts(): array
     {
         return [
+            'currency_id' => 'integer',
             'status' => Status::class,
         ];
     }

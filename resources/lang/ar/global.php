@@ -39,4 +39,5 @@ return [
     'exchange_rate'   => 'سعر الصرف',
     'decimal_places'  => 'الخانة العشرية',
     'currency_name'   => 'اسم العملة',
+    'example'         => 'مثال',
 ];

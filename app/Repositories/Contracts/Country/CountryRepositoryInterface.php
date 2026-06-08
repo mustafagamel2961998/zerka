@@ -7,4 +7,5 @@ interface CountryRepositoryInterface
 {
     public function getPaginated($perPage=null) : LengthAwarePaginator;
     public function getCount() : Object;
+    public function store(array $data) ;
 }

@@ -17,7 +17,7 @@ class CheckRoleMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth()->check()) {
-            return redirect()->route('v1.dashboard.login.index')
+            return redirect()->route('dashboard.v1.login.index')
                              ->with('error', __('dashboard.must_login_first'));
         }
 

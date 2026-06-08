@@ -14,7 +14,7 @@
                         {{ __('dashboard.table-title', ['name' => __('dashboard.' . request()->segment(3))]) }}
                     </h4>
 
-                    <a href="{{ route('v1.dashboard.countries.create') }}" class="btn btn-sm btn-primary">
+                    <a href="{{ route('dashboard.v1.countries.create') }}" class="btn btn-sm btn-primary">
                         {{ __('global.add_with_attribute', ['attribute' => __('dashboard.country')]) }}
                     </a>
 
@@ -30,5 +30,9 @@
             </div>
         </div>
     </div>
-
+ 
+    @push('javascript')
+        <script src="{{ asset('assets/js/dashboard/pages/country/country.js') }}"></script>
+        <script src="{{ asset('assets/js/dashboard/pages/jquery/country/country.js') }}"></script>
+    @endpush
 </x-dashboard.layout>

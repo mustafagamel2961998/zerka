@@ -72,7 +72,7 @@
                                 </p>
 
                                 <div class="mb-5">
-                                    <form action="{{ route('v1.dashboard.login.action') }}" method="POST"
+                                    <form action="{{ route('dashboard.v1.login.action') }}" method="POST"
                                         class="authentication-form">
                                         @csrf
                                         <div class="mb-3">

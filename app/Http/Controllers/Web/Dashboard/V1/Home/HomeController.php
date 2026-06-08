@@ -1,23 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Web\V1\Currency;
+namespace App\Http\Controllers\Web\Dashboard\V1\Home;
 
+use App\Actions\Dashboard\V1\Home\GetAllAction;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
-use App\Actions\Dashboard\V1\Currency\GetPaginatedAction;
-use App\Actions\Dashboard\V1\Currency\GetAllAction;
-class CurrencyController extends Controller
+
+class HomeController extends Controller
 {
-    public function __construct(
-        protected GetAllAction $get_all_action,
-        protected GetPaginatedAction $get_paginated_action
-        ){}
+    public function __construct(protected GetAllAction $get_all_action){}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        try{
+            $home = $this->get_all_action->execute(); 
+            return view('dashboard.home.index');
+        }catch(Exception $e){
+            return redirect()->route('errors.fallback.index')->with('error', $e->getMessage());
+        }
     }
 
     /**
