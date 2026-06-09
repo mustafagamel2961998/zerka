@@ -1,7 +1,11 @@
 <?php
 
 return [
+    //currency
+    'select_currency' => 'اختر العملة',
+
     // country
+    'country'=>'الدولة',
     'country_name'=>'اسم الدولة',
     'country_name_ar'=>'اسم الدولة بالعربية',
     'country_name_en'=>'اسم الدولة بالانجليزية',
@@ -14,6 +18,11 @@ return [
     'timezone' => 'المنطقة الزمنية',
     'timezone_example' => 'مصر = Africa/Cairo - العراق = Asia/Baghdad',
     'currency'=>'العملة',
-    'select_currency' => 'اختر العملة',
+    'select_country' => 'اختر الدولة',
     'status' => 'الحالة',
+
+    // city
+    'city_name'=>'اسم المدينة',
+    'city_name_ar'=>'اسم المدينة بالعربية',
+    'city_name_en'=>'اسم المدينة بالانجليزية',
 ];

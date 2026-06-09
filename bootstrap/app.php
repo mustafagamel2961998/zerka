@@ -29,12 +29,12 @@ return Application::configure(basePath: dirname(__DIR__))
             return redirect()->route('errors.too-many-request.index')->with(['retryAfter' => $retryAfter],429);
         
         });
-        $exceptions->render(function (\Throwable $e, $request) {
-            if (!$request->expectsJson()) { 
-                return redirect()->back()
-                    ->withInput()
-                    ->with('error', $e->getMessage());
-            }
-        });
+        // $exceptions->render(function (\Throwable $e, $request) {
+        //     if (!$request->expectsJson()) { 
+        //         return redirect()->back()
+        //             ->withInput()
+        //             ->with('error', $e->getMessage());
+        //     }
+        // });
 
     })->create();

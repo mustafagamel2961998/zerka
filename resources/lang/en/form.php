@@ -1,7 +1,10 @@
 <?php
 
 return [
+    //currency
+    'select_currency' => 'Select Currency',
     // country
+    'country'=>'Country',
     'country_name'=>'Country name',
     'country_name_ar'=>'Country name in arabic',
     'country_name_en'=>'Country name in english',
@@ -14,6 +17,11 @@ return [
     'timezone' => 'Timezone',
     'timezone_example' => 'Egypt = Africa/Cairo - Iraq = Asia/Baghdad',
     'currency'=>'Currency',
-    'select_currency' => 'Select Currency',
+    'select_country' => 'Select Country',
     'status' => 'Status',
+
+    //city
+    'city_name'=>'City name',
+    'city_name_ar'=>'City name in arabic',
+    'city_name_en'=>'City name in english',
 ];

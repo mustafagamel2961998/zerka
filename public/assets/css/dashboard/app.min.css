@@ -22090,6 +22090,7 @@ p.no-span::after {
     margin-right: 0;
     margin-left: 4px; /* مسافة بين النجمة والنص لو الكلام عربي */
 }
+
 @media (min-width: 768px) {
   .timeline .timeline-time .time-show {
     -webkit-box-pack: center;

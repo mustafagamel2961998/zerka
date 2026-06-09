@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('locale');
             $table->string('name');
             $table->unique(['country_id', 'locale']);
+            $table->index('name');
             $table->timestamps();
         });
     }

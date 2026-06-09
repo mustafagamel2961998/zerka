@@ -9,8 +9,7 @@
                 <th>{{ __('global.phone_code') }}</th>
                 <th>{{ __('global.timezone') }}</th>
                 <th>{{ __('global.currency_name') }}</th>
-                <th>{{ __('global.code') }}</th>
-                <th>{{ __('global.exchange_rate') }}</th>
+                <th>{{ __('global.cities_count') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
@@ -22,12 +21,8 @@
                         {{ $key + 1 }}
                     </td>
                     <td>
-                        <div class="d-flex align-items-center gap-2">
-                            <p class="text-dark fw-medium fs-15 mb-0">
-                                <span class="fi fi-{{ strtolower($country->iso2) }}"></span>
-                                {{ $country->translation->name }}
-                            </p>
-                        </div>
+                        {{-- <span class="fi fi-{{ strtolower($country->iso2) }}"></span> --}}
+                        {{ $country->translation->name }}
                     </td>
                     <td>
                         {{ $country->iso2 }}
@@ -45,20 +40,9 @@
                         {{ $country->currency->translation->name }}
                     </td>
                     <td>
-                        {{ $country->currency->code }}
+                        {{ $country->cities_count }}
                     </td>
-                  <td class="whitespace-nowrap px-4 py-3 align-middle text-right font-medium text-slate-900">
-                        <span dir="ltr" class="font-semibold text-indigo-600">
-                            {{ number_format($country->currency->exchange_rate, $country->currency->decimal_places) }}
-                        </span>
-                        
-                        <span class="mr-1.5 text-xs text-slate-500 font-normal">
-                            {{ $country->currency->translation->name }} 
-                            <span class="text-slate-400 font-mono uppercase">
-                                ({{ $country->currency->code }})
-                            </span>
-                        </span>
-                    </td>
+              
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($country->status->value === 'active')>
@@ -66,22 +50,24 @@
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                            <a href="#!" class="btn btn-light btn-sm">
+                            <a href="{{route('dashboard.v1.countries.show', $country->id)}}" class="btn btn-light btn-sm">
                                 <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
-                            <a href="#!" class="btn btn-soft-primary btn-sm">
+                            <a href="{{route('dashboard.v1.countries.edit', $country->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
-                            <a href="#!" class="btn btn-soft-danger btn-sm">
-                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
-                                    class="align-middle fs-18"></iconify-icon>
-                            </a>
+                            <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
+                                    data-url="{{ route('dashboard.v1.countries.destroy', $country->id) }}" 
+                                    data-name="{{ $country->translations->where('locale', app()->getLocale())->first()->name ?? '' }}">
+                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                            </button>
+                            
                         </div>
                     </td>
                 </tr>
             @empty
                 <tr>
-                    <td colspan="5" class="text-center py-5">
+                    <td colspan="11" class="text-center py-5">
                         <div class="d-flex flex-column align-items-center justify-content-center">
                             <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3"
                                 style="width: 80px; height: 80px;">
@@ -94,7 +80,7 @@
                                 {{ __('global.no_records_have_been_added_to_this_table_yet') }}
                             </p>
 
-                            <a href="#!" class="btn btn-primary btn-sm mt-3">
+                            <a href="{{route('dashboard.v1.countries.create')}}" class="btn btn-primary btn-sm mt-3">
                                 <iconify-icon icon="solar:add-circle-broken" class="align-middle me-1"></iconify-icon>
                                 {{ __('global.add_new') }}
                             </a>
@@ -108,3 +94,50 @@
     </table>
 </div>
 <div id="table-gridjs"></div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+            
+            <div class="modal-body text-center p-4">
+                
+                <div class="d-inline-flex align-items-center justify-content-center bg-danger-subtle text-danger rounded-circle mb-3" style="width: 64px; height: 64px;">
+                    <iconify-icon icon="solar:danger-triangle-bold-duotone" style="font-size: 36px;"></iconify-icon>
+                </div>
+
+                <h4 class="text-dark fw-bold mb-2">{{ __('global.delete_confirmation') }}</h4>
+                
+                <p class="text-muted fs-15 mb-3">
+                    {{ __('global.delete_warning_title', ['name' => __('dashboard.country')]) }}
+                    <strong id="name-span" class="text-dark fw-semibold d-block mt-1 fs-16"></strong>
+                </p>
+
+                <div class="alert alert-danger border-0 d-flex align-items-start text-start gap-2 mb-3 py-2 px-3 fs-13" role="alert">
+                    <iconify-icon icon="solar:info-circle-bold" class="fs-18 mt-0.5 flex-shrink-0"></iconify-icon>
+                    <div>
+                        <strong>{{ __('global.delete_cascade_warning') }}</strong>
+                    </div>
+                </div>
+
+                <p class="text-secondary small mb-0 fs-12">
+                    <iconify-icon icon="solar:lock-password-broken" class="align-middle me-1"></iconify-icon>
+                    {{ __('global.cannot_undo') }}
+                </p>
+            </div>
+
+            <div class="modal-footer border-0 bg-light-subtle d-flex justify-content-center gap-2 pb-4 pt-0 px-4">
+                <button type="button" class="btn btn-light fw-medium px-4" data-bs-dismiss="modal" style="border-radius: 8px;">
+                    {{ __('global.cancel') }}
+                </button>
+                
+                <form id="modal-delete-form" action="" method="POST" class="m-0">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger fw-medium px-4" style="border-radius: 8px;">
+                        {{ __('global.confirm_delete') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

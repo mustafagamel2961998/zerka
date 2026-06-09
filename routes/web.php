@@ -8,6 +8,7 @@ Route::get('/lang/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
+
 Route::get('errors/fallback',function(){
     return view('error.fallback');
 })->name('errors.fallback.index');

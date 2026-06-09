@@ -14,6 +14,7 @@ return [
     'login_success'=>'Login successfully!',
 
     // sweetalert
+    'success'=>'Success',
     'error'=>'Error',
     
     //permission
@@ -46,7 +47,5 @@ return [
     'city'=>'City',
     'category'=>'Category',
     'product'=>'Product',
-    // general
-    'table-title'=>'All :name List',
-    'add_btn'=>'Add :name'
+  
 ];

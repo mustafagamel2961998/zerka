@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        <x-dashboard.partial.status-card :counts="$counts" />
+        <x-dashboard.partial.country.statistics/>
 
     </div>
 

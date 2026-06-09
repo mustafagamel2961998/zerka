@@ -13,7 +13,7 @@ class City extends Model
     ];
 
 
-
+    //-----------------------------------------------------------------------------//
     // start relationships
     public function country(){
         return $this->belongsTo(Country::class,'country_id','id');
@@ -21,7 +21,11 @@ class City extends Model
     public function translations(){
         return $this->hasMany(CityTranslation::class,'city_id','id');
     }
+    public function translation(){
+        return $this->hasOne(CityTranslation::class,'city_id','id')->where('locale',app()->getLocale());
+    }
     // end relationships
+    //-----------------------------------------------------------------------------//
 
     protected function casts(): array
     {
@@ -30,4 +34,6 @@ class City extends Model
             'status' => Status::class,
         ];
     }
+    //-----------------------------------------------------------------------------//
+
 }

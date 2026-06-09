@@ -6,6 +6,8 @@ use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use App\Repositories\Eloquent\Country\CountryEloquentRepository;
 use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
 use App\Repositories\Eloquent\Currency\CurrencyEloquentRepository;
+use App\Repositories\Eloquent\City\CityEloquentRepository;
+use App\Repositories\Contracts\City\CityRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(CountryRepositoryInterface::class,CountryEloquentRepository::class);
         $this->app->bind(CurrencyRepositoryInterface::class,CurrencyEloquentRepository::class);
+        $this->app->bind(CityRepositoryInterface::class,CityEloquentRepository::class);
 
     }
 

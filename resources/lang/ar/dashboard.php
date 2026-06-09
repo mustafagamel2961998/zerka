@@ -13,7 +13,9 @@ return [
     'login_failed'=>'فشل في تسجيل الدخول',
     'login_success'=>'تم تسجيل الدخول بنجاح',
     // sweetalert
+    'success'=>'نجاح',
     'error'=>'خطأ',
+
     //permission
     'not_have_permission'=>'عذراً، أنت لا تملك الصلاحية لدخول هذه الصفحة!',
     // language
@@ -45,8 +47,5 @@ return [
     'category'=>'تصنيف',
     'product'=>'منتج',
 
-    
-    // general
-    'table-title'=>'قائمة كل :name',
-    'add_btn'=>'إضافة :name'
+   
 ];

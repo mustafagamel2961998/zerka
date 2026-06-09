@@ -209,6 +209,7 @@ return [
        'status'=>'Status',
        'name.ar'=>'Name Arabic',
        'name.en'=>'Name English',
+       'country_id'=>'Country',
     ],
 
 ];

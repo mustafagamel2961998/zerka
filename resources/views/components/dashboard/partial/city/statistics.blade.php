@@ -1,5 +1,4 @@
 @php
-    // تحويل البيانات لـ Object لو جاية كـ Array عشان نستخدم السهم (->) براحتنا
     $countsObj = (object) $counts;
     
     $total = $countsObj->total ?? 0;

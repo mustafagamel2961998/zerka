@@ -10,7 +10,6 @@ class CountryRequest extends FormRequest
 {
     protected function prepareForValidation()
     {
-        // لو الـ switch مقفول (مش مبعوت)، ضيفه في الـ request بقيمة inactive
         $this->merge([
             'status' => $this->has('status') ? 'active' : 'inactive',
         ]);
@@ -35,7 +34,7 @@ class CountryRequest extends FormRequest
             'iso2'=>['required','string',
                     'regex:/^[a-zA-Z]{2}$/','max:2'],
             'iso3'=>['required','string',
-                    'regex:/^[a-zA-Z]{2}$/','max:3'],
+                    'regex:/^[a-zA-Z]{3}$/','max:3'],
             'phone_code'=>['nullable','string','regex:/^\+[0-9]{1,4}$/'],
             'timezone'=>['nullable','string'],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],

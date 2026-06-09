@@ -538,7 +538,7 @@
                                         <iconify-icon icon="solar:dollar-minimalistic-bold-duotone"></iconify-icon>                                  
                                    </span>
                                    <span class="nav-text"> 
-                                        {{ __('dashboard.currency') }}     
+                                        {{ __('dashboard.currencies') }}     
                                    </span>
                               </a>
                          </li>
@@ -555,7 +555,7 @@
                               </a>
                          </li>
                          <li class="nav-item">
-                              <a class="nav-link" href="">
+                              <a class="nav-link @if(request()->routeIs('dashboard.v1.cities.*')) active @endif" href="{{ route('dashboard.v1.cities.index') }}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:city-bold-duotone"></iconify-icon>                                   
                                    </span>
@@ -1356,7 +1356,7 @@
                    <div class="container-fluid">
                        <div class="row">
                            <div class="col-12 text-center">
-                               <script>document.write(new Date().getFullYear())</script> &copy; Crafted by 
+                               <script>document.write(new Date().getFullYear())</script> &copy; {{__('global.crafted_by') }} 
                                <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
                                    href="#!" class="fw-bold footer-text" target="_blank">{{ __('global.developer_name') }}</a>
                            </div>
@@ -1386,18 +1386,49 @@
 
     <!-- Dashboard Js -->
     <script src="{{ asset('assets/js/dashboard/pages/dashboard.js') }}"></script>
-     @if (session('error'))
-        <script>
-            Swal.fire({
-                title: "{{ __('dashboard.error') }} ❌",
-                text: "{{ session('error') }}",
-                icon: "error",
-                confirmButtonClass: "btn btn-primary w-xs mt-2",
-                buttonsStyling: false,
-                showCloseButton: true
-            });
-        </script>
+    <script src="{{ asset('assets/js/dashboard/pages/main.js') }}"></script>
+     @if (session('success'))
+     <script>
+          const ToastSuccess = Swal.mixin({
+               toast: true,
+               position: "{{ app()->getLocale() == 'ar' ? 'top-start' : 'top-end' }}", // بيحدد الاتجاه تلقائياً حسب لغة الموقع
+               showConfirmButton: false,
+               timer: 3500,
+               timerProgressBar: true,
+               didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+               }
+          });
+
+          ToastSuccess.fire({
+               icon: 'success',
+               title: "{{ session('success') }}"
+          });
+     </script>
      @endif
+
+     @if (session('error'))
+     <script>
+          const ToastError = Swal.mixin({
+               toast: true,
+               position: "{{ app()->getLocale() == 'ar' ? 'top-start' : 'top-end' }}",
+               showConfirmButton: false,
+               timer: 4500, // وقت أطول سنة عشان يلحق يقرأ الخطأ
+               timerProgressBar: true,
+               didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+               }
+          });
+
+          ToastError.fire({
+               icon: 'error',
+               title: "{{ session('error') }}"
+          });
+     </script>
+     @endif
+
      @stack('javascript')
     <!-- Gridjs Demo js -->
     <script src="{{asset('assets/js/dashboard/vendor/gridjs/gridjs.umd.js')}}"></script>

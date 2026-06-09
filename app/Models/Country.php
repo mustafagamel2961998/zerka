@@ -15,7 +15,7 @@ class Country extends Model
         'timezone',
         'status',
      ];
-
+    //-----------------------------------------------------------------------------//
     // start relationships
     public function currency(){
         return $this->belongsTo(Currency::class,'currency_id','id');
@@ -30,11 +30,14 @@ class Country extends Model
         return $this->hasOne(CountryTranslation::class,'country_id','id')->where('locale',app()->getLocale());
     }
     // end relationships
+    //-----------------------------------------------------------------------------//
     // start local scope
     public function scopeActive($query)
     {
         return $query->whereStatus('active');
     }
+    // end local scope
+    //-----------------------------------------------------------------------------//
     protected function casts(): array
     {
         return [
@@ -42,4 +45,5 @@ class Country extends Model
             'status' => Status::class,
         ];
     }
+    //-----------------------------------------------------------------------------//
 }

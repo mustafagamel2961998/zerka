@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Actions\Dashboard\V1\Country;
-
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
-
-class GetPaginatedAction
+use App\DTOs\Dashboard\V1\Country\CreateDTO;
+class UpdateAction
 {
     public function __construct(protected CountryRepositoryInterface $country_repository_interface){}
 
-    public function execute(){
-        return $this->country_repository_interface->getPaginated();
+    public function execute(string $id, CreateDTO $data)
+    {
+        return $this->country_repository_interface->update($id, $data->toArray());
     }
 }

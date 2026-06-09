@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('name'); 
             $table->string('symbol', 10);
             $table->unique(['currency_id', 'locale']);
+            $table->index('name');
             $table->timestamps();
         });
     }
