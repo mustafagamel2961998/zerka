@@ -70,7 +70,17 @@
                                 <p class="text-muted mt-1 mb-4">
                                     {{ __('dashboard.auth_text_note') }}
                                 </p>
-
+                                @error('login_failed')
+                                    <div class="alert alert-danger alert-dismissible fade show border-0 shadow-sm mb-4 d-flex align-items-center gap-2" role="alert" style="background-color: #fce8e6; color: #a8201a;">
+                                        <iconify-icon icon="solar:danger-triangle-bold-duotone" class="fs-22 text-danger"></iconify-icon>
+                                        
+                                        <div class="flex-grow-1 fw-semibold fs-14">
+                                            {{ $message }}
+                                        </div>
+                                        
+                                        <button type="button" class="btn-close fs-12 mb-0" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                @enderror
                                 <div class="mb-5">
                                     <form action="{{ route('dashboard.v1.login.action') }}" method="POST"
                                         class="authentication-form">

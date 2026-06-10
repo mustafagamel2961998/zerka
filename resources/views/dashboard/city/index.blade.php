@@ -18,7 +18,6 @@
                         {{ __('global.add_with_attribute', ['attribute' => __('dashboard.city')]) }}
                     </a>
 
-                    <x-dashboard.partial.data-action />
                 </div>
                 <div class="p-1">
                     @include('dashboard.city.data-list', [

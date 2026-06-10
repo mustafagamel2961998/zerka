@@ -1,13 +1,16 @@
 <?php
 
 namespace App\Providers;
-
+use App\Repositories\Contracts\Auth\AuthRepositoryInterface;
+use App\Repositories\Eloquent\Auth\AuthEloquentRepository;
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use App\Repositories\Eloquent\Country\CountryEloquentRepository;
 use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
 use App\Repositories\Eloquent\Currency\CurrencyEloquentRepository;
-use App\Repositories\Eloquent\City\CityEloquentRepository;
 use App\Repositories\Contracts\City\CityRepositoryInterface;
+use App\Repositories\Eloquent\City\CityEloquentRepository;
+use App\Repositories\Contracts\Category\CategoryRepositoryInterface;
+use App\Repositories\Eloquent\Category\CategoryEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -20,9 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(AuthRepositoryInterface::class,AuthEloquentRepository::class);
         $this->app->bind(CountryRepositoryInterface::class,CountryEloquentRepository::class);
         $this->app->bind(CurrencyRepositoryInterface::class,CurrencyEloquentRepository::class);
         $this->app->bind(CityRepositoryInterface::class,CityEloquentRepository::class);
+        $this->app->bind(CategoryRepositoryInterface::class,CategoryEloquentRepository::class);
 
     }
 
@@ -33,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         RateLimiter::for('login', function (Request $request) {
             return [
-                Limit::perMinute(2),                        
+                Limit::perMinute(5),                        
                 Limit::perHour(100)
                 ->by($request->input('login') ?: $request->ip())
                 ->response(function () {

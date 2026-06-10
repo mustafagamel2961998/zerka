@@ -1,21 +1,21 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const statusSwitch = document.getElementById('status');
+// document.addEventListener('DOMContentLoaded', function () {
+//     const statusSwitch = document.getElementById('status');
 
-    if (statusSwitch) {
-        if (statusSwitch.checked) {
-            statusSwitch.value = 'active';
-        } else {
-            statusSwitch.value = 'inactive';
-        }
-        statusSwitch.addEventListener('change', function () {
-            if (this.checked) {
-                this.value = 'active';
-            } else {
-                this.value = 'inactive';
-            }
-        });
-    }
-});
+//     if (statusSwitch) {
+//         if (statusSwitch.checked) {
+//             statusSwitch.value = 'active';
+//         } else {
+//             statusSwitch.value = 'inactive';
+//         }
+//         statusSwitch.addEventListener('change', function () {
+//             if (this.checked) {
+//                 this.value = 'active';
+//             } else {
+//                 this.value = 'inactive';
+//             }
+//         });
+//     }
+// });
 
 document.addEventListener("DOMContentLoaded", function() {
     const tableElement = document.getElementById("my-html-table");
@@ -26,5 +26,17 @@ document.addEventListener("DOMContentLoaded", function() {
             sort: true,
             // search: true
         }).render(document.getElementById("table-gridjs"));
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const citytableElement = document.getElementById("my-city-html-table");
+    
+    if (citytableElement) {
+        new gridjs.Grid({
+            from: citytableElement, 
+            sort: true,
+            // search: true
+        }).render(document.getElementById("table-city-gridjs"));
     }
 });

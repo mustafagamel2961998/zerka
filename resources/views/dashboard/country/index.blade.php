@@ -18,7 +18,6 @@
                         {{ __('global.add_with_attribute', ['attribute' => __('dashboard.country')]) }}
                     </a>
 
-                    <x-dashboard.partial.data-action />
                 </div>
                 <div class="p-1">
                     @include('dashboard.country.data-list', ['countries' => $countries])
