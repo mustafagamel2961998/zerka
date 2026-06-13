@@ -28,6 +28,7 @@ class CityEloquentRepository implements CityRepositoryInterface
 
    public function findById(int $id) : City{
       return City::with([
+            'translations:id,city_id,name',
             'translation:id,city_id,name',
             'country.translation:id,country_id,name',
         ])

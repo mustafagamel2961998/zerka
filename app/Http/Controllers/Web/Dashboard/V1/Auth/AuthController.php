@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Auth;
 
 use App\Actions\Dashboard\V1\Auth\LoginAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\Auth\LoginRequest;
+use App\Http\Requests\Dashboard\V1\Auth\LoginRequest;
 use App\DTOs\Dashboard\V1\Auth\LoginDTO;
 class AuthController extends Controller
 {

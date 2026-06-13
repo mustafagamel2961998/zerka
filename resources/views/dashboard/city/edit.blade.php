@@ -1,4 +1,4 @@
-<x-dashboard.layout title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.city')]) }}">
+<x-dashboard.layout title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.city')]) }} - {{$city->translation->name }}">
 
     <div class="row">
 

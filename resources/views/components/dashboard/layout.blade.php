@@ -33,6 +33,7 @@
      @endif
      <!-- Theme Config js (Require in all Page) -->
      <script src="{{ asset('assets/js/dashboard/vendor/config.js') }}"></script>
+     @stack('css')
 </head>
 
 <body>
@@ -566,7 +567,7 @@
                          </li>
 
                          <li class="nav-item">
-                              <a class="nav-link" href="#sidebarCategory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCategory">
+                              <a class="nav-link @if(request()->routeIs('dashboard.v1.categories.*')) active @endif" href="{{route('dashboard.v1.categories.index')}}">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:clipboard-list-bold-duotone"></iconify-icon>
                                    </span>
@@ -574,19 +575,6 @@
                                     {{ __('dashboard.categories') }}       
                                    </span>
                               </a>
-                              <div class="collapse" id="sidebarCategory">
-                                   <ul class="nav sub-navbar-nav">
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="category-list.html">List</a>
-                                        </li>                         
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="category-edit.html">Edit</a>
-                                        </li>
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="category-add.html">Create</a>
-                                        </li>
-                                   </ul>
-                              </div>
                          </li>
 
                          <li class="nav-item">
@@ -1433,6 +1421,7 @@
     <!-- Gridjs Demo js -->
     <script src="{{asset('assets/js/dashboard/vendor/gridjs/gridjs.umd.js')}}"></script>
     <script src="{{asset('assets/js/dashboard/components/table-gridjs.js')}}"></script>
+
 </body>
 
 </html>

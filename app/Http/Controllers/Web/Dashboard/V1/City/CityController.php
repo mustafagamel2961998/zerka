@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Web\Dashboard\V1\City;
 
 use App\DTOs\Dashboard\V1\City\CreateDTO;
+use App\DTOs\Dashboard\V1\City\UpdadteDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\City\CityRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\Dashboard\V1\City\CityRequest;
 use App\Repositories\Contracts\City\CityRepositoryInterface;
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use App\Models\City;
 use App\Actions\Dashboard\V1\City\CreateAction;
+use App\Actions\Dashboard\V1\City\UpdateAction;
 class CityController extends Controller
 {
     public function __construct(
@@ -66,10 +67,10 @@ class CityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CityRequest $request, string $id)
+    public function update(CityRequest $request, string $id,UpdateAction $update_action)
     {
-        $dto = CreateDTO::fromRequest($request);
-        $this->city_repository_interface->update($id,$dto->toArray());
+        $dto = UpdadteDTO::fromRequest($request);
+        $update_action->execute($id,$dto);
         return redirect()->route('dashboard.v1.cities.index')->with('success', __('crud.updated'));
     }
 

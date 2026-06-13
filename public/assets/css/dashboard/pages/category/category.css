@@ -1,0 +1,23 @@
+.animate-fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.custom-dropzone{
+    border:dashed;
+    border-color: rgb(218, 218, 218) !important;
+    background-color: #f8f9fa; 
+    cursor: pointer;
+    min-height: 220px;
+}
+.custom-dropzone:hover {
+    background-color: #f1f5f9 !important;
+    border-color: rgb(226, 226, 226) !important;
+}
+.category_cover{
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover;
+}

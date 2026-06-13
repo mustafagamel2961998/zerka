@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('category_translations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->string('locale')->index(); // لغة الترجمة مثل (ar, en)
+            $table->foreignId('category_id')
+                  ->constrained()
+                  ->cascadeOnDelete();
+            $table->string('locale')->index(); 
             
-            $table->string('name'); 
+            $table->string('name')->unique(); 
             $table->text('description')->nullable();
             
             $table->string('meta_title')->nullable();

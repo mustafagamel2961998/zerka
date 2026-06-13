@@ -9,9 +9,9 @@ class AuthEloquentRepository implements AuthRepositoryInterface
     {
         //
     }
-    public function login(array $data) : object
+    public function login(array $data) : ?object
     {
         return User::where('email', $data['login'])
-                        ->orWhere('phone',$data['login'])->sole();
+                        ->orWhere('phone',$data['login'])->first();
     }
 }

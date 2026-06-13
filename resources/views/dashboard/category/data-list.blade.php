@@ -3,75 +3,69 @@
         <thead class="bg-light-subtle">
             <tr>
                 <th>{{ __('global.number') }}</th>
-                <th>{{ __('global.city_name') }}</th>
-                <th>{{ __('global.country_name') }}</th>
+                <th>{{ __('global.cover') }}</th>
+                <th>{{ __('global.category_name') }}</th>
+                <th>{{ __('global.description') }}</th>
+                <th>{{ __('global.category_parent') }}</th>
+                <th>{{ __('global.seo') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($categories as $key => $category)
+            @foreach ($categories as $key => $category)
                 <tr>
-                    {{-- <td>
+                     <td>
                         {{ $key + 1 }}
                     </td>
                     <td>
-                         {{ $city->translation->name }}
+                        <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
+                            <img src="{{$category->getFirstMediaUrl('category', 'thumb')}}" alt="{{$category->translation->name}}" class="avatar-md">
+                        </div>
+                    </td>
+                    <td>
+                        {{ $category->translation->name }}
+                    </td>
+                    <td>
+                         {{ $category->translation->description }}
                     </td>
 
-                     <td >
-                        {{ $city->country->translation->name }}
+                    <td>
+                        {{ $category->parent?->translation->name }}
                     </td>
-                   
+                   <td>
+                        SEO
+                   </td>
                    
                     <td>
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($city->status->value === 'active')>
+                            <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($category->status->value === 'active')>
                         </div>
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                        
-                            <a href="{{route('dashboard.v1.cities.edit', $city->id)}}" class="btn btn-soft-primary btn-sm">
+                            <a href="#!" class="btn btn-light btn-sm">
+                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
+                            <a href="{{route('dashboard.v1.categories.edit', $category->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
                             <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
-                                    data-url="{{ route('dashboard.v1.cities.destroy', $city->id) }}" 
-                                    data-name="{{ $city->translations->where('locale', app()->getLocale())->first()->name ?? '' }}">
+                                    data-url="{{route('dashboard.v1.categories.destroy', $category->id)}}" 
+                                    data-name="{{$category->translation->name}}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
                             
                         </div>
-                    </td> --}}
-                </tr>
-            @empty
-                <tr>
-                    <td colspan="5" class="text-center py-5">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3"
-                                style="width: 80px; height: 80px;">
-                                <iconify-icon icon="solar:folder-empty-broken" class="text-muted"
-                                    style="font-size: 45px;"></iconify-icon>
-                            </div>
-
-                            <h5 class="text-dark fw-semibold mb-1">{{ __('global.no_data_found') }}</h5>
-                            <p class="text-muted mb-0 fs-13">
-                                {{ __('global.no_records_have_been_added_to_this_table_yet') }}
-                            </p>
-
-                            <a href="#!" class="btn btn-primary btn-sm mt-3">
-                                <iconify-icon icon="solar:add-circle-broken" class="align-middle me-1"></iconify-icon>
-                                {{ __('global.add_new') }}
-                            </a>
-                        </div>
                     </td>
                 </tr>
-            @endforelse
+            @endforeach
 
 
         </tbody>
     </table>
 </div>
+
 <div id="table-category-gridjs"></div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

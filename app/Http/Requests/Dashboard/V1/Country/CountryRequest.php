@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\City;
+namespace App\Http\Requests\Dashboard\V1\Country;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Enums\Status;
-
-class CityRequest extends FormRequest
+class CountryRequest extends FormRequest
 {
     protected function prepareForValidation()
     {
@@ -31,10 +30,18 @@ class CityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'country_id'=>['required','exists:countries,id'],
+            'currency_id'=>['nullable','exists:currencies,id'],
+            'iso2'=>['required','string',
+                    'regex:/^[a-zA-Z]{2}$/','max:2'],
+            'iso3'=>['required','string',
+                    'regex:/^[a-zA-Z]{3}$/','max:3'],
+            'phone_code'=>['nullable','string','regex:/^\+[0-9]{1,4}$/'],
+            'timezone'=>['nullable','string'],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
             'name.ar'=>['required','string','max:255'],
             'name.en'=>['required','string','max:255'],
+
         ];
     }
-}
+}  
+        

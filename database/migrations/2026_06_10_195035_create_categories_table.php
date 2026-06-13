@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('parent_id')
                 ->nullable()
                 ->constrained('categories')
-                ->onDelete('cascade'); 
+                ->cascadeOnDelete(); 
             $table->string('slug')->unique();
             $table->enum('status',['active','inactive'])->default('active');
             $table->timestamps();

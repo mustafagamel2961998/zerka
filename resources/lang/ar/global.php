@@ -65,4 +65,11 @@ return [
     'updated_by' => 'تم التحديث بواسطة',
     'deleted_by' => 'تم الحذف بواسطة',
     'currency' => 'العملة',
+    'category_name' => 'اسم القسم',
+    'description'=>'الوصف',
+    'seo'=>'SEO',
+    'category_parent' => 'القسم الرئيسي',
+    'category_attributes' => 'خصائص القسم',
+    'cover'=>'الغلاف',
+    'image' => 'الصورة',
 ];

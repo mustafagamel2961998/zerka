@@ -8,7 +8,7 @@ services:
     working_dir: /var/www
     volumes:
       - ./:/var/www
-      - ./storage:/var/www/storage
+      - zerka_storage:/var/www/storage
       - zerka_cache:/var/www/bootstrap/cache
       - zerka_vendor:/var/www/vendor
 
@@ -24,6 +24,7 @@ services:
     volumes:
       - ./:/var/www
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - zerka_storage:/var/www/storage
     depends_on:
       - zerka-service
 

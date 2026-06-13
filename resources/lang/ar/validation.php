@@ -188,6 +188,13 @@ return [
        'name.ar'=>'الاسم بالعربية',
        'name.en'=>'الاسم بالانجليزية',
        'country_id'=>'الدولة',
+       'meta_title.ar'=>'عنوان الميتا بالعربية',
+       'meta_title.en'=>'عنوان الميتا بالانجليزية',
+       'meta_description.ar'=>'وصف الميتا بالعربية',
+       'meta_description.en'=>'وصف الميتا بالانجليزية',
+       'description.ar'=>'وصف بالعربية',
+       'description.en'=>'وصف بالانجليزية',
+       'cover'=>'الغلاف',
     ],
 
 ];

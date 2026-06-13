@@ -210,6 +210,13 @@ return [
        'name.ar'=>'Name Arabic',
        'name.en'=>'Name English',
        'country_id'=>'Country',
+       'meta_title.ar'=>'Meta Title Arabic',
+       'meta_title.en'=>'Meta Title English',
+       'meta_description.ar'=>'Meta Description Arabic',
+       'meta_description.en'=>'Meta Description English',
+       'description.ar'=>'Description Arabic',
+       'description.en'=>'Description English',
+       'cover'=>'Cover',
     ],
 
 ];

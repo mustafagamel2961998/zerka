@@ -10,7 +10,7 @@
             </tr>
         </thead>
         <tbody>
-            @forelse ($cities as $key => $city)
+            @foreach ($cities as $key => $city)
                 <tr>
                     <td>
                         {{ $key + 1 }}
@@ -45,29 +45,8 @@
                         </div>
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="5" class="text-center py-5">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3"
-                                style="width: 80px; height: 80px;">
-                                <iconify-icon icon="solar:folder-empty-broken" class="text-muted"
-                                    style="font-size: 45px;"></iconify-icon>
-                            </div>
-
-                            <h5 class="text-dark fw-semibold mb-1">{{ __('global.no_data_found') }}</h5>
-                            <p class="text-muted mb-0 fs-13">
-                                {{ __('global.no_records_have_been_added_to_this_table_yet') }}
-                            </p>
-
-                            <a href="#!" class="btn btn-primary btn-sm mt-3">
-                                <iconify-icon icon="solar:add-circle-broken" class="align-middle me-1"></iconify-icon>
-                                {{ __('global.add_new') }}
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @endforelse
+          
+            @endforeach
 
 
         </tbody>

@@ -66,4 +66,10 @@ return [
     'updated_by' => 'Updated By',
     'deleted_by' => 'Deleted By',
     'currency' => 'Currency',
+    'category_name' => 'Category Name',
+    'description'=>'Description',
+    'seo'=>'SEO',
+    'category_parent' => 'Parent Category',
+    'cover'=>'Cover',
+    'image' => 'Image',
 ];

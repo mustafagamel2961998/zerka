@@ -58,7 +58,7 @@
                             </a>
                             <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
                                     data-url="{{ route('dashboard.v1.countries.destroy', $country->id) }}" 
-                                    data-name="{{ $country->translations->where('locale', app()->getLocale())->first()->name ?? '' }}">
+                                    data-name="{{ $country->translation->name}}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
                             

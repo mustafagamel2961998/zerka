@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Dashboard\V1\Auth\AuthController;
+use App\Http\Controllers\Web\Dashboard\V1\Home\HomeController;
 use App\Http\Controllers\Web\Dashboard\V1\Currency\CurrencyController;
 use App\Http\Controllers\Web\Dashboard\V1\Country\CountryController;
 use App\Http\Controllers\Web\Dashboard\V1\City\CityController;
-use App\Http\Controllers\Web\Dashboard\V1\Home\HomeController;
+use App\Http\Controllers\Web\Dashboard\V1\Category\CategoryController;
 
 Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -16,7 +17,7 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Auth Routes 
     Route::get('login',[AuthController::class,'index'])->name('login');
-    Route::post('login',[AuthController::class,'login'])
+    Route::post('login/action',[AuthController::class,'login'])
             ->name('login.action')
             ->middleware('throttle:login');
     //------------------------------------------------------------------------------------------ 
@@ -48,6 +49,9 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-City Routes 
     Route::resource('cities',CityController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Category Routes 
+    Route::resource('categories',CategoryController::class);
     
     });
     //****************************************-:END:-****************************************/

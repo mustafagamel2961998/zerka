@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Country;
 use App\Actions\Dashboard\V1\Country\CreateAction;
 use App\Actions\Dashboard\V1\Country\UpdateAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\Country\CountryRequest;
+use App\Http\Requests\Dashboard\V1\Country\CountryRequest;
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
 use App\Models\Country;
 use App\DTOs\Dashboard\V1\Country\CreateDTO;
-
+use App\DTOs\Dashboard\V1\Country\UpdadteDTO;
 class CountryController extends Controller
 {
     public function __construct(
@@ -70,7 +70,7 @@ class CountryController extends Controller
      */
     public function update(CountryRequest $request, string $id,UpdateAction $update_action)
     {
-        $dto = CreateDTO::fromRequest($request);
+        $dto = UpdadteDTO::fromRequest($request);
         $update_action->execute($id, $dto);
         return redirect()->route('dashboard.v1.countries.index')->with('success', __('crud.updated'));
     }

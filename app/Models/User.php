@@ -7,11 +7,11 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Enums\Status;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
+use App\Enums\Status;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -61,10 +61,13 @@ class User extends Authenticatable implements HasMedia
         ];
     }
 
-
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('avatar')
+             ->singleFile(); 
+    }
     public function registerMediaConversions(Media $media = null): void
     {
-       $this->addMediaCollection('avatar')->singleFile();
        $this->addMediaConversion('optimized')
             ->format('webp') 
             ->quality(80)
@@ -74,10 +77,10 @@ class User extends Authenticatable implements HasMedia
             ->performOnCollections('avatar');
 
         $this->addMediaConversion('thumb')
-            ->format('webp')
-            ->quality(70)
-            ->width(200)
-            ->height(200)
-            ->performOnCollections('avatar');
+             ->format('webp')
+             ->quality(70)
+             ->width(200)
+             ->height(200)
+             ->performOnCollections('avatar');
     }
 }
