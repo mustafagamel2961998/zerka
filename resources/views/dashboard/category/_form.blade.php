@@ -13,7 +13,7 @@
             <div class="card-body">
                 <label for="category_cover" class="custom-dropzone d-flex flex-column align-items-center justify-content-center border-dashed p-4 text-center rounded-3 position-relative">
                     
-                    <input type="file" name="cover" id="category_cover" class="d-none @error('cover') is-invalid @enderror" accept="image/*">
+                  <input type="file" name="cover" id="category_cover" class="d-none @error('cover') is-invalid @enderror" accept="image/*">
                     
                    <div id="dropzone_upload_msg" class="{{ $category->hasMedia('cover') ? 'd-none' : '' }}">
                         <i class="bx bx-cloud-upload text-primary mb-2" style="font-size: 48px;"></i>
@@ -115,7 +115,7 @@
                         {{__('form.category_parent')}}
                     </option>
                 @endif
-                @foreach($categories as $item) 
+                @foreach($categories->where('id','<>', $category->id) as $item) 
                     <option value="{{ $item->id }}" {{ old('parent_id', $category->parent_id ?? '') == $item->id ? 'selected' : '' }}>
                         {{ $item->translation->name ?? $item->name }}
                     </option>
@@ -137,9 +137,8 @@
             
             <div class="form-check form-switch">
                 <label for="status" class="form-label required">{{ __('form.status') }}</label>
-              
                 <input class="form-check-input" type="checkbox" id="status" name="status" role="switch"
-                @checked(old('status', $category->status) === Status::ACTIVE)>
+                @checked(old('status',$category->status?->value) === Status::ACTIVE->value)>
                 @error('status')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -169,53 +168,53 @@
                             {{ $errors->hasAny(['meta_title.ar', 'meta_title.en', 'meta_description.ar', 'meta_description.en']) ? 'show' : '' }}" 
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                            <div class="card-body">
-                                
-                                <div class="row mb-3">
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label for="meta_title_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_title_ar') }}</label>
-                                            <input type="text" name="meta_title[ar]" id="meta_title_ar" class="form-control @error('meta_title.ar') is-invalid @enderror" 
-                                                value="{{ old('meta_title.ar', $category->translations->where('locale', 'ar')->first()->meta_title ?? '') }}"
-                                                placeholder="{{ __('form.meta_title_ar_placeholder') }}">
-                                            <div class="form-text text-muted fs-12">{{ __('form.meta_title_ar_hint') }}</div>
-                                            @error('meta_title.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                <div class="card-body">
+                                    
+                                    <div class="row mb-3">
+                                        <div class="col-lg-6">
+                                            <div class="mb-2">
+                                                <label for="meta_title_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_title_ar') }}</label>
+                                                <input type="text" name="meta_title[ar]" id="meta_title_ar" class="form-control @error('meta_title.ar') is-invalid @enderror" 
+                                                    value="{{ old('meta_title.ar', $category->translations->where('locale', 'ar')->first()->meta_title ?? '') }}"
+                                                    placeholder="{{ __('form.meta_title_ar_placeholder') }}">
+                                                <div class="form-text text-muted fs-12">{{ __('form.meta_title_ar_hint') }}</div>
+                                                @error('meta_title.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-2">
+                                                <label for="meta_title_en" class="form-label fw-semibold text-dark">{{ __('form.meta_title_en') }}</label>
+                                                <input type="text" name="meta_title[en]" id="meta_title_en" class="form-control @error('meta_title.en') is-invalid @enderror" 
+                                                    value="{{ old('meta_title.en', $category->translations->where('locale', 'en')->first()->meta_title ?? '') }}"
+                                                    placeholder="{{ __('form.meta_title_en_placeholder') }}">
+                                                <div class="form-text text-muted fs-12">{{ __('form.meta_title_en_hint') }}</div>
+                                                @error('meta_title.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label for="meta_title_en" class="form-label fw-semibold text-dark">{{ __('form.meta_title_en') }}</label>
-                                            <input type="text" name="meta_title[en]" id="meta_title_en" class="form-control @error('meta_title.en') is-invalid @enderror" 
-                                                value="{{ old('meta_title.en', $category->translations->where('locale', 'en')->first()->meta_title ?? '') }}"
-                                                placeholder="{{ __('form.meta_title_en_placeholder') }}">
-                                            <div class="form-text text-muted fs-12">{{ __('form.meta_title_en_hint') }}</div>
-                                            @error('meta_title.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label for="meta_description_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_description_ar') }}</label>
-                                            <textarea name="meta_description[ar]" id="meta_description_ar" class="form-control bg-light-subtle @error('meta_description.ar') is-invalid @enderror" rows="3"
-                                                    placeholder="{{ __('form.meta_description_ar_placeholder') }}">{{ old('meta_description.ar', $category->translations->where('locale', 'ar')->first()->meta_description ?? '') }}</textarea>
-                                            <div class="form-text text-muted fs-12">{{ __('form.meta_description_ar_hint') }}</div>
-                                            @error('meta_description.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="mb-2">
+                                                <label for="meta_description_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_description_ar') }}</label>
+                                                <textarea name="meta_description[ar]" id="meta_description_ar" class="form-control bg-light-subtle @error('meta_description.ar') is-invalid @enderror" rows="3"
+                                                        placeholder="{{ __('form.meta_description_ar_placeholder') }}">{{ old('meta_description.ar', $category->translations->where('locale', 'ar')->first()->meta_description ?? '') }}</textarea>
+                                                <div class="form-text text-muted fs-12">{{ __('form.meta_description_ar_hint') }}</div>
+                                                @error('meta_description.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="mb-2">
+                                                <label for="meta_description_en" class="form-label fw-semibold text-dark">{{ __('form.meta_description_en') }}</label>
+                                                <textarea name="meta_description[en]" id="meta_description_en" class="form-control bg-light-subtle @error('meta_description.en') is-invalid @enderror" rows="3"
+                                                        placeholder="{{ __('form.meta_description_en_placeholder') }}">{{ old('meta_description.en', $category->translations->where('locale', 'en')->first()->meta_description ?? '') }}</textarea>
+                                                <div class="form-text text-muted fs-12">{{ __('form.meta_description_en_hint') }}</div>
+                                                @error('meta_description.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6">
-                                        <div class="mb-2">
-                                            <label for="meta_description_en" class="form-label fw-semibold text-dark">{{ __('form.meta_description_en') }}</label>
-                                            <textarea name="meta_description[en]" id="meta_description_en" class="form-control bg-light-subtle @error('meta_description.en') is-invalid @enderror" rows="3"
-                                                    placeholder="{{ __('form.meta_description_en_placeholder') }}">{{ old('meta_description.en', $category->translations->where('locale', 'en')->first()->meta_description ?? '') }}</textarea>
-                                            <div class="form-text text-muted fs-12">{{ __('form.meta_description_en_hint') }}</div>
-                                            @error('meta_description.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>

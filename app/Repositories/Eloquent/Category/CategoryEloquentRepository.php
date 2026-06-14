@@ -19,6 +19,7 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {
         return Category::with(['translation'])// need all
+                        ->withCount(['children'])
                         ->latest()
                         ->paginate($perPage ?? 20); 
     }

@@ -11,12 +11,12 @@ class MediaService
     }
     public static function singleFileUpload($model, $collection, $file,$update = false)
     {
-        if ($update) {
-            $model->clearMediaCollection($collection);
-        }
-        if(isset($file) && isset($file) instanceof UploadedFile){
-          $model->addMedia($file)
-                ->toMediaCollection($collection);
+        if($file != null && !empty($file) && $file instanceof UploadedFile){
+             if ($update) {
+                $model->clearMediaCollection($collection);
+            }
+            $model->addMedia($file)
+                  ->toMediaCollection($collection);
         }
 
     }

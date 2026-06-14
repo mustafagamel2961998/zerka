@@ -39,7 +39,6 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request,CreateAction $create_action)
     {
-      
         $dto = CreateDTO::fromRequest($request);
         $create_action->execute($dto);
         return redirect()->route('dashboard.v1.categories.index')->with('success', __('crud.created'));

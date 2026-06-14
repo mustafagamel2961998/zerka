@@ -72,4 +72,8 @@ return [
     'category_parent' => 'Parent Category',
     'cover'=>'Cover',
     'image' => 'Image',
+    'sub_categories_count'=>'Sub Categories Count',
+    'not_found' => 'Not Found',
+    'close' => 'Close',
+    
 ];

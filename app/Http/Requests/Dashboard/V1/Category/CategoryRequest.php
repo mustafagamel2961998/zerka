@@ -41,7 +41,7 @@ class CategoryRequest extends FormRequest
             'meta_title.en'=>['nullable','string','max:60'],
             'meta_description.ar'=>['nullable','string','max:160'],
             'meta_description.en'=>['nullable','string','max:160'],
-            'cover'=>['required','image','mimes:jpg,jpeg,png,webp','max:2048'],
+            'cover'=>[$id ? 'nullable' : 'required','image','mimes:jpg,jpeg,png,webp','max:2048'],
         ];
     }
 }

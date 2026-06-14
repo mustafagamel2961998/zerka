@@ -72,4 +72,7 @@ return [
     'category_attributes' => 'خصائص القسم',
     'cover'=>'الغلاف',
     'image' => 'الصورة',
+    'sub_categories_count'=>'عدد الاقسام الفرعية',
+    'not_found' => 'غير موجود',
+    'close' => 'اغلاق',
 ];
