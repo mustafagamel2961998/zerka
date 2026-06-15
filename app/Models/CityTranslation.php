@@ -12,10 +12,12 @@ class CityTranslation extends Model
         'locale',
         'name',
     ];
-
+    //-----------------------------------------------------------------------------//
     // start relationships
     public function city(){
         return $this->belongsTo(City::class,'city_id','id');
     }
     // end relationships
+    //-----------------------------------------------------------------------------//
+
 }

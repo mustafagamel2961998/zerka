@@ -75,5 +75,8 @@ return [
     'sub_categories_count'=>'Sub Categories Count',
     'not_found' => 'Not Found',
     'close' => 'Close',
+    'meta_title' => 'Meta Title',
+    'meta_description' => 'Meta Description',
+    'color' => 'Color',
     
 ];

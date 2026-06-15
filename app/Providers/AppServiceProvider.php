@@ -11,6 +11,10 @@ use App\Repositories\Contracts\City\CityRepositoryInterface;
 use App\Repositories\Eloquent\City\CityEloquentRepository;
 use App\Repositories\Contracts\Category\CategoryRepositoryInterface;
 use App\Repositories\Eloquent\Category\CategoryEloquentRepository;
+use App\Repositories\Contracts\Color\ColorRepositoryInterface;
+use App\Repositories\Eloquent\Color\ColorEloquentRepository;
+use App\Repositories\Contracts\Size\SizeRepositoryInterface;
+use App\Repositories\Eloquent\Size\SizeEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -28,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CurrencyRepositoryInterface::class,CurrencyEloquentRepository::class);
         $this->app->bind(CityRepositoryInterface::class,CityEloquentRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class,CategoryEloquentRepository::class);
+        $this->app->bind(ColorRepositoryInterface::class,ColorEloquentRepository::class);
+        $this->app->bind(SizeRepositoryInterface::class,SizeEloquentRepository::class);
 
     }
 

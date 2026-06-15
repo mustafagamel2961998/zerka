@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Web\Dashboard\V1\City;
 
 use App\DTOs\Dashboard\V1\City\CreateDTO;
-use App\DTOs\Dashboard\V1\City\UpdadteDTO;
+use App\DTOs\Dashboard\V1\City\UpdateDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\V1\City\CityRequest;
 use App\Repositories\Contracts\City\CityRepositoryInterface;
@@ -69,7 +69,7 @@ class CityController extends Controller
      */
     public function update(CityRequest $request, string $id,UpdateAction $update_action)
     {
-        $dto = UpdadteDTO::fromRequest($request);
+        $dto = UpdateDTO::fromRequest($request);
         $update_action->execute($id,$dto);
         return redirect()->route('dashboard.v1.cities.index')->with('success', __('crud.updated'));
     }

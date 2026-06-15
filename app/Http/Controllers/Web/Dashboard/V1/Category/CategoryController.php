@@ -9,7 +9,7 @@ use App\Http\Requests\Dashboard\V1\Category\CategoryRequest;
 use App\Actions\Dashboard\V1\Category\CreateAction;
 use App\Actions\Dashboard\V1\Category\UpdateAction;
 use App\DTOs\Dashboard\V1\Category\CreateDTO;
-use App\DTOs\Dashboard\V1\Category\UpdadteDTO;
+use App\DTOs\Dashboard\V1\Category\UpdateDTO;
 class CategoryController extends Controller
 {
     public function __construct(
@@ -67,7 +67,7 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, string $id,UpdateAction $update_action)
     {
-        $dto = UpdadteDTO::fromRequest($request);
+        $dto = UpdateDTO::fromRequest($request);
         $update_action->execute($id, $dto);
         return redirect()->route('dashboard.v1.categories.index')->with('success', __('crud.updated'));
     }

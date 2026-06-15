@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\Status;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
-class UpdadteDTO
+class UpdateDTO
 {
     public function __construct(
         public ?UploadedFile $cover,

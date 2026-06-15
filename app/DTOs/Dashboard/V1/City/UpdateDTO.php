@@ -5,7 +5,7 @@ namespace App\DTOs\Dashboard\V1\City;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\Status;
 
-class UpdadteDTO
+class UpdateDTO
 {
    public function __construct(
         public int $country_id,

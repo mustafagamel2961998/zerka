@@ -75,4 +75,7 @@ return [
     'sub_categories_count'=>'عدد الاقسام الفرعية',
     'not_found' => 'غير موجود',
     'close' => 'اغلاق',
+    'meta_title' => 'عنوان الميتا',
+    'meta_description' => 'وصف الميتا',
+    'color' => 'اللون',
 ];

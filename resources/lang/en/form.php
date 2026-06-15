@@ -57,4 +57,8 @@ return [
     'meta_description_en' => 'Meta Description (English)',
     'meta_description_en_placeholder' => 'e.g., Shop our premium collection of sports shoes with the highest quality and best prices. Fast shipping available...',
     'meta_description_en_hint' => 'A brief summarizing description shown under the title on Google (Recommended 150-160 chars).',
+
+    // color
+    'color_code'=>'Color code',
+    'size'=>'Size',
 ];

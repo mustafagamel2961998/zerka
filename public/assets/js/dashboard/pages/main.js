@@ -4,7 +4,7 @@
     
     const deleteModal = new bootstrap.Modal(deleteModalElement);
     const deleteForm = document.getElementById('modal-delete-form');
-    const countryNameSpan = document.getElementById('name-span');
+    const nameSpan = document.getElementById('name-span');
 
     document.addEventListener('click', function (event) {
         const button = event.target.closest('.open-delete-modal');
@@ -13,10 +13,10 @@
             event.preventDefault();
 
             const deleteUrl = button.getAttribute('data-url');
-            const countryName = button.getAttribute('data-name');
+            const name = button.getAttribute('data-name');
 
             deleteForm.setAttribute('action', deleteUrl);
-            countryNameSpan.textContent = countryName;
+            nameSpan.textContent = name;
 
             deleteModal.show();
         }

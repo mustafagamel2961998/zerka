@@ -139,7 +139,7 @@
                 <div class="mb-4">
                     <label class="form-label fw-semibold text-dark fs-14 mb-2 d-flex align-items-center gap-1">
                         <iconify-icon icon="solar:text-bold-broken" class="text-muted fs-18"></iconify-icon>
-                        Meta Title
+                        {{ __('global.meta_title') }}
                     </label>
                     <div class="p-3 bg-light rounded-3 border">
                         <p id="seo-meta-title" class="mb-0 text-secondary fs-14 fw-medium"></p>
@@ -150,7 +150,7 @@
                 <div class="mb-0">
                     <label class="form-label fw-semibold text-dark fs-14 mb-2 d-flex align-items-center gap-1">
                         <iconify-icon icon="solar:notes-broken" class="text-muted fs-18"></iconify-icon>
-                        Meta Description
+                        {{ __('global.meta_description') }}
                     </label>
                     <div class="p-3 bg-light rounded-3 border">
                         <p id="seo-meta-desc" class="mb-0 text-secondary fs-14" style="white-space: pre-line; line-height: 1.6;"></p>

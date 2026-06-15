@@ -10,7 +10,7 @@ use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
 use App\Models\Country;
 use App\DTOs\Dashboard\V1\Country\CreateDTO;
-use App\DTOs\Dashboard\V1\Country\UpdadteDTO;
+use App\DTOs\Dashboard\V1\Country\UpdateDTO;
 class CountryController extends Controller
 {
     public function __construct(
@@ -70,7 +70,7 @@ class CountryController extends Controller
      */
     public function update(CountryRequest $request, string $id,UpdateAction $update_action)
     {
-        $dto = UpdadteDTO::fromRequest($request);
+        $dto = UpdateDTO::fromRequest($request);
         $update_action->execute($id, $dto);
         return redirect()->route('dashboard.v1.countries.index')->with('success', __('crud.updated'));
     }

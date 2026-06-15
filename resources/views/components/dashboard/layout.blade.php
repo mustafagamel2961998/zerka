@@ -576,6 +576,27 @@
                                    </span>
                               </a>
                          </li>
+                         <li class="nav-item">
+                              <a class="nav-link @if(request()->routeIs('dashboard.v1.colors.*')) active @endif" href="{{route('dashboard.v1.colors.index')}}">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:palette-bold-duotone"></iconify-icon>
+                                   </span>
+                                   <span class="nav-text"> 
+                                    {{ __('dashboard.colors') }}       
+                                   </span>
+                              </a>
+                         </li>
+
+                         <li class="nav-item">
+                              <a class="nav-link @if(request()->routeIs('dashboard.v1.sizes.*')) active @endif" href="{{route('dashboard.v1.sizes.index')}}">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:ruler-angular-bold-duotone"></iconify-icon>                                   
+                                   </span>
+                                   <span class="nav-text"> 
+                                    {{ __('dashboard.sizes') }}       
+                                   </span>
+                              </a>
+                         </li>
 
                          <li class="nav-item">
                               <a class="nav-link menu-arrow" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">

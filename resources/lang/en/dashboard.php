@@ -41,11 +41,15 @@ return [
     'roles'=>'Roles',
     'permissions'=>'Permissions',
     'customers'=>'Customers',
+    'colors'=>'Colors',
+    'sizes'=>'Sizes',
     // sidebar ( singular name ) 
     'currency'=>'Currency',
     'country'=>'Country',
     'city'=>'City',
     'category'=>'Category',
     'product'=>'Product',
+    'color'=>'Color',
+    'size'=>'Size',
   
 ];

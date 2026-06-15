@@ -40,12 +40,16 @@ return [
     'roles'=>'الأدوار',
     'permissions'=>'الأذونات',
     'customers'=>'العملاء',
+    'colors'=>'الالوان',
+    'sizes'=>'الاحجام',
     // sidebar ( singular name ) 
     'currency'=>'عملة',
     'country'=>'دولة',
     'city'=>'مدينة',
     'category'=>'تصنيف',
     'product'=>'منتج',
+    'color'=>'لون',
+    'size'=>'حجم',
 
    
 ];

@@ -7,6 +7,8 @@ use App\Http\Controllers\Web\Dashboard\V1\Currency\CurrencyController;
 use App\Http\Controllers\Web\Dashboard\V1\Country\CountryController;
 use App\Http\Controllers\Web\Dashboard\V1\City\CityController;
 use App\Http\Controllers\Web\Dashboard\V1\Category\CategoryController;
+use App\Http\Controllers\Web\Dashboard\V1\Color\ColorController;
+use App\Http\Controllers\Web\Dashboard\V1\Size\SizeController;
 
 Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
@@ -52,6 +54,12 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Category Routes 
     Route::resource('categories',CategoryController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Color Routes 
+    Route::resource('colors',ColorController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Size Routes 
+    Route::resource('sizes',SizeController::class);
     
     });
     //****************************************-:END:-****************************************/
