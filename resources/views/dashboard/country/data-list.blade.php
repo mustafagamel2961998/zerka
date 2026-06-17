@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table id="my-html-table" class="table align-middle mb-0 table-hover table-centered">
+    <table id="my-country-html-table" class="table align-middle mb-0 table-hover table-centered">
         <thead class="bg-light-subtle">
             <tr>
                 <th>{{ __('global.number') }}</th>
@@ -10,19 +10,20 @@
                 <th>{{ __('global.timezone') }}</th>
                 <th>{{ __('global.currency_name') }}</th>
                 <th>{{ __('global.cities_count') }}</th>
+                <th>{{ __('global.created_at') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
         </thead>
         <tbody>
-            @forelse ($countries as $key => $country)
+            @foreach ($countries as $key => $country)
                 <tr>
                     <td>
                         {{ $key + 1 }}
                     </td>
                     <td>
                         {{-- <span class="fi fi-{{ strtolower($country->iso2) }}"></span> --}}
-                        {{ $country->translation->name }}
+                        {{ $country->currentTranslation->name }}
                     </td>
                     <td>
                         {{ $country->iso2 }}
@@ -37,12 +38,15 @@
                         {{ $country->timezone }}
                     </td>
                     <td>
-                        {{ $country->currency->translation->name }}
+                        {{ $country->currency->currentTranslation->name }}
                     </td>
                     <td>
                         {{ $country->cities_count }}
                     </td>
-              
+                    <td>
+                        {{ $country->created_at->translatedFormat('Y-m-d') }} /
+                        <small class="text-muted">({{ $country->created_at->diffForHumans() }})</small>
+                    </td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($country->status->value === 'active')>
@@ -58,42 +62,20 @@
                             </a>
                             <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
                                     data-url="{{ route('dashboard.v1.countries.destroy', $country->id) }}" 
-                                    data-name="{{ $country->translation->name}}">
+                                    data-name="{{ $country->currentTranslation->name}}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
                             
                         </div>
                     </td>
                 </tr>
-            @empty
-                <tr>
-                    <td colspan="11" class="text-center py-5">
-                        <div class="d-flex flex-column align-items-center justify-content-center">
-                            <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3"
-                                style="width: 80px; height: 80px;">
-                                <iconify-icon icon="solar:folder-empty-broken" class="text-muted"
-                                    style="font-size: 45px;"></iconify-icon>
-                            </div>
-
-                            <h5 class="text-dark fw-semibold mb-1">{{ __('global.no_data_found') }}</h5>
-                            <p class="text-muted mb-0 fs-13">
-                                {{ __('global.no_records_have_been_added_to_this_table_yet') }}
-                            </p>
-
-                            <a href="{{route('dashboard.v1.countries.create')}}" class="btn btn-primary btn-sm mt-3">
-                                <iconify-icon icon="solar:add-circle-broken" class="align-middle me-1"></iconify-icon>
-                                {{ __('global.add_new') }}
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-            @endforelse
-
+            
+            @endforeach
 
         </tbody>
     </table>
 </div>
-<div id="table-gridjs"></div>
+<div id="table-country-gridjs"></div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md">

@@ -8,7 +8,7 @@ use Illuminate\Validation\Rule;
 use App\Enums\Status;
 class SizeRequest extends FormRequest
 {
-  protected function prepareForValidation()
+    protected function prepareForValidation()
     {
         $this->merge([
             'status' => $this->has('status') ? 'active' : 'inactive',
@@ -29,10 +29,9 @@ class SizeRequest extends FormRequest
      */
     public function rules(): array
     {
-        $id = request('size');
-
+        $id = request()->route('size');
         return [
-            'size'=>['required','string','regex:/^#([A-Fa-f0-9]{6})$/',Rule::unique('sizes','size')->ignore($id,'id')],
+            'size'=>['required','string','max:5','regex:/^([A-Za-z0-9]+)$/',Rule::unique('sizes','size')->ignore($id)],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
         ];
     }

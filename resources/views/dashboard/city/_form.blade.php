@@ -2,7 +2,6 @@
      use App\Enums\Status;
  @endphp
  <div class="row">
-
     <div class="col-lg-6">
         <div class="mb-3">
             <label for="city_name_ar" class="form-label required">
@@ -39,7 +38,6 @@
 </div>
 
 
- 
 <div class="row">
       <div class="col-lg-6">
         <div class="mb-3">
@@ -54,7 +52,7 @@
                 @endif
                 @foreach($countries as $country)
                     <option value="{{ $country->id }}" {{ old('country_id', $city->country_id ?? '') == $country->id ? 'selected' : '' }}>
-                            {{ $country->translation->name }}
+                            {{ $country->currentTranslation->name }}
                     </option>
                 @endforeach
             </select>
@@ -76,7 +74,7 @@
                 <label for="status" class="form-label required">{{ __('form.status') }}</label>
               
                 <input class="form-check-input" type="checkbox" id="status" name="status" role="switch"
-                @checked(old('status', $city->status) === Status::ACTIVE)>
+                @checked(old('status', $city->status?->value) === Status::ACTIVE->value)>
                 @error('status')
                     <div class="invalid-feedback">
                         {{$message}}

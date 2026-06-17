@@ -18,17 +18,17 @@ class SizeEloquentRepository implements SizeRepositoryInterface
         return Size::create($data);
     }
 
-    // public function findById($id) : Color{
-    //     return Color::find($id);
-    // }
+    public function findById($id) : Size{
+        return Size::find($id);
+    }
 
-    // public function update(array $data) : Color{
-    //     $color = $this->findById($data['id']);
-    //     $color->update($data);
-    //     return $color;
-    // }
-    // public function destroy($id) : bool{
-    //     $color = $this->findById($id);
-    //     return $color->delete();
-    // }
+    public function update(array $data) : Size{
+        $size = $this->findById($data['id']);
+        $size->update($data);
+        return $size;
+    }
+    public function destroy($id) : bool{
+        $size = $this->findById($id);
+        return $size->delete();
+    }
 }

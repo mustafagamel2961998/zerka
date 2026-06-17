@@ -118,7 +118,7 @@
                 @endif
                 @foreach($currencies as $currency)
                     <option value="{{ $currency->id }}" {{ old('currency_id', $country->currency_id ?? '') == $currency->id ? 'selected' : '' }}>
-                            {{ $currency->translation->name }} ({{ $currency->translation?->symbol ?? $currency->code }})
+                            {{ $currency->currentTranslation->name }} ({{ $currency->currentTranslation?->symbol ?? $currency->code }})
                     </option>
                 @endforeach
             </select>
@@ -140,7 +140,7 @@
                 <label for="status" class="form-label required">{{ __('form.status') }}</label>
               
                 <input class="form-check-input" type="checkbox" id="status" name="status" role="switch"
-                @checked(old('status', $country->status) === Status::ACTIVE)>
+                @checked(old('status', $country->status?->value) === Status::ACTIVE->value)>
                 @error('status')
                     <div class="invalid-feedback">
                         {{$message}}

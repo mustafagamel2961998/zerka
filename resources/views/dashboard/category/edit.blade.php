@@ -1,10 +1,10 @@
-<x-dashboard.layout title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.category')]) }} - {{$category->translation->name }}">
+<x-dashboard.layout title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.category')]) }} - {{$category->currentTranslation->name }}">
     @push('css')
         <link rel="stylesheet" href="{{ asset('assets/css/dashboard/pages/category/category.css') }}">
     @endpush
     <div class="row">
 
-        {{-- <x-dashboard.partial.city.statistics/> --}}
+        <x-dashboard.partial.category.statistics/>
 
     </div>
 

@@ -1,42 +1,48 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const statusSwitch = document.getElementById('status');
-
-//     if (statusSwitch) {
-//         if (statusSwitch.checked) {
-//             statusSwitch.value = 'active';
-//         } else {
-//             statusSwitch.value = 'inactive';
-//         }
-//         statusSwitch.addEventListener('change', function () {
-//             if (this.checked) {
-//                 this.value = 'active';
-//             } else {
-//                 this.value = 'inactive';
-//             }
-//         });
-//     }
-// });
 
 document.addEventListener("DOMContentLoaded", function() {
-    const tableElement = document.getElementById("my-html-table");
+    const tableElement = document.getElementById("my-country-html-table");
     
     if (tableElement) {
+        const currentDirection = document.documentElement.dir || 'ltr'; 
+        const textAlign = currentDirection === 'rtl' ? 'right' : 'left';
+
         new gridjs.Grid({
-            from: tableElement, 
+            from: tableElement,
             sort: true,
+            direction: currentDirection,
+            style: {
+                th: {
+                    'text-align': textAlign
+                },
+                td: {
+                    'text-align': textAlign
+                }
+            }
             // search: true
-        }).render(document.getElementById("table-gridjs"));
+       }).render(document.getElementById("table-country-gridjs"));
     }
+    
 });
 
 document.addEventListener("DOMContentLoaded", function() {
     const citytableElement = document.getElementById("my-city-html-table");
-    
-    if (citytableElement) {
+
+    if (tableElement) {
+        const currentDirection = document.documentElement.dir || 'ltr'; 
+        const textAlign = currentDirection === 'rtl' ? 'right' : 'left';
+
         new gridjs.Grid({
-            from: citytableElement, 
+            from: tableElement,
             sort: true,
-            // search: true
-        }).render(document.getElementById("table-city-gridjs"));
+            direction: currentDirection,
+            style: {
+                th: {
+                    'text-align': textAlign
+                },
+                td: {
+                    'text-align': textAlign
+                }
+            }
+       }).render(document.getElementById("table-city-gridjs"));
     }
 });

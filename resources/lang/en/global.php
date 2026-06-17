@@ -78,5 +78,10 @@ return [
     'meta_title' => 'Meta Title',
     'meta_description' => 'Meta Description',
     'color' => 'Color',
-    
+    'size' => 'Size',
+    'warehouse_code' =>'Warehouse Code',
+    'warehouse_name' => 'Warehouse Name',
+    'warehouse_description' => 'Warehouse Description',
+    'phone' => 'Phone',
+    'address' => 'Address',
 ];

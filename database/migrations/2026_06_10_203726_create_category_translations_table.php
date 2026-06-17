@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('category_translations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')
-                  ->constrained()
+                  ->constrained('categories')
                   ->cascadeOnDelete();
             $table->string('locale')->index(); 
             

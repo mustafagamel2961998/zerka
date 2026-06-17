@@ -4,6 +4,7 @@
             <tr>
                 <th>{{ __('global.number') }}</th>
                 <th>{{ __('global.color') }}</th>
+                <th>{{ __('global.created_at') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
@@ -22,7 +23,10 @@
                         </span>
                     </td>
                    
-                   
+                    <td>
+                        {{ $color->created_at->translatedFormat('Y-m-d') }} /
+                        <small class="text-muted">({{ $color->created_at->diffForHumans() }})</small>
+                    </td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($color->status->value === 'active')>

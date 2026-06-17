@@ -8,8 +8,8 @@ class CityEloquentRepository implements CityRepositoryInterface
 {
    public function getPaginated($perPage = null) : LengthAwarePaginator{
       return City::with([
-            'translation:id,city_id,name',
-            'country.translation:id,country_id,name',
+            'currentTranslation:id,city_id,name',
+            'country.currentTranslation:id,country_id,name',
         ])
         ->latest()
         ->paginate($perPage ?? 20);
@@ -28,15 +28,15 @@ class CityEloquentRepository implements CityRepositoryInterface
 
    public function findById(int $id) : City{
       return City::with([
-            'translations:id,city_id,name',
-            'translation:id,city_id,name',
-            'country.translation:id,country_id,name',
+            'translations:id,city_id,locale,name',
+            'currentTranslation:id,city_id,name',
+            'country.currentTranslation:id,country_id,name',
         ])
         ->findOrFail($id);
    }
 
-   public function update($id, array $data) : City{
-      $city = $this->findById($id);
+   public function update(array $data) : City{
+      $city = $this->findById($data['id']);
       $city->update($data);
       foreach($data['name'] as $key => $value){
             $city->translations()->updateOrCreate([

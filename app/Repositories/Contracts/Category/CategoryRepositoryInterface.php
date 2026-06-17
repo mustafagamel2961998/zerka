@@ -12,5 +12,5 @@ interface CategoryRepositoryInterface
     public function store(array $data) : Category;
     public function findById($id) : Category;
     public function update($id, array $data) : Category;
-    // public function destroy($id);
+    public function destroy($id) : bool;
 }

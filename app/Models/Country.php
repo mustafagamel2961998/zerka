@@ -26,7 +26,7 @@ class Country extends Model
     public function translations(){
         return $this->hasMany(CountryTranslation::class,'country_id','id');
     }
-    public function translation(){
+    public function currentTranslation(){
         return $this->hasOne(CountryTranslation::class,'country_id','id')->where('locale',app()->getLocale());
     }
     // end relationships

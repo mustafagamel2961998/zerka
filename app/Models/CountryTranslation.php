@@ -12,10 +12,18 @@ class CountryTranslation extends Model
         'locale',
         'name'
     ];
-
+    //-----------------------------------------------------------------------------//
     // start relationships
     public function country(){
         return $this->belongsTo(Country::class,'country_id','id');
     }
     // end relationships
+    //-----------------------------------------------------------------------------//
+    protected function casts(): array
+    {
+        return [
+            'country_id' => 'integer',
+        ];
+    }
+    //-----------------------------------------------------------------------------//
 }

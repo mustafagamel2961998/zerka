@@ -29,7 +29,7 @@ class Category extends Model  implements HasMedia
     public function translations(){
         return $this->hasMany(CategoryTranslation::class,'category_id','id');
     }
-    public function translation(){
+    public function currentTranslation(){
         return $this->hasOne(CategoryTranslation::class,'category_id','id')->where('locale',app()->getLocale());
     }
     // end relationships

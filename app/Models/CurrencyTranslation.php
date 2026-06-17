@@ -19,5 +19,12 @@ class CurrencyTranslation extends Model
         return $this->belongsTo(Currency::class,'currency_id','id');
     }
     // end relationships
-
+    //-----------------------------------------------------------------------------//
+    protected function casts(): array
+    {
+        return [
+            'currency_id' => 'integer',
+        ];
+    }
+    //-----------------------------------------------------------------------------//
 }

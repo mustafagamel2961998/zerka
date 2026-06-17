@@ -31,7 +31,7 @@
                 <label for="status" class="form-label required">{{ __('form.status') }}</label>
               
                 <input class="form-check-input" type="checkbox" id="status" name="status" role="switch"
-                @checked(old('status', $color->status) === Status::ACTIVE)>
+                @checked(old('status', $color->status?->value) === Status::ACTIVE->value)>
                 @error('status')
                     <div class="invalid-feedback">
                         {{$message}}

@@ -57,8 +57,17 @@ return [
     'meta_description_en' => 'Meta Description (English)',
     'meta_description_en_placeholder' => 'e.g., Shop our premium collection of sports shoes with the highest quality and best prices. Fast shipping available...',
     'meta_description_en_hint' => 'A brief summarizing description shown under the title on Google (Recommended 150-160 chars).',
-
+    //city
+    'city'=>'City',
+    'select_city' => 'Select City',
     // color
     'color_code'=>'Color code',
+    // size
     'size'=>'Size',
+    'size_example'=>'S - M - L - XL - XXL',
+    //warehouse
+    'warehouse_name_ar'=>'Warehouse name in arabic',
+    'warehouse_name_en'=>'Warehouse name in english',
+    'warehouse_street_details'=>'Street details',
+    'warehouse_phone'=>'Phone',
 ];

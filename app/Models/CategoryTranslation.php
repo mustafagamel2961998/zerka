@@ -22,6 +22,12 @@ class CategoryTranslation extends Model
     }
     // end relationships
     //-----------------------------------------------------------------------------//
-
+    protected function casts(): array
+    {
+        return [
+            'category_id' => 'integer',
+        ];
+    }
+    //-----------------------------------------------------------------------------//
 }
        

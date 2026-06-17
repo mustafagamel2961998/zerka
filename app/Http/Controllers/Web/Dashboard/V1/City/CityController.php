@@ -70,7 +70,7 @@ class CityController extends Controller
     public function update(CityRequest $request, string $id,UpdateAction $update_action)
     {
         $dto = UpdateDTO::fromRequest($request);
-        $update_action->execute($id,$dto);
+        $update_action->execute($dto);
         return redirect()->route('dashboard.v1.cities.index')->with('success', __('crud.updated'));
     }
 

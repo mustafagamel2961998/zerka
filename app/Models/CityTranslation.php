@@ -19,5 +19,11 @@ class CityTranslation extends Model
     }
     // end relationships
     //-----------------------------------------------------------------------------//
-
+    protected function casts(): array
+    {
+        return [
+            'city_id' => 'integer',
+        ];
+    }
+    //-----------------------------------------------------------------------------//
 }

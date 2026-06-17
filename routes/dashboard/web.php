@@ -8,8 +8,9 @@ use App\Http\Controllers\Web\Dashboard\V1\Country\CountryController;
 use App\Http\Controllers\Web\Dashboard\V1\City\CityController;
 use App\Http\Controllers\Web\Dashboard\V1\Category\CategoryController;
 use App\Http\Controllers\Web\Dashboard\V1\Color\ColorController;
+use App\Http\Controllers\Web\Dashboard\V1\Product\ProductController;
 use App\Http\Controllers\Web\Dashboard\V1\Size\SizeController;
-
+use App\Http\Controllers\Web\Dashboard\V1\Warehouse\WarehouseController;
 Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -60,6 +61,13 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Size Routes 
     Route::resource('sizes',SizeController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Warehouse Routes 
+    Route::resource('warehouses',WarehouseController::class);
+    
+    //------------------------------------------------------------------------------------------ 
+    //-Product Routes 
+    Route::resource('products',ProductController::class);
     
     });
     //****************************************-:END:-****************************************/

@@ -9,6 +9,7 @@
                 <th>{{ __('global.category_parent') }}</th>
                 <th>{{ __('global.sub_categories_count') }}</th>
                 <th>{{ __('global.seo') }}</th>
+                <th>{{ __('global.created_at') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
@@ -20,19 +21,17 @@
                         {{ $key + 1 }}
                     </td>
                     <td>
-                        <div class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                            <img src="{{$category->getFirstMediaUrl('cover', 'thumb')}}" alt="{{$category->translation->name}}" class="avatar-md">
-                        </div>
+                        <x-dashboard.partial.image :src="$category->getFirstMediaUrl('cover', 'thumb')" :alt="$category->currentTranslation->name"/>
                     </td>
                     <td>
-                        {{ $category->translation->name }}
+                        {{ $category->currentTranslation->name }}
                     </td>
                     <td>
-                         {{ $category->translation->description }}
+                         {{ $category->currentTranslation->description }}
                     </td>
 
                     <td>
-                        {{ $category->parent?->translation->name }}
+                        {{ $category->parent?->currentTranslation->name }}
                     </td>
                     <td>
                         {{ $category->children_count }}
@@ -40,14 +39,17 @@
                    <td>
                         <button type="button" 
                             class="btn btn-soft-info btn-sm open-seo-modal" 
-                            data-title="{{ $category->translation->meta_title ?? __('global.not_found') }}" 
-                            data-desc="{{ $category->translation->meta_description ?? __('global.not_found') }}"
-                            data-category="{{ $category->translation->name }}">
+                            data-title="{{ $category->currentTranslation->meta_title ?? __('global.not_found') }}" 
+                            data-desc="{{ $category->currentTranslation->meta_description ?? __('global.not_found') }}"
+                            data-category="{{ $category->currentTranslation->name }}">
                         <iconify-icon icon="solar:globus-broken" class="align-middle fs-18 me-1"></iconify-icon>
                         {{ __('global.seo') }}
                     </button>
                    </td>
-                   
+                   <td>
+                        {{ $category->created_at->translatedFormat('Y-m-d') }} /
+                        <small class="text-muted">({{ $category->created_at->diffForHumans() }})</small>
+                    </td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($category->status->value === 'active')>
@@ -63,7 +65,7 @@
                             </a>
                             <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
                                     data-url="{{route('dashboard.v1.categories.destroy', $category->id)}}" 
-                                    data-name="{{$category->translation->name}}">
+                                    data-name="{{$category->currentTranslation->name}}">
                                 <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                             </button>
                             

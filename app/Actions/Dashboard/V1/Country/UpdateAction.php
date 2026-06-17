@@ -7,8 +7,8 @@ class UpdateAction
 {
     public function __construct(protected CountryRepositoryInterface $country_repository_interface){}
 
-    public function execute(string $id, UpdateDTO $data)
+    public function execute(UpdateDTO $data)
     {
-        return $this->country_repository_interface->update($id, $data->toArray());
+        return $this->country_repository_interface->update($data->toArray());
     }
 }

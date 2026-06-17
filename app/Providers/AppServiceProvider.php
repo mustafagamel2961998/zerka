@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+
 use App\Repositories\Contracts\Auth\AuthRepositoryInterface;
 use App\Repositories\Eloquent\Auth\AuthEloquentRepository;
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
@@ -15,11 +16,15 @@ use App\Repositories\Contracts\Color\ColorRepositoryInterface;
 use App\Repositories\Eloquent\Color\ColorEloquentRepository;
 use App\Repositories\Contracts\Size\SizeRepositoryInterface;
 use App\Repositories\Eloquent\Size\SizeEloquentRepository;
+use App\Repositories\Contracts\Warehouse\WarehouseRepositoryInterface;
+use App\Repositories\Eloquent\Warehouse\WarehouseEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
+use App\Observers\Warehouse\WarehouseObserver;
+use App\Models\Warehouse;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -34,6 +39,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CategoryRepositoryInterface::class,CategoryEloquentRepository::class);
         $this->app->bind(ColorRepositoryInterface::class,ColorEloquentRepository::class);
         $this->app->bind(SizeRepositoryInterface::class,SizeEloquentRepository::class);
+        $this->app->bind(WarehouseRepositoryInterface::class,WarehouseEloquentRepository::class);
 
     }
 
@@ -57,5 +63,8 @@ class AppServiceProvider extends ServiceProvider
 
         
         Paginator::useBootstrapFive();
+
+        // observe
+        Warehouse::observe(WarehouseObserver::class);
     }
 }

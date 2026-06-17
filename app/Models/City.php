@@ -21,7 +21,7 @@ class City extends Model
     public function translations(){
         return $this->hasMany(CityTranslation::class,'city_id','id');
     }
-    public function translation(){
+    public function currentTranslation(){
         return $this->hasOne(CityTranslation::class,'city_id','id')->where('locale',app()->getLocale());
     }
     // end relationships

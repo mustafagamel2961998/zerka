@@ -597,9 +597,29 @@
                                    </span>
                               </a>
                          </li>
-
                          <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
+                              <a class="nav-link menu-arrow @if(request()->routeIs('dashboard.v1.warehouses.*')) active @endif" href="#sidebarInventory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarInventory">
+                                   <span class="nav-icon">
+                                        <iconify-icon icon="solar:box-bold-duotone"></iconify-icon>
+                                   </span>
+                                   <span class="nav-text"> 
+                                        {{ __('dashboard.inventories') }}   
+                                   </span>
+                              </a>
+                              <div class="collapse @if(request()->routeIs('dashboard.v1.warehouses.*')) show @endif"" id="sidebarInventory">
+                                   <ul class="nav sub-navbar-nav">
+
+                                        <li class="sub-nav-item">
+                                             <a class="sub-nav-link" href="{{route('dashboard.v1.warehouses.index')}}">{{ __('dashboard.all_warehouses') }}  </a>
+                                        </li>
+                                        <li class="sub-nav-item">
+                                             <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
+                                        </li>
+                                   </ul>
+                              </div>
+                         </li>
+                         <li class="nav-item">
+                              <a class="nav-link menu-arrow @if(request()->routeIs('dashboard.v1.products.*')) active @endif collapsed" href="#sidebarProducts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarProducts">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:t-shirt-bold-duotone"></iconify-icon>
                                    </span>
@@ -607,10 +627,12 @@
                                         {{ __('dashboard.products') }}     
                                    </span>
                               </a>
-                              <div class="collapse" id="sidebarProducts">
+                              <div class="collapse @if(request()->routeIs('dashboard.v1.products.*')) show @endif" id="sidebarProducts">
                                    <ul class="nav sub-navbar-nav">
                                         <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="product-list.html">List</a>
+                                             <a class="sub-nav-link" href="{{route('dashboard.v1.products.index')}}">
+                                                  {{ __('dashboard.all_products') }}
+                                             </a>
                                         </li>
                                         <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="product-grid.html">Grid</a>
@@ -630,27 +652,7 @@
 
                      
 
-                         <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="#sidebarInventory" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarInventory">
-                                   <span class="nav-icon">
-                                        <iconify-icon icon="solar:box-bold-duotone"></iconify-icon>
-                                   </span>
-                                   <span class="nav-text"> 
-                                        {{ __('dashboard.inventories') }}   
-                                   </span>
-                              </a>
-                              <div class="collapse" id="sidebarInventory">
-                                   <ul class="nav sub-navbar-nav">
-
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="inventory-warehouse.html">{{ __('dashboard.warehouses') }}  </a>
-                                        </li>
-                                        <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="inventory-received-orders.html">Received Orders</a>
-                                        </li>
-                                   </ul>
-                              </div>
-                         </li>
+                  
 
                          <li class="nav-item">
                               <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">

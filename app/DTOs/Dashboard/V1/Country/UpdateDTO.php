@@ -2,9 +2,8 @@
 
 namespace App\DTOs\Dashboard\V1\Country;
 
-use Illuminate\Foundation\Http\FormRequest;
 use App\Enums\Status;
-
+use App\Http\Requests\Dashboard\V1\Country\CountryRequest;
 class UpdateDTO
 {
      public function __construct(
@@ -17,6 +16,8 @@ class UpdateDTO
         public ?int $currency_id = null,
         public ?string $phone_code = null,
         public ?string $timezone = null,
+        public int $id
+
     ) {
         $this->iso2 = strtoupper($iso2);
         $this->iso3 = strtoupper($iso3);
@@ -25,7 +26,7 @@ class UpdateDTO
     /**
      * Create a DTO instance from a Form Request
      */
-    public static function fromRequest(FormRequest $request): self
+    public static function fromRequest(CountryRequest $request): self
     {
         return new self(
             iso2:        $request->validated('iso2'),
@@ -37,6 +38,7 @@ class UpdateDTO
             currency_id: $request->validated('currency_id') ? (int) $request->validated('currency_id') : null,
             phone_code:  $request->validated('phone_code'),
             timezone:    $request->validated('timezone'),
+            id:          $request->route('country')
         );
     }
 
@@ -57,6 +59,7 @@ class UpdateDTO
             'currency_id' => $this->currency_id,
             'phone_code'  => $this->phone_code,
             'timezone'    => $this->timezone,
+            'id'          => $this->id
         ];
     }
 }

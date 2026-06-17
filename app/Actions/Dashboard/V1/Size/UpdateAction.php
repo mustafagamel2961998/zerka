@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Dashboard\V1\Color;
+namespace App\Actions\Dashboard\V1\Size;
 use App\Repositories\Contracts\Size\SizeRepositoryInterface;
 use App\DTOs\Dashboard\V1\Size\UpdateDTO;
 class UpdateAction

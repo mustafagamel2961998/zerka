@@ -39,7 +39,6 @@ class CategoryRequest extends FormRequest
                 'max:255',
                 Rule::unique('category_translations','name')->where('locale', 'ar')->ignore($id,'category_id')
             ],
-
             'name.en'=>[
                 'required',
                 'string',
@@ -48,8 +47,15 @@ class CategoryRequest extends FormRequest
                 Rule::unique('category_translations','name')->where('locale', 'en')->ignore($id,'category_id')
             ],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
-            'description.ar'=>['nullable','string','max:255'],
-            'description.en'=>['nullable','string','max:255'],
+            'description.ar'=>['nullable',
+            'string',
+            'regex:/^[\x{0600}-\x{06FF}0-9\x{0660}-\x{0669}\s]+$/u',
+            'max:255'],
+
+            'description.en'=>['nullable','string',
+            'regex:/^[a-zA-Z0-9\s]+$/',
+            'max:255'],
+
             'meta_title.ar'=>['nullable','string','max:60'],
             'meta_title.en'=>['nullable','string','max:60'],
             'meta_description.ar'=>['nullable','string','max:160'],

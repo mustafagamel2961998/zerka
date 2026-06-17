@@ -1,4 +1,4 @@
-<x-dashboard.layout title="{{$country->translation->name }}">
+<x-dashboard.layout title="{{$country->currentTranslation->name }}">
 
 <div class="row">
     <div class="col-xl-12">
@@ -9,7 +9,7 @@
                         {{ strtoupper(substr($country->iso2, 0, 2)) }}
                     </div>
                     <div>
-                        <h5 class="mb-0">{{ $country->translation->name }}</h5>
+                        <h5 class="mb-0">{{ $country->currentTranslation->name }}</h5>
                         <span class="text-muted small">{{ $country->iso2 }} / {{ $country->iso3 }}</span>
                     </div>
                     <span class="ms-auto badge {{ $country->status ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger' }}">
@@ -72,7 +72,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center gap-1">
                     <h4 class="card-title flex-grow-1">
-                        {{__('global.details') }} - {{$country->translation->name }}
+                        {{__('global.details') }} - {{$country->currentTranslation->name }}
                     </h4>
 
                     <a href="{{ route('dashboard.v1.cities.create') }}" class="btn btn-sm btn-primary">

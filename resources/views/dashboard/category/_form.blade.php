@@ -91,6 +91,11 @@
                 {{ __('form.description_ar') }}
             </label>
             <textarea class="form-control bg-light-subtle" name="description[ar]" id="category_description_ar" placeholder="{{ __('form.description_ar') }}">{{ old('description.ar', $category->translations->where('locale', 'ar')->first()->description ?? '') }}</textarea>
+            @error('description.ar')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
     </div>
     <div class="col-lg-6">
@@ -98,7 +103,12 @@
             <label for="category_description_en" class="form-label">
                 {{ __('form.description_en') }}
             </label>
-            <textarea class="form-control bg-light-subtle" name="description[en]" id="description_en" placeholder="{{ __('form.description_en') }}">{{ old('description.en', $category->translations->where('locale', 'en')->first()->description ?? '') }}</textarea>
+            <textarea class="form-control bg-light-subtle" name="description[en]" id="category_description_en" placeholder="{{ __('form.description_en') }}">{{ old('description.en', $category->translations->where('locale', 'en')->first()->description ?? '') }}</textarea>
+            @error('description.en')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
     </div>
 </div>
@@ -117,7 +127,7 @@
                 @endif
                 @foreach($categories->where('id','<>', $category->id) as $item) 
                     <option value="{{ $item->id }}" {{ old('parent_id', $category->parent_id ?? '') == $item->id ? 'selected' : '' }}>
-                        {{ $item->translation->name ?? $item->name }}
+                        {{ $item->currentTranslation->name ?? $item->name }}
                     </option>
                 @endforeach
             </select>

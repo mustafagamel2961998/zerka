@@ -78,4 +78,10 @@ return [
     'meta_title' => 'عنوان الميتا',
     'meta_description' => 'وصف الميتا',
     'color' => 'اللون',
+    'size' => 'الحجم',
+    'warehouse_code' => 'كود المستودع',
+    'warehouse_name' => 'اسم المستودع',
+    'warehouse_description' => 'وصف المستودع',
+    'phone' => 'الهاتف',
+    'address' => 'العنوان',
 ];

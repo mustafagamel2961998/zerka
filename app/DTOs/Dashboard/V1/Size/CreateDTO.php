@@ -7,10 +7,10 @@ use App\Http\Requests\Dashboard\V1\Size\SizeRequest;
 class CreateDTO
 {
     public function __construct(
-         public string $code,
+         public string $size,
          public Status $status
     ) {
-        //
+        $this->size = strtoupper($size);
     }
 
     /**
@@ -19,7 +19,7 @@ class CreateDTO
     public static function fromRequest(SizeRequest $request): self
     {
         return new self(
-            code:$request->validated('code'),
+            size:$request->validated('size'),
             status:Status::from($request->validated('status')),
         );
     }
@@ -30,7 +30,7 @@ class CreateDTO
     public function toArray(): array
     {
         return [
-            'code'    => $this->code,
+            'size'    => $this->size,
             'status'  => $this->status->value
         ];
     }

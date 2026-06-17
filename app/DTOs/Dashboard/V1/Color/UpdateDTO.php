@@ -9,7 +9,7 @@ class UpdateDTO
     public function __construct(
          public string $code,
          public Status $status,
-         public ?int $id
+         public int $id
     ) {
         //
     }

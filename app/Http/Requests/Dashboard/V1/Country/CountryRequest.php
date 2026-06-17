@@ -38,8 +38,14 @@ class CountryRequest extends FormRequest
             'phone_code'=>['nullable','string','regex:/^\+[0-9]{1,4}$/'],
             'timezone'=>['nullable','string'],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
-            'name.ar'=>['required','string','max:255'],
-            'name.en'=>['required','string','max:255'],
+            'name.ar'=>['required',
+            'string',
+            'regex:/^[\x{0600}-\x{06FF}0-9\x{0660}-\x{0669}\s]+$/u',
+            'max:255'],
+            'name.en'=>['required',
+            'string',
+            'regex:/^[a-zA-Z0-9\s]+$/',
+            'max:255'],
 
         ];
     }

@@ -52,6 +52,12 @@ class CountryController extends Controller
     public function show(string $id)
     {
         $country = $this->country_repository_interface->findById($id);
+        if(request()->wantsJson()){
+            return response()->json([
+                'status' => true,
+                'data' => $country->cities
+            ]);
+        }
         return view('dashboard.country.show', compact('country'));
     }
 
@@ -71,7 +77,7 @@ class CountryController extends Controller
     public function update(CountryRequest $request, string $id,UpdateAction $update_action)
     {
         $dto = UpdateDTO::fromRequest($request);
-        $update_action->execute($id, $dto);
+        $update_action->execute($dto);
         return redirect()->route('dashboard.v1.countries.index')->with('success', __('crud.updated'));
     }
 

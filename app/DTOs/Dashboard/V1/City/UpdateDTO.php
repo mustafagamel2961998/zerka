@@ -12,6 +12,7 @@ class UpdateDTO
         public Status $status,
         public string $name_ar,
         public string $name_en,
+        public int $id
     ) {
         //
     }
@@ -26,6 +27,7 @@ class UpdateDTO
             status:      Status::from($request->validated('status')),
             name_ar:     $request->validated('name.ar'),
             name_en:     $request->validated('name.en'),
+            id:          $request->route('city')
         );
     }
 
@@ -38,10 +40,11 @@ class UpdateDTO
            
             'country_id'  => $this->country_id,
             'status'      => $this->status->value,
-            'name'        => [
+            'name'        =>[
                                 'ar' => $this->name_ar,
                                 'en' => $this->name_en,
-                            ],           
+                            ],        
+            'id'          => $this->id   
         ];
     }
 }

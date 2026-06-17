@@ -21,4 +21,28 @@
             deleteModal.show();
         }
     });
+
+
+   
+});
+  document.addEventListener('DOMContentLoaded', function () {
+
+ // form status checkbox
+    const statusSwitch = document.getElementById('status');
+
+    if (statusSwitch) {
+        if (statusSwitch.checked) {
+            statusSwitch.value = 'active';
+        } else {
+            statusSwitch.value = 'inactive';
+        }
+        statusSwitch.addEventListener('change', function () {
+            if (this.checked) {
+                this.value = 'active';
+            } else {
+                this.value = 'inactive';
+            }
+        });
+    } 
+
 });

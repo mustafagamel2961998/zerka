@@ -10,7 +10,7 @@ interface SizeRepositoryInterface
     // public function all() : Collection;
     public function getPaginated($perPage=null) : LengthAwarePaginator;
     public function store(array $data) : Size;
-    // public function findById($id) : Color;
-    // public function update(array $data) : Color;
-    // public function destroy($id) : bool;
+    public function findById($id) : Size;
+    public function update(array $data) : Size;
+    public function destroy($id) : bool;
 }

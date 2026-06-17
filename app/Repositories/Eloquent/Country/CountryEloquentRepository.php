@@ -11,17 +11,16 @@ class CountryEloquentRepository implements CountryRepositoryInterface
     public function __construct(){}
     
     public function all() : Collection{
-        return Country::latest()->with('translations:id,name')->get();
+        return Country::latest()->with('currentTranslation:id,country_id,name')->get();
     }
     public function getPaginated($perPage=null) : LengthAwarePaginator{
        return Country::with([
-                'translation:id,country_id,name',
-                'currency.translation:id,currency_id,name',
+                'currentTranslation:id,country_id,name',
+                'currency.currentTranslation:id,currency_id,name',
             ])
             ->withCount('cities')
             ->latest()
             ->paginate($perPage ?? 20);
-        
 
     }
     
@@ -40,16 +39,16 @@ class CountryEloquentRepository implements CountryRepositoryInterface
 
     public function findById($id) : Country{
         return Country::with([
-                'translation:id,country_id,name',
+                'currentTranslation:id,country_id,name',
                 'translations:id,country_id,locale,name',
-                'currency.translation:id,currency_id,name',
-                'cities.translation:id,city_id,name',
+                'currency.currentTranslation:id,currency_id,name',
+                'cities.currentTranslation:id,city_id,name',
             ])
             ->findOrFail($id);
     }
 
-    public function update($id, array $data) : Country{
-        $country = $this->findById($id);
+    public function update(array $data) : Country{
+        $country = $this->findById($data['id']);
         $country->update($data);
         foreach($data['name'] as $key => $value){
             $country->translations()->updateOrCreate([

@@ -7,11 +7,11 @@ use App\Http\Requests\Dashboard\V1\Size\SizeRequest;
 class UpdateDTO
 {
     public function __construct(
-         public string $code,
+         public string $size,
          public Status $status,
-         public ?int $id
+         public int $id
     ) {
-        //
+        $this->size = strtoupper($size);
     }
 
     /**
@@ -20,9 +20,9 @@ class UpdateDTO
     public static function fromRequest(SizeRequest $request): self
     {
         return new self(
-            code:$request->validated('code'),
+            size:$request->validated('size'),
             status:Status::from($request->validated('status')),
-            id:$request->route('color')
+            id:$request->route('size')
         );
     }
 
@@ -32,7 +32,7 @@ class UpdateDTO
     public function toArray(): array
     {
         return [
-            'code'    => $this->code,
+            'size'    => $this->size,
             'status'  => $this->status->value,
             'id'      => $this->id
         ];

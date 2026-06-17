@@ -8,8 +8,8 @@ class UpdateAction
 
     public function __construct(protected CityRepositoryInterface $city_repository_interface)
     {}
-    public function execute($id,UpdateDTO $data)
+    public function execute(UpdateDTO $data)
     {
-        return $this->city_repository_interface->update($id,$data->toArray());
+        return $this->city_repository_interface->update($data->toArray());
     }
 }

@@ -41,7 +41,7 @@
                         <div class="card-footer border-top">
                             {{ $countries->links() }}
                         </div>
-                @endif
+                    @endif
             </div>
         </div>
     </div>

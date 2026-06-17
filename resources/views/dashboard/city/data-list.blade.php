@@ -5,6 +5,7 @@
                 <th>{{ __('global.number') }}</th>
                 <th>{{ __('global.city_name') }}</th>
                 <th>{{ __('global.country_name') }}</th>
+                <th>{{ __('global.created_at') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr>
@@ -16,15 +17,18 @@
                         {{ $key + 1 }}
                     </td>
                     <td>
-                         {{ $city->translation->name }}
+                         {{ $city->currentTranslation->name }}
                     </td>
 
                      <td >
                         {{-- <span class="fi fi-{{ strtolower($city->country->iso2) }}"></span> --}}
-                        {{ $city->country->translation->name }}
+                        {{ $city->country->currentTranslation->name }}
                     </td>
                    
-                   
+                    <td>
+                        {{ $city->created_at->translatedFormat('Y-m-d') }} /
+                        <small class="text-muted">({{ $city->created_at->diffForHumans() }})</small>
+                    </td>
                     <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" name="status" role="switch" @checked($city->status->value === 'active')>

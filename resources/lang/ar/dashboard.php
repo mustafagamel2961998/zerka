@@ -31,7 +31,7 @@ return [
     'products'=>'المنتجات',
     'categories'=>'التصنيفات',
     'inventories'=>'المخزونات',
-    'warehouses'=>'المخازن',
+    'warehouses'=>'المستودعات',
     'orders'=>'الطلبات',
     'purchases'=>'المشتريات',
     'returns'=>'المرتجعات',
@@ -50,6 +50,11 @@ return [
     'product'=>'منتج',
     'color'=>'لون',
     'size'=>'حجم',
-
+    'warehouse'=>'مخزن',
+    //inventories
+    'all_warehouses'=>'جميع المستودعات',
+    
+    // product
+    'all_products'=>'جميع المنتجات',
    
 ];

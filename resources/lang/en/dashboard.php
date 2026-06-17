@@ -51,5 +51,12 @@ return [
     'product'=>'Product',
     'color'=>'Color',
     'size'=>'Size',
+    'warehouse'=>'Warehouse',
+    //inventories
+    'all_warehouses'=>'All Warehouses',
+
+    // product
+    'all_products'=>'All Products',
+   
   
 ];

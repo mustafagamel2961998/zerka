@@ -14,11 +14,11 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
 
     public function all() : Collection
     {
-        return Category::with(['translation'])->latest()->get();
+        return Category::with(['currentTranslation:id,category_id,name'])->latest()->get();
     }
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {
-        return Category::with(['translation'])// need all
+        return Category::with(['currentTranslation'])// need all
                         ->withCount(['children'])
                         ->latest()
                         ->paginate($perPage ?? 20); 
@@ -41,7 +41,7 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
 
     public function findById($id) : Category{
         return Category::with([
-            'translation',
+            'currentTranslation',
             'translations'])
         ->findOrFail($id);
     }
@@ -59,5 +59,10 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
             ]);
         }
         return $category;
+    }
+
+    public function destroy($id) : bool{
+        $category = $this->findById($id);
+        return $category->delete();
     }
 }

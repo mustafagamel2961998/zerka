@@ -2,7 +2,7 @@
 
     <div class="row">
 
-        {{-- <x-dashboard.partial.city.statistics/> --}}
+        <x-dashboard.partial.category.statistics/>
 
     </div>
 
