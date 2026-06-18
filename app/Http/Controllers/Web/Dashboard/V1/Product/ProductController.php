@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Repositories\Contracts\Product\ProductRepositoryInterface;
 class ProductController extends Controller
 {
+    public function __construct(private ProductRepositoryInterface $product_repository_interface){}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
+        $products = $this->product_repository_interface->getPaginated();
+        return view('dashboard.product.index',compact('products'));
     }
 
     /**

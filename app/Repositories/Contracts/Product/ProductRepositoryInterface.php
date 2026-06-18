@@ -8,7 +8,7 @@ use App\Models\Category;
 interface ProductRepositoryInterface
 {
     // public function all() : Collection;
-    // public function getPaginated($perPage = null) : LengthAwarePaginator;
+    public function getPaginated($perPage = null) : LengthAwarePaginator;
     // public function store(array $data) : Category;
     // public function findById($id) : Category;
     // public function update($id, array $data) : Category;

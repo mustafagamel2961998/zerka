@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Repositories\Eloquent\Category;
+namespace App\Repositories\Eloquent\Product;
 use App\Repositories\Contracts\Product\ProductRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
-use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Support\Collection;
 class ProductEloquentRepository implements ProductRepositoryInterface
 {
@@ -16,13 +16,12 @@ class ProductEloquentRepository implements ProductRepositoryInterface
     // {
     //     return Category::with(['translation'])->latest()->get();
     // }
-    // public function getPaginated($perPage = null) : LengthAwarePaginator
-    // {
-    //     return Category::with(['translation'])// need all
-    //                     ->withCount(['children'])
-    //                     ->latest()
-    //                     ->paginate($perPage ?? 20); 
-    // }
+    public function getPaginated($perPage = null) : LengthAwarePaginator
+    {
+        return Product::with(['currentTranslation'])// need all
+                        ->latest()
+                        ->paginate($perPage ?? 20); 
+    }
 
     // public function store(array $data) : Category
     // {

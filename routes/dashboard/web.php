@@ -64,7 +64,6 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Warehouse Routes 
     Route::resource('warehouses',WarehouseController::class);
-    
     //------------------------------------------------------------------------------------------ 
     //-Product Routes 
     Route::resource('products',ProductController::class);

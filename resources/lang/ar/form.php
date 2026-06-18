@@ -71,5 +71,12 @@ return [
     'warehouse_name_en' => 'اسم المستودع بالانجليزية',
     'warehouse_street_details' => 'تفاصيل الشارع',
     'warehouse_phone' => 'رقم الهاتف',
+    // product
+    'product_name_ar' => 'اسم المنتج بالعربية',
+    'product_name_en' => 'اسم المنتج بالانجليزية',
+    'short_description_ar' => 'وصف قصير بالعربية',
+    'short_description_en' => 'وصف قصير بالانجليزية',
+    'long_description_ar' => 'وصف طويل بالعربية',
+    'long_description_en' => 'وصف طويل بالانجليزية',
     
 ];

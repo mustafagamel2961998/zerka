@@ -18,6 +18,8 @@ use App\Repositories\Contracts\Size\SizeRepositoryInterface;
 use App\Repositories\Eloquent\Size\SizeEloquentRepository;
 use App\Repositories\Contracts\Warehouse\WarehouseRepositoryInterface;
 use App\Repositories\Eloquent\Warehouse\WarehouseEloquentRepository;
+use App\Repositories\Contracts\Product\ProductRepositoryInterface;
+use App\Repositories\Eloquent\Product\ProductEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -40,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ColorRepositoryInterface::class,ColorEloquentRepository::class);
         $this->app->bind(SizeRepositoryInterface::class,SizeEloquentRepository::class);
         $this->app->bind(WarehouseRepositoryInterface::class,WarehouseEloquentRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class,ProductEloquentRepository::class);
 
     }
 

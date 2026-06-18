@@ -84,4 +84,5 @@ return [
     'warehouse_description' => 'Warehouse Description',
     'phone' => 'Phone',
     'address' => 'Address',
+    'product_name' => 'Product Name',
 ];

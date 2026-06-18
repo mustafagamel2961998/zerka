@@ -16,7 +16,7 @@ class Product extends Model implements HasMedia
         'status',
     ];
 
-     //-----------------------------------------------------------------------------//
+    //-----------------------------------------------------------------------------//
     // start relationships
     public function category(){
         return $this->belongsTo(Category::class,'category_id','id');
@@ -26,6 +26,9 @@ class Product extends Model implements HasMedia
     }
     public function currentTranslation(){
         return $this->hasOne(ProductTranslation::class,'product_id','id')->where('locale',app()->getLocale());
+    }
+    public function variants(){
+        return $this->hasMany(ProductVariant::class,'product_id','id');
     }
     // end relationships
     //-----------------------------------------------------------------------------//

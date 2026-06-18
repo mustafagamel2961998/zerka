@@ -70,4 +70,11 @@ return [
     'warehouse_name_en'=>'Warehouse name in english',
     'warehouse_street_details'=>'Street details',
     'warehouse_phone'=>'Phone',
+    // product
+    'product_name_ar' => 'Product name (Arabic)',
+    'product_name_en' => 'Product name (English)',
+    'short_description_ar' => 'Short Description (Arabic)',
+    'short_description_en' => 'Short Description (English)',
+    'long_description_ar' => 'Long Description (Arabic)',
+    'long_description_en' => 'Long Description (English)',
 ];

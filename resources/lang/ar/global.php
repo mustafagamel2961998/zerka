@@ -84,4 +84,5 @@ return [
     'warehouse_description' => 'وصف المستودع',
     'phone' => 'الهاتف',
     'address' => 'العنوان',
+    'product_name' => 'اسم المنتج',
 ];
