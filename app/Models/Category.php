@@ -44,13 +44,13 @@ class Category extends Model  implements HasMedia
     //-----------------------------------------------------------------------------//
     public function hasSeoData(): bool
     {
-        $currentTranslation = $this->translation;
+        $currentTranslation = $this->currentTranslation;
 
         if (!$currentTranslation) {
             return false;
         }
 
-        $fields = ['meta_title', 'meta_description', 'canonical_url', 'og_title'];
+        $fields = ['meta_title', 'meta_description'];
 
         foreach ($fields as $field) {
             if (!empty($currentTranslation->{$field})) {

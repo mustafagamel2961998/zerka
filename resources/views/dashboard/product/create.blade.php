@@ -1,4 +1,4 @@
-<x-dashboard.layout title="{{ __('global.add_with_attribute', ['attribute' => __('dashboard.warehouse')]) }}">
+<x-dashboard.layout title="{{ __('global.add_with_attribute', ['attribute' => __('dashboard.product')]) }}">
 
     <div class="row">
 
@@ -12,18 +12,21 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">
-                        {{ __('global.add_with_attribute', ['attribute' => __('dashboard.warehouse')]) }}
+                        {{ __('global.add_with_attribute', ['attribute' => __('dashboard.product')]) }}
                     </h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                       
-                        <form action="{{ route('dashboard.v1.warehouses.store') }}" method="POST">
+                   
+                        <form action="{{ route('dashboard.v1.products.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            @include('dashboard.warehouse._form', [
-                                    'warehouse' => $warehouse,
-                                    'countries' => $countries,
-                                    'btn_text' => __('global.add_with_attribute', ['attribute' => __('dashboard.warehouse')])
+                            @include('dashboard.product._form', [
+                                    'product' => $product,
+                                    'categories' => $categories,
+                                    'warehouses' => $warehouses,
+                                    'sizes' => $sizes,
+                                    'colors' => $colors,
+                                    'btn_text' => __('global.add_with_attribute', ['attribute' => __('dashboard.product')])
                                 ])
                         </form>
                     </div>

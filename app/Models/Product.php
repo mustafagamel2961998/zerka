@@ -40,6 +40,25 @@ class Product extends Model implements HasMedia
         ];
     }
     //-----------------------------------------------------------------------------//
+    public function hasSeoData(): bool
+    {
+        $currentTranslation = $this->currentTranslation;
+
+        if (!$currentTranslation) {
+            return false;
+        }
+
+        $fields = ['meta_title', 'meta_description'];
+
+        foreach ($fields as $field) {
+            if (!empty($currentTranslation->{$field})) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+    //-----------------------------------------------------------------------------//
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('images'); 

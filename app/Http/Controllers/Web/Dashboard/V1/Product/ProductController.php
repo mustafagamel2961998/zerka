@@ -5,9 +5,24 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\Product\ProductRepositoryInterface;
+use App\Repositories\Contracts\Category\CategoryRepositoryInterface;
+use App\Repositories\Contracts\Warehouse\WarehouseRepositoryInterface;
+use App\Repositories\Contracts\Size\SizeRepositoryInterface;
+use App\Repositories\Contracts\Color\ColorRepositoryInterface;
+use App\Models\Product;
+use App\Http\Requests\Dashboard\V1\Product\ProductRequest;
+use App\Actions\Dashboard\V1\Product\CreateAction;
+use App\Actions\Dashboard\V1\Product\UpdateAction;
+use App\DTOs\Dashboard\V1\Product\CreateDTO;
 class ProductController extends Controller
 {
-    public function __construct(private ProductRepositoryInterface $product_repository_interface){}
+    public function __construct(
+        private ProductRepositoryInterface $product_repository_interface,
+        private CategoryRepositoryInterface $category_repository_interface,
+        private WarehouseRepositoryInterface $warehouse_repository_interface,
+        private SizeRepositoryInterface $size_repository_interface,
+        private ColorRepositoryInterface $color_repository_interface
+    ){}
     /**
      * Display a listing of the resource.
      */
@@ -22,15 +37,22 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product = new Product();
+        $categories = $this->category_repository_interface->all();
+        $warehouses = $this->warehouse_repository_interface->all();
+        $sizes = $this->size_repository_interface->all();
+        $colors = $this->color_repository_interface->all();
+        return view('dashboard.product.create',compact('product','categories','warehouses','sizes','colors'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ProductRequest $request,CreateAction $create_action)
     {
-        //
+        $dto = CreateDTO::fromRequest($request);
+        $create_action->execute($dto);
+        return redirect()->route('dashboard.v1.products.index')->with('success', __('crud.created'));
     }
 
     /**

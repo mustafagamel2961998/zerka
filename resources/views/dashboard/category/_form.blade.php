@@ -185,7 +185,7 @@
                                             <div class="mb-2">
                                                 <label for="meta_title_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_title_ar') }}</label>
                                                 <input type="text" name="meta_title[ar]" id="meta_title_ar" class="form-control @error('meta_title.ar') is-invalid @enderror" 
-                                                    value="{{ old('meta_title.ar', $category->translations->where('locale', 'ar')->first()->meta_title ?? '') }}"
+                                                    value="{{ old('meta_title.ar', $category->translations?->where('locale', 'ar')->first()->meta_title ?? '') }}"
                                                     placeholder="{{ __('form.meta_title_ar_placeholder') }}">
                                                 <div class="form-text text-muted fs-12">{{ __('form.meta_title_ar_hint') }}</div>
                                                 @error('meta_title.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -195,7 +195,7 @@
                                             <div class="mb-2">
                                                 <label for="meta_title_en" class="form-label fw-semibold text-dark">{{ __('form.meta_title_en') }}</label>
                                                 <input type="text" name="meta_title[en]" id="meta_title_en" class="form-control @error('meta_title.en') is-invalid @enderror" 
-                                                    value="{{ old('meta_title.en', $category->translations->where('locale', 'en')->first()->meta_title ?? '') }}"
+                                                    value="{{ old('meta_title.en', $category->translations?->where('locale', 'en')->first()->meta_title ?? '') }}"
                                                     placeholder="{{ __('form.meta_title_en_placeholder') }}">
                                                 <div class="form-text text-muted fs-12">{{ __('form.meta_title_en_hint') }}</div>
                                                 @error('meta_title.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -208,7 +208,7 @@
                                             <div class="mb-2">
                                                 <label for="meta_description_ar" class="form-label fw-semibold text-dark">{{ __('form.meta_description_ar') }}</label>
                                                 <textarea name="meta_description[ar]" id="meta_description_ar" class="form-control bg-light-subtle @error('meta_description.ar') is-invalid @enderror" rows="3"
-                                                        placeholder="{{ __('form.meta_description_ar_placeholder') }}">{{ old('meta_description.ar', $category->translations->where('locale', 'ar')->first()->meta_description ?? '') }}</textarea>
+                                                        placeholder="{{ __('form.meta_description_ar_placeholder') }}">{{ old('meta_description.ar', $category->translations?->where('locale', 'ar')->first()->meta_description ?? '') }}</textarea>
                                                 <div class="form-text text-muted fs-12">{{ __('form.meta_description_ar_hint') }}</div>
                                                 @error('meta_description.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>
@@ -217,7 +217,7 @@
                                             <div class="mb-2">
                                                 <label for="meta_description_en" class="form-label fw-semibold text-dark">{{ __('form.meta_description_en') }}</label>
                                                 <textarea name="meta_description[en]" id="meta_description_en" class="form-control bg-light-subtle @error('meta_description.en') is-invalid @enderror" rows="3"
-                                                        placeholder="{{ __('form.meta_description_en_placeholder') }}">{{ old('meta_description.en', $category->translations->where('locale', 'en')->first()->meta_description ?? '') }}</textarea>
+                                                        placeholder="{{ __('form.meta_description_en_placeholder') }}">{{ old('meta_description.en', $category->translations?->where('locale', 'en')->first()->meta_description ?? '') }}</textarea>
                                                 <div class="form-text text-muted fs-12">{{ __('form.meta_description_en_hint') }}</div>
                                                 @error('meta_description.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
                                             </div>

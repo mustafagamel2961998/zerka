@@ -5,12 +5,16 @@ namespace App\Repositories\Eloquent\Color;
 use App\Models\Color;
 use App\Repositories\Contracts\Color\ColorRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class ColorEloquentRepository implements ColorRepositoryInterface
 {
     public function __construct()
     {
         //
+    }
+    public function all() : Collection{
+        return Color::latest()->get();
     }
     public function getPaginated($perPage=null) : LengthAwarePaginator{
      

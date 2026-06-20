@@ -56,11 +56,11 @@ class CategoryRequest extends FormRequest
             'regex:/^[a-zA-Z0-9\s]+$/',
             'max:255'],
 
-            'meta_title.ar'=>['nullable','string','max:60'],
-            'meta_title.en'=>['nullable','string','max:60'],
-            'meta_description.ar'=>['nullable','string','max:160'],
-            'meta_description.en'=>['nullable','string','max:160'],
-            'cover'=>[$id ? 'nullable' : 'required','image','mimes:jpg,jpeg,png','max:2048'],
+            'meta_title.ar'=>['nullable','string','max:255'],
+            'meta_title.en'=>['nullable','string','max:255'],
+            'meta_description.ar'=>['nullable','string'],
+            'meta_description.en'=>['nullable','string'],
+            'cover'=>[$id ? 'nullable' : 'required','image','mimes:jpg,jpeg,png,webp','max:2048'],
         ];
     }
 }

@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 interface ColorRepositoryInterface
 {
-    // public function all() : Collection;
+    public function all() : Collection;
     public function getPaginated($perPage=null) : LengthAwarePaginator;
     public function store(array $data) : Color;
     public function findById($id) : Color;

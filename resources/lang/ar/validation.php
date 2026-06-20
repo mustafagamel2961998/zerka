@@ -195,6 +195,10 @@ return [
        'description.ar'=>'وصف بالعربية',
        'description.en'=>'وصف بالانجليزية',
        'cover'=>'الغلاف',
+       'minimum_quantity'=>'الحد الادنى للكمية',
+       'warehouse_id'=>'المخزن',
+       'color_id'=>'اللون',
+       'size_id'=>'الحجم',
     ],
 
 ];

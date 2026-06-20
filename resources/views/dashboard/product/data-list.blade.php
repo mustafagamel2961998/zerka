@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table id="my-warehouse-html-table" class="table align-middle mb-0 table-hover table-centered">
+    <table id="my-product-html-table" class="table align-middle mb-0 table-hover table-centered">
         <thead class="bg-light-subtle">
             <tr>
                 <th>{{ __('global.number') }}</th>
@@ -33,7 +33,7 @@
                   
                     <td>
                         {{ $product->created_at->translatedFormat('Y-m-d') }} /
-                        <small class="text-muted">({{ $warehouse->created_at->diffForHumans() }})</small>
+                        <small class="text-muted">({{ $product->created_at->diffForHumans() }})</small>
                     </td>
                     <td>
                         <div class="form-check form-switch">
@@ -62,7 +62,7 @@
         </tbody>
     </table>
 </div>
-<div id="table-warehouse-gridjs"></div>
+<div id="table-product-gridjs"></div>
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md">

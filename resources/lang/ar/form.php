@@ -58,6 +58,8 @@ return [
     'meta_description_en' => 'وصف الميتا (بالإنجليزي)',
     'meta_description_en_placeholder' => 'مثال: Shop our premium collection of sports shoes with the highest quality and best prices. Fast shipping available...',
     'meta_description_en_hint' => 'وصف مختصر وجذاب بالإنجليزي يظهر تحت العنوان في جوجل ليشجع الزوار على النقر (يفضل بين 150-160 حرفاً).',
+    'delete' => 'حذف',
+    'action'=>'تحكم',
     // city
     'city'=>'المدينة',
     'select_city' => 'اختر المدينة',
@@ -78,5 +80,19 @@ return [
     'short_description_en' => 'وصف قصير بالانجليزية',
     'long_description_ar' => 'وصف طويل بالعربية',
     'long_description_en' => 'وصف طويل بالانجليزية',
+    'add_product_photos' => 'اضافة صور المنتج',
+    'multiple_images_allowed'=>'الصيغ المدعومة: PNG, JPG, JPEG, WEBP',
+    'drop_images_here' => 'اسحب الصور هنا',
+    'click_to_add_or_change_images' => 'اضغط لاضافة او تغيير الصور',
+    'product_details' => 'تفاصيل المنتج',
+    'product_specifications' => 'مواصفات المنتج',
+    'select_category_id' => 'اختر القسم',
+    'product_variants' => 'متغيرات المنتج',
+    'add_variant' => 'اضافة متغير',
+    'color' => 'اللون',
+    'warehouse' => 'المستودع',
+    'price' => 'السعر',
+    'quantity' => 'الكمية',
+    'minimum_quantity' => 'الحد الادنى للكمية',
     
 ];

@@ -217,6 +217,10 @@ return [
        'description.ar'=>'Description Arabic',
        'description.en'=>'Description English',
        'cover'=>'Cover',
+       'minimum_quantity'=>'Minimum Quantity',
+       'warehouse_id'=>'Warehouse',
+       'color_id'=>'Color',
+       'size_id'=>'Size',
     ],
 
 ];

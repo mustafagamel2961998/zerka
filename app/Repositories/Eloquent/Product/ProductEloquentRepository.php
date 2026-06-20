@@ -23,20 +23,35 @@ class ProductEloquentRepository implements ProductRepositoryInterface
                         ->paginate($perPage ?? 20); 
     }
 
-    // public function store(array $data) : Category
-    // {
-    //     $category = Category::create($data);
-    //     foreach($data['name'] as $key => $value){
-    //         $category->translations()->create([
-    //             'locale' => $key,
-    //             'name' => $value,
-    //             'description' => $data['description'][$key],
-    //             'meta_title' => $data['meta_title'][$key],
-    //             'meta_description' => $data['meta_description'][$key],
-    //         ]);
-    //     }
-    //     return $category;
-    // }
+    public function store(array $data) 
+    {
+        $product = Product::create($data);
+        foreach ($data['variants'] as $variant) {
+            $variantData = $product->variants()->create([
+                'size_id'  => $variant['size_id'],
+                'color_id' => $variant['color_id'],
+                'price'    => $variant['price'],
+                'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
+            ]);
+
+            $variantData->inventories()->create([
+                'warehouse_id'     => $variant['warehouse_id'],
+                'quantity'         => $variant['quantity'],
+                'minimum_quantity' => $variant['minimum_quantity'],
+            ]);
+        }
+        foreach($data['name'] as $key => $value){
+            $product->translations()->create([
+                'locale' => $key,
+                'name' => $value,
+                'description' => $data['description'][$key],
+                'long_description' => $data['long_description'][$key],
+                'meta_title' => $data['meta_title'][$key],
+                'meta_description' => $data['meta_description'][$key],
+            ]);
+        }
+        return $product;
+    }
 
     // public function findById($id) : Category{
     //     return Category::with([
