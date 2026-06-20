@@ -27,7 +27,7 @@
                             </div>
                             <h5 class="text-dark fw-semibold mb-1">{{ __('global.no_data_found') }}</h5>
                             <p class="text-muted mb-0 fs-13">{{ __('global.no_records_have_been_added_to_this_table_yet') }}</p>
-                            <a href="#!" class="btn btn-primary btn-sm mt-3">
+                            <a href="{{ route('dashboard.v1.countries.create') }}" class="btn btn-primary btn-sm mt-3">
                                 <iconify-icon icon="solar:add-circle-broken" class="align-middle me-1"></iconify-icon>
                                 {{ __('global.add_new') }}
                             </a>
