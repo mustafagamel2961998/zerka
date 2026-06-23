@@ -199,6 +199,7 @@ return [
        'warehouse_id'=>'المخزن',
        'color_id'=>'اللون',
        'size_id'=>'الحجم',
+       'images'=>'الصور',
     ],
 
 ];

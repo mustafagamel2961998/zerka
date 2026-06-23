@@ -26,7 +26,10 @@ use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Observers\Warehouse\WarehouseObserver;
+use App\Observers\Product\ProductObserver;
 use App\Models\Warehouse;
+use App\Models\Product;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -69,5 +72,6 @@ class AppServiceProvider extends ServiceProvider
 
         // observe
         Warehouse::observe(WarehouseObserver::class);
+        Product::observe(ProductObserver::class);
     }
 }

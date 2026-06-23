@@ -29,6 +29,9 @@ class Warehouse extends Model
     public function currentTranslation(){
         return $this->hasOne(WarehouseTranslation::class,'warehouse_id','id')->where('locale',app()->getLocale());
     }
+    public function inventories(){
+        return $this->hasMany(Inventory::class,'warehouse_id','id');
+    }
     // end relationships
     //-----------------------------------------------------------------------------//
 

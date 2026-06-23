@@ -9,10 +9,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($sizes as $key => $size)
+            @foreach ($sizes as $size)
                 <tr>
                     <td>
-                        {{ $key + 1 }}
+                         {{ $loop->iteration}}
                     </td>
                     <td>
                         {{ $size->size }}

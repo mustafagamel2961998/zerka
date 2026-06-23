@@ -140,3 +140,34 @@ document.addEventListener("DOMContentLoaded", function() {
             }).render(document.getElementById("table-product-gridjs"));
         }
 });
+// seo modal
+document.addEventListener('DOMContentLoaded', function () {
+    // التأكد من أن الـ Modal موجود في الصفحة أولاً
+    const modalElement = document.getElementById('seoModal');
+    if (!modalElement) return;
+    
+    const seoModal = new bootstrap.Modal(modalElement);
+    
+    // مراقبة الضغط على مستوى الصفحة بالكامل (حل مشكلة الـ Dynamic DOM والـ Gridjs)
+    document.addEventListener('click', function (event) {
+        // البحث عن الزرار أو أي عنصر جواه (مثل الأيقونة) يحمل كلاس open-seo-modal
+        const button = event.target.closest('.open-seo-modal');
+        
+        if (button) {
+            event.preventDefault(); // منع أي سلوك افتراضي للزرار
+
+            // جلب البيانات من الـ attributes
+            const title = button.getAttribute('data-title') || '';
+            const desc = button.getAttribute('data-desc') || '';
+            const categoryName = button.getAttribute('data-category') || '';
+
+            // حقن البيانات داخل الـ Modal بأمان
+            document.getElementById('seo-category-name').textContent = categoryName;
+            document.getElementById('seo-meta-title').textContent = title;
+            document.getElementById('seo-meta-desc').textContent = desc;
+
+            // إظهار الـ Modal
+            seoModal.show();
+        }
+    });
+});

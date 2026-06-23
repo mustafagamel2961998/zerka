@@ -22090,7 +22090,14 @@ p.no-span::after {
     margin-right: 0;
     margin-left: 4px; /* مسافة بين النجمة والنص لو الكلام عربي */
 }
-
+.product-img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+.product-carousel{
+  overflow: auto;
+}
 @media (min-width: 768px) {
   .timeline .timeline-time .time-show {
     -webkit-box-pack: center;

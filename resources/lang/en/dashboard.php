@@ -57,6 +57,8 @@ return [
 
     // product
     'all_products'=>'All Products',
-   
+    
+    // order
+    'all_orders'=>'All Orders',
   
 ];

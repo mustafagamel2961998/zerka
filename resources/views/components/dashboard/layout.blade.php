@@ -667,7 +667,9 @@
                                    <ul class="nav sub-navbar-nav">
 
                                         <li class="sub-nav-item">
-                                             <a class="sub-nav-link" href="orders-list.html">List</a>
+                                             <a class="sub-nav-link" href="{{route('dashboard.v1.orders.index')}}">
+                                                  {{ __('dashboard.all_orders') }}
+                                             </a>
                                         </li>
                                         <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="order-detail.html">Details</a>

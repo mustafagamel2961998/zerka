@@ -9,11 +9,11 @@ class CreateAction
 {
     public function __construct(protected CategoryRepositoryInterface $category_repository_interface){}
 
-    public function execute(CreateDTO $data)
+    public function execute(CreateDTO $dto)
     {
       
-        $category = $this->category_repository_interface->store($data->toArray());
-        MediaService::singleFileUpload($category, 'cover', $data->cover);
+        $category = $this->category_repository_interface->store($dto->toArray());
+        MediaService::singleFileUpload($category, 'cover', $dto->cover);
         return $category;
     }
 }

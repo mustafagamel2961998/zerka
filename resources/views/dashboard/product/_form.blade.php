@@ -8,78 +8,55 @@
             <div class="card">
                 <div class="card-body">
                     <!-- صورة المعاينة الجانبية -->
-                    <img src="assets/images/product/p-1.png" alt="" class="img-fluid rounded bg-light">
+                    <img src="{{$product->getFirstMediaUrl('images','optimized')}}" alt="" class="img-fluid rounded bg-light">
 
                     <div class="mt-3">
-                        <h4>Men Black Slim Fit T-shirt <span class="fs-14 text-muted ms-1">(Fashion)</span></h4>
-                        <h5 class="text-dark fw-medium mt-3">Price :</h5>
+                        <h4>
+                            {{ $product->currentTranslation->name }}
+                            <span class="fs-14 text-muted ms-1">({{$product->category->currentTranslation->name}})</span></h4>
+
+                        {{-- <h5 class="text-dark fw-medium mt-3">Price :</h5>
                         <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
                             <span class="text-muted text-decoration-line-through">$100</span> $80 <small class="text-muted">
-                                (30% Off)</small>
-                        </h4>
-
+                                (30% Off)
+                            </small>
+                        </h4> --}}
                         <!-- معاينة المقاسات -->
                         <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Size :</h5>
+                            <h5 class="text-dark fw-medium">{{__('global.sizes')}} :</h5>
                             <div class="d-flex flex-wrap gap-2" role="group"
                                 aria-label="Basic checkbox toggle button group">
-                                <input type="checkbox" class="btn-check" id="size-s">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-s">S</label>
-
-                                <input type="checkbox" class="btn-check" id="size-m" checked>
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-m">M</label>
-
-                                <input type="checkbox" class="btn-check" id="size-xl">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-xl">Xl</label>
-
-                                <input type="checkbox" class="btn-check" id="size-xxl">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="size-xxl">XXL</label>
+                                @foreach ($product->variants as $variant)
+                                <label class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
+                                    for="size-s">
+                                    {{ $variant->size->size }}
+                                </label>
+                                @endforeach
                             </div>
                         </div>
 
                         <!-- معاينة الألوان -->
                         <div class="mt-3">
-                            <h5 class="text-dark fw-medium">Colors :</h5>
+                            <h5 class="text-dark fw-medium">{{__('global.colors')}} :</h5>
                             <div class="d-flex flex-wrap gap-2" role="group"
                                 aria-label="Basic checkbox toggle button group">
-                                <input type="checkbox" class="btn-check" id="color-dark">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-dark"> <i class="bx bxs-circle fs-18 text-dark"></i></label>
+                                 @foreach ($product->variants as $variant)
+                               <label
+                                    class="color-preview-circle border shadow-sm"
+                                    for="color-dark"
+                                    style="
+                                        display: inline-block;
+                                        width: 22px;
+                                        height: 22px;
+                                        background-color: {{$variant->color->code}};
+                                        border-radius: 50%;
+                                        flex-shrink: 0;
+                                        cursor: pointer;
+                                    ">
+                                </label>
+                                @endforeach
 
-                                <input type="checkbox" class="btn-check" id="color-yellow">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-yellow"> <i class="bx bxs-circle fs-18 text-warning"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-white">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-white"> <i class="bx bxs-circle fs-18 text-white"></i></label>
-
-                                <input type="checkbox" class="btn-check" id="color-red">
-                                <label
-                                    class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                    for="color-red"> <i class="bx bxs-circle fs-18 text-danger"></i></label>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-footer bg-light-subtle">
-                    <div class="row g-2">
-                        <div class="col-lg-6">
-                            <a href="#!" class="btn btn-outline-secondary w-100">Create Product</a>
-                        </div>
-                        <div class="col-lg-6">
-                            <a href="#!" class="btn btn-primary w-100">Cancel</a>
                         </div>
                     </div>
                 </div>
@@ -99,11 +76,9 @@
                     class="custom-dropzone d-flex flex-column align-items-center justify-content-center border-dashed p-4 text-center rounded-3 position-relative"
                     style="cursor: pointer; border: 2px dashed #dee2e6;">
 
-                    <!-- تم إضافة multiple وتغيير الاسم إلى مصفوفة images[] والـ ID لـ product_images -->
                     <input type="file" name="images[]" id="product_images"
                         class="d-none @error('images') is-invalid @enderror" accept="image/*" multiple>
 
-                    <!-- رسالة الرفع الافتراضية: تختفي لو المنتج عنده صور قديمة مخزنة في ميديا الـ images -->
                     <div id="dropzone_upload_msg" class="{{ $product->hasMedia('images') ? 'd-none' : '' }} py-3">
                         <i class="bx bx-cloud-upload text-primary mb-2" style="font-size: 48px;"></i>
                         <h3 class="mt-2 fs-5 fw-semibold">
@@ -124,7 +99,7 @@
                                     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-3 server-preview">
                                         <div class="position-relative product-img-wrap shadow-sm rounded border border-light"
                                             style="overflow: hidden;">
-                                            <img src="{{ $media->getUrl('thumb') }}" alt="Product Image"
+                                            <img src="{{ $media->getUrl() }}" alt="Product Image"
                                                 class="w-100"
                                                 style="height: 110px; object-fit: cover; display: block;">
 
@@ -342,7 +317,7 @@
                                         <select name="variants[{{ $index }}][color_id]" class="form-control color-selector @error("variants.$index.color_id") is-invalid @enderror" required>
                                             @foreach($colors as $color)
                                                 <option value="{{ $color->id }}" data-hex="{{ $color->code ?? '#000000' }}" @selected($oldVariant['color_id'] == $color->id)>
-                                                    {{ $color->currentTranslation->name ?? $color->name }}
+                                                    {{ $color->code }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -380,13 +355,8 @@
                             </tr>
                         @endforeach
 
-                    {{-- 2. حالة التعديل (Edit Mode) وقراءة البيانات المحفوظة أصلاً من الداتابيز --}}
                     @elseif(isset($product) && $product->variants->count() > 0)
                         @foreach($product->variants as $index => $variant)
-                            {{-- سحب بيانات المخزن الخاص بهذا الـ Variant --}}
-                            @php 
-                                $inventory = $variant->inventories->first(); 
-                            @endphp
                             <tr class="variant-row">
                                 <td>
                                     <select name="variants[{{ $index }}][size_id]" class="form-control" required>
@@ -401,7 +371,7 @@
                                         <select name="variants[{{ $index }}][color_id]" class="form-control color-selector" required>
                                             @foreach($colors as $color)
                                                 <option value="{{ $color->id }}" data-hex="{{ $color->code ?? '#000000' }}" @selected($variant->color_id == $color->id)>
-                                                    {{ $color->currentTranslation->name ?? $color->name }}
+                                                    {{ $color->code }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -410,7 +380,7 @@
                                 <td>
                                     <select name="variants[{{ $index }}][warehouse_id]" class="form-control" required>
                                         @foreach($warehouses as $warehouse)
-                                            <option value="{{ $warehouse->id }}" @selected($inventory?->warehouse_id == $warehouse->id)>{{ $warehouse->currentTranslation->name ?? $warehouse->name }}</option>
+                                            <option value="{{ $warehouse->id }}" @selected($variant->inventory?->warehouse_id == $warehouse->id)>{{ $warehouse->currentTranslation->name ?? $warehouse->name }}</option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -421,11 +391,10 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <input type="number" name="variants[{{ $index }}][quantity]" class="form-control" value="{{ $inventory?->quantity ?? 0 }}" required>
+                                    <input type="number" name="variants[{{ $index }}][quantity]" class="form-control" value="{{ $variant->inventory?->quantity ?? 0 }}" required>
                                 </td>
                                 <td>
-                                    <input type="number" name="variants[{{ $index }}][minimum_quantity]" class="form-control" value="{{ $inventory?->minimum_quantity ?? 0 }}" required>
-                                end
+                                    <input type="number" name="variants[{{ $index }}][minimum_quantity]" class="form-control" value="{{ $variant->inventory?->minimum_quantity ?? 0 }}" required>
                                 <td class="text-center align-middle">
                                     <button type="button" class="btn btn-sm btn-outline-danger remove-row d-flex align-items-center gap-1 justify-content-center mx-auto">
                                         <i class="bx bx-trash fs-14"></i><span>{{ __('form.delete') }}</span>
@@ -456,7 +425,7 @@
                 <select name="variants[__index__][color_id]" class="form-control color-selector" required>
                     @foreach($colors as $color)
                         <option value="{{ $color->id }}" data-hex="{{ $color->code ?? '#000000' }}">
-                            {{ $color->currentTranslation->name ?? $color->name }}
+                            {{ $color->code }}
                         </option>
                     @endforeach
                 </select>

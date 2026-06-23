@@ -10,10 +10,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($colors as $key => $color)
+            @foreach ($colors as  $color)
                 <tr>
                     <td>
-                        {{ $key + 1 }}
+                        {{ $loop->iteration}}
                     </td>
                     <td>
                         <span class="d-inline-block rounded-circle border border-secondary border-opacity-25 shadow-sm" 

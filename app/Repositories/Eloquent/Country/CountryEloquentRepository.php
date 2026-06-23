@@ -42,7 +42,7 @@ class CountryEloquentRepository implements CountryRepositoryInterface
                 'currentTranslation:id,country_id,name',
                 'translations:id,country_id,locale,name',
                 'currency.currentTranslation:id,currency_id,name',
-                'cities.currentTranslation:id,city_id,name',
+                'cities'=>fn($q)=>$q->where('status','active')->with('currentTranslation:id,city_id,name'),
             ])
             ->findOrFail($id);
     }

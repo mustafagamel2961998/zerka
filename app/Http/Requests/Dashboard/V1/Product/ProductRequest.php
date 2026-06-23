@@ -44,7 +44,7 @@ class ProductRequest extends FormRequest
             'name.en'=>[
                 'required',
                 'string',
-                'regex:/^[a-zA-Z0-9\s]+$/','max:255',
+                'regex:/^[a-zA-Z0-9\s\-_]+$/','max:255',
                 Rule::unique('product_translations','name')->where('locale', 'en')->ignore($id,'product_id')
             ],
 
@@ -56,7 +56,7 @@ class ProductRequest extends FormRequest
             'description.en'=>[
                 'nullable',
                 'string',
-                'regex:/^[a-zA-Z0-9\s]+$/'
+                'regex:/^[a-zA-Z0-9\s\-_]+$/u'
             ],
             'long_description.ar'=>[
                 'nullable',
@@ -66,7 +66,7 @@ class ProductRequest extends FormRequest
             'long_description.en'=>[
                 'nullable',
                 'string',
-                'regex:/^[a-zA-Z0-9\s]+$/'
+                'regex:/^[a-zA-Z0-9\s\-_]+$/u'
             ],
             
             'meta_title.ar'=>[
@@ -79,7 +79,7 @@ class ProductRequest extends FormRequest
                 'nullable',
                 'string',
                 'max:255',
-                'regex:/^[a-zA-Z0-9\s]+$/'
+                'regex:/^[a-zA-Z0-9\s\-_]+$/u'
             ],
 
             'meta_description.ar'=>[
@@ -90,7 +90,7 @@ class ProductRequest extends FormRequest
             'meta_description.en'=>[
                 'nullable',
                 'string',
-                'regex:/^[a-zA-Z0-9\s]+$/'
+                'regex:/^[a-zA-Z0-9\s\-_]+$/u'
             ],
 
             'images' => [

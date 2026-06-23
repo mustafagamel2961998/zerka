@@ -1,4 +1,5 @@
-<x-dashboard.layout title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.warehouse')]) }} - {{$warehouse->currentTranslation->name }}">
+<x-dashboard.layout
+    title="{{ __('global.edit_with_attribute', ['attribute' => __('dashboard.product')]) }} - {{ $product->currentTranslation->name }}">
 
     <div class="row">
 
@@ -12,20 +13,21 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">
-                        {{ __('global.edit_with_attribute', ['attribute' => __('dashboard.warehouse')]) }}
+                        {{ __('global.edit_with_attribute', ['attribute' => __('dashboard.product')]) }}
                     </h4>
                 </div>
                 <div class="card-body">
                     <div class="row">
-                       
-                        <form action="{{ route('dashboard.v1.warehouses.update',$warehouse->id) }}" method="POST">
+                        <form action="{{ route('dashboard.v1.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            @include('dashboard.warehouse._form', [
-                                    'warehouse' => $warehouse,
-                                    'countries' => $countries,
-                                    'btn_text' => __('global.edit_with_attribute', ['attribute' => __('dashboard.warehouse')])
-                                ])
+                            @include('dashboard.product._form', [
+                                'product' => $product,
+                                'categories' => $categories,
+                                'btn_text' => __('global.edit_with_attribute', [
+                                    'attribute' => __('dashboard.product'),
+                                ]),
+                            ])
                         </form>
                     </div>
 

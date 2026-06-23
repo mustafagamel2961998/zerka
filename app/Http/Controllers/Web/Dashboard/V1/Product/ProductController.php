@@ -14,6 +14,7 @@ use App\Http\Requests\Dashboard\V1\Product\ProductRequest;
 use App\Actions\Dashboard\V1\Product\CreateAction;
 use App\Actions\Dashboard\V1\Product\UpdateAction;
 use App\DTOs\Dashboard\V1\Product\CreateDTO;
+use App\DTOs\Dashboard\V1\Product\UpdateDTO;
 class ProductController extends Controller
 {
     public function __construct(
@@ -60,7 +61,8 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = $this->product_repository_interface->findById($id);
+        return view('dashboard.product.show',compact('product'));
     }
 
     /**
@@ -68,15 +70,28 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = $this->product_repository_interface->findById($id);
+        $categories = $this->category_repository_interface->all();
+        $warehouses = $this->warehouse_repository_interface->all();
+        $sizes = $this->size_repository_interface->all();
+        $colors = $this->color_repository_interface->all();
+        return view('dashboard.product.edit',compact(
+            'product',
+            'categories',
+            'warehouses',
+            'sizes',
+            'colors'
+        ));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ProductRequest $request, UpdateAction $update_action,string $id)
     {
-        //
+        $dto = UpdateDTO::fromRequest($request);
+        $update_action->execute($dto);
+        return redirect()->route('dashboard.v1.products.index')->with('success', __('crud.updated'));
     }
 
     /**

@@ -11,9 +11,9 @@ class CurrencyEloquentRepository implements CurrencyRepositoryInterface
     {}
 
     public function index() : Collection{
-        return Currency::with('translation')->latest()->get();
+        return Currency::with('currentTranslation')->latest()->get();
     }
     public function getPaginated($perPage = null) : LengthAwarePaginator{
-        return Currency::with('translation:"id,currency_id,name')->latest()->paginate($perPage);
+        return Currency::with('currentTranslation:id,currency_id,name')->latest()->paginate($perPage);
     }
 }

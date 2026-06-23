@@ -14,7 +14,7 @@ class ColorEloquentRepository implements ColorRepositoryInterface
         //
     }
     public function all() : Collection{
-        return Color::latest()->get();
+        return Color::where('status','active')->latest()->get();
     }
     public function getPaginated($perPage=null) : LengthAwarePaginator{
      

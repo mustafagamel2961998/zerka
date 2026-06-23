@@ -11,10 +11,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($cities as $key => $city)
+            @foreach ($cities as  $city)
                 <tr>
                     <td>
-                        {{ $key + 1 }}
+                         {{ $loop->iteration}}
                     </td>
                     <td>
                          {{ $city->currentTranslation->name }}

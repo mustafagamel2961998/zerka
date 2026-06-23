@@ -10,7 +10,7 @@ interface ProductRepositoryInterface
     // public function all() : Collection;
     public function getPaginated($perPage = null) : LengthAwarePaginator;
     public function store(array $data) ;
-    // public function findById($id) : Category;
-    // public function update($id, array $data) : Category;
+    public function findById($id) : Product;
+    public function update(array $data) : Product;
     // public function destroy($id);
 }

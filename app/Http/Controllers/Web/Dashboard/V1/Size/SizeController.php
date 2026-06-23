@@ -22,7 +22,7 @@ class SizeController extends Controller
     public function create()
     {
         $size = new Size();
-        return view('dashboard.Size.create',compact('size'));
+        return view('dashboard.size.create',compact('size'));
     }
 
     /**

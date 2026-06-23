@@ -12,7 +12,7 @@ class WarehouseEloquentRepository implements WarehouseRepositoryInterface
         //
     }
     public function all() : Collection {
-        return Warehouse::with([
+        return Warehouse::where('status','active')->with([
             'currentTranslation:id,warehouse_id,locale,name',
             'country.currentTranslation:id,country_id,name',
             'city.currentTranslation:id,city_id,name',
@@ -24,7 +24,7 @@ class WarehouseEloquentRepository implements WarehouseRepositoryInterface
             'translations:id,warehouse_id,locale,name,description',
             'country.currentTranslation:id,country_id,name',
             'city.currentTranslation:id,city_id,name',
-        ])->paginate($perPage ?? 20);
+        ])->withCount('inventories')->paginate($perPage ?? 20);
     }
 
     public function store(array $data) : Warehouse {
@@ -45,7 +45,7 @@ class WarehouseEloquentRepository implements WarehouseRepositoryInterface
             'translations:id,warehouse_id,locale,name,description',
             'country.currentTranslation:id,country_id,name',
             'city.currentTranslation:id,city_id,name',
-        ])->findOrFail($id);
+        ])->withCount('inventories')->findOrFail($id);
     }
 
     public function update(array $data) : Warehouse {

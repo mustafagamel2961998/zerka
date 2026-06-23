@@ -15,10 +15,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $key => $category)
+            @foreach ($categories as $category)
                 <tr>
                      <td>
-                        {{ $key + 1 }}
+                        {{ $loop->iteration}}
                     </td>
                     <td>
                         <x-dashboard.partial.image :src="$category->getFirstMediaUrl('cover', 'thumb')" :alt="$category->currentTranslation->name"/>

@@ -11,7 +11,7 @@ class SizeEloquentRepository implements SizeRepositoryInterface
 {
     public function __construct(){}
     public function all() : Collection{
-        return Size::latest()->get();
+        return Size::where('status','active')->latest()->get();
     }
     public function getPaginated($perPage=null) : LengthAwarePaginator{
      

@@ -221,6 +221,7 @@ return [
        'warehouse_id'=>'Warehouse',
        'color_id'=>'Color',
        'size_id'=>'Size',
+       'images'=>'Images',
     ],
 
 ];

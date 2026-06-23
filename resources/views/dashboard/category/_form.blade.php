@@ -175,7 +175,7 @@
                      
                         <div id="collapseOne" class="accordion-collapse collapse  
                             @if($category->hasSeoData()) show @endif
-                            {{ $errors->hasAny(['meta_title.ar', 'meta_title.en', 'meta_description.ar', 'meta_description.en']) ? 'show' : '' }}" 
+                            {{ $errors->hasAny(['meta_title.ar', 'meta_title.en', 'meta_description.ar', 'meta_description.en']) ? 'show' : '' }}"  
                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 <div class="card-body">

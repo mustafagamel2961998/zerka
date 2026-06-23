@@ -26,8 +26,8 @@ class ProductVariant extends Model
     public function color(){
         return $this->belongsTo(Color::class,'color_id','id');
     }
-    public function inventories(){
-        return $this->hasMany(Inventory::class,'product_variant_id','id');
+    public function inventory(){
+        return $this->hasOne(Inventory::class,'product_variant_id','id');
     }
     // end relationships
     //-----------------------------------------------------------------------------//

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\V1\Order\OrderController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Dashboard\V1\Auth\AuthController;
 use App\Http\Controllers\Web\Dashboard\V1\Home\HomeController;
@@ -67,6 +68,9 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Product Routes 
     Route::resource('products',ProductController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Order Routes 
+    Route::resource('orders',OrderController::class);
     
     });
     //****************************************-:END:-****************************************/

@@ -56,5 +56,7 @@ return [
     
     // product
     'all_products'=>'جميع المنتجات',
+    // order
+    'all_orders'=>'جميع الطلبات',
    
 ];

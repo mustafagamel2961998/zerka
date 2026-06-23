@@ -3,6 +3,7 @@
         <thead class="bg-light-subtle">
             <tr>
                 <th>{{ __('global.number') }}</th>
+                <th>{{__('global.product_code')}}</th>
                 <th>{{ __('global.image') }}</th>
                 <th>{{ __('global.product_name') }}</th>
                 <th>{{ __('global.description') }}</th>
@@ -13,10 +14,15 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($products as $key => $product)
+            @foreach ($products as  $product)
                 <tr>
                     <td>
-                        {{ $key + 1 }}
+                        {{ $loop->iteration}}
+                    </td>
+                    <td>
+                         <a href="" class="text-primary">
+                            {{$product->code}}
+                         </a>
                     </td>
                     <td>
                        <x-dashboard.partial.image :src="$product->getFirstMediaUrl('images', 'thumb')" :alt="$product->currentTranslation->name"/>
@@ -28,7 +34,14 @@
                          {{ $product->currentTranslation->description }}
                     </td>
                     <td>
-                         seo
+                         <button type="button" 
+                            class="btn btn-soft-info btn-sm open-seo-modal" 
+                            data-title="{{ $product->currentTranslation->meta_title ?? __('global.not_found') }}" 
+                            data-desc="{{ $product->currentTranslation->meta_description ?? __('global.not_found') }}"
+                            data-category="{{ $product->currentTranslation->name }}">
+                        <iconify-icon icon="solar:globus-broken" class="align-middle fs-18 me-1"></iconify-icon>
+                        {{ __('global.seo') }}
+                    </button>
                     </td>
                   
                     <td>
@@ -42,7 +55,9 @@
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                        
+                            <a href="{{route('dashboard.v1.products.show', $product->id)}}" class="btn btn-light btn-sm">
+                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
                             <a href="{{route('dashboard.v1.products.edit', $product->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
@@ -63,7 +78,7 @@
     </table>
 </div>
 <div id="table-product-gridjs"></div>
-
+{{-- delete modal --}}
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md">
         <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
@@ -77,7 +92,7 @@
                 <h4 class="text-dark fw-bold mb-2">{{ __('global.delete_confirmation') }}</h4>
                 
                 <p class="text-muted fs-15 mb-3">
-                    {{ __('global.delete_warning_title', ['name' => __('dashboard.warehouse')]) }}
+                    {{ __('global.delete_warning_title', ['name' => __('dashboard.product')]) }}
                     <strong id="name-span" class="text-dark fw-semibold d-block mt-1 fs-16"></strong>
                 </p>
 
@@ -99,6 +114,54 @@
                         {{ __('global.confirm_delete') }}
                     </button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- seo poup modal --}}
+<div class="modal fade" id="seoModal" tabindex="-1" aria-labelledby="seoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+            
+            <!-- Modal Header -->
+            <div class="modal-header bg-light-subtle border-0 py-3 px-4 d-flex align-items-center justify-content-between">
+                <h5 class="modal-title fw-bold text-dark d-flex align-items-center gap-2" id="seoModalLabel">
+                    <iconify-icon icon="solar:bill-list-bold-duotone" class="text-info fs-24"></iconify-icon>
+                    <span><span id="seo-category-name" class="text-muted small fw-normal"></span></span>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body p-4">
+                <!-- Meta Title -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold text-dark fs-14 mb-2 d-flex align-items-center gap-1">
+                        <iconify-icon icon="solar:text-bold-broken" class="text-muted fs-18"></iconify-icon>
+                        {{ __('global.meta_title') }}
+                    </label>
+                    <div class="p-3 bg-light rounded-3 border">
+                        <p id="seo-meta-title" class="mb-0 text-secondary fs-14 fw-medium"></p>
+                    </div>
+                </div>
+
+                <!-- Meta Description -->
+                <div class="mb-0">
+                    <label class="form-label fw-semibold text-dark fs-14 mb-2 d-flex align-items-center gap-1">
+                        <iconify-icon icon="solar:notes-broken" class="text-muted fs-18"></iconify-icon>
+                        {{ __('global.meta_description') }}
+                    </label>
+                    <div class="p-3 bg-light rounded-3 border">
+                        <p id="seo-meta-desc" class="mb-0 text-secondary fs-14" style="white-space: pre-line; line-height: 1.6;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer border-0 bg-light-subtle d-flex justify-content-end py-3 px-4">
+                <button type="button" class="btn btn-light fw-medium px-4" data-bs-dismiss="modal" style="border-radius: 8px;">
+                    {{ __('global.close')}}
+                </button>
             </div>
         </div>
     </div>

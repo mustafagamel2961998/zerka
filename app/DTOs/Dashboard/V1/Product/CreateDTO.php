@@ -6,6 +6,8 @@ use App\DTOs\Dashboard\V1\Product\Variant\CreateDTO as VariantCreateDTO;
 use App\Http\Requests\Dashboard\V1\Product\ProductRequest;
 use Illuminate\Support\Str;
 use App\Enums\Status;
+use Illuminate\Http\UploadedFile;
+use InvalidArgumentException;
 
 class CreateDTO
 {
@@ -23,8 +25,14 @@ class CreateDTO
         public ?string $metaDescription_en,
         public Status $status, 
         public array $variants,
-        public ?array $images = []
-    ) {}
+        public array $images = []
+    ) {
+        foreach ($this->images as $image) {
+            if (!$image instanceof UploadedFile) {
+                throw new InvalidArgumentException("Every item in images must be an instance of UploadedFile.");
+            }
+        }
+    }
 
     /**
      * Create a DTO instance from a Form Request
@@ -49,7 +57,7 @@ class CreateDTO
             metaDescription_en: $request->validated('meta_description.en'),
             status: Status::from($request->validated('status')),
             variants: $variantsDTOs,
-            images: $request->file('images') ?? []
+            images: $request->file('images')
         );
     }
 
@@ -80,12 +88,13 @@ class CreateDTO
                 'ar' => $this->metaDescription_ar,
                 'en' => $this->metaDescription_en,
             ],
-            'status' => $this->status, // أو $this->status->value
             
             'variants' => array_map(function (VariantCreateDTO $variant) {
                 return $variant->toArray();
             }, $this->variants),
 
+            'status' => $this->status, // أو $this->status->value
+            'images' => $this->images,
             'slug'=>Str::slug($this->name_en),
         ];
     }

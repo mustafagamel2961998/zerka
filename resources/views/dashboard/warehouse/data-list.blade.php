@@ -6,6 +6,7 @@
                 <th>{{ __('global.warehouse_code') }}</th>
                 <th>{{ __('global.warehouse_name') }}</th>
                 <th>{{ __('global.warehouse_description') }}</th>
+                <th>{{ __('global.inventories_count') }}</th>
                 <th>{{ __('global.phone') }}</th>
                 <th>{{ __('global.address') }}</th>
                 <th>{{ __('global.created_at') }}</th>
@@ -14,10 +15,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($warehouses as $key => $warehouse)
+            @foreach ($warehouses as  $warehouse)
                 <tr>
                     <td>
-                        {{ $key + 1 }}
+                        {{ $loop->iteration}}
                     </td>
                     <td>
                          <a href="" class="text-primary">
@@ -29,6 +30,9 @@
                     </td>
                     <td>
                          {{ $warehouse->currentTranslation->description }}
+                    </td>
+                    <td>
+                        {{ $warehouse->inventories_count }}
                     </td>
                     <td>
                          {{ $warehouse->phone }}
@@ -52,7 +56,9 @@
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                        
+                           <a href="{{route('dashboard.v1.warehouses.show', $warehouse->id)}}" class="btn btn-light btn-sm">
+                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
                             <a href="{{route('dashboard.v1.warehouses.edit', $warehouse->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
