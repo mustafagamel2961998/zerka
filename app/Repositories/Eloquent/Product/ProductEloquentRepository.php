@@ -4,13 +4,11 @@ namespace App\Repositories\Eloquent\Product;
 use App\Repositories\Contracts\Product\ProductRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Product;
+use App\Repositories\Contracts\Variant\VariantRepositoryInterface;
 use Illuminate\Support\Collection;
 class ProductEloquentRepository implements ProductRepositoryInterface
 {
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(private VariantRepositoryInterface $variant_repository_interface){}
 
     // public function all() : Collection
     // {
@@ -23,23 +21,10 @@ class ProductEloquentRepository implements ProductRepositoryInterface
                         ->paginate($perPage ?? 20); 
     }
 
-    public function store(array $data) 
+    public function store(array $data) : Product
     {
         $product = Product::create($data);
-        foreach ($data['variants'] as $variant) {
-            $variantData = $product->variants()->create([
-                'size_id'  => $variant['size_id'],
-                'color_id' => $variant['color_id'],
-                'price'    => $variant['price'],
-                'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
-            ]);
-
-            $variantData->inventory()->create([
-                'warehouse_id'     => $variant['warehouse_id'],
-                'quantity'         => $variant['quantity'],
-                'minimum_quantity' => $variant['minimum_quantity'],
-            ]);
-        }
+        $this->variant_repository_interface->store($data['variants'], $product);
         foreach($data['name'] as $key => $value){
             $product->translations()->create([
                 'locale' => $key,

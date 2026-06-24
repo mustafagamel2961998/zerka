@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('code', 3)->unique();
             $table->decimal('exchange_rate', 12, 6);
             $table->unsignedTinyInteger('decimal_places')->default(2);
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('status')->default('active');      
             $table->timestamps();
         });
     }

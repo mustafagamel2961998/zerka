@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('colors', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('status')->default('active');      
             $table->timestamps();
         });
     }

@@ -107,5 +107,22 @@ return [
     'locale' => 'اللغة',
     'long_description' => 'وصف طويل',
     'inventories_count' => 'عدد المخزون',
-
+    'order_number' => 'رقم الطلب',
+    'customer' => 'الزبون',
+    'subtotal' => 'المجموع الفرعي',
+    'tax_total' => 'المجموع الضريبي',
+    'shipping_total' => 'مجموع الشحن',
+    'discount_total' => 'مجموع الخصم',
+    'grand_total' => 'المجموع الكلي',
+    'coupon_code' => 'كود القسيمة',
+    'pending_payment' => 'قيد الانتظار',
+    'order_cancelled' => 'طلبات ملغية',
+    'order_shipped' => 'تم الشحن',
+    'order_delivering' => 'قيد التوصيل',
+    'pending_review' => 'قيد المراجعة',
+    'delivered' => 'تم التوصيل',
+    'in_progress' => 'قيد التنفيذ',
+    'payment_status' => 'حالة الدفع',
+    'order_status' => 'حالة الطلب',
 ];
+    

@@ -22,3 +22,5 @@ Route::get('errors/too-many-request',function(){
 // Dashboard Routes
 require __DIR__ . '/dashboard/web.php';
 
+// Front Routes
+require __DIR__ . '/front/web.php';

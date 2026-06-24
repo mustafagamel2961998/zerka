@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('code')->unique();
             $table->string('phone')->unique();
             $table->string('street_details')->nullable();
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('status')->default('active');      
             $table->timestamps();
         });
     }

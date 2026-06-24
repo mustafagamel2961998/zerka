@@ -21,7 +21,7 @@ return new class extends Migration
             $table->char('iso3', 3)->unique(); 
             $table->string('phone_code')->nullable(); 
             $table->string('timezone')->nullable(); 
-            $table->enum('status',['active','inactive'])->default('active');
+            $table->string('status')->default('active');      
             $table->timestamps();
         });
     }

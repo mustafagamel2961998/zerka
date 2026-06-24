@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center gap-1">
                     <h4 class="card-title flex-grow-1">
-                        {{ __('dashboard.table-title', ['name' => __('dashboard.' . request()->segment(3))]) }}
+                       {{ __('global.table-title', ['name' => __('dashboard.' . request()->segment(3))]) }}
                     </h4>
 
                     <a href="{{ route('dashboard.v1.countries.create') }}" class="btn btn-sm btn-primary">

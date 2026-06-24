@@ -18,7 +18,7 @@ return new class extends Migration
                   ->cascadeOnDelete();
             $table->string('code')->unique();
             $table->string('slug')->unique();
-            $table->enum('status',['active','inactive'])->default('active');      
+            $table->string('status')->default('active');      
             $table->timestamps();
         });
     }
