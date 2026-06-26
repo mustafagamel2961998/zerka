@@ -4,18 +4,17 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Currency;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Repositories\Contracts\Currency\CurrencyRepositoryInterface;
 class CurrencyController extends Controller
 {
-    public function __construct(
- 
-        ){}
+    public function __construct(private CurrencyRepositoryInterface $currency_repository_interface){}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $currencies = $this->currency_repository_interface->getPaginated();
+        return view('dashboard.currency.index',compact('currencies'));
     }
 
     /**

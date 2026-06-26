@@ -31,8 +31,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Observers\Warehouse\WarehouseObserver;
 use App\Observers\Product\ProductObserver;
+use App\Observers\Order\OrderObserver;
 use App\Models\Warehouse;
 use App\Models\Product;
+use App\Models\Order;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -79,5 +81,6 @@ class AppServiceProvider extends ServiceProvider
         // observe
         Warehouse::observe(WarehouseObserver::class);
         Product::observe(ProductObserver::class);
+        Order::observe(OrderObserver::class);
     }
 }

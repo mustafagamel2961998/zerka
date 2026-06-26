@@ -655,7 +655,7 @@
                   
 
                          <li class="nav-item">
-                              <a class="nav-link menu-arrow" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
+                              <a class="nav-link menu-arrow @if(request()->routeIs('dashboard.v1.orders.*')) active @endif" href="#sidebarOrders" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarOrders">
                                    <span class="nav-icon">
                                         <iconify-icon icon="solar:bag-smile-bold-duotone"></iconify-icon>
                                    </span>
@@ -663,7 +663,7 @@
                                     {{ __('dashboard.orders') }}    
                                    </span>
                               </a>
-                              <div class="collapse" id="sidebarOrders">
+                              <div class="collapse @if(request()->routeIs('dashboard.v1.orders.*')) show @endif" id="sidebarOrders">
                                    <ul class="nav sub-navbar-nav">
 
                                         <li class="sub-nav-item">
@@ -1371,7 +1371,7 @@
                            <div class="col-12 text-center">
                                <script>document.write(new Date().getFullYear())</script> &copy; {{__('global.crafted_by') }} 
                                <iconify-icon icon="iconamoon:heart-duotone" class="fs-18 align-middle text-danger"></iconify-icon> <a
-                                   href="#!" class="fw-bold footer-text" target="_blank">{{ __('global.developer_name') }}</a>
+                                   href="{{__('global.developer_whatsapp_contact')}}" class="fw-bold footer-text" target="_blank">{{ __('global.developer_name') }}</a>
                            </div>
                        </div>
                    </div>

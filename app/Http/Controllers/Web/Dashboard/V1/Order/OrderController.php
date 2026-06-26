@@ -39,7 +39,8 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $order = $this->order_repository_interface->findById($id);
+        return view('dashboard.order.show',compact('order'));
     }
 
     /**

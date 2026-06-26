@@ -22,8 +22,8 @@ return new class extends Migration
             $table->decimal('shipping_total', 10, 2)->default(0.00);
             $table->decimal('discount_total', 10, 2)->default(0.00);
             $table->decimal('grand_total', 10, 2);
-            $table->string('currency', 3)->default('EGP');
             $table->string('coupon_code')->nullable();
+            $table->string('payment_status')->default('pending'); // pending, paid, failed
             $table->text('notes')->nullable();
             $table->string('status')->default('pending');         // pending, processing, shipped, delivered, cancelled
             $table->timestamps();

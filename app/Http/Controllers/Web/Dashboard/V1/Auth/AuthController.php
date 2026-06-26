@@ -17,7 +17,7 @@ class AuthController extends Controller
         $dto = LoginDTO::fromRequest($request);
         $login_action->execute($dto);
         return redirect()
-                    ->route('dashboard.v1.home')
+                    ->intended(route('dashboard.home.index'))
                     ->with('success',__('dashboard.login_success'));
        
     }

@@ -22,7 +22,7 @@
                         {{ $key + 1 }}
                     </td>
                     <td>
-                        {{-- <span class="fi fi-{{ strtolower($country->iso2) }}"></span> --}}
+                        <span class="fi fi-{{ strtolower($country->iso2) }}"></span>
                         {{ $country->currentTranslation->name }}
                     </td>
                     <td>

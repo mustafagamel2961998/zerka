@@ -7,7 +7,7 @@ use App\Enums\Status;
 
 class Size extends Model
 {
-   protected $fillable = [
+    protected $fillable = [
         'size',
         'status',
     ];

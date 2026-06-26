@@ -5,8 +5,10 @@ enum Status: string
 {
     case PENDING = 'pending';
     case PROCESSING = 'processing';
+    case PACKED = 'packed';
     case SHIPPED = 'shipped';
-    case DELIVERED = 'delivered';
+    case DELIVERING = 'delivering';
+    case RECEIVED = 'received';
     case CANCELLED = 'cancelled';
     case COMPLETED = 'completed';
 
@@ -15,11 +17,12 @@ enum Status: string
         return match ($this) {
             self::PENDING => trans('enum.pending'),
             self::PROCESSING => trans('enum.processing'),
+            self::PACKED => trans('enum.packed'),
             self::SHIPPED => trans('enum.shipped'),
-            self::DELIVERED => trans('enum.delivered'),
+            self::DELIVERING => trans('enum.delivering'),
+            self::RECEIVED => trans('enum.received'),
             self::CANCELLED => trans('enum.cancelled'),
-            self::COMPLETED => trans('enum.completed'),
-
+            self::COMPLETED =>trans('enum.completed'),
         };
     }
 

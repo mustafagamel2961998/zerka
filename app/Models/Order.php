@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\Order\Status;
+use App\Enums\Order\PyamentStatus;
 
 class Order extends Model
 {
@@ -15,8 +16,8 @@ class Order extends Model
         'shipping_total',
         'discount_total',
         'grand_total',
-        'currency',
         'coupon_code',
+        'payment_status',
         'notes',
         'status',
     ];
@@ -25,12 +26,19 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class,'user_id','id');
     }
+    public function transactions(){
+        return $this->hasMany(Transaction::class,'order_id','id');
+    }
+    public function activities(){
+        return $this->hasMany(OrderActivity::class,'order_id','id');
+    }
     // end relationships
     //-----------------------------------------------------------------------------//
     protected function casts(): array
     {
         return [
             'user_id' => 'integer',
+            'payment_status' => PyamentStatus::class,
             'status' =>Status::class,
         ];
     }
