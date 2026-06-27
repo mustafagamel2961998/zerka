@@ -58,5 +58,7 @@ return [
     'all_products'=>'جميع المنتجات',
     // order
     'all_orders'=>'جميع الطلبات',
+    'item'=>'العنصر',
+
    
 ];

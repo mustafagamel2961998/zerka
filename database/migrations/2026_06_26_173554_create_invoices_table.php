@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('order_id')->constrained('orders')->restrictOnDelete();
+            $table->foreignId('user_id')->constrained('users')->restrictOnDelete(); 
+            $table->string('invoice_number')->unique();
+            $table->decimal('subtotal', 10, 2); 
+            $table->decimal('tax_total', 10, 2)->default(0.00);
+            $table->decimal('shipping_total', 10, 2)->default(0.00);
+            $table->decimal('discount_total', 10, 2)->default(0.00);
+            $table->decimal('grand_total', 10, 2); 
             $table->timestamps();
         });
     }

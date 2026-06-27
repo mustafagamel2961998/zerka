@@ -7,14 +7,11 @@
             <tr>
                 <th>{{__('global.order_number')}}</th>
                 <th>{{__('global.customer')}}</th>
-                <th>{{__('global.subtotal')}}</th>
-                <th>{{__('global.discount_total')}}</th>
-                <th>{{__('global.shipping_total')}}</th>
-                <th>{{__('global.tax_total')}}</th>
-                <th>{{__('global.grand_total')}}</th>
+                <th>{{__('global.items_count')}}</th>
                 <th>{{__('global.coupon_code')}}</th>
                 <th>{{__('global.payment_status')}}</th>
                 <th>{{__('global.created_at')}}</th>
+                <th>{{__('global.grand_total')}}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
             </tr> 
@@ -37,23 +34,11 @@
                             </span>
                         </a>
                     </td>
+                    
                     <td>
-                        {{ format_currency($order->subtotal,'EGP') }}
+                        {{ $order->items_count }}
                     </td>
-                  
-                    <td> 
-                       {{ format_currency($order->discount_total,'EGP') }}
-                    </td>
-                    <td>
-                        {{ format_currency($order->shipping_total,'EGP') }}
-
-                    </td>
-                    <td> 
-                        {{ format_currency($order->tax_total,'EGP') }}
-                    </td>
-                    <td> 
-                        {{ format_currency($order->grand_total,'EGP') }}
-                    </td>
+                 
                     <td> 
                         {{$order->coupon_code ? $order->coupon_code : '-'}}
                     </td>
@@ -79,14 +64,11 @@
                        {{ $order->created_at->translatedFormat('Y-m-d') }} /
                         <small class="text-muted">({{ $order->created_at->diffForHumans() }})</small>
                     </td>
+                    <td> 
+                        {{ format_currency($order->grand_total,'EGP') }}
+                    </td>
                     <td>
-                         {{-- // pending, processing, shipped, delivered, cancelled --}}
-                        @switch($order->status?->value)
-                            @case('pending')
-                                <span class="badge border border-secondary text-secondary px-2 py-1 fs-13">
-                                    {{__('global.pending')}}
-                                </span>
-                                @break
+                         @switch($order->status?->value)
                             @case('processing')
                                 <span class="badge border border-warning text-warning px-2 py-1 fs-13">
                                     {{__('global.processing')}}
@@ -102,7 +84,7 @@
                                     {{__('global.delivered')}}
                                 </span>
                                 @break
-                          @case('received')
+                        @case('received')
                                 <span class="badge border px-2 py-1 fs-13" style="color: #ff6c2f !important; border-color: #ff6c2f !important;">
                                     {{ __('global.order_received') }}
                                 </span>
@@ -118,8 +100,8 @@
                                 </span>
                                 @break
                             @default
-                                <span class="badge border border-dark text-dark px-2 py-1 fs-13">
-                                    {{ $order->status?->value }}
+                                <span class="badge border border-secondary text-secondary px-2 py-1 fs-13">
+                                    {{__('global.pending')}}
                                 </span>
                         @endswitch
                     </td>

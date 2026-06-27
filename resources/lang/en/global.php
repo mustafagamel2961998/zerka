@@ -146,4 +146,8 @@ return [
     'order_summary' => 'Order Summary',
     'packed' => 'Packed',
     'order_received' => 'Order Received',
+    'items_count' => 'Items Count',
+    'products'=>'Products',
+    'product'=>'Product',
+    'transaction_history' => 'Transaction History',
 ];

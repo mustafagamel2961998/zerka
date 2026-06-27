@@ -182,150 +182,128 @@
                                      class='bx bx-arrow-from-left align-middle fs-16'></i> {{__('global.estimated_delivery_date')}} :
                                  <span class="text-dark fw-medium">{{ $order->created_at->addDays(3)->translatedFormat('Y / m / D') }}</span></p>
                              <div>
-                                 <a href="#!" class="btn btn-primary">Make As Ready To Ship</a>
+                                 <a href="#!" class="btn btn-info">
+                                      {{__('global.transaction_history')}}  
+                                 </a>
                              </div>
                          </div>
                      </div>
                      <div class="card">
                          <div class="card-header">
-                             <h4 class="card-title">Product</h4>
+                             <h4 class="card-title">
+                                {{__('global.order_details')}} / {{__('global.products')}}
+                             </h4>
                          </div>
                          <div class="card-body">
                              <div class="table-responsive">
                                  <table class="table align-middle mb-0 table-hover table-centered">
                                      <thead class="bg-light-subtle border-bottom">
                                          <tr>
-                                             <th>Product Name & Size</th>
-                                             <th>Status</th>
-                                             <th>Quantity</th>
-                                             <th>Price</th>
-                                             <th>Text</th>
-                                             <th>Amount</th>
+                                             <th>
+                                                {{__('global.product')}}
+                                             </th>
+                                             <th>
+                                                {{__('global.price')}}
+                                             </th>
+                                             <th>
+                                                {{__('global.quantity')}}
+                                             </th>
+                                             <th>
+                                                {{__('global.subtotal')}}
+                                             </th>
+                                             <th>
+                                                {{__('global.status')}}
+                                             </th>
+                                             <th>
+                                                {{__('global.action')}}
+                                             </th>
                                          </tr>
                                      </thead>
                                      <tbody>
-                                         <tr>
-                                             <td>
-                                                 <div class="d-flex align-items-center gap-2">
-                                                     <div
-                                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                         <img src="assets/images/product/p-1.png" alt=""
-                                                             class="avatar-md">
-                                                     </div>
-                                                     <div>
-                                                         <a href="#!" class="text-dark fw-medium fs-15">Men Black
-                                                             Slim
-                                                             Fit T-shirt</a>
-                                                         <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>M</p>
-                                                     </div>
-                                                 </div>
+                                        @foreach ($order->items as $item)
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <div
+                                                            class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
+                                                            <img src="{{$item->product->getFirstMediaUrl('images', 'thumb')}}" alt="{{$item->product->currentTranslation->name}}"
+                                                                class="avatar-md">
+                                                        </div>
+                                                        <div>
+                                                            <a href="#!" class="text-primary fw-medium fs-15 ">
+                                                                {{$item->product->currentTranslation->name}}
+                                                            </a>
+                                                             @foreach ($item->attributes as $key => $attribute)
+                                                                <p class="text-muted mb-0 mt-1 fs-13">
+                                                                    <span class="fw-bold text-dark">
+                                                                        {{$key}} :
+                                                                    </span>
+                                                                    {{$attribute}} 
+                                                                </p>
+                                                             @endforeach
+                                                        </div>
+                                                    </div>
 
-                                             </td>
+                                                </td>
 
-                                             <td>
-                                                 <span
-                                                     class="badge bg-success-subtle text-success  px-2 py-1 fs-13">Ready</span>
-                                             </td>
-                                             <td> 1</td>
-                                             <td>$80.00</td>
-                                             <td> $3.00</td>
-                                             <td>
-                                                 $83.00
-                                             </td>
-                                         </tr>
+                                                <td>
+                                                      {{ format_currency($item->price,'EGP') }}
+                                                </td>
+                                                <td> 
+                                                    {{$item->quantity}}
+                                                </td>
+                                                <td>
+                                                    {{ format_currency($item->total,'EGP') }}
+                                                </td>
+                                                <td>
+                                                    @switch($item->status?->value)
+                                                        @case('processing')
+                                                            <span class="badge border border-warning text-warning px-2 py-1 fs-13">
+                                                                {{__('global.processing')}}
+                                                            </span>
+                                                            @break
+                                                        @case('shipped')
+                                                            <span class="badge border border-primary text-primary px-2 py-1 fs-13">
+                                                                {{__('global.shipped')}}
+                                                            </span>
+                                                            @break
+                                                        @case('delivering')
+                                                            <span class="badge border border-info text-info px-2 py-1 fs-13">
+                                                                {{__('global.delivered')}}
+                                                            </span>
+                                                            @break
+                                                    @case('received')
+                                                            <span class="badge border px-2 py-1 fs-13" style="color: #ff6c2f !important; border-color: #ff6c2f !important;">
+                                                                {{ __('global.order_received') }}
+                                                            </span>
+                                                        @break 
+                                                        @case('completed')
+                                                            <span class="badge border border-success text-success px-2 py-1 fs-13">
+                                                                {{__('global.completed')}}
+                                                            </span>
+                                                            @break            
+                                                        @case('cancelled')
+                                                            <span class="badge border border-danger text-danger px-2 py-1 fs-13">
+                                                                {{__('global.cancelled')}}
+                                                            </span>
+                                                            @break
+                                                        @default
+                                                            <span class="badge border border-secondary text-secondary px-2 py-1 fs-13">
+                                                                {{__('global.pending')}}
+                                                            </span>
+                                                    @endswitch
+                                                    
+                                                </td>
+                                                <td>
+                                                  <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
+                                                        data-url="" 
+                                                        data-name="{{ $item->product->currentTranslation->name}}">
+                                                     <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                   </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
 
-
-                                         <tr>
-                                             <td>
-                                                 <div class="d-flex align-items-center gap-2">
-                                                     <div
-                                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                         <img src="assets/images/product/p-5.png" alt=""
-                                                             class="avatar-md">
-                                                     </div>
-                                                     <div>
-                                                         <a href="#!" class="text-dark fw-medium fs-15">Dark
-                                                             Green
-                                                             Cargo Pent</a>
-                                                         <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>M
-                                                         </p>
-                                                     </div>
-                                                 </div>
-
-                                             </td>
-
-                                             <td>
-                                                 <span
-                                                     class="badge bg-light text-dark  px-2 py-1 fs-13">Packaging</span>
-                                             </td>
-                                             <td> 3</td>
-                                             <td>$330.00</td>
-                                             <td> $4.00</td>
-                                             <td>
-                                                 $334.00
-                                             </td>
-                                         </tr>
-
-                                         <tr>
-                                             <td>
-                                                 <div class="d-flex align-items-center gap-2">
-                                                     <div
-                                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                         <img src="assets/images/product/p-8.png" alt=""
-                                                             class="avatar-md">
-                                                     </div>
-                                                     <div>
-                                                         <a href="#!" class="text-dark fw-medium fs-15">Men Dark
-                                                             Brown Wallet</a>
-                                                         <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>S
-                                                         </p>
-                                                     </div>
-                                                 </div>
-
-                                             </td>
-
-                                             <td>
-                                                 <span
-                                                     class="badge bg-success-subtle text-success  px-2 py-1 fs-13">Ready</span>
-                                             </td>
-                                             <td> 1</td>
-                                             <td>$132.00</td>
-                                             <td> $5.00</td>
-                                             <td>
-                                                 $137.00
-                                             </td>
-                                         </tr>
-
-                                         <tr>
-                                             <td>
-                                                 <div class="d-flex align-items-center gap-2">
-                                                     <div
-                                                         class="rounded bg-light avatar-md d-flex align-items-center justify-content-center">
-                                                         <img src="assets/images/product/p-10.png" alt=""
-                                                             class="avatar-md">
-                                                     </div>
-                                                     <div>
-                                                         <a href="#!" class="text-dark fw-medium fs-15">Kid's
-                                                             Yellow
-                                                             T-shirt</a>
-                                                         <p class="text-muted mb-0 mt-1 fs-13"><span>Size : </span>S
-                                                         </p>
-                                                     </div>
-                                                 </div>
-
-                                             </td>
-
-                                             <td>
-                                                 <span
-                                                     class="badge bg-light text-dark  px-2 py-1 fs-13">Packaging</span>
-                                             </td>
-                                             <td> 2</td>
-                                             <td>$220.00</td>
-                                             <td> $3.00</td>
-                                             <td>
-                                                 $223.00
-                                             </td>
-                                         </tr>
                                      </tbody>
                                  </table>
                              </div>
@@ -681,7 +659,54 @@
              </div> --}}
          </div>
      </div>
-     
+        
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
+                
+                <div class="modal-body text-center p-4">
+                    
+                    <div class="d-inline-flex align-items-center justify-content-center bg-danger-subtle text-danger rounded-circle mb-3" style="width: 64px; height: 64px;">
+                        <iconify-icon icon="solar:danger-triangle-bold-duotone" style="font-size: 36px;"></iconify-icon>
+                    </div>
+
+                    <h4 class="text-dark fw-bold mb-2">{{ __('global.delete_confirmation') }}</h4>
+                    
+                    <p class="text-muted fs-15 mb-3">
+                        {{ __('global.delete_warning_title', ['name' => __('dashboard.item')]) }}
+                        <strong id="name-span" class="text-dark fw-semibold d-block mt-1 fs-16"></strong>
+                    </p>
+
+                    <div class="alert alert-danger border-0 d-flex align-items-start text-start gap-2 mb-3 py-2 px-3 fs-13" role="alert">
+                        <iconify-icon icon="solar:info-circle-bold" class="fs-18 mt-0.5 flex-shrink-0"></iconify-icon>
+                        <div>
+                            <strong>{{ __('global.delete_cascade_warning') }}</strong>
+                        </div>
+                    </div>
+
+                    <p class="text-secondary small mb-0 fs-12">
+                        <iconify-icon icon="solar:lock-password-broken" class="align-middle me-1"></iconify-icon>
+                        {{ __('global.cannot_undo') }}
+                    </p>
+                </div>
+
+                <div class="modal-footer border-0 bg-light-subtle d-flex justify-content-center gap-2 pb-4 pt-0 px-4">
+                    <button type="button" class="btn btn-light fw-medium px-4" data-bs-dismiss="modal" style="border-radius: 8px;">
+                        {{ __('global.cancel') }}
+                    </button>
+                    
+                    <form id="modal-delete-form" action="" method="POST" class="m-0">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger fw-medium px-4" style="border-radius: 8px;">
+                            {{ __('global.confirm_delete') }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
      @push('javascript')
          <script src="{{ asset('assets/js/dashboard/pages/order/order.js') }}"></script>
          <script src="{{ asset('assets/js/dashboard/pages/jquery/order/order.js') }}"></script>

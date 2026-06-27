@@ -146,5 +146,9 @@ return [
     'order_summary' => 'ملخص الطلب',
     'packed'=>'تم التعبئة',
     'order_received'=>'تم استلام الطلب',
+    'items_count'=>'عدد العناصر',
+    'products'=>'المنتجات',
+    'product'=>'المنتج',
+    'transaction_history'=>'سجل المعاملات',
 ];
     

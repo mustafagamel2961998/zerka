@@ -60,5 +60,6 @@ return [
     
     // order
     'all_orders'=>'All Orders',
+    'item'=>'Item',
   
 ];
