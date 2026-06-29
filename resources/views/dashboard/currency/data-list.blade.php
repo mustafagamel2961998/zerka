@@ -5,7 +5,7 @@
                 <th>{{ __('global.number') }}</th>
                 <th>{{ __('global.currency_name') }}</th>
                 <th>{{ __('global.code') }}</th>
-                <th>{{ __('global.exchange_rate') }}</th>
+                <th>{{ __('global.exchange_rate') }} => (<small>{{ __('global.exchange_rate_description') }}</small>)</th>
                 <th>{{ __('global.decimal_places') }}</th>
                 <th>{{ __('global.status') }}</th>
                 <th>{{ __('global.action') }}</th>
@@ -25,7 +25,7 @@
                         {{ $currency->code }}
                     </td>
                     <td>
-                        {{ $currency->exchange_rate }}
+                        {{ format_currency(number_format($currency->exchange_rate, $currency->decimal_places),$currency->code) }}
                     </td>
                     <td>
                         {{ $currency->decimal_places }}

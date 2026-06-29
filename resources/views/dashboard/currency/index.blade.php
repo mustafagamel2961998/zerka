@@ -1,9 +1,7 @@
 <x-dashboard.layout title="{{ __('dashboard.currencies') }}">
 
     <div class="row">
-
-        {{-- <x-dashboard.partial.status-card :counts="$counts"/> --}}
-
+        <x-dashboard.partial.currency.statistics/>
     </div>
 
     <div class="row">
@@ -14,12 +12,12 @@
                        {{ __('global.table-title', ['name' => __('dashboard.' . request()->segment(3))]) }}
                     </h4>
 
-                    <a href="{{ route('dashboard.v1.countries.create') }}" class="btn btn-sm btn-primary">
+                    <a href="{{ route('dashboard.v1.currencies.create') }}" class="btn btn-sm btn-primary">
                         {{ __('global.add_with_attribute', ['attribute' => __('dashboard.currency')]) }}
                     </a>
 
                 </div>
-                  @if($currencies->isEmpty())
+                @if($currencies->isEmpty())
                     <div class="card p-5 text-center border-0 shadow-sm">
                         <div class="d-flex flex-column align-items-center justify-content-center">
                             <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
@@ -34,13 +32,13 @@
                         </div>
                     </div>
                 @else
-                <div>
-                    @include('dashboard.currency.data-list', ['currencies' => $currencies])
-                    <!-- end table-responsive -->
-                </div>
-                <div class="card-footer border-top">
-                    {{ $currencies->links() }}
-                </div>
+                    <div>
+                        @include('dashboard.currency.data-list', ['currencies' => $currencies])
+                        <!-- end table-responsive -->
+                    </div>
+                    <div class="card-footer border-top">
+                        {{ $currencies->links() }}
+                    </div>
                 @endif
             </div>
         </div>

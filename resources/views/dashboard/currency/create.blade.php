@@ -1,9 +1,7 @@
 <x-dashboard.layout title="{{ __('global.add_with_attribute', ['attribute' => __('dashboard.currency')]) }}">
 
     <div class="row">
-
-        <x-dashboard.partial.status-card :counts="$counts" />
-
+         <x-dashboard.partial.currency.statistics/>
     </div>
 
 
@@ -22,7 +20,6 @@
                             @csrf
                             @include('dashboard.currency._form', [
                                     'currency' => $currency,
-                                    'currencies' => $currencies,
                                     'btn_text' => __('global.add_with_attribute', ['attribute' => __('dashboard.currency')])
                                 ])
                         </form>

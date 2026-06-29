@@ -9,7 +9,7 @@
                 {{ __('form.country_name_ar') }}
             </label>
             <input type="text" name="name[ar]" id="country_name_ar" class="form-control @error('name.ar') is-invalid @enderror" 
-            value="{{old('name.ar',$country->translations->where('locale', 'ar')->first()->name ?? '')}}" 
+            value="{{old('name.ar',$country->translations->where('locale', 'ar')->first()?->name ?? '')}}" 
             placeholder="{{ __('form.country_name_ar') }}">
             @error('name.ar')
                 <div class="invalid-feedback">
@@ -25,7 +25,7 @@
                 {{ __('form.country_name_en') }}
             </label>
             <input type="text" name="name[en]" id="country_name_en" class="form-control @error('name.en') is-invalid @enderror" 
-            value="{{old('name.en',$country->translations->where('locale', 'en')->first()->name ?? '')}}" 
+            value="{{old('name.en',$country->translations->where('locale', 'en')->first()?->name ?? '')}}" 
             placeholder="{{ __('form.country_name_en') }}">
              @error('name.en')
                 <div class="invalid-feedback">

@@ -3,6 +3,14 @@
 return [
     //currency
     'select_currency' => 'Select Currency',
+    'currency_name_ar' => 'Currency name in arabic',
+    'currency_name_en' => 'Currency name in english',
+    'currency_symbol_en' => 'Currency symbol in english',
+    'currency_symbol_ar' => 'Currency symbol in arabic',
+    'exchange_rate' => 'Exchange Rate',
+    'exchange_rate_description'=>'Exchange Rate against Egyptian Pound',
+    'code' => 'Code',
+    'decimal_places' => 'Decimal places',
     // country
     'country'=>'Country',
     'country_name'=>'Country name',

@@ -222,6 +222,7 @@ return [
        'color_id'=>'Color',
        'size_id'=>'Size',
        'images'=>'Images',
+       'code'=>'Code',
     ],
 
 ];

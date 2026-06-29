@@ -20,9 +20,10 @@ return new class extends Migration
                   ->nullable()  
                   ->constrained('users')
                   ->nullOnDelete();
+            $table->string('title');      
             $table->string('description');
             $table->json('properties')->nullable();
-            $table->string('status_key');      
+            $table->string('status');      
             $table->timestamps();
         });
     }

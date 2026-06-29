@@ -20,7 +20,7 @@
                     
                 </div>
                     @if($orders->isEmpty())
-                     <div class="card p-5 text-center border-0 shadow-sm">
+                      <div class="card p-5 text-center border-0 shadow-sm">
                             <div class="d-flex flex-column align-items-center justify-content-center">
                                 <div class="bg-light-subtle rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
                                     <iconify-icon icon="solar:folder-empty-broken" class="text-muted" style="font-size: 45px;"></iconify-icon>

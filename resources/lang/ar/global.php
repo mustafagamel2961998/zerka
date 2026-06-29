@@ -150,5 +150,7 @@ return [
     'products'=>'المنتجات',
     'product'=>'المنتج',
     'transaction_history'=>'سجل المعاملات',
+    'order_timeline'=>'الجدول الزمني للطلب',
+    'exchange_rate_description'=>'سعر الصرف مقابل الجنية المصري',
 ];
     

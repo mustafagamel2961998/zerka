@@ -12,15 +12,16 @@ class OrderEloquentRepository implements OrderRepositoryInterface
     }
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {
-        return Order::select(
-                'id,
-                user_id,
-                order_number,
-                grand_total,
-                coupon_code,
-                created_at,
-                payment_status,
-                status')->with([
+        return Order::select([
+                            'id', 
+                            'user_id', 
+                            'order_number', 
+                            'grand_total', 
+                            'coupon_code', 
+                            'created_at', 
+                            'payment_status', 
+                            'status'
+                        ])->with([
                         'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name','media')
                     ])->withCount('items')
                     ->latest()
@@ -29,7 +30,7 @@ class OrderEloquentRepository implements OrderRepositoryInterface
 
     public function findById($id) : Order
     {
-        return Order::with([
+        return Order::with(['activities.user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name'),
                             'items'=>fn($q)=>$q->with('product.currentTranslation:id,product_id,name','product.media'),
                             'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name','media')
                           ])->findOrFail($id);

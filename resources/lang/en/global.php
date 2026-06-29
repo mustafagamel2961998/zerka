@@ -150,4 +150,6 @@ return [
     'products'=>'Products',
     'product'=>'Product',
     'transaction_history' => 'Transaction History',
+    'order_timeline' => 'Order Timeline',
+    'exchange_rate_description' => 'Exchange Rate against Egyptian Pound',
 ];

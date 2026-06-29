@@ -3,7 +3,14 @@
 return [
     //currency
     'select_currency' => 'اختر العملة',
-
+    'currency_name_ar' => 'اسم العملة بالعربية',
+    'currency_name_en' => 'اسم العملة بالانجليزية',
+    'currency_symbol_en' => 'رمز العملة بالانجليزية',
+    'currency_symbol_ar' => 'رمز العملة بالعربية',
+    'exchange_rate' => 'سعر الصرف',
+    'exchange_rate_description'=>'سعر الصرف مقابل الجنية المصري',
+    'code' => 'رمز العملة',
+    'decimal_places' => 'عدد الاحرف العشرية',
     // country
     'country'=>'الدولة',
     'country_name'=>'اسم الدولة',

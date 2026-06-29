@@ -3,16 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Enums\Order\Status;
 
 class OrderActivity extends Model
 {
-      protected $fillable = [
+    protected $fillable = [
         'order_id',
         'user_id',
+        'title',
         'description',
         'properties',
-        'status_key',
-        
+        'status',
     ];
     //-----------------------------------------------------------------------------//
     // start relationships
@@ -29,6 +30,8 @@ class OrderActivity extends Model
         return [
             'order_id' => 'integer',
             'user_id' => 'integer',
+            'properties' => 'array',
+            'status' => Status::class,
         ];
     }
     //-----------------------------------------------------------------------------//
