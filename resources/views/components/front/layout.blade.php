@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Home 02</title>
+    <title>{{$title}}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -47,163 +47,229 @@
 
 <body class="animsition">
 
+
     <!-- Header -->
-    <header class="header-v2">
-        <!-- Header desktop -->
-        <div class="container-menu-desktop trans-03">
-            <div class="wrap-menu-desktop">
-                <nav class="limiter-menu-desktop p-l-45">
+<header class="header-v2">
+    <!-- Header desktop -->
+    <div class="container-menu-desktop trans-03">
+        <div class="wrap-menu-desktop">
+            <nav class="limiter-menu-desktop p-l-45">
 
-                    <!-- Logo desktop -->
-                    <a href="#" class="logo">
-                        <img src="{{ asset('assets/images/front/icons/logo-01.png') }}" alt="IMG-LOGO">
-                    </a>
+                <!-- Logo desktop -->
+                <a href="#" class="logo">
+                    <img src="{{ asset('assets/images/front/icons/logo-01.png') }}" alt="IMG-LOGO">
+                </a>
 
-                    <!-- Menu desktop -->
-                    <div class="menu-desktop">
-                        <ul class="main-menu">
-                            <li class="active-menu">
-                                <a href="index.html">Home</a>
-                                <ul class="sub-menu">
-                                    <li><a href="index.html">Homepage 1</a></li>
-                                    <li><a href="home-02.html">Homepage 2</a></li>
-                                    <li><a href="home-03.html">Homepage 3</a></li>
-                                </ul>
-                            </li>
+                <!-- Menu desktop -->
+                <div class="menu-desktop">
+                    <ul class="main-menu">
+                        <li>
+                            <a href="{{route('home')}}">Home</a>
+                        </li>
+                        {{-- <li class="active-menu">
+                            <a href="index.html">Home</a>
+                            <ul class="sub-menu">
+                                <li><a href="index.html">Homepage 1</a></li>
+                                <li><a href="home-02.html">Homepage 2</a></li>
+                                <li><a href="home-03.html">Homepage 3</a></li>
+                            </ul>
+                        </li> --}}
 
-                            <li>
-                                <a href="product.html">Shop</a>
-                            </li>
+                        <li>
+                            <a href="product.html">Shop</a>
+                        </li>
 
-                            <li class="label1" data-label1="hot">
-                                <a href="shoping-cart.html">Features</a>
-                            </li>
+                        <li class="label1" data-label1="hot">
+                            <a href="shoping-cart.html">Features</a>
+                        </li>
 
-                            <li>
-                                <a href="blog.html">Blog</a>
-                            </li>
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
 
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
 
-                            <li>
-                                <a href="contact.html">Contact</a>
-                            </li>
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Icon header (الجانب الأيمن - الـ Auth والـ Icons) -->
+                <div class="wrap-icon-header flex-w flex-r-m h-full p-r-15">
+                    
+                    <!-- جزء الـ Authentication الجديد "على جنب" للـ Desktop -->
+                    <div class="flex-c-m h-full p-r-20 Menu-desktop">
+                        <ul class="main-menu" style="margin-bottom: 0;">
+                            @guest
+                                <li style="padding-bottom: 0;">
+                                    <a href="{{ route('login') }}" class="stext-102 cl2 hov-cl1 trans-04 p-lr-10" style="font-size: 14px;">Login</a>
+                                </li>
+                                <li style="padding-bottom: 0;">
+                                    <a href="" class="stext-102 cl2 hov-cl1 trans-04 p-lr-10" style="font-size: 14px;">Register</a>
+                                </li>
+                            @endguest
+
+                            @auth
+                                <li style="padding-bottom: 0;">
+                                    <a href="#" class="cl2 hov-cl1 trans-04 p-lr-10" style="font-size: 16px;">
+                                        <i class="zmdi zmdi-account m-r-5"></i> {{ Auth::user()->profile->first_name }}
+                                    </a>
+                                    <ul class="sub-menu" style="left: auto; right: 0;">
+                                        <li><a href="#">Dashboard</a></li>
+                                        <li><a href="#">Orders</a></li>
+                                        <li>
+                                            <a href="" 
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                               class="text-danger">
+                                                Logout
+                                            </a>
+                                            <form id="logout-form" action="" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endauth
                         </ul>
                     </div>
 
-                    <!-- Icon header -->
-                    <div class="wrap-icon-header flex-w flex-r-m h-full">
-                        <div class="flex-c-m h-full p-r-24">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
-                                <i class="zmdi zmdi-search"></i>
-                            </div>
-                        </div>
-
-                        <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                                data-notify="2">
-                                <i class="zmdi zmdi-shopping-cart"></i>
-                            </div>
-                        </div>
-
-                        <div class="flex-c-m h-full p-lr-19">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-                                <i class="zmdi zmdi-menu"></i>
-                            </div>
+                    <!-- أيقونات البحث والسلة والمنيو الجانبي -->
+                    <div class="flex-c-m h-full p-r-24 bor6">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                            <i class="zmdi zmdi-search"></i>
                         </div>
                     </div>
-                </nav>
-            </div>
-        </div>
 
-        <!-- Header Mobile -->
-        <div class="wrap-header-mobile">
-            <!-- Logo moblie -->
-            <div class="logo-mobile">
-                <a href="index.html"><img src="{{ asset('assets/images/front/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
-            </div>
+                    <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                            data-notify="2">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
+                    </div>
 
-            <!-- Icon header -->
-            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-                <div class="flex-c-m h-full p-r-10">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
-                        <i class="zmdi zmdi-search"></i>
+                    <div class="flex-c-m h-full p-l-18">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                            <i class="zmdi zmdi-menu"></i>
+                        </div>
                     </div>
                 </div>
+            </nav>
+        </div>
+    </div>
 
-                <div class="flex-c-m h-full p-lr-10 bor5">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                        data-notify="2">
-                        <i class="zmdi zmdi-shopping-cart"></i>
-                    </div>
+    <!-- Header Mobile -->
+    <div class="wrap-header-mobile">
+        <!-- Logo moblie -->
+        <div class="logo-mobile">
+            <a href="index.html"><img src="{{ asset('assets/images/front/icons/logo-01.png') }}" alt="IMG-LOGO"></a>
+        </div>
+
+        <!-- Icon header -->
+        <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+            <div class="flex-c-m h-full p-r-10">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
                 </div>
             </div>
 
-            <!-- Button show menu -->
-            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
+            <div class="flex-c-m h-full p-lr-10 bor5">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                    data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
             </div>
         </div>
 
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </div>
+    </div>
 
-        <!-- Menu Mobile -->
-        <div class="menu-mobile">
-            <ul class="main-menu-m">
+
+    <!-- Menu Mobile (بتفضل هنا مريحة وسهلة في التصفح للموبايل) -->
+    <div class="menu-mobile">
+        <ul class="main-menu-m">
+            <li>
+                <a href="{{route('home')}}">Home</a>
+            </li>
+
+            <li>
+                <a href="product.html">Shop</a>
+            </li>
+
+            <li>
+                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+            </li>
+
+            <li>
+                <a href="blog.html">Blog</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
+
+            <!-- جزء الـ Authentication في الموبايل -->
+            @guest
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="">Register</a>
+                </li>
+            @endguest
+
+            @auth
+                <li>
+                    <a href="#">My Account ({{ Auth::user()->name }})</a>
                     <ul class="sub-menu-m">
-                        <li><a href="index.html">Homepage 1</a></li>
-                        <li><a href="home-02.html">Homepage 2</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li>
+                            <a href="" 
+                            onclick="event.preventDefault(); document.getElementById('mobile-logout-form').submit();"
+                            class="text-danger">
+                                Logout
+                            </a>
+                            <form id="mobile-logout-form" action="" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
                     </ul>
                     <span class="arrow-main-menu-m">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
                     </span>
                 </li>
+            @endauth
+        </ul>
+    </div>
 
-                <li>
-                    <a href="product.html">Shop</a>
-                </li>
+    <!-- Modal Search -->
+    <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+        <div class="container-search-header">
+            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                <img src="{{ asset('assets/images/front/icons/icon-close2.png') }}" alt="CLOSE">
+            </button>
 
-                <li>
-                    <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
-                </li>
-
-                <li>
-                    <a href="blog.html">Blog</a>
-                </li>
-
-                <li>
-                    <a href="about.html">About</a>
-                </li>
-
-                <li>
-                    <a href="contact.html">Contact</a>
-                </li>
-            </ul>
-        </div>
-
-        <!-- Modal Search -->
-        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-            <div class="container-search-header">
-                <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                    <img src="{{ asset('assets/images/front/icons/icon-close2.png') }}" alt="CLOSE">
+            <form class="wrap-search-header flex-w p-l-15">
+                <button class="flex-c-m trans-04">
+                    <i class="zmdi zmdi-search"></i>
                 </button>
-
-                <form class="wrap-search-header flex-w p-l-15">
-                    <button class="flex-c-m trans-04">
-                        <i class="zmdi zmdi-search"></i>
-                    </button>
-                    <input class="plh3" type="text" name="search" placeholder="Search...">
-                </form>
-            </div>
+                <input class="plh3" type="text" name="search" placeholder="Search...">
+            </form>
         </div>
-    </header>
-
+    </div>
+</header>
     <!-- Sidebar -->
     <aside class="wrap-sidebar js-sidebar">
         <div class="s-full js-hide-sidebar"></div>
@@ -218,7 +284,7 @@
             <div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
                 <ul class="sidebar-link w-full">
                     <li class="p-b-13">
-                        <a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
+                        <a href="{{route('home')}}" class="stext-102 cl2 hov-cl1 trans-04">
                             Home
                         </a>
                     </li>

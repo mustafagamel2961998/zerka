@@ -16,7 +16,7 @@ class CurrencySeeder extends Seeder
         $currency = Currency::create([
             'code'=>'EGP',
             'exchange_rate'=>1,
-            'decimal_places'=>0,
+            'decimal_places'=>2,
             'status'=>'active',
         ]);
         $currency->translations()->create([

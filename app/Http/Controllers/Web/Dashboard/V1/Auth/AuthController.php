@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Web\Dashboard\V1\Auth;
 
-use App\Actions\Dashboard\V1\Auth\LoginAction;
+use App\Actions\Auth\LoginAction;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Dashboard\V1\Auth\LoginRequest;
-use App\DTOs\Dashboard\V1\Auth\LoginDTO;
+use App\Http\Requests\Auth\LoginRequest;
+use App\DTOs\Auth\LoginDTO;
 class AuthController extends Controller
 {
     public function __construct(){}
@@ -18,7 +18,7 @@ class AuthController extends Controller
         $login_action->execute($dto);
         return redirect()
                     ->intended(route('dashboard.v1.home'))
-                    ->with('success',__('dashboard.login_success'));
+                    ->with('success',__('global.login_success'));
        
     }
 }

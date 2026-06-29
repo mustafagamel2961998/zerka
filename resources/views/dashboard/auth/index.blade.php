@@ -64,11 +64,11 @@
                                 </div>
 
                                 <h2 class="fw-bold fs-24">
-                                    {{ __('dashboard.sign_in') }}
+                                    {{ __('global.sign_in') }}
                                 </h2>
 
                                 <p class="text-muted mt-1 mb-4">
-                                    {{ __('dashboard.auth_text_note') }}
+                                    {{ __('global.auth_text_note') }}
                                 </p>
                                 @error('login_failed')
                                     <div class="alert alert-danger alert-dismissible fade show border-0 shadow-sm mb-4 d-flex align-items-center gap-2" role="alert" style="background-color: #fce8e6; color: #a8201a;">
@@ -87,14 +87,14 @@
                                         @csrf
                                         <div class="mb-3">
                                             <label class="form-label" for="login">
-                                                {{ __('dashboard.login_label') }}
+                                                {{ __('global.login_label') }}
                                             </label>
                                             <input type="text" id="login" name="login"
                                                 class="form-control 
                                                        @error('login')
                                                             is-invalid
                                                        @enderror"
-                                                placeholder="{{ __('dashboard.login_input_placeholder') }}">
+                                                placeholder="{{ __('global.login_input_placeholder') }}">
                                             @error('login')
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                                     {{ $message }}
@@ -103,12 +103,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="password">
-                                                {{ __('dashboard.password_label') }}
+                                                {{ __('global.password_label') }}
                                             </label>
                                             <input type="password" id="password" name="password"
                                                 class="form-control 
                                                        @error('password') is-invalid @enderror"
-                                                placeholder="{{ __('dashboard.password_input_placeholder') }}">
+                                                placeholder="{{ __('global.password_input_placeholder') }}">
                                             @error('password')
                                                 <div id="validationServer03Feedback" class="invalid-feedback">
                                                     {{ $message }}
@@ -120,14 +120,14 @@
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input" id="checkbox-signin">
                                                 <label class="form-check-label" for="checkbox-signin">
-                                                    {{ __('dashboard.remember_me_text') }}
+                                                    {{ __('global.remember_me_text') }}
                                                 </label>
                                             </div>
                                         </div>
 
                                         <div class="mb-1 text-center d-grid">
                                             <button class="btn btn-soft-primary" type="submit">
-                                                {{ __('dashboard.sign_in') }}
+                                                {{ __('global.sign_in') }}
                                             </button>
                                         </div>
                                     </form>

@@ -2,10 +2,8 @@
 
 namespace Database\Seeders\Country;
 
-use App\Models\City;
 use App\Models\Country;
 use App\Models\Currency;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CountrySeeder extends Seeder

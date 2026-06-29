@@ -1,11 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Web\Front\V1\Auth\AuthController;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
     // Unauthenticated Routes
     //****************************************-:START:-****************************************/
+    //------------------------------------------------------------------------------------------ 
+    //-Auth Routes 
+      Route::get('login',[AuthController::class,'loginView'])->name('login');
     //------------------------------------------------------------------------------------------ 
     //-Home Routes 
     Route::get('/',function(){

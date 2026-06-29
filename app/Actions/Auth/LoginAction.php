@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Actions\Dashboard\V1\Auth;
+namespace App\Actions\Auth;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\DTOs\Dashboard\V1\Auth\LoginDTO;
+use App\DTOs\Auth\LoginDTO;
 use App\Repositories\Contracts\Auth\AuthRepositoryInterface;
 use Illuminate\Validation\ValidationException;
 class LoginAction
@@ -16,12 +16,11 @@ class LoginAction
         $user = $this->auth_repository_interface->login($credentials);
         if(!$user || !Hash::check($credentials['password'], $user->password)){
              throw ValidationException::withMessages([
-                'login_failed' => __('dashboard.login_failed')
+                'login_failed' => __('global.login_failed')
             ]);
         }
 
         Auth::login($user, true);
         request()->session()->regenerate();
-   
     }
 }

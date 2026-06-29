@@ -1,12 +1,9 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\V1\Auth;
+namespace App\Http\Requests\Auth;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\RateLimiter;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Str;
 class LoginRequest extends FormRequest
 {
     /**

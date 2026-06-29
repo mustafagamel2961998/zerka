@@ -1,4 +1,4 @@
-<x-front.layout>
+<x-front.layout title="{{ __('front.home') }}">
 
 
 	<!-- Slider -->
