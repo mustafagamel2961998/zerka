@@ -24,6 +24,7 @@ class User extends Authenticatable implements HasMedia
      * @var list<string>
      */
     protected $fillable = [
+        'country_id',
         'email',
         'phone',
         'password',
@@ -34,6 +35,9 @@ class User extends Authenticatable implements HasMedia
     // start relationships
         public function profile(){
             return $this->hasOne(Profile::class,'user_id','id');
+        }
+        public function country(){
+            return $this->belongsTo(Country::class,'country_id','id');
         }
     // end relationships
 

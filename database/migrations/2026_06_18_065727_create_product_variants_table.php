@@ -19,9 +19,7 @@ return new class extends Migration
             $table->foreignId('size_id')
                   ->constrained('sizes')
                   ->cascadeOnDelete();
-            $table->foreignId('color_id')
-                  ->constrained('colors')
-                  ->cascadeOnDelete();
+    
             $table->decimal('price', 8, 2);
             $table->string('sku')->unique();
             $table->timestamps();

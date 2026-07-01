@@ -111,8 +111,13 @@ class ProductRequest extends FormRequest
                 'required', 
                 'exists:sizes,id'
             ],
-            'variants.*.color_id' => [
-                'required', 
+            'variants.*.colors' => [
+                'required',
+                'array',
+                'min:1'
+            ],
+            'variants.*.colors.*' => [
+                'required',
                 'exists:colors,id'
             ],
             'variants.*.warehouse_id' => [

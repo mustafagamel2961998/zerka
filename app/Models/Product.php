@@ -31,7 +31,18 @@ class Product extends Model implements HasMedia
     public function variants(){
         return $this->hasMany(ProductVariant::class,'product_id','id');
     }
+    public function minVariantPrice() {
+        return $this->hasOne(ProductVariant::class,'product_id','id')->ofMany([
+            'price' => 'min'
+        ])->select('product_variants.id', 'product_variants.product_id', 'product_variants.price');
+    }
     // end relationships
+    //-----------------------------------------------------------------------------//
+    // start local scope
+    public function scopeActive($query){
+        return $query->where('status',Status::ACTIVE);
+    }
+    // end local scope
     //-----------------------------------------------------------------------------//
     protected function casts(): array
     {

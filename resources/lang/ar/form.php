@@ -101,5 +101,7 @@ return [
     'price' => 'السعر',
     'quantity' => 'الكمية',
     'minimum_quantity' => 'الحد الادنى للكمية',
+    'colors' => 'الالوان',
+    'sizes' => 'الاحجام',
     
 ];

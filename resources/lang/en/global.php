@@ -164,4 +164,6 @@ return [
     'auth_text_note'=>'Enter your email address or phone number and password to access admin panel.',
     'no_account_text' => 'Don\'t have an account?',
     'sign_up'=>'Sign Up',
+    'view_all' => 'View All',
+
 ];

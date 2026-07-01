@@ -34,6 +34,12 @@ class Category extends Model  implements HasMedia
     }
     // end relationships
     //-----------------------------------------------------------------------------//
+    // start local scope
+    public function scopeActive($query){
+        return $query->where('status',Status::ACTIVE);
+    }
+    // end local scope
+    //-----------------------------------------------------------------------------//
     protected function casts(): array
     {
         return [

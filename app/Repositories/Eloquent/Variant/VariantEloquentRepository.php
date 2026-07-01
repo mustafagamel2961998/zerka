@@ -12,11 +12,10 @@ class VariantEloquentRepository implements VariantRepositoryInterface
         foreach ($variants as $variant) {
             $variantData = $product->variants()->create([
                 'size_id'  => $variant['size_id'],
-                'color_id' => $variant['color_id'],
                 'price'    => $variant['price'],
                 'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
             ]);
-
+            $variantData->colors()->create($variant['colors']);
             $variantData->inventory()->create([
                 'warehouse_id'     => $variant['warehouse_id'],
                 'quantity'         => $variant['quantity'],

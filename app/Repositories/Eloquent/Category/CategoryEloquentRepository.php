@@ -5,11 +5,12 @@ use App\Repositories\Contracts\Category\CategoryRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
 class CategoryEloquentRepository implements CategoryRepositoryInterface
 {
-    public function __construct()
+    public function baseQuery() : Builder
     {
-        //
+        return Category::query();
     }
 
     public function all() : Collection

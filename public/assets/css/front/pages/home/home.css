@@ -1,0 +1,17 @@
+.product-img{
+    width: 200px;
+    object-fit: cover;
+    height: 240px;
+}
+.product-card{
+    background-color: #f6f6f6;
+    height: 340px;
+}
+.product-footer{
+    font-size: 0.7rem; 
+    font-weight: 500;
+    padding:0 10px;
+}
+.category-banner{
+    height: 220px;
+}

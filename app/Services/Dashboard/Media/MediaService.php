@@ -21,7 +21,6 @@ class MediaService
     {
         foreach($files as $file){
             if($file != null && !empty($file) && $file instanceof UploadedFile){
-
                 $model->addMedia($file)
                     ->toMediaCollection($collection);
             }

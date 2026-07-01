@@ -68,46 +68,56 @@ document.addEventListener("DOMContentLoaded", function () {
     const template = document.getElementById('variant-template');
     const addBtn = document.getElementById('add-variant-btn');
     
-    // جعل العداد يبدأ بعدد الصفوف المعروضة فعلياً (سواء من الـ old أو الداتابيز)
     let rowCount = tableBody.querySelectorAll('.variant-row').length;
 
-    function updateColorCircle(selectElement) {
-        const selectedOption = selectElement.options[selectElement.selectedIndex];
-        if (selectedOption) {
-            const hexColor = selectedOption.getAttribute('data-hex') || '#000000';
-            const circle = selectElement.closest('td').querySelector('.color-preview-circle');
-            if (circle) {
-                circle.style.backgroundColor = hexColor;
+    // دالة لتحديث الشكل الجمالي لدائرة اللون بناءً على حالة الـ Checkbox (محدد أم لا)
+    function refreshColorBorders(rowElement) {
+        rowElement.querySelectorAll('.color-checkbox').forEach(checkbox => {
+            const wrapperLabel = checkbox.closest('.style-color-wrapper');
+            if (wrapperLabel) {
+                if (checkbox.checked) {
+                    wrapperLabel.classList.remove('border-light-subtle');
+                    wrapperLabel.classList.add('border-dark', 'shadow');
+                    wrapperLabel.style.transform = 'scale(1.1)';
+                    wrapperLabel.style.transition = 'all 0.15s ease-in-out';
+                    checkbox.style.opacity = '0.9'; // جعل الـ Checkbox واضحاً عند الاختيار
+                } else {
+                    wrapperLabel.classList.remove('border-dark', 'shadow');
+                    wrapperLabel.style.transform = 'scale(1)';
+                    checkbox.style.opacity = '0.2'; // جعل الـ Checkbox شبه مخفي ليبرز اللون فقط
+                }
             }
-        }
+        });
     }
 
-    // تلوين الدوائر لكل الصفوف القديمة المطبوعة عند تحميل الصفحة فوراً
-    tableBody.querySelectorAll('.color-selector').forEach(select => {
-        updateColorCircle(select);
+    // تشغيل الفحص البصري الفوري للأسطر القديمة الراجعة من الداتابيز أو الـ Validation
+    tableBody.querySelectorAll('.variant-row').forEach(row => {
+        refreshColorBorders(row);
     });
 
     if (addBtn && tableBody && template) {
+        // حدث إضافة سطر جديد للمصفوفة الخطيّة
         addBtn.addEventListener('click', function () {
             const content = template.innerHTML.replace(/__index__/g, rowCount);
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = content;
-            tableBody.appendChild(newRow);
+            const tr = document.createElement('tr');
+            tr.className = 'variant-row';
+            tr.innerHTML = content;
+            tableBody.appendChild(tr);
 
-            const newSelect = newRow.querySelector('.color-selector');
-            if (newSelect) {
-                updateColorCircle(newSelect);
-            }
-
+            // تهيئة حواف الألوان للسطر الجديد
+            refreshColorBorders(tr);
             rowCount++;
         });
 
+        // الاستماع لتغيير الاختيارات داخل الخلايا ديناميكياً لتحديث شكل الدوائر المفعلة
         tableBody.addEventListener('change', function (e) {
-            if (e.target.classList.contains('color-selector')) {
-                updateColorCircle(e.target);
+            if (e.target.classList.contains('color-checkbox')) {
+                const currentRow = e.target.closest('.variant-row');
+                refreshColorBorders(currentRow);
             }
         });
 
+        // حدث حذف السطر
         tableBody.addEventListener('click', function (e) {
             if (e.target.closest('.remove-row')) {
                 e.target.closest('tr').remove();

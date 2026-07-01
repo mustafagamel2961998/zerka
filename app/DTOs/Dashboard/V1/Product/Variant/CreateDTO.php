@@ -8,18 +8,18 @@ class CreateDTO
 {
     public function __construct(
         public int $sizeId,
-        public int $colorId,
+        public array $colors,
         public int $warehouseId,
         public float $price,
         public int $quantity,
         public int $minimumQuantity
     ) {}
 
-   public static function fromArray(array $data): self
+    public static function fromArray(array $data): self
     {
         return new self(
             sizeId: (int) $data['size_id'],
-            colorId: (int) $data['color_id'],
+            colors:  $data['colors'],
             warehouseId: (int) $data['warehouse_id'],
             price: (float) $data['price'],
             quantity: (int) $data['quantity'],
@@ -31,7 +31,7 @@ class CreateDTO
     {
         return [
             'size_id'          => $this->sizeId,
-            'color_id'         => $this->colorId,
+            'colors'           => $this->colors,
             'warehouse_id'     => $this->warehouseId,
             'price'            => $this->price,
             'quantity'         => $this->quantity,

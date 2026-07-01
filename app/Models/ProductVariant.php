@@ -11,7 +11,6 @@ class ProductVariant extends Model
     protected $fillable = [
         'product_id',
         'size_id',
-        'color_id',
         'price',
         'sku',
     ];
@@ -23,12 +22,13 @@ class ProductVariant extends Model
     public function size(){
         return $this->belongsTo(Size::class,'size_id','id');
     }
-    public function color(){
-        return $this->belongsTo(Color::class,'color_id','id');
+    public function colors(){
+        return $this->hasMany(VariantColor::class,'product_variant_id','id');
     }
     public function inventory(){
         return $this->hasOne(Inventory::class,'product_variant_id','id');
     }
+
     // end relationships
     //-----------------------------------------------------------------------------//
     protected function casts(): array
@@ -36,7 +36,6 @@ class ProductVariant extends Model
         return [
             'product_id' => 'integer',
             'size_id' => 'integer',
-            'color_id' => 'integer',
             'status' => Status::class,
         ];
     }

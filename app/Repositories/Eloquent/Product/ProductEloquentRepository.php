@@ -6,13 +6,18 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Product;
 use App\Repositories\Contracts\Variant\VariantRepositoryInterface;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
+
 class ProductEloquentRepository implements ProductRepositoryInterface
 {
     public function __construct(private VariantRepositoryInterface $variant_repository_interface){}
 
-    // public function all() : Collection
-    // {
-    //     return Category::with(['translation'])->latest()->get();
+    public function baseQuery() : Builder
+    {
+        return Product::query();
+    }
+    // public function all() : Collection{
+    //     return Product::latest()->get();
     // }
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {
@@ -41,7 +46,7 @@ class ProductEloquentRepository implements ProductRepositoryInterface
     public function findById($id) : Product{
         return Product::with([
             'category',
-            'variants.color',
+            'variants.colors',
             'variants.size',
             'variants.inventory',
             'variants.inventory.warehouse',
@@ -53,32 +58,32 @@ class ProductEloquentRepository implements ProductRepositoryInterface
 
       $product = Product::findOrFail($data['id']);
       $product->update($data);
-      $product->variants()->delete();
-      foreach ($data['variants'] as $variant) {
-            $variantData = $product->variants()->create([
-                'size_id'  => $variant['size_id'],
-                'color_id' => $variant['color_id'],
-                'price'    => $variant['price'],
-                'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
-            ]);
+    //   $product->variants()->delete();
+    //   foreach ($data['variants'] as $variant) {
+    //         $variantData = $product->variants()->create([
+    //             'size_id'  => $variant['size_id'],
+    //             'color_id' => $variant['color_id'],
+    //             'price'    => $variant['price'],
+    //             'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
+    //         ]);
 
-            $variantData->inventory()->create([
-                'warehouse_id'     => $variant['warehouse_id'],
-                'quantity'         => $variant['quantity'],
-                'minimum_quantity' => $variant['minimum_quantity'],
-            ]);
-      }
-      $product->translations()->delete();
-      foreach($data['name'] as $key => $value){
-        $product->translations()->create([
-            'locale' => $key,
-            'name' => $value,
-            'description' => $data['description'][$key],
-            'long_description' => $data['long_description'][$key],
-            'meta_title' => $data['meta_title'][$key],
-            'meta_description' => $data['meta_description'][$key],
-        ]);
-      }
+    //         $variantData->inventory()->create([
+    //             'warehouse_id'     => $variant['warehouse_id'],
+    //             'quantity'         => $variant['quantity'],
+    //             'minimum_quantity' => $variant['minimum_quantity'],
+    //         ]);
+    //   }
+    //   $product->translations()->delete();
+    //   foreach($data['name'] as $key => $value){
+    //     $product->translations()->create([
+    //         'locale' => $key,
+    //         'name' => $value,
+    //         'description' => $data['description'][$key],
+    //         'long_description' => $data['long_description'][$key],
+    //         'meta_title' => $data['meta_title'][$key],
+    //         'meta_description' => $data['meta_description'][$key],
+    //     ]);
+    //   }
         return $product;
     }
 }

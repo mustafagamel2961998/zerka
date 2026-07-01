@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Front\V1\Auth\AuthController;
+use App\Http\Controllers\Web\Front\V1\Home\HomeController;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -12,9 +13,7 @@ use App\Http\Controllers\Web\Front\V1\Auth\AuthController;
       Route::get('login',[AuthController::class,'loginView'])->name('login');
     //------------------------------------------------------------------------------------------ 
     //-Home Routes 
-    Route::get('/',function(){
-        return view('front.home.index');
-    })->name('home');
+    Route::get('/',[HomeController::class,'index'])->name('home');
     //------------------------------------------------------------------------------------------ 
 
 

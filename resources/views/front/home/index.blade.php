@@ -1,1591 +1,254 @@
-<x-front.layout title="{{ __('front.home') }}">
-
-
-	<!-- Slider -->
-	<section class="section-slide">
-		<div class="wrap-slick1 rs1-slick1">
-			<div class="slick1">
-				<div class="item-slick1" style="background-image: url({{ asset('assets/images/front/slide-01.jpg') }});">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30">
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInDown" data-delay="0">
-								<span class="ltext-202 cl2 respon2">
-									Men Collection 2018
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
-								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-									New arrivals
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url({{ asset('assets/images/front/slide-02.jpg') }});">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30">
-							<div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
-								<span class="ltext-202 cl2 respon2">
-									Men New-Season
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
-								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-									Jackets & Coats
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="item-slick1" style="background-image: url({{ asset('assets/images/front/slide-04.jpg') }});">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-202 cl2 respon2">
-									Women Collection 2018
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-104 cl2 p-t-19 p-b-43 respon1">
-									NEW SEASON
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Banner -->
-	<div class="sec-banner bg0">
-		<div class="flex-w flex-c-m">
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="{{ asset('assets/images/front/banner-04.jpg') }}" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Women
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								Spring 2018
-							</span>
-						</div>
-
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="{{ asset('assets/images/front/banner-05.jpg') }}" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Men
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								Spring 2018
-							</span>
-						</div>
-
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-
-			<div class="size-202 m-lr-auto respon4">
-				<!-- Block1 -->
-				<div class="block1 wrap-pic-w">
-					<img src="{{ asset('assets/images/front/banner-06.jpg') }}" alt="IMG-BANNER">
-
-					<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
-						<div class="block1-txt-child1 flex-col-l">
-							<span class="block1-name ltext-102 trans-04 p-b-8">
-								Bags
-							</span>
-
-							<span class="block1-info stext-102 trans-04">
-								New Trend
-							</span>
-						</div>
-
-						<div class="block1-txt-child2 p-b-4 trans-05">
-							<div class="block1-link stext-101 cl0 trans-09">
-								Shop Now
-							</div>
-						</div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Product -->
-	<section class="sec-product bg0 p-t-100 p-b-50">
-		<div class="container">
-			<div class="p-b-32">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Store Overview
-				</h3>
-			</div>
-
-			<!-- Tab01 -->
-			<div class="tab01">
-				<!-- Nav tabs -->
-				<ul class="nav nav-tabs" role="tablist">
-					<li class="nav-item p-b-10">
-						<a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">Best Seller</a>
-					</li>
-
-					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#featured" role="tab">Featured</a>
-					</li>
-
-					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#sale" role="tab">Sale</a>
-					</li>
-
-					<li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#top-rate" role="tab">Top Rate</a>
-					</li>
-				</ul>
-
-				<!-- Tab panes -->
-				<div class="tab-content p-t-50">
-					<!-- - -->
-					<div class="tab-pane fade show active" id="best-seller" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-01.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Esprit Ruffle Shirt
-												</a>
-
-												<span class="stext-105 cl3">
-													$16.64
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-02.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply
-												</a>
-
-												<span class="stext-105 cl3">
-													$35.31
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-03.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Only Check Trouser
-												</a>
-
-												<span class="stext-105 cl3">
-													$25.50
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-04.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Classic Trench Coat
-												</a>
-
-												<span class="stext-105 cl3">
-													$75.00
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-05.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Front Pocket Jumper
-												</a>
-
-												<span class="stext-105 cl3">
-													$34.75
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-06.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Vintage Inspired Classic 
-												</a>
-
-												<span class="stext-105 cl3">
-													$93.20
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-07.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Shirt in Stretch Cotton
-												</a>
-
-												<span class="stext-105 cl3">
-													$52.66
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-08.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Pieces Metallic Printed
-												</a>
-
-												<span class="stext-105 cl3">
-													$18.96
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="featured" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-02.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Converse All Star Hi Plimsolls
-												</a>
-
-												<span class="stext-105 cl3">
-													$75.00
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-03.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Femme T-Shirt In Stripe
-												</a>
-
-												<span class="stext-105 cl3">
-													$25.85
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-11.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply 
-												</a>
-
-												<span class="stext-105 cl3">
-													$63.16
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-12.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply
-												</a>
-
-												<span class="stext-105 cl3">
-													$63.15
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-13.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													T-Shirt with Sleeve
-												</a>
-
-												<span class="stext-105 cl3">
-													$18.49
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-14.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Pretty Little Thing
-												</a>
-
-												<span class="stext-105 cl3">
-													$54.79
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-15.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Mini Silver Mesh Watch
-												</a>
-
-												<span class="stext-105 cl3">
-													$86.85
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-16.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Square Neck Back
-												</a>
-
-												<span class="stext-105 cl3">
-													$29.64
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="sale" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-02.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply
-												</a>
-
-												<span class="stext-105 cl3">
-													$35.31
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-04.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Classic Trench Coat
-												</a>
-
-												<span class="stext-105 cl3">
-													$75.00
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-06.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Vintage Inspired Classic 
-												</a>
-
-												<span class="stext-105 cl3">
-													$93.20
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-09.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Converse All Star Hi Plimsolls
-												</a>
-
-												<span class="stext-105 cl3">
-													$75.00
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-11.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply 
-												</a>
-
-												<span class="stext-105 cl3">
-													$63.16
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-13.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													T-Shirt with Sleeve
-												</a>
-
-												<span class="stext-105 cl3">
-													$18.49
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-15.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Mini Silver Mesh Watch
-												</a>
-
-												<span class="stext-105 cl3">
-													$86.85
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- - -->
-					<div class="tab-pane fade" id="top-rate" role="tabpanel">
-						<!-- Slide2 -->
-						<div class="wrap-slick2">
-							<div class="slick2">
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-03.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Only Check Trouser
-												</a>
-
-												<span class="stext-105 cl3">
-													$25.50
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-06.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Vintage Inspired Classic 
-												</a>
-
-												<span class="stext-105 cl3">
-													$93.20
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-07.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Shirt in Stretch Cotton
-												</a>
-
-												<span class="stext-105 cl3">
-													$52.66
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-08.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Pieces Metallic Printed
-												</a>
-
-												<span class="stext-105 cl3">
-													$18.96
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-09.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Converse All Star Hi Plimsolls
-												</a>
-
-												<span class="stext-105 cl3">
-													$75.00
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-10.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Femme T-Shirt In Stripe
-												</a>
-
-												<span class="stext-105 cl3">
-													$25.85
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-11.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply 
-												</a>
-
-												<span class="stext-105 cl3">
-													$63.16
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-12.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Herschel supply
-												</a>
-
-												<span class="stext-105 cl3">
-													$63.15
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-13.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													T-Shirt with Sleeve
-												</a>
-
-												<span class="stext-105 cl3">
-													$18.49
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-									<!-- Block2 -->
-									<div class="block2">
-										<div class="block2-pic hov-img0">
-											<img src="{{asset('assets/images/front/product-16.jpg')}}" alt="IMG-PRODUCT">
-
-											<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-												Quick View
-											</a>
-										</div>
-
-										<div class="block2-txt flex-w flex-t p-t-14">
-											<div class="block2-txt-child1 flex-col-l ">
-												<a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-													Square Neck Back
-												</a>
-
-												<span class="stext-105 cl3">
-													$29.64
-												</span>
-											</div>
-
-											<div class="block2-txt-child2 flex-r p-t-3">
-												<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-													<img class="icon-heart1 dis-block trans-04" src="{{asset('assets/images/front/icons/icon-heart-01.png')}}" alt="ICON">
-													<img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{asset('assets/images/front/icons/icon-heart-02.png')}}" alt="ICON">
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-	<!-- Blog -->
-	<section class="sec-blog bg0 p-t-60 p-b-90">
-		<div class="container">
-			<div class="p-b-66">
-				<h3 class="ltext-105 cl5 txt-center respon1">
-					Our Blogs
-				</h3>
-			</div>
-
-			<div class="row">
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="{{asset('assets/images/front/blog-01.jpg')}}" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 22, 2017 
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									8 Inspiring Ways to Wear Dresses in the Winter
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Duis ut velit gravida nibh bibendum commodo. Suspendisse pellentesque mattis augue id euismod. Interdum et male-suada fames
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="{{asset('assets/images/front/blog-02.jpg')}}" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 18, 2017
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									The Great Big List of Men’s Gifts for the Holidays
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Nullam scelerisque, lacus sed consequat laoreet, dui enim iaculis leo, eu viverra ex nulla in tellus. Nullam nec ornare tellus, ac fringilla lacus. Ut sit ame
-							</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 p-b-40">
-					<div class="blog-item">
-						<div class="hov-img0">
-							<a href="blog-detail.html">
-								<img src="{{asset('assets/images/front/blog-03.jpg')}}" alt="IMG-BLOG">
-							</a>
-						</div>
-
-						<div class="p-t-15">
-							<div class="stext-107 flex-w p-b-14">
-								<span class="m-r-3">
-									<span class="cl4">
-										By
-									</span>
-
-									<span class="cl5">
-										Nancy Ward
-									</span>
-								</span>
-
-								<span>
-									<span class="cl4">
-										on
-									</span>
-
-									<span class="cl5">
-										July 2, 2017 
-									</span>
-								</span>
-							</div>
-
-							<h4 class="p-b-12">
-								<a href="blog-detail.html" class="mtext-101 cl2 hov-cl1 trans-04">
-									5 Winter-to-Spring Fashion Trends to Try Now
-								</a>
-							</h4>
-
-							<p class="stext-108 cl6">
-								Proin nec vehicula lorem, a efficitur ex. Nam vehicula nulla vel erat tincidunt, sed hendrerit ligula porttitor. Fusce sit amet maximus nunc
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-
-
-	<!-- Modal1 -->
-	<div class="wrap-modal1 js-modal1 p-t-60 p-b-20">
-		<div class="overlay-modal1 js-hide-modal1"></div>
-
-		<div class="container">
-			<div class="bg0 p-t-60 p-b-30 p-lr-15-lg how-pos3-parent">
-				<button class="how-pos3 hov3 trans-04 js-hide-modal1">
-					<img src="{{ asset('assets/images/front/icons/icon-close.png') }}" alt="CLOSE">
-				</button>
-
-				<div class="row">
-					<div class="col-md-6 col-lg-7 p-b-30">
-						<div class="p-l-25 p-r-30 p-lr-0-lg">
-							<div class="wrap-slick3 flex-sb flex-w">
-								<div class="wrap-slick3-dots"></div>
-								<div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
-								<div class="slick3 gallery-lb">
-									<div class="item-slick3" data-thumb="{{ asset('assets/images/front/product-detail-01.jpg') }}">
-										<div class="wrap-pic-w pos-relative">
-											<img src="{{ asset('assets/images/front/product-detail-01.jpg') }}" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-01.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="{{ asset('assets/images/front/product-detail-02.jpg') }}">
-										<div class="wrap-pic-w pos-relative">
-											<img src="{{ asset('assets/images/front/product-detail-02.jpg') }}" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-02.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-
-									<div class="item-slick3" data-thumb="{{ asset('assets/images/front/product-detail-03.jpg') }}">
-										<div class="wrap-pic-w pos-relative">
-											<img src="{{ asset('assets/images/front/product-detail-03.jpg') }}" alt="IMG-PRODUCT">
-
-											<a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04" href="images/product-detail-03.jpg">
-												<i class="fa fa-expand"></i>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-md-6 col-lg-5 p-b-30">
-						<div class="p-r-50 p-t-5 p-lr-0-lg">
-							<h4 class="mtext-105 cl2 js-name-detail p-b-14">
-								Lightweight Jacket
-							</h4>
-
-							<span class="mtext-106 cl2">
-								$58.79
-							</span>
-
-							<p class="stext-102 cl3 p-t-23">
-								Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
-							</p>
-							
-							<!--  -->
-							<div class="p-t-33">
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Size
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Size S</option>
-												<option>Size M</option>
-												<option>Size L</option>
-												<option>Size XL</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-203 flex-c-m respon6">
-										Color
-									</div>
-
-									<div class="size-204 respon6-next">
-										<div class="rs1-select2 bor8 bg0">
-											<select class="js-select2" name="time">
-												<option>Choose an option</option>
-												<option>Red</option>
-												<option>Blue</option>
-												<option>White</option>
-												<option>Grey</option>
-											</select>
-											<div class="dropDownSelect2"></div>
-										</div>
-									</div>
-								</div>
-
-								<div class="flex-w flex-r-m p-b-10">
-									<div class="size-204 flex-w flex-m respon6-next">
-										<div class="wrap-num-product flex-w m-r-20 m-tb-10">
-											<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-minus"></i>
-											</div>
-
-											<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product" value="1">
-
-											<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-												<i class="fs-16 zmdi zmdi-plus"></i>
-											</div>
-										</div>
-
-										<button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-											Add to cart
-										</button>
-									</div>
-								</div>	
-							</div>
-
-							<!--  -->
-							<div class="flex-w flex-m p-l-100 p-t-40 respon7">
-								<div class="flex-m bor9 p-r-10 m-r-11">
-									<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100" data-tooltip="Add to Wishlist">
-										<i class="zmdi zmdi-favorite"></i>
-									</a>
-								</div>
-
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Facebook">
-									<i class="fa fa-facebook"></i>
-								</a>
-
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Twitter">
-									<i class="fa fa-twitter"></i>
-								</a>
-
-								<a href="#" class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 m-r-8 tooltip100" data-tooltip="Google Plus">
-									<i class="fa fa-google-plus"></i>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<x-front.layout title="{{__('front.home')}}">
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/front/pages/home/home.css') }}">
+    @endpush
+    <!-- 3. Features Bar -->
+<section class="py-4 border-bottom border-light-subtle mb-5">
+    <div class="row g-4 text-center text-md-start">
+        <div class="col-sm-6 col-md-3 d-md-flex align-items-center gap-3">
+            <i class="bi bi-patch-check fs-2 text-dark mb-2 mb-md-0"></i>
+            <div>
+                <h6 class="fw-bold m-0 text-uppercase small" style="letter-spacing: 0.5px;">Premium Quality</h6>
+                <small class="text-muted d-block" style="font-size: 0.75rem;">High quality materials for everyday
+                    comfort.</small>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 d-md-flex align-items-center gap-3">
+            <i class="bi bi-truck fs-2 text-dark mb-2 mb-md-0"></i>
+            <div>
+                <h6 class="fw-bold m-0 text-uppercase small" style="letter-spacing: 0.5px;">Fast Delivery</h6>
+                <small class="text-muted d-block" style="font-size: 0.75rem;">Quick delivery all over Egypt.</small>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 d-md-flex align-items-center gap-3">
+            <i class="bi bi-shield-lock fs-2 text-dark mb-2 mb-md-0"></i>
+            <div>
+                <h6 class="fw-bold m-0 text-uppercase small" style="letter-spacing: 0.5px;">Secure Payment</h6>
+                <small class="text-muted d-block" style="font-size: 0.75rem;">100% secure payment methods.</small>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-3 d-md-flex align-items-center gap-3">
+            <i class="bi bi-headset fs-2 text-dark mb-2 mb-md-0"></i>
+            <div>
+                <h6 class="fw-bold m-0 text-uppercase small" style="letter-spacing: 0.5px;">Customer Support</h6>
+                <small class="text-muted d-block" style="font-size: 0.75rem;">We're here to help you 24/7.</small>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Promo Banners Grid -->
+<section class="mb-5">
+    <div class="row g-2">
+        <!-- Banner 1 -->
+        @forelse ($categories as $category)
+            <div class="col-md-4 position-relative overflow-hidden bg-dark text-white d-flex align-items-end category-banner"
+                style="
+                background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url({{$category->getFirstMediaUrl('cover', 'optimized')}}) center/cover;">
+                <div class="p-4 w-100">
+                    <span class="text-white-50 small text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">
+                        New Collection
+                    </span>
+                    <h5 class="fw-bold text-uppercase m-0 tracking-wide fs-6">
+                        {{$category->currentTranslation->name}}
+                    </h5>
+                    <a href="#" class="text-white small text-uppercase text-decoration-none d-block mt-2"
+                        style="font-size: 0.7rem; font-weight: 600;">
+                        {{__('front.explore_now')}} 
+                        <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        @empty
+             <div class="col-12 text-center py-5">
+                <div class="p-5 mx-auto rounded-4" style="background-color: #f8f9fa; max-width: 500px;">
+                    <div class="mb-3">
+                        <i class="bi bi-bag-x text-muted" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">
+                        {{__('front.no_products_found')}}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {{__('front.no_products_found_desc')}}
+                    </p>
+                   
+                </div>
+            </div>
+        @endforelse
+        
+        {{-- <!-- Banner 2 (Accessories/Cap) -->
+        <div class="col-md-4 position-relative overflow-hidden bg-dark text-white d-flex align-items-end"
+            style="height: 220px; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1534215754734-18e55d13ce35?q=80&w=400') center/cover;">
+            <div class="p-4 w-100">
+                <span class="text-white-50 small text-uppercase"
+                    style="font-size: 0.65rem; letter-spacing: 1px;">Accessories</span>
+                <h5 class="fw-bold text-uppercase m-0 tracking-wide fs-6">The Finishing Touch</h5>
+                <a href="#" class="text-white small text-uppercase text-decoration-none d-block mt-2"
+                    style="font-size: 0.7rem; font-weight: 600;">Shop Now <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+        </div>
+        <!-- Banner 3 -->
+        <div class="col-md-4 position-relative overflow-hidden bg-dark text-white d-flex align-items-end"
+            style="height: 220px; background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=400') center/cover;">
+            <div class="p-4 w-100">
+                <span class="text-white-50 small text-uppercase"
+                    style="font-size: 0.65rem; letter-spacing: 1px;">Timeless Pieces</span>
+                <h5 class="fw-bold text-uppercase m-0 tracking-wide fs-6">Made To Move With You</h5>
+                <a href="#" class="text-white small text-uppercase text-decoration-none d-block mt-2"
+                    style="font-size: 0.7rem; font-weight: 600;">Discover <i class="bi bi-arrow-right ms-1"></i></a>
+            </div>
+        </div> --}}
+    </div>
+</section>
+
+<!-- 5. Shop By Category -->
+<section class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold text-uppercase tracking-wider m-0" style="font-size: 0.95rem;">
+            {{__('global.products')}}
+        </h6>
+        <a href="#" class="text-dark small text-uppercase fw-semibold text-decoration-none"
+            style="font-size: 0.75rem;">
+            {{__('global.view_all')}}
+            <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+    </div>
+
+    <div class="row g-3">
+        
+        @forelse ($products as $product)
+        <!-- Product 1 -->
+        <div class="col-6 col-md-3">
+           <div class="product-card">
+                <div class="position-relative p-3 text-center">
+                    <button class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent">
+                        <i class="bi bi-heart fs-5"></i>
+                    </button>
+                    <img src="{{$product->getFirstMediaUrl('images', 'thumb')}}"
+                        loading="lazy"
+                        class="img-fluid mix-blend-multiply product-img"
+                        alt="{{$product->currentTranslation->name}}">
+                </div>
+                <div class="mt-2 text-start product-footer">
+                    <p class="m-0 text-muted text-uppercase">{{$product->currentTranslation->name}}</p>
+                    <span class="fw-bold small" style="font-size: 0.8rem;">
+                        {{format_currency($product->minVariantPrice->price, current_currency_code())}}
+                    </span>
+                </div>
+           </div>
+        </div>
+
+        @empty
+            <div class="col-12 text-center py-5">
+                <div class="p-5 mx-auto rounded-4" style="background-color: #f8f9fa; max-width: 500px;">
+                    <div class="mb-3">
+                        <i class="bi bi-bag-x text-muted" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <h5 class="fw-bold text-dark mb-2">
+                        {{__('front.no_products_found')}}
+                    </h5>
+                    <p class="text-muted small mb-4">
+                        {{__('front.no_products_found_desc')}}
+                    </p>
+                   
+                </div>
+            </div>
+        @endforelse
+      
+      
+    </div>
+</section>
+
+<!-- 6. New Arrivals -->
+<section class="mb-5">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h6 class="fw-bold text-uppercase tracking-wider m-0" style="font-size: 0.95rem;">New Arrivals</h6>
+        <a href="#" class="text-dark small text-uppercase fw-semibold text-decoration-none"
+            style="font-size: 0.75rem;">View All Products <i class="bi bi-arrow-right ms-1"></i></a>
+    </div>
+
+    <div class="row g-3">
+        <!-- Product 1 -->
+        <div class="col-6 col-md-3">
+            <div class="position-relative p-3 text-center" style="background-color: #f6f6f6;">
+                <button class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent"><i
+                        class="bi bi-heart fs-5"></i></button>
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=300"
+                    class="img-fluid w-100 mix-blend-multiply" style="height: 240px; object-fit: contain;"
+                    alt="Oversized Tee">
+            </div>
+            <div class="mt-2 text-start">
+                <p class="m-0 text-muted text-uppercase" style="font-size: 0.7rem; font-weight: 500;">Oversized Tee -
+                    Black</p>
+                <span class="fw-bold small" style="font-size: 0.8rem;">EGP 599</span>
+            </div>
+        </div>
+        <!-- Product 2 -->
+        <div class="col-6 col-md-3">
+            <div class="position-relative p-3 text-center" style="background-color: #f6f6f6;">
+                <button class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent"><i
+                        class="bi bi-heart fs-5"></i></button>
+                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=300"
+                    class="img-fluid w-100 mix-blend-multiply" style="height: 240px; object-fit: contain;"
+                    alt="Wide Sweatpants">
+            </div>
+            <div class="mt-2 text-start">
+                <p class="m-0 text-muted text-uppercase" style="font-size: 0.7rem; font-weight: 500;">Wide Sweatpants
+                    - Black</p>
+                <span class="fw-bold small" style="font-size: 0.8rem;">EGP 799</span>
+            </div>
+        </div>
+        <!-- Product 3 -->
+        <div class="col-6 col-md-3">
+            <div class="position-relative p-3 text-center" style="background-color: #f6f6f6;">
+                <button class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent"><i
+                        class="bi bi-heart fs-5"></i></button>
+                <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?q=80&w=300"
+                    class="img-fluid w-100 mix-blend-multiply" style="height: 240px; object-fit: contain;"
+                    alt="Essential Hoodie">
+            </div>
+            <div class="mt-2 text-start">
+                <p class="m-0 text-muted text-uppercase" style="font-size: 0.7rem; font-weight: 500;">Essential Hoodie
+                    - Black</p>
+                <span class="fw-bold small" style="font-size: 0.8rem;">EGP 999</span>
+            </div>
+        </div>
+        <!-- Product 4 -->
+        <div class="col-6 col-md-3">
+            <div class="position-relative p-3 text-center" style="background-color: #f6f6f6;">
+                <button class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent"><i
+                        class="bi bi-heart fs-5"></i></button>
+                <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=300"
+                    class="img-fluid w-100 mix-blend-multiply" style="height: 240px; object-fit: contain;"
+                    alt="Zerka Cap">
+            </div>
+            <div class="mt-2 text-start">
+                <p class="m-0 text-muted text-uppercase" style="font-size: 0.7rem; font-weight: 500;">Zerka Cap -
+                    Black</p>
+                <span class="fw-bold small" style="font-size: 0.8rem;">EGP 399</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 7. Stay In The Loop (Newsletter) -->
+<section class="bg-black text-white p-4 mb-5">
+    <div class="row align-items-center py-2">
+        <div class="col-md-6 mb-3 mb-md-0">
+            <h6 class="text-uppercase fw-bold m-0 tracking-wider" style="font-size: 0.9rem;">Stay In The Loop</h6>
+            <p class="text-white-50 m-0 small" style="font-size: 0.75rem;">Subscribe to get special offers, free
+                giveaways, and once-in-a-lifetime deals.</p>
+        </div>
+        <div class="col-md-6">
+            <form class="d-flex bg-dark p-1 border border-secondary">
+                <input type="email"
+                    class="form-control form-control-sm bg-transparent border-0 text-white rounded-0 px-3"
+                    placeholder="Enter your email" required style="box-shadow: none;">
+                <button type="submit"
+                    class="btn btn-light btn-sm text-uppercase fw-bold rounded-0 px-4">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
 
 </x-front.layout>

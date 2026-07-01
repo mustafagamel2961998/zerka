@@ -101,4 +101,6 @@ return [
     'price' => 'Price',
     'quantity' => 'Quantity',
     'minimum_quantity' => 'Minimum Quantity',
+    'colors'=>'Colors',
+    'sizes'=>'Sizes',
 ];

@@ -13,5 +13,5 @@ class UpdateAction
         $product = $this->product_repository_interface->update($dto->toArray());
         MediaService::multipleFileUpload($product, 'images', $dto->images ?? []);
         return $product;
-       }
+    }
 }
