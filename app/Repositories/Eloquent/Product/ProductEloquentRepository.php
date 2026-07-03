@@ -45,6 +45,7 @@ class ProductEloquentRepository implements ProductRepositoryInterface
 
     public function findById($id) : Product{
         return Product::with([
+            'media',
             'category',
             'variants.colors',
             'variants.size',

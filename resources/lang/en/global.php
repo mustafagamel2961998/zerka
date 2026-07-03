@@ -165,5 +165,26 @@ return [
     'no_account_text' => 'Don\'t have an account?',
     'sign_up'=>'Sign Up',
     'view_all' => 'View All',
-
+    'arabic' => 'Arabic',
+    'english' => 'English',
+    'profile' => 'Profile',
+    'my_orders' => 'My Orders',
+    'logout' => 'Logout',
+    'new_arrivals' => 'New Arrivals',
+    'features' => [
+        'quality_title'  => 'Premium Quality',
+        'quality_desc'   => 'High quality materials for everyday comfort.',
+        'delivery_title' => 'Fast Delivery',
+        'delivery_desc'  => 'Quick delivery all over Egypt.',
+        'payment_title'  => 'Secure Payment',
+        'payment_desc'   => '100% secure payment methods.',
+        'support_title'  => 'Customer Support',
+        'support_desc'   => 'We\'re here to help you 24/7.',
+    ],
+    'newsletter' => [
+        'title'       => 'Stay In The Loop',
+        'desc'        => 'Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.',
+        'placeholder' => 'Enter your email',
+        'button'      => 'Subscribe',
+    ],
 ];

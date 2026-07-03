@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web\Front\V1\Home;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Category\CategoryRepositoryInterface;
 use App\Repositories\Contracts\Product\ProductRepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function __construct(
@@ -24,7 +25,7 @@ class HomeController extends Controller
                 ->get();    
     //-----------------------------------------------------------------------------//
     // Get first 4 Products
-    $products = $this->product_repository_interface
+    $first_products = $this->product_repository_interface
                 ->baseQuery()
                 ->active()
                 ->with([
@@ -35,9 +36,22 @@ class HomeController extends Controller
                 ->take(4)
                 ->get();
     //-----------------------------------------------------------------------------//
+    // Get last 4 Products for new arrivals
+    $new_arrivals = $this->product_repository_interface
+                ->baseQuery()
+                ->active()
+                ->latest()
+                ->with([
+                    'currentTranslation:id,product_id,locale,name',
+                    'media',
+                    'minVariantPrice'
+                ])
+                ->take(4)
+                ->get();
         return view('front.home.index',compact(
             'categories',
-            'products'
+            'first_products',
+            'new_arrivals'
             ));
     }
 }

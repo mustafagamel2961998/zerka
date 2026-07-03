@@ -17,7 +17,6 @@
     </head>
 
     <body class="bg-white text-dark" style="font-family: system-ui, -apple-system, sans-serif;">
-
         <!-- 1. Navbar (Full Width) -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top py-3">
             <div class="container-fluid px-md-5">
@@ -32,8 +31,11 @@
                 <!-- Navigation Links -->
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav gap-4 text-uppercase small fw-medium">
-                        <li class="nav-item"><a class="nav-link active text-white border-bottom border-white pb-1"
-                                href="#">Home</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link active text-white border-bottom border-white pb-1" href="#">
+                            {{ __('global.home') }}
+                            </a>
+                        </li>
                         <li class="nav-item"><a class="nav-link text-white-50" href="#">Shop</a></li>
                         <li class="nav-item"><a class="nav-link text-white-50" href="#">Collections</a></li>
                         <li class="nav-item"><a class="nav-link text-white-50" href="#">About Us</a></li>
@@ -42,16 +44,80 @@
 
                 <!-- Icons Buttons -->
                 <div class="d-flex align-items-center gap-4 text-white">
-                    <a href="#" class="text-white text-decoration-none"><i class="bi bi-search fs-5"></i></a>
-                    <a href="#" class="text-white text-decoration-none"><i class="bi bi-person fs-5"></i></a>
-                    <!-- Cart Trigger Button -->
-                    <button class="btn p-0 text-white position-relative border-0" type="button"
-                        data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
-                        <i class="bi bi-bag fs-5"></i>
-                        <span
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-black fw-bold px-1.5 py-0.5"
-                            style="font-size: 0.6rem; min-width: 15px;">0</span>
-                    </button>
+                    <!-- Search: دايماً ظاهر -->
+                    <a href="#" class="text-white text-decoration-none">
+                        <i class="bi bi-search fs-5"></i>
+                    </a>
+
+                    <div class="dropdown">
+                        <a class="text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-1"
+                            href="#" role="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-globe2 fs-5"></i>
+                            <span class="small text-uppercase fw-medium">{{ app()->getLocale() }}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2" aria-labelledby="langDropdown">
+                            <li>
+                                <a class="dropdown-item text-white-50" href="{{ route('lang.switch', 'ar') }}">
+                                    {{ __('global.arabic') }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item text-white-50" href="{{ route('lang.switch', 'en') }}">
+                                    {{ __('global.english') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    @guest
+                        <!-- مش مسجل دخول: لينكات Login / Register -->
+                        <a href="" class="text-white text-decoration-none small text-uppercase fw-medium">
+                            تسجيل الدخول
+                        </a>
+                        <a href="" class="text-white text-decoration-none small text-uppercase fw-medium border-{{ app()->getLocale() == 'ar' ? 'end' : 'start' }} border-secondary px-4">
+                            حساب جديد
+                        </a>
+                    @else
+                        <!-- مسجل دخول: Dropdown باسم اليوزر -->
+                        <div class="dropdown">
+                            <a class="text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-2"
+                                href="#" role="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person fs-5"></i>
+                                <span class="small text-uppercase fw-medium">{{ auth()->user()->profile->first_name }}</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2" aria-labelledby="userDropdown">
+                                <li>
+                                    <a class="dropdown-item text-white-50" href="#">
+                                        {{__('global.profile')}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item text-white-50" href="#">
+                                        {{__('global.my_orders')}}
+                                    </a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider border-secondary"></li>
+                                <li>
+                                    <form method="POST" action="">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item text-white-50">
+                                            {{ __('global.logout') }}
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Cart: يظهر بس لو مسجل دخول -->
+                        <button class="btn p-0 text-white position-relative border-0" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
+                            <i class="bi bi-bag fs-5"></i>
+                            <span
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-black fw-bold px-1.5 py-0.5"
+                                style="font-size: 0.6rem; min-width: 15px;">0</span>
+                        </button>
+                    @endguest
                 </div>
             </div>
         </nav>
@@ -182,6 +248,7 @@
 
         <!-- Bootstrap 5.3 JavaScript Bundle CDN -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        @stack('js')
     </body>
 
     </html>

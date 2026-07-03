@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Front\V1\Auth\AuthController;
 use App\Http\Controllers\Web\Front\V1\Home\HomeController;
+use App\Http\Controllers\Web\Front\V1\Product\ProductController;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -15,8 +16,8 @@ use App\Http\Controllers\Web\Front\V1\Home\HomeController;
     //-Home Routes 
     Route::get('/',[HomeController::class,'index'])->name('home');
     //------------------------------------------------------------------------------------------ 
-
-
+    //-Product Routes 
+    Route::get('products/show/{id}/{slug}',[ProductController::class,'show'])->name('products.show');
 
 
     
