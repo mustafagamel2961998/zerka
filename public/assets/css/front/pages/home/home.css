@@ -1,6 +1,6 @@
 .product-img{
     width: 200px;
-    object-fit: cover;
+    object-fit: contain;
     height: 240px;
 }
 .product-card{

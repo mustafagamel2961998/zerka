@@ -33,7 +33,7 @@
                     <ul class="navbar-nav gap-4 text-uppercase small fw-medium">
                         <li class="nav-item">
                             <a class="nav-link active text-white border-bottom border-white pb-1" href="#">
-                            {{ __('global.home') }}
+                            {{ __('front.home') }}
                             </a>
                         </li>
                         <li class="nav-item"><a class="nav-link text-white-50" href="#">Shop</a></li>

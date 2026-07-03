@@ -123,7 +123,7 @@
                                 <i class="bi bi-heart fs-5"></i>
                             </button>
                             <a href="{{route('products.show',['id'=>$product->id,'slug'=>$product->slug])}}">
-                            <img src="{{ $product->getFirstMediaUrl('images', 'thumb') }}" loading="lazy"
+                            <img src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" loading="lazy"
                                 class="img-fluid mix-blend-multiply product-img"
                                 alt="{{ $product->currentTranslation->name }}">
                             </a>
@@ -186,12 +186,16 @@
                                 class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent">
                                 <i class="bi bi-heart fs-5"></i>
                             </button>
-                            <img src="{{ $product->getFirstMediaUrl('images', 'thumb') }}" loading="lazy"
-                                class="img-fluid mix-blend-multiply product-img"
-                                alt="{{ $product->currentTranslation->name }}">
+                             <a href="{{route('products.show',['id'=>$product->id,'slug'=>$product->slug])}}">
+                                <img src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" loading="lazy"
+                                    class="img-fluid mix-blend-multiply product-img"
+                                    alt="{{ $product->currentTranslation->name }}">
+                             </a>
                         </div>
                         <div class="mt-2 text-start product-footer">
-                            <p class="m-0 text-muted text-uppercase">{{ $product->currentTranslation->name }}</p>
+                            <a href="{{route('products.show',['id'=>$product->id,'slug'=>$product->slug])}}" class="text-muted text-decoration-none">
+                                <p class="m-0 text-muted text-uppercase">{{ $product->currentTranslation->name }}</p>
+                             </a>
                             <span class="fw-bold small" style="font-size: 0.8rem;">
                                 {{ format_currency($product->minVariantPrice->price, current_currency_code()) }}
                             </span>

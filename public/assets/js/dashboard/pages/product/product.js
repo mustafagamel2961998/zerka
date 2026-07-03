@@ -2,17 +2,26 @@
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // --------------------------------------------------------
-    // أولاً: منطق رفع ومعاينة الصور المتعددة للمنتج
-    // --------------------------------------------------------
     const productImagesInput = document.getElementById('product_images');
-    
+    const uploadMsg = document.getElementById('dropzone_upload_msg');
+    const previewContainer = document.getElementById('preview_container');
+    const imagesRow = previewContainer ? previewContainer.querySelector('.images-grid-row') : null;
+
+    // دالة مساعدة للتحقق من حالة الحاوية (هل أصبحت فارغة بعد الحذف؟)
+    function checkContainerEmptiness() {
+        if (previewContainer && previewContainer.querySelectorAll('.product-img-wrap').length === 0) {
+            previewContainer.classList.add('d-none');
+            uploadMsg.classList.remove('d-none');
+            if (productImagesInput) productImagesInput.value = "";
+        }
+    }
+
+    // --------------------------------------------------------
+    // أولاً: منطق رفع ومعاينة الصور الجديدة
+    // --------------------------------------------------------
     if (productImagesInput) {
         productImagesInput.addEventListener('change', function (event) {
             const files = event.target.files;
-            const uploadMsg = document.getElementById('dropzone_upload_msg');
-            const previewContainer = document.getElementById('preview_container');
-            const imagesRow = previewContainer.querySelector('.images-grid-row');
 
             // مسح أي معاينة ديناميكية سابقة تم اختيارها في نفس الجلسة
             const oldDynamicPreviews = previewContainer.querySelectorAll('.dynamic-preview');
@@ -41,11 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                         col.querySelector('.remove-preview-btn').addEventListener('click', function() {
                             col.remove();
-                            if (previewContainer.querySelectorAll('.product-img-wrap').length === 0) {
-                                previewContainer.classList.add('d-none');
-                                uploadMsg.classList.remove('d-none');
-                                productImagesInput.value = ""; 
-                            }
+                            checkContainerEmptiness();
                         });
 
                         imagesRow.appendChild(col);
@@ -53,16 +58,62 @@ document.addEventListener("DOMContentLoaded", function () {
                     reader.readAsDataURL(file);
                 });
             } else {
-                if (previewContainer.querySelectorAll('.product-img-wrap').length === 0) {
-                    uploadMsg.classList.remove('d-none');
-                    previewContainer.classList.add('d-none');
-                }
+                checkContainerEmptiness();
+            }
+        });
+    }
+
+    // --------------------------------------------------------
+    // ثانياً: منطق حذف الصور المحفوظة مسبقاً على السيرفر (AJAX)
+    // --------------------------------------------------------
+    if (previewContainer) {
+        previewContainer.addEventListener('click', function (event) {
+            // استخدام Event Delegation للتعامل مع أزرار حذف صور السيرفر
+            const btn = event.target.closest('.remove-server-img-btn');
+            if (!btn) return;
+
+            event.preventDefault();
+            event.stopPropagation(); // لمنع فتح الـ file browser عند الضغط على الزر
+
+            const serverPreviewCol = btn.closest('.server-preview');
+            const mediaId = serverPreviewCol.getAttribute('data-media-id');
+
+            if (confirm("هل أنت متأكد من حذف هذه الصورة نهائياً؟")) {
+                // تأمين طلب الحذف بـ CSRF Token من الميتا تاغ المعتادة في لارافل
+                const csrfToken = document.querySelector('meta[name="csrf-token"]')?.getAttribute('content');
+
+                btn.disabled = true;
+                btn.innerHTML = `<i class="bx bx-loader-alt bx-spin"></i>`;
+
+                fetch(`/dashboard/v1/products/media/destroy/${mediaId}`, { // قم بتغيير الـ URL حسب الـ Route عندك
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': csrfToken,
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        serverPreviewCol.remove();
+                        checkContainerEmptiness();
+                    } else {
+                        alert('حدث خطأ أثناء حذف الصورة، برجاء المحاولة لاحقاً.');
+                        btn.disabled = false;
+                        btn.innerHTML = `<i class="bx bx-x"></i>`;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('فشل الاتصال بالسيرفر.');
+                    btn.disabled = false;
+                    btn.innerHTML = `<i class="bx bx-x"></i>`;
+                });
             }
         });
     }
 
 });
-
 document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.getElementById('variants-body');
     const template = document.getElementById('variant-template');

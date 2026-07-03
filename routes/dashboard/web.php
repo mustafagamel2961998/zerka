@@ -67,6 +67,7 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     Route::resource('warehouses',WarehouseController::class);
     //------------------------------------------------------------------------------------------ 
     //-Product Routes 
+    Route::delete('products/media/destroy/{media}',[ProductController::class,'destroyMedia'])->name('products.destroy.media');
     Route::resource('products',ProductController::class);
     //------------------------------------------------------------------------------------------ 
     //-Order Routes 

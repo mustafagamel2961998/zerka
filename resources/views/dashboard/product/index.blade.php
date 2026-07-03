@@ -1,5 +1,7 @@
 <x-dashboard.layout title="{{ __('dashboard.products') }}">
-
+    @push('css')
+                <link rel="stylesheet" href="{{ asset('assets/css/dashboard/pages/product/product.css') }}">
+    @endpush
     <div class="row">
 
         {{-- <x-dashboard.partial.city.statistics/> --}}

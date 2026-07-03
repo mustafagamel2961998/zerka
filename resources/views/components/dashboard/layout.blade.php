@@ -9,7 +9,7 @@
      <meta name="description" content="A fully responsive premium admin dashboard template" />
      <meta name="author" content="Techzaa" />
      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+     <meta name="csrf-token" content="{{ csrf_token() }}">
      <!-- App favicon -->
      <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
@@ -211,7 +211,7 @@
                               <div class="dropdown topbar-item">
                                    <a type="button" class="topbar-button" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <span class="d-flex align-items-center">
-                                             <img class="rounded-circle" width="32" src="{{ auth()->user()->getFirstMediaUrl('avatar') }}" alt="avatar-3">
+                                             <img class="rounded-circle" width="32" src="{{ auth()->user()->getFirstMediaUrl('avatar') }}" alt="{{ auth()->user()->profile->full_name }}">
                                         </span>
                                    </a>
                                    <div class="dropdown-menu dropdown-menu-end">

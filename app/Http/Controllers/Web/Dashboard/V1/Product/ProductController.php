@@ -15,6 +15,7 @@ use App\Actions\Dashboard\V1\Product\CreateAction;
 use App\Actions\Dashboard\V1\Product\UpdateAction;
 use App\DTOs\Dashboard\V1\Product\CreateDTO;
 use App\DTOs\Dashboard\V1\Product\UpdateDTO;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class ProductController extends Controller
 {
     public function __construct(
@@ -101,5 +102,10 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function destroyMedia(Media $media){
+        $media->delete();
+        return response()->json(['success' => true]);
     }
 }

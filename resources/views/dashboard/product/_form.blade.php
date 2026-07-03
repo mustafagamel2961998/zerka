@@ -45,9 +45,9 @@
                             <div class="d-flex flex-wrap gap-2" role="group"
                                 aria-label="Basic checkbox toggle button group">
                                 @foreach ($product->variants as $variant)
-                                @foreach ($variant->colors as $color)
-                                     <label class="color-preview-circle border shadow-sm" for="color-dark"
-                                        style="
+                                    @foreach ($variant->colors as $color)
+                                        <label class="color-preview-circle border shadow-sm" for="color-dark"
+                                            style="
                                         display: inline-block;
                                         width: 22px;
                                         height: 22px;
@@ -56,9 +56,8 @@
                                         flex-shrink: 0;
                                         cursor: pointer;
                                     ">
-                                    </label>
-                                @endforeach
-                                   
+                                        </label>
+                                    @endforeach
                                 @endforeach
 
                             </div>
@@ -84,7 +83,8 @@
                     <input type="file" name="images[]" id="product_images"
                         class="d-none @error('images') is-invalid @enderror" accept="image/*" multiple>
 
-                    <div id="dropzone_upload_msg" class="{{ $product->hasMedia('images') ? 'd-none' : '' }} py-3">
+                    <div id="dropzone_upload_msg"
+                        class="{{ $product && $product->hasMedia('images') ? 'd-none' : '' }} py-3">
                         <i class="bx bx-cloud-upload text-primary mb-2" style="font-size: 48px;"></i>
                         <h3 class="mt-2 fs-5 fw-semibold">
                             {{ __('form.drop_images_here') }}
@@ -95,17 +95,25 @@
                         </span>
                     </div>
 
-                    <div id="preview_container" class="{{ $product->hasMedia('images') ? '' : 'd-none' }} w-100">
+                    <div id="preview_container"
+                        class="{{ $product && $product->hasMedia('images') ? '' : 'd-none' }} w-100">
 
                         <div class="row g-2 justify-content-start images-grid-row">
 
-                            @if ($product->hasMedia('images'))
+                            @if ($product && $product->hasMedia('images'))
                                 @foreach ($product->getMedia('images') as $media)
-                                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-3 server-preview">
+                                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 mb-3 server-preview"
+                                        data-media-id="{{ $media->id }}">
                                         <div class="position-relative product-img-wrap shadow-sm rounded border border-light"
                                             style="overflow: hidden;">
                                             <img src="{{ $media->getUrl() }}" alt="Product Image" class="w-100"
                                                 style="height: 110px; object-fit: cover; display: block;">
+
+                                            <button type="button"
+                                                class="btn btn-danger btn-sm rounded-circle position-absolute top-0 end-0 m-1 remove-server-img-btn d-flex align-items-center justify-content-center"
+                                                style="width: 22px; height: 22px; padding: 0; font-size: 14px; z-index: 5;">
+                                                <i class="bx bx-x"></i>
+                                            </button>
 
                                             <span class="badge bg-success position-absolute bottom-0 start-0 m-1 fs-10"
                                                 style="z-index: 4;">Saved</span>
@@ -130,7 +138,6 @@
                 @enderror
             </div>
         </div>
-
         <!-- كارت معلومات المنتج الرئيسي -->
         <div class="card">
             <div class="card-header">
