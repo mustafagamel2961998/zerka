@@ -15,8 +15,10 @@ class VariantEloquentRepository implements VariantRepositoryInterface
                 'price'    => $variant['price'],
                 'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
             ]);
-            $variantData->colors()->create($variant['colors']);
-            $variantData->inventory()->create([
+            $color = $variantData->color()->create([
+                'color_id'=>$variant['color_id'],
+            ]);
+            $color->inventory()->create([
                 'warehouse_id'     => $variant['warehouse_id'],
                 'quantity'         => $variant['quantity'],
                 'minimum_quantity' => $variant['minimum_quantity'],

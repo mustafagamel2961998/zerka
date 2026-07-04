@@ -7,15 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Inventory extends Model
 {
     protected $fillable = [
-        'product_variant_id',
+        'variant_color_id',
         'warehouse_id',
         'quantity',
         'minimum_quantity',
     ];
     //-----------------------------------------------------------------------------//
     // start relationships
-    public function variants(){
-        return $this->belongsTo(ProductVariant::class,'product_variant_id','id');
+    public function variantColor(){
+        return $this->belongsTo(ProductVariant::class,'variant_color_id','id');
     }
     public function warehouse(){
         return $this->belongsTo(Warehouse::class,'warehouse_id','id');
@@ -25,7 +25,7 @@ class Inventory extends Model
     protected function casts(): array
     {
         return [
-            'product_variant_id' => 'integer',
+            'variant_color_id' => 'integer',
             'warehouse_id' => 'integer',
         ];
     }

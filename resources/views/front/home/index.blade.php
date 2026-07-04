@@ -85,10 +85,10 @@
                             <i class="bi bi-bag-x text-muted" style="font-size: 3.5rem;"></i>
                         </div>
                         <h5 class="fw-bold text-dark mb-2">
-                            {{ __('front.no_products_found') }}
+                            {{ __('front.no_categories_found') }}
                         </h5>
                         <p class="text-muted small mb-4">
-                            {{ __('front.no_products_found_desc') }}
+                            {{ __('front.no_categories_found_desc') }}
                         </p>
 
                     </div>

@@ -22,12 +22,10 @@ class ProductVariant extends Model
     public function size(){
         return $this->belongsTo(Size::class,'size_id','id');
     }
-    public function colors(){
-        return $this->hasMany(VariantColor::class,'product_variant_id','id');
+    public function color(){
+        return $this->hasOne(VariantColor::class,'product_variant_id','id');
     }
-    public function inventory(){
-        return $this->hasOne(Inventory::class,'product_variant_id','id');
-    }
+   
 
     // end relationships
     //-----------------------------------------------------------------------------//

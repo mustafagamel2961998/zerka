@@ -19,3 +19,16 @@ if (! function_exists('current_currency_code')) {
         return $currencyCode;
     }
 }
+if (! function_exists('getCurrencySymbol')) {
+
+    function getCurrencySymbol(string $currencyCode): string
+    {
+        $locale = app()->getLocale();
+
+        $formatter = new \NumberFormatter("{$locale}@currency={$currencyCode}", \NumberFormatter::CURRENCY);
+
+        $symbol = $formatter->getSymbol(\NumberFormatter::CURRENCY_SYMBOL);
+
+        return $symbol ?: $currencyCode; // fallback لو الرمز مش موجود
+    }
+}

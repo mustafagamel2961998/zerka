@@ -19,6 +19,9 @@ class VariantColor extends Model
         public function color(){
             return $this->belongsTo(Color::class,'color_id','id');
         }
+        public function inventory(){
+            return $this->hasOne(Inventory::class,'variant_color_id','id');
+        }
     // end relationships
     //-----------------------------------------------------------------------------//
     protected function casts(): array

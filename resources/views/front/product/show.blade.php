@@ -55,11 +55,14 @@
                                         id="size_{{ $loop->index }}" 
                                         value="{{ $variant->size->size }}" 
                                         class="size-radio-input"
+                                        data-currency="{{getCurrencySymbol(current_currency_code())}}"
                                         data-colors="{{ json_encode($variant->colors) }}"
-                                        data-price="{{ $variant->price }}" {{ $loop->first ? 'checked' : '' }}> 
-                                        
+                                        data-price="{{ $variant->price }}" {{ $loop->first ? 'checked' : '' }} 
+                                        data-quantity="{{ $variant->inventory->quantity }}">
                                         <label for="size_{{ $loop->index }}" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">
                                             {{ $variant->size->size }}
+                                            |
+                                            {{$variant->inventory->quantity}}
                                         </label>
                                 </div>
                             @endforeach
@@ -78,9 +81,13 @@
                             <div class="col-md-4">
                                 <h6 class="fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">Quantity</h6>
                                 <div class="input-group border">
-                                    <button class="btn btn-link text-dark text-decoration-none px-3 py-1 btn-qty-minus" type="button"><i class="bi bi-dash"></i></button>
-                                    <input type="number" id="productQuantity" class="form-control bg-transparent border-0 text-center fw-bold shadow-none p-0 form-control-sm" value="1" min="1" readonly>
-                                    <button class="btn btn-link text-dark text-decoration-none px-3 py-1 btn-qty-plus" type="button"><i class="bi bi-plus"></i></button>
+                                    <button class="btn btn-link text-dark text-decoration-none px-3 py-1 btn-qty-minus" type="button">
+                                        <i class="bi bi-dash"></i>
+                                    </button>
+                                    <input type="number" id="productQuantity" name="quantity" class="form-control bg-transparent border-0 text-center fw-bold shadow-none p-0 form-control-sm" value="1" min="1" readonly>
+                                    <button class="btn btn-link text-dark text-decoration-none px-3 py-1 btn-qty-plus" type="button">
+                                        <i class="bi bi-plus"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="col-md-8 pt-md-4">

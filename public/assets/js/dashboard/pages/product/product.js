@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
 document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.getElementById('variants-body');
     const template = document.getElementById('variant-template');
@@ -121,27 +122,27 @@ document.addEventListener("DOMContentLoaded", function () {
     
     let rowCount = tableBody.querySelectorAll('.variant-row').length;
 
-    // دالة لتحديث الشكل الجمالي لدائرة اللون بناءً على حالة الـ Checkbox (محدد أم لا)
+    // دالة لتحديث الشكل الجمالي لدائرة اللون بناءً على حالة الـ Radio Button (محدد أم لا)
     function refreshColorBorders(rowElement) {
-        rowElement.querySelectorAll('.color-checkbox').forEach(checkbox => {
-            const wrapperLabel = checkbox.closest('.style-color-wrapper');
+        rowElement.querySelectorAll('.color-radio-input').forEach(radio => {
+            const wrapperLabel = radio.closest('.style-color-wrapper');
             if (wrapperLabel) {
-                if (checkbox.checked) {
+                if (radio.checked) {
                     wrapperLabel.classList.remove('border-light-subtle');
                     wrapperLabel.classList.add('border-dark', 'shadow');
                     wrapperLabel.style.transform = 'scale(1.1)';
                     wrapperLabel.style.transition = 'all 0.15s ease-in-out';
-                    checkbox.style.opacity = '0.9'; // جعل الـ Checkbox واضحاً عند الاختيار
+                    radio.style.opacity = '0.9'; // جعل الراديو واضحاً عند الاختيار
                 } else {
                     wrapperLabel.classList.remove('border-dark', 'shadow');
                     wrapperLabel.style.transform = 'scale(1)';
-                    checkbox.style.opacity = '0.2'; // جعل الـ Checkbox شبه مخفي ليبرز اللون فقط
+                    radio.style.opacity = '0.2'; // شفافية خفيفة عند عدم الاختيار
                 }
             }
         });
     }
 
-    // تشغيل الفحص البصري الفوري للأسطر القديمة الراجعة من الداتابيز أو الـ Validation
+    // تشغيل الفحص البصري الفوري للأسطر القديمة
     tableBody.querySelectorAll('.variant-row').forEach(row => {
         refreshColorBorders(row);
     });
@@ -160,9 +161,9 @@ document.addEventListener("DOMContentLoaded", function () {
             rowCount++;
         });
 
-        // الاستماع لتغيير الاختيارات داخل الخلايا ديناميكياً لتحديث شكل الدوائر المفعلة
+        // الاستماع لتغيير الاختيارات داخل الخلايا ديناميكياً
         tableBody.addEventListener('change', function (e) {
-            if (e.target.classList.contains('color-checkbox')) {
+            if (e.target.classList.contains('color-radio-input')) {
                 const currentRow = e.target.closest('.variant-row');
                 refreshColorBorders(currentRow);
             }

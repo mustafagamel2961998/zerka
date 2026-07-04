@@ -32,7 +32,7 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                     <ul class="navbar-nav gap-4 text-uppercase small fw-medium">
                         <li class="nav-item">
-                            <a class="nav-link active text-white border-bottom border-white pb-1" href="#">
+                            <a href="{{route('home')}}" class="nav-link active text-white border-bottom border-white pb-1">
                             {{ __('front.home') }}
                             </a>
                         </li>

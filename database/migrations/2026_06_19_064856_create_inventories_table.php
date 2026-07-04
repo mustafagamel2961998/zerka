@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('inventories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_variant_id')
-                  ->constrained('product_variants')
+            $table->foreignId('variant_color_id')
+                  ->constrained('variant_colors')
                   ->cascadeOnDelete();
             $table->foreignId('warehouse_id')
                   ->constrained('warehouses')
                   ->cascadeOnDelete();
             $table->integer('quantity');
             $table->integer('minimum_quantity')->default(0);
-            $table->unique(['product_variant_id', 'warehouse_id']);
+            $table->unique(['variant_color_id', 'warehouse_id']);
 
             $table->timestamps();
         });

@@ -8,7 +8,7 @@ class CreateDTO
 {
     public function __construct(
         public int $sizeId,
-        public array $colors,
+        public int $colorId,
         public int $warehouseId,
         public float $price,
         public int $quantity,
@@ -19,7 +19,7 @@ class CreateDTO
     {
         return new self(
             sizeId: (int) $data['size_id'],
-            colors:  $data['colors'],
+            colorId:  $data['color_id'],
             warehouseId: (int) $data['warehouse_id'],
             price: (float) $data['price'],
             quantity: (int) $data['quantity'],
@@ -31,7 +31,7 @@ class CreateDTO
     {
         return [
             'size_id'          => $this->sizeId,
-            'colors'           => $this->colors,
+            'color_id'         => $this->colorId,
             'warehouse_id'     => $this->warehouseId,
             'price'            => $this->price,
             'quantity'         => $this->quantity,

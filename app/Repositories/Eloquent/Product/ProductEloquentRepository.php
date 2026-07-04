@@ -26,7 +26,7 @@ class ProductEloquentRepository implements ProductRepositoryInterface
                         ->paginate($perPage ?? 20); 
     }
 
-    public function store(array $data) : Product
+    public function store(array $data) 
     {
         $product = Product::create($data);
         $this->variant_repository_interface->store($data['variants'], $product);
@@ -48,10 +48,10 @@ class ProductEloquentRepository implements ProductRepositoryInterface
             'media',
             'category',
             'variants.size',
-            'variants.colors.color',
+            'variants.color.color',
             'minVariantPrice',
-            'variants.inventory',
-            'variants.inventory.warehouse',
+            'variants.color.inventory',
+            'variants.color.inventory.warehouse',
             'currentTranslation',
             'translations'])
         ->findOrFail($id);
@@ -60,21 +60,9 @@ class ProductEloquentRepository implements ProductRepositoryInterface
 
       $product = Product::findOrFail($data['id']);
       $product->update($data);
-    //   $product->variants()->delete();
-    //   foreach ($data['variants'] as $variant) {
-    //         $variantData = $product->variants()->create([
-    //             'size_id'  => $variant['size_id'],
-    //             'color_id' => $variant['color_id'],
-    //             'price'    => $variant['price'],
-    //             'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
-    //         ]);
+      $product->variants()->delete();
+     $this->variant_repository_interface->store($data['variants'], $product);
 
-    //         $variantData->inventory()->create([
-    //             'warehouse_id'     => $variant['warehouse_id'],
-    //             'quantity'         => $variant['quantity'],
-    //             'minimum_quantity' => $variant['minimum_quantity'],
-    //         ]);
-    //   }
     //   $product->translations()->delete();
     //   foreach($data['name'] as $key => $value){
     //     $product->translations()->create([
