@@ -9,6 +9,7 @@ if (! function_exists('format_currency')) {
 }
 
 
+
 if (! function_exists('current_currency_code')) {
     function current_currency_code() {
         $currencyCode ='EGP';

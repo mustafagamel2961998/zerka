@@ -198,6 +198,7 @@
                              </a>
                             <span class="fw-bold small" style="font-size: 0.8rem;">
                                 {{ format_currency($product->minVariantPrice->price, current_currency_code()) }}
+                                
                             </span>
                         </div>
                     </div>

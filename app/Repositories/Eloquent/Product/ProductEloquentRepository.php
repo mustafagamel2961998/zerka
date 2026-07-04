@@ -47,8 +47,9 @@ class ProductEloquentRepository implements ProductRepositoryInterface
         return Product::with([
             'media',
             'category',
-            'variants.colors',
             'variants.size',
+            'variants.colors.color',
+            'minVariantPrice',
             'variants.inventory',
             'variants.inventory.warehouse',
             'currentTranslation',

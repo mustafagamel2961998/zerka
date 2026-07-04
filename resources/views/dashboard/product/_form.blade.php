@@ -106,8 +106,8 @@
                                         data-media-id="{{ $media->id }}">
                                         <div class="position-relative product-img-wrap shadow-sm rounded border border-light"
                                             style="overflow: hidden;">
-                                            <img src="{{ $media->getUrl() }}" alt="Product Image" class="w-100"
-                                                style="height: 110px; object-fit: cover; display: block;">
+                                            <img src="{{ $media->getUrl('optimized') }}" alt="Product Image" class="w-100"
+                                                style="height: 110px; object-fit: contain; display: block;">
 
                                             <button type="button"
                                                 class="btn btn-danger btn-sm rounded-circle position-absolute top-0 end-0 m-1 remove-server-img-btn d-flex align-items-center justify-content-center"

@@ -10,11 +10,9 @@
                 <div class="row g-2 flex-column-reverse flex-lg-row">
                     <div class="col-lg-2">
                         <div class="d-flex flex-row flex-lg-column gap-2 product-thumbnails">
-                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" class="img-fluid border p-1 active thumbnail-trigger" alt="thumb 1">
-                            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=600" class="img-fluid border p-1 thumbnail-trigger" alt="thumb 2">
-                            <img src="https://images.unsplash.com/photo-1554412933-514a83d2f3c8?q=80&w=600" class="img-fluid border p-1 thumbnail-trigger" alt="thumb 3">
-                            <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=600" class="img-fluid border p-1 thumbnail-trigger" alt="thumb 4">
-                            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=600" class="img-fluid border p-1 thumbnail-trigger" alt="thumb 5">
+                            @foreach ($product->getMedia('images') as $media)
+                                 <img src="{{$media->getUrl('optimized')}}" class="img-fluid border p-1 @if($loop->first) active @endif thumbnail-trigger" alt="{{ $product->currentTranslation->name }}">
+                            @endforeach
                         </div>
                     </div>
                     
@@ -23,7 +21,7 @@
                             <button class="btn btn-sm position-absolute top-0 end-0 m-3 p-0 text-dark border-0 bg-transparent" style="z-index: 10;">
                                 <i class="bi bi-heart fs-4"></i>
                             </button>
-                            <img id="mainProductImage" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=600" class="img-fluid main-preview-img" alt="Main Product">
+                            <img id="mainProductImage" src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" class="img-fluid main-preview-img" alt="{{ $product->currentTranslation->name }}">
                         </div>
                     </div>
                 </div>
@@ -34,40 +32,44 @@
                     <h3 class="fw-bold text-uppercase tracking-wide mb-2 fs-4">{{ $product->currentTranslation->name }}</h3>
                     
                     <div class="mb-3">
-                        <span class="fw-bold fs-5 text-dark">EGP 1,250.00</span>
-                        <span class="text-muted text-decoration-line-through small ms-2">EGP 1,800.00</span>
+                            <span class="fw-bold fs-5 text-dark" id="currentProductPrice">
+                                {{ format_currency($product->variants->first()->price, current_currency_code()) }}
+                            </span>
                     </div>
-                    
                     <hr class="text-light-subtle">
 
                     <p class="text-muted small lh-base mb-4">
-                        سويت شيرت قطني مريح للغاية ومثالي للاستخدام اليومي. يتميز بخامات ثقيلة ومقاومة للانكماش مع قصة عصرية تناسب جميع الأذواق ومصنوع بالكامل في مصر بجودة عالمية.
+                        {{$product->currentTranslation->description}}
                     </p>
 
+
                     <div class="mb-4 size-selector">
-                        <h6 class="fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">Select Size</h6>
+                        <h6 class="fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+                            {{__('front.select_size')}}
+                        </h6>
                         <div class="d-flex gap-2 flex-wrap">
-                            <div>
-                                <input type="radio" name="product_size" id="size_s" value="S" class="size-radio-input">
-                                <label for="size_s" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">S</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="product_size" id="size_m" value="M" class="size-radio-input">
-                                <label for="size_m" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">M</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="product_size" id="size_l" value="L" class="size-radio-input">
-                                <label for="size_l" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">L</label>
-                            </div>
-                            <div>
-                                <input type="radio" name="product_size" id="size_xl" value="XL" class="size-radio-input">
-                                <label for="size_xl" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">XL</label>
-                            </div>
+                            @foreach ($product->variants as $variant)
+                                <div>
+                                    <input type="radio" 
+                                        name="size" 
+                                        id="size_{{ $loop->index }}" 
+                                        value="{{ $variant->size->size }}" 
+                                        class="size-radio-input"
+                                        data-colors="{{ json_encode($variant->colors) }}"
+                                        data-price="{{ $variant->price }}" {{ $loop->first ? 'checked' : '' }}> 
+                                        
+                                        <label for="size_{{ $loop->index }}" class="btn btn-outline-secondary rounded-0 size-badge px-2.5 py-1.5 fw-semibold" style="font-size: 0.75rem;">
+                                            {{ $variant->size->size }}
+                                        </label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
 
                     <div class="mb-4 color-selector d-none" id="colorSelectorContainer">
-                        <h6 class="fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">Available Colors</h6>
+                        <h6 class="fw-bold text-uppercase mb-2" style="font-size: 0.75rem; letter-spacing: 0.05em;">
+                            {{__('front.select_color')}}
+                        </h6>
                         <div class="d-flex gap-3 id-colors-list"></div>
                     </div>
 
