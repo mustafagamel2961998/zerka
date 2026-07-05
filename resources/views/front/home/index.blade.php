@@ -57,16 +57,15 @@
 
     <!-- 4. Promo Banners Grid -->
     <section class="mb-5">
-        <div class="row g-2">
+        <div class="row g-0">
             <!-- Banner 1 -->
             @forelse ($categories as $category)
                 <div class="col-md-4 position-relative overflow-hidden bg-dark text-white d-flex align-items-end category-banner"
-                    style="
-                background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url({{ $category->getFirstMediaUrl('cover', 'optimized') }}) center/cover;">
+                    style="background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url({{ $category->getFirstMediaUrl('cover', 'optimized') }}) center/cover no-repeat;">
                     <div class="p-4 w-100">
                         <span class="text-white-50 small text-uppercase"
                             style="font-size: 0.65rem; letter-spacing: 1px;">
-                            New Collection
+                            {{ $category->currentTranslation->meta_title }}
                         </span>
                         <h5 class="fw-bold text-uppercase m-0 tracking-wide fs-6">
                             {{ $category->currentTranslation->name }}

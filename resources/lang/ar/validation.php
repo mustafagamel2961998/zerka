@@ -201,6 +201,10 @@ return [
        'size_id'=>'الحجم',
        'images'=>'الصور',
        'code'=>'الكود',
+       'category_id'=>'القسم',
+       'variants'=>'المتغيرات',
+       'variants.*.size_id'=>'الحجم',
+       
     ],
 
 ];

@@ -25,7 +25,7 @@
                          </a>
                     </td>
                     <td>
-                       <x-dashboard.partial.image :src="$product->getFirstMediaUrl('images', 'thumb')" :class="'product-image cursor-pointer'" :alt="$product->currentTranslation->name"/>
+                       <x-dashboard.partial.image :src="$product->getFirstMediaUrl('images', 'thumb')" :class="'table-image cursor-pointer'" :alt="$product->currentTranslation->name"/>
                     </td>
                     <td>
                          {{ $product->currentTranslation->name }}

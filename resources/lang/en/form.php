@@ -103,4 +103,6 @@ return [
     'minimum_quantity' => 'Minimum Quantity',
     'colors'=>'Colors',
     'sizes'=>'Sizes',
+    'click_to_add' => 'Click to add',
+    'remove' => 'Remove',
 ];

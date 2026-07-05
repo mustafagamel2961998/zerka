@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         
                         col.innerHTML = `
                             <div class="position-relative product-img-wrap shadow-sm rounded border border-light" style="overflow: hidden;">
-                                <img src="${e.target.result}" alt="Preview" class="product_image_preview w-100" style="height: 110px; object-fit: cover; display: block;">
+                                <img src="${e.target.result}" alt="Preview" class="product_image_preview w-100" style="height: 110px; object-fit: contain; display: block;">
                                 <button type="button" class="btn btn-danger btn-sm rounded-circle position-absolute top-0 end-0 m-1 remove-preview-btn d-flex align-items-center justify-content-center" style="width: 22px; height: 22px; padding: 0; font-size: 14px; z-index: 5;">
                                     <i class="bx bx-x"></i>
                                 </button>
@@ -116,66 +116,81 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const tableBody = document.getElementById('variants-body');
-    const template = document.getElementById('variant-template');
-    const addBtn = document.getElementById('add-variant-btn');
-    
-    let rowCount = tableBody.querySelectorAll('.variant-row').length;
+    const container = document.getElementById('variants-container');
+    const variantTemplate = document.getElementById('variant-template');
+    const colorRowTemplate = document.getElementById('color-row-template');
+    const addVariantBtn = document.getElementById('add-variant-btn');
 
-    // دالة لتحديث الشكل الجمالي لدائرة اللون بناءً على حالة الـ Radio Button (محدد أم لا)
-    function refreshColorBorders(rowElement) {
-        rowElement.querySelectorAll('.color-radio-input').forEach(radio => {
-            const wrapperLabel = radio.closest('.style-color-wrapper');
-            if (wrapperLabel) {
-                if (radio.checked) {
-                    wrapperLabel.classList.remove('border-light-subtle');
-                    wrapperLabel.classList.add('border-dark', 'shadow');
-                    wrapperLabel.style.transform = 'scale(1.1)';
-                    wrapperLabel.style.transition = 'all 0.15s ease-in-out';
-                    radio.style.opacity = '0.9'; // جعل الراديو واضحاً عند الاختيار
-                } else {
-                    wrapperLabel.classList.remove('border-dark', 'shadow');
-                    wrapperLabel.style.transform = 'scale(1)';
-                    radio.style.opacity = '0.2'; // شفافية خفيفة عند عدم الاختيار
-                }
-            }
-        });
-    }
+    let variantIndex = container.querySelectorAll('.variant-card').length;
 
-    // تشغيل الفحص البصري الفوري للأسطر القديمة
-    tableBody.querySelectorAll('.variant-row').forEach(row => {
-        refreshColorBorders(row);
+    // -----------------------------------------
+    // إضافة سايز (Variant) جديد
+    // -----------------------------------------
+    addVariantBtn.addEventListener('click', function () {
+        const html = variantTemplate.innerHTML.replace(/__vIndex__/g, variantIndex);
+        const wrapper = document.createElement('div');
+        wrapper.innerHTML = html.trim();
+        const card = wrapper.firstElementChild;
+        container.appendChild(card);
+        variantIndex++;
     });
 
-    if (addBtn && tableBody && template) {
-        // حدث إضافة سطر جديد للمصفوفة الخطيّة
-        addBtn.addEventListener('click', function () {
-            const content = template.innerHTML.replace(/__index__/g, rowCount);
-            const tr = document.createElement('tr');
-            tr.className = 'variant-row';
-            tr.innerHTML = content;
-            tableBody.appendChild(tr);
+    // -----------------------------------------
+    // حذف سايز كامل
+    // -----------------------------------------
+    container.addEventListener('click', function (e) {
+        if (e.target.closest('.remove-variant-btn')) {
+            e.target.closest('.variant-card').remove();
+        }
+    });
 
-            // تهيئة حواف الألوان للسطر الجديد
-            refreshColorBorders(tr);
-            rowCount++;
-        });
+    // -----------------------------------------
+    // الضغط على دائرة لون -> إضافة صف لون جديد للسايز ده
+    // -----------------------------------------
+    container.addEventListener('click', function (e) {
+        const swatch = e.target.closest('.swatch');
+        if (!swatch || swatch.classList.contains('swatch-disabled')) return;
 
-        // الاستماع لتغيير الاختيارات داخل الخلايا ديناميكياً
-        tableBody.addEventListener('change', function (e) {
-            if (e.target.classList.contains('color-radio-input')) {
-                const currentRow = e.target.closest('.variant-row');
-                refreshColorBorders(currentRow);
-            }
-        });
+        const variantCard = swatch.closest('.variant-card');
+        const vIndex = variantCard.dataset.variantIndex;
+        let cIndex = parseInt(variantCard.dataset.colorIndex || '0', 10);
 
-        // حدث حذف السطر
-        tableBody.addEventListener('click', function (e) {
-            if (e.target.closest('.remove-row')) {
-                e.target.closest('tr').remove();
-            }
-        });
-    }
+        const colorId = swatch.dataset.colorId;
+        const colorCode = swatch.style.backgroundColor;
+
+        const rowHtml = colorRowTemplate.innerHTML
+            .replace(/__vIndex__/g, vIndex)
+            .replace(/__cIndex__/g, cIndex)
+            .replace(/__colorId__/g, colorId)
+            .replace(/__colorCode__/g, colorCode);
+
+        const tbody = variantCard.querySelector('.colors-body');
+        const rowWrapper = document.createElement('tbody');
+        rowWrapper.innerHTML = rowHtml.trim();
+        tbody.appendChild(rowWrapper.firstElementChild);
+
+        // قفل السواتش ده عشان متتكررش في نفس السايز
+        swatch.classList.add('swatch-disabled');
+
+        variantCard.dataset.colorIndex = cIndex + 1;
+    });
+
+    // -----------------------------------------
+    // حذف صف لون -> يرجع يفتح السواتش بتاعه تاني
+    // -----------------------------------------
+    container.addEventListener('click', function (e) {
+        const removeBtn = e.target.closest('.remove-color-row');
+        if (!removeBtn) return;
+
+        const row = removeBtn.closest('.color-row');
+        const variantCard = removeBtn.closest('.variant-card');
+        const colorId = row.dataset.colorId;
+
+        const swatch = variantCard.querySelector(`.swatch[data-color-id="${colorId}"]`);
+        if (swatch) swatch.classList.remove('swatch-disabled');
+
+        row.remove();
+    });
 });
 
 

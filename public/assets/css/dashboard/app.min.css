@@ -22098,6 +22098,11 @@ p.no-span::after {
 .product-carousel{
   overflow: auto;
 }
+.table-image{
+    height: 4.5rem !important;
+    width: 3.5rem !important;
+    object-fit: contain;
+}
 @media (min-width: 768px) {
   .timeline .timeline-time .time-show {
     -webkit-box-pack: center;

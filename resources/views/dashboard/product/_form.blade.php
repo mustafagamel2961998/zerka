@@ -1,13 +1,23 @@
 @php
     use App\Enums\Status;
 @endphp
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+
 
 <div class="row">
     @if (isset($product->id))
         <div class="col-xl-3 col-lg-4">
             <div class="card">
                 <div class="card-body">
-                    <!-- صورة المعاينة الجانبية -->
                     <img src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" alt=""
                         class="img-fluid rounded bg-light">
 
@@ -18,45 +28,41 @@
                                 class="fs-14 text-muted ms-1">({{ $product->category->currentTranslation->name }})</span>
                         </h4>
 
-                        {{-- <h5 class="text-dark fw-medium mt-3">Price :</h5>
-                        <h4 class="fw-semibold text-dark mt-2 d-flex align-items-center gap-2">
-                            <span class="text-muted text-decoration-line-through">$100</span> $80 <small class="text-muted">
-                                (30% Off)
-                            </small>
-                        </h4> --}}
-                        <!-- معاينة المقاسات -->
+                        {{-- كل سايز مع ألوانه هو تحت بعض، مش منفصلين --}}
                         <div class="mt-3">
                             <h5 class="text-dark fw-medium">{{ __('global.sizes') }} :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group"
-                                aria-label="Basic checkbox toggle button group">
-                                @foreach ($product->variants as $variant)
-                                    <label
-                                        class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center"
-                                        for="size-s">
-                                        {{ $variant->size->size }}
-                                    </label>
-                                @endforeach
-                            </div>
-                        </div>
 
-                        <!-- معاينة الألوان -->
-                        <div class="mt-3">
-                            <h5 class="text-dark fw-medium">{{ __('global.colors') }} :</h5>
-                            <div class="d-flex flex-wrap gap-2" role="group"
-                                aria-label="Basic checkbox toggle button group">
-                                    @if($variant->color)
-                                            <label class="color-preview-circle border shadow-sm" for="color-dark"
-                                                style="
-                                            display: inline-block;
-                                            width: 22px;
-                                            height: 22px;
-                                            background-color: {{ $variant->color->color->code }};
-                                            border-radius: 50%;
-                                            flex-shrink: 0;
-                                            cursor: pointer;">
-                                            </label>
+                            @foreach ($product->variants as $variant)
+                                <div class="mb-3 pb-2 border-bottom">
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <label
+                                            class="btn btn-light avatar-sm rounded d-flex justify-content-center align-items-center mb-0">
+                                            {{ $variant->size->size }}
+                                        </label>
+                                        <span class="text-muted small">${{ number_format($variant->price, 2) }}</span>
+                                    </div>
+
+                                    @if ($variant->colors->count() > 0)
+                                        <div class="d-flex flex-wrap gap-2">
+                                            @foreach ($variant->colors as $variantColor)
+                                                <span class="color-preview-circle border shadow-sm"
+                                                    title="{{ $variantColor->color->code ?? '' }} — {{ __('form.quantity') }}: {{ $variantColor->inventory->quantity ?? 0 }}"
+                                                    style="
+                                                    display: inline-block;
+                                                    width: 22px;
+                                                    height: 22px;
+                                                    background-color: {{ $variantColor->color->code ?? '#000' }};
+                                                    border-radius: 50%;
+                                                    flex-shrink: 0;
+                                                    cursor: pointer;">
+                                                </span>
+                                            @endforeach
+                                        </div>
+                                    @else
+                                        <span class="text-muted small">{{ __('global.no_colors') }}</span>
                                     @endif
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -102,7 +108,8 @@
                                         data-media-id="{{ $media->id }}">
                                         <div class="position-relative product-img-wrap shadow-sm rounded border border-light"
                                             style="overflow: hidden;">
-                                            <img src="{{ $media->getUrl('optimized') }}" alt="Product Image" class="w-100"
+                                            <img src="{{ $media->getUrl('optimized') }}" alt="Product Image"
+                                                class="w-100"
                                                 style="height: 110px; object-fit: contain; display: block;">
 
                                             <button type="button"
@@ -257,7 +264,7 @@
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ old('category_id', $product->category_id ?? '') == $category->id ? 'selected' : '' }}>
-                                        {{ $category->currentTranslation->name ?? $category->name }}
+                                        {{ $category->parent->currentTranslation->name . ' - ' . $category->currentTranslation->name }}
                                     </option>
                                 @endforeach
                             </select>
@@ -283,228 +290,131 @@
 
 
 
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <h4 class="card-title mb-0">{{ __('form.product_variants') }}</h4>
-            <button type="button" class="btn btn-primary btn-sm" id="add-variant-btn">
-                <i class="bx bx-plus"></i> {{ __('form.add_variant') }}
-            </button>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered table-centered mb-0" id="variants-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 15%;">{{ __('form.size') }}</th>
-                            <th style="width: 30%;">{{ __('form.colors') }}</th>
-                            <th style="width: 20%;">{{ __('form.warehouse') }}</th>
-                            <th style="width: 12%;">{{ __('form.price') }}</th>
-                            <th style="width: 10%;">{{ __('form.quantity') }}</th>
-                            <th style="width: 10%;">{{ __('form.minimum_quantity') }}</th>
-                            <th style="width: 3%;">{{ __('form.action') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody id="variants-body">
-                        {{-- 1. حالة وجود خطأ رجوع من الـ Validation (Old Values) --}}
-                        @if (old('variants'))
-                            @foreach (old('variants') as $index => $oldVariant)
-                                <tr class="variant-row">
-                                    <td>
-                                    
-                                        <select name="variants[{{ $index }}][size_id]"
-                                            class="form-control @error("variants.$index.size_id") is-invalid @enderror" required>
-                                            @foreach ($sizes as $size)
-                                                <option value="{{ $size->id }}" @selected($oldVariant['size_id'] == $size->id)>
-                                                    {{ $size->size }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error("variants.$index.size_id")
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-wrap gap-2 color-selection-container">
-                                            @foreach ($colors as $color)
-                                                <label
-                                                    class="position-relative p-0 m-0 cursor-pointer d-flex align-items-center justify-content-center rounded-circle border shadow-sm style-color-wrapper"
-                                                    style="width: 28px; height: 28px; background-color: {{ $color->code ?? '#000000' }};"
-                                                    title="{{ $color->code }}">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h4 class="card-title mb-0">{{ __('form.product_variants') }}</h4>
+                <button type="button" class="btn btn-primary btn-sm" id="add-variant-btn">
+                    <i class="bx bx-plus"></i> {{ __('form.add_variant') }}
+                </button>
+            </div>
 
-                                                    <input class="form-check-input color-radio-input m-0 position-absolute"
-                                                        type="radio" 
-                                                        name="variants[{{ $index }}][color_id]"
-                                                        value="{{ $color->id }}"
-                                                        style="width: 100%; height: 100%; opacity: 0.2; cursor: pointer;"
-                                                        @checked(($oldVariant['color_id'] ?? null) == $color->id)>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                        @error("variants.$index.color_id")
-                                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                                        @enderror
-                                    </td>
-                                    <td>
-                                        <select name="variants[{{ $index }}][warehouse_id]"
-                                            class="form-control @error("variants.$index.warehouse_id") is-invalid @enderror" required>
-                                            @foreach ($warehouses as $warehouse)
-                                                <option value="{{ $warehouse->id }}" @selected($oldVariant['warehouse_id'] == $warehouse->id)>
-                                                    {{ $warehouse->currentTranslation->name ?? $warehouse->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="input-group">
-                                            <span class="input-group-text">$</span>
-                                            <input type="number" name="variants[{{ $index }}][price]"
-                                                class="form-control" step="0.01"
-                                                value="{{ $oldVariant['price'] }}" required>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="variants[{{ $index }}][quantity]"
-                                            class="form-control" value="{{ $oldVariant['quantity'] }}" required>
-                                    </td>
-                                    <td><input type="number" name="variants[{{ $index }}][minimum_quantity]"
-                                            class="form-control" value="{{ $oldVariant['minimum_quantity'] }}" required></td>
-                                    <td class="text-center align-middle">
-                                        <button type="button" class="btn btn-sm btn-outline-danger remove-row"><i
-                                                class="bx bx-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
-
-                        {{-- 2. حالة الـ Edit وجلب البيانات الحالية للمنتج بناءً على الـ Relations الممررة --}}
-                        @elseif(isset($product) && $product->variants->count() > 0)
-                            @foreach ($product->variants as $index => $variant)
-                                @php
-                                    // جلب الـ ID الحقيقي للون من خلال علاقة الوسيط المستدعاة في الـ query (variants.color.color)
-                                    $selectedColorId = $variant->color?->color?->id ?? $variant->color_id;
-                                    
-                                    // جلب بيانات المخزن بناءً على علاقتك: variants.color.inventory
-                                    $inventory = $variant->color?->inventory;
-                                @endphp
-                                <tr class="variant-row">
-                                    <td>
-                                        <select name="variants[{{ $index }}][size_id]" class="form-control" required>
-                                            @foreach ($sizes as $size)
-                                                <option value="{{ $size->id }}" @selected($variant->size_id == $size->id)>
-                                                    {{ $size->size }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-wrap gap-2 color-selection-container">
-                                            @foreach ($colors as $color)
-                                                <label
-                                                    class="position-relative p-0 m-0 cursor-pointer d-flex align-items-center justify-content-center rounded-circle border shadow-sm style-color-wrapper"
-                                                    style="width: 28px; height: 28px; background-color: {{ $color->code ?? '#000000' }};"
-                                                    title="{{ $color->code }}">
-
-                                                    <input class="form-check-input color-radio-input m-0 position-absolute"
-                                                        type="radio" 
-                                                        name="variants[{{ $index }}][color_id]"
-                                                        value="{{ $color->id }}"
-                                                        style="width: 100%; height: 100%; opacity: 0.2; cursor: pointer;"
-                                                        @checked($selectedColorId == $color->id)>
-                                                </label>
-                                            @endforeach
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <select name="variants[{{ $index }}][warehouse_id]" class="form-control" required>
-                                            @foreach ($warehouses as $warehouse)
-                                                <option value="{{ $warehouse->id }}" @selected($inventory?->warehouse_id == $warehouse->id)>
-                                                    {{ $warehouse->currentTranslation->name ?? $warehouse->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td>
-                                        <div class="input-group">
-                                            <span class="input-group-text">$</span>
-                                            <input type="number" name="variants[{{ $index }}][price]"
-                                                class="form-control" step="0.01"
-                                                value="{{ $variant->price }}" required>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="variants[{{ $index }}][quantity]"
-                                            class="form-control"
-                                            value="{{ $inventory?->quantity ?? 0 }}" required>
-                                    </td>
-                                    <td>
-                                        <input type="number" name="variants[{{ $index }}][minimum_quantity]"
-                                            class="form-control"
-                                            value="{{ $inventory?->minimum_quantity ?? 0 }}" required>
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        <button type="button" class="btn btn-sm btn-outline-danger remove-row"><i
-                                                class="bx bx-trash"></i></button>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        @endif
-                    </tbody>
-                </table>
+            <div class="card-body">
+                <div id="variants-container">
+                    @if (old('variants'))
+                        @foreach (old('variants') as $vIndex => $oldVariant)
+                            @include('dashboard.product.partials.variant-card', [
+                                'vIndex' => $vIndex,
+                                'sizeId' => $oldVariant['size_id'] ?? null,
+                                'price' => $oldVariant['price'] ?? null,
+                                'oldColors' => $oldVariant['colors'] ?? [],
+                            ])
+                        @endforeach
+                    @elseif(isset($product) && $product->variants->count() > 0)
+                        @foreach ($product->variants as $vIndex => $variant)
+                            @include('dashboard.product.partials.variant-card', [
+                                'vIndex' => $vIndex,
+                                'sizeId' => $variant->size_id,
+                                'price' => $variant->price,
+                                'existingColors' => $variant->colors, // كل واحدة فيها->inventory
+                            ])
+                        @endforeach
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
 
-    {{-- 3. الـ Template الثابت لإضافة سطر جديد --}}
-    <template id="variant-template">
-        <tr class="variant-row">
-            <td>
-                <select name="variants[__index__][size_id]" class="form-control" required>
-                    @foreach ($sizes as $size)
-                        <option value="{{ $size->id }}">{{ $size->size }}</option>
-                    @endforeach
-                </select>
-            </td>
-            <td>
-                <div class="d-flex flex-wrap gap-2 color-selection-container">
-                    @foreach ($colors as $color)
-                        <label
-                            class="position-relative p-0 m-0 cursor-pointer d-flex align-items-center justify-content-center rounded-circle border shadow-sm style-color-wrapper"
-                            style="width: 28px; height: 28px; background-color: {{ $color->code ?? '#000000' }};"
-                            title="{{ $color->code }}">
-
-                            <input class="form-check-input color-radio-input m-0 position-absolute" 
-                                type="radio"
-                                name="variants[__index__][color_id]" 
-                                value="{{ $color->id }}"
-                                style="width: 100%; height: 100%; opacity: 0.2; cursor: pointer;">
-                        </label>
-                    @endforeach
+        {{-- ============================================= --}}
+        {{-- Template: كارت السايز (Variant) --}}
+        {{-- ============================================= --}}
+        <template id="variant-template">
+            <div class="variant-card card mb-3 border" data-variant-index="__vIndex__" data-color-index="0">
+                <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2 bg-light">
+                    <div class="d-flex flex-wrap align-items-center gap-2">
+                        <select name="variants[__vIndex__][size_id]"
+                            class="form-control form-control-sm variant-size-select" required style="width: 120px;">
+                            <option value="">{{ __('form.size') }}</option>
+                            @foreach ($sizes as $size)
+                                <option value="{{ $size->id }}">{{ $size->size }}</option>
+                            @endforeach
+                        </select>
+                        <div class="input-group input-group-sm" style="width: 140px;">
+                            <span class="input-group-text">$</span>
+                            <input type="number" name="variants[__vIndex__][price]" class="form-control"
+                                step="0.01" placeholder="{{ __('form.price') }}" required>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-variant-btn">
+                        <i class="bx bx-trash"></i> {{ __('form.remove') }}
+                    </button>
                 </div>
-            </td>
-            <td>
-                <select name="variants[__index__][warehouse_id]" class="form-control" required>
-                    @foreach ($warehouses as $warehouse)
-                        <option value="{{ $warehouse->id }}">
-                            {{ $warehouse->currentTranslation->name ?? $warehouse->name }}</option>
-                    @endforeach
-                </select>
-            </td>
-            <td>
-                <div class="input-group">
-                    <span class="input-group-text">$</span>
-                    <input type="number" name="variants[__index__][price]" class="form-control" step="0.01"
-                        placeholder="0.00" required>
+
+                <div class="card-body">
+                    <label class="form-label small text-muted mb-1">{{ __('form.colors') }} —
+                        {{ __('form.click_to_add') }}</label>
+                    <div class="d-flex flex-wrap gap-2 color-swatches-container mb-3">
+                        @foreach ($colors as $color)
+                            <div class="position-relative p-0 cursor-pointer d-flex align-items-center justify-content-center rounded-circle border shadow-sm swatch"
+                                data-color-id="{{ $color->id }}" title="{{ $color->code }}"
+                                style="width: 28px; height: 28px; background-color: {{ $color->code ?? '#000000' }};">
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-sm table-bordered mb-0 colors-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 20%;">{{ __('form.color') }}</th>
+                                    <th style="width: 30%;">{{ __('form.warehouse') }}</th>
+                                    <th style="width: 20%;">{{ __('form.quantity') }}</th>
+                                    <th style="width: 20%;">{{ __('form.minimum_quantity') }}</th>
+                                    <th style="width: 10%;"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="colors-body"></tbody>
+                        </table>
+                    </div>
                 </div>
-            </td>
-            <td><input type="number" name="variants[__index__][quantity]" class="form-control" placeholder="0" required></td>
-            <td><input type="number" name="variants[__index__][minimum_quantity]" class="form-control" placeholder="0" value="0" required></td>
-            <td class="text-center align-middle">
-                <button type="button" class="btn btn-sm btn-outline-danger remove-row"><i class="bx bx-trash"></i></button>
-            </td>
-        </tr>
-    </template>
+            </div>
+        </template>
 
-
-
-
-
+        {{-- ============================================= --}}
+        {{-- Template: صف لون واحد جوه السايز --}}
+        {{-- ============================================= --}}
+        <template id="color-row-template">
+            <tr class="color-row" data-color-id="__colorId__">
+                <td class="align-middle">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="color-preview rounded-circle border"
+                            style="width:20px;height:20px;display:inline-block;background-color: __colorCode__;"></span>
+                        <input type="hidden" name="variants[__vIndex__][colors][__cIndex__][color_id]"
+                            value="__colorId__">
+                    </div>
+                </td>
+                <td>
+                    <select name="variants[__vIndex__][colors][__cIndex__][warehouse_id]"
+                        class="form-control form-control-sm" required>
+                        <option value="">{{ __('form.warehouse') }}</option>
+                        @foreach ($warehouses as $warehouse)
+                            <option value="{{ $warehouse->id }}">
+                                {{ $warehouse->currentTranslation->name ?? $warehouse->name }}</option>
+                        @endforeach
+                    </select>
+                </td>
+                <td>
+                    <input type="number" name="variants[__vIndex__][colors][__cIndex__][quantity]"
+                        class="form-control form-control-sm" placeholder="0" required>
+                </td>
+                <td>
+                    <input type="number" name="variants[__vIndex__][colors][__cIndex__][minimum_quantity]"
+                        class="form-control form-control-sm" value="0" required>
+                </td>
+                <td class="text-center align-middle">
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-color-row"><i
+                            class="bx bx-trash"></i></button>
+                </td>
+            </tr>
+        </template>
 
 
 

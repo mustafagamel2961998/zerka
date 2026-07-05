@@ -22,8 +22,8 @@ class ProductVariant extends Model
     public function size(){
         return $this->belongsTo(Size::class,'size_id','id');
     }
-    public function color(){
-        return $this->hasOne(VariantColor::class,'product_variant_id','id');
+    public function colors(){
+        return $this->hasMany(VariantColor::class,'product_variant_id','id');
     }
    
 

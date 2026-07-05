@@ -6,6 +6,8 @@ use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use App\Enums\Status;
+use Illuminate\Support\Facades\DB;
+
 class CategoryRequest extends FormRequest
 {
     protected function prepareForValidation()
@@ -32,19 +34,47 @@ class CategoryRequest extends FormRequest
         $id = request('category');
         return [
             'parent_id'=>['nullable','exists:categories,id'],
-            'name.ar'=>[
-                'required',
-                'string',
-                'regex:/^[\x{0600}-\x{06FF}0-9\x{0660}-\x{0669}\s]+$/u',
-                'max:255',
-                Rule::unique('category_translations','name')->where('locale', 'ar')->ignore($id,'category_id')
-            ],
-            'name.en'=>[
-                'required',
-                'string',
-                'regex:/^[a-zA-Z0-9\s]+$/',
-                'max:255',
-                Rule::unique('category_translations','name')->where('locale', 'en')->ignore($id,'category_id')
+            'name.ar' => [
+                    'required',
+                    'string',
+                    'regex:/^[\x{0600}-\x{06FF}0-9\x{0660}-\x{0669}\s]+$/u',
+                    'max:255',
+                    function ($attribute, $value, $fail) use ($id) {
+                        $exists = DB::table('category_translations')
+                            ->join('categories', 'categories.id', '=', 'category_translations.category_id')
+                            ->where('category_translations.locale', 'ar')
+                            ->where('category_translations.name', $value)
+                            ->where('categories.parent_id', $this->parent_id)
+                            ->when($id, function ($query) use ($id) {
+                                return $query->where('category_translations.category_id', '!=', $id);
+                            })
+                            ->exists();
+
+                        if ($exists) {
+                            $fail('اسم التصنيف هذا مستخدم بالفعل داخل هذا التصنيف الأب.');
+                        }
+                 }
+                ],
+                'name.en' => [
+                    'required',
+                    'string',
+                    'regex:/^[a-zA-Z0-9\s\-]+$/',
+                    'max:255',
+                     function ($attribute, $value, $fail) use ($id) {
+                        $exists = DB::table('category_translations')
+                            ->join('categories', 'categories.id', '=', 'category_translations.category_id')
+                            ->where('category_translations.locale', 'en')
+                            ->where('category_translations.name', $value)
+                            ->where('categories.parent_id', $this->parent_id)
+                            ->when($id, function ($query) use ($id) {
+                                return $query->where('category_translations.category_id', '!=', $id);
+                            })
+                            ->exists();
+
+                        if ($exists) {
+                            $fail(__('dashboard.unique_exists'));
+                        }
+                 }
             ],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
             'description.ar'=>['nullable',
@@ -53,7 +83,7 @@ class CategoryRequest extends FormRequest
             'max:255'],
 
             'description.en'=>['nullable','string',
-            'regex:/^[a-zA-Z0-9\s]+$/',
+            'regex:/^[a-zA-Z0-9\s\-]+$/',
             'max:255'],
 
             'meta_title.ar'=>['nullable','string','max:255'],

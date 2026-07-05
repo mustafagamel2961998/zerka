@@ -18,7 +18,7 @@ return new class extends Migration
                   ->cascadeOnDelete();
             $table->string('locale')->index(); 
             
-            $table->string('name')->unique(); 
+            $table->string('name'); 
             $table->text('description')->nullable();
             
             $table->string('meta_title')->nullable();

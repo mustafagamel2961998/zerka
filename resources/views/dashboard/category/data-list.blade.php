@@ -21,7 +21,7 @@
                         {{ $loop->iteration}}
                     </td>
                     <td>
-                        <x-dashboard.partial.image :src="$category->getFirstMediaUrl('cover', 'thumb')" :alt="$category->currentTranslation->name"/>
+                        <x-dashboard.partial.image :src="$category->getFirstMediaUrl('cover', 'thumb')"  :class="'table-image cursor-pointer'" :alt="$category->currentTranslation->name"/>
                     </td>
                     <td>
                         {{ $category->currentTranslation->name }}

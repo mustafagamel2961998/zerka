@@ -223,6 +223,11 @@ return [
        'size_id'=>'Size',
        'images'=>'Images',
        'code'=>'Code',
+       'category_id'=>'Category',
+       'variants'=>'Variants',
+       'variants.*.size_id'=>'Size',
+        
+        
     ],
 
 ];

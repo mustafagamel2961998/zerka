@@ -10,7 +10,6 @@ class CreateAction
     public function execute(CreateDTO $dto)
     {
         $product =  $this->product_repository_interface->store($dto->toArray());
-        return $product;
         MediaService::multipleFileUpload($product, 'images', $dto->images);
     }
 }

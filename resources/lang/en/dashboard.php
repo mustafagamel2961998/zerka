@@ -53,5 +53,6 @@ return [
     // order
     'all_orders'=>'All Orders',
     'item'=>'Item',
+    'unique_exists'=>'Category name already exists inside this parent category.',
   
 ];

@@ -15,7 +15,10 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
 
     public function all() : Collection
     {
-        return Category::where('status','active')->with(['currentTranslation:id,category_id,name'])->latest()->get();
+        return Category::whereNotNull('parent_id')->where('status','active')->with([
+            'currentTranslation:id,category_id,name',
+            'parent.currentTranslation:id,category_id,name',
+        ])->latest()->get();
     }
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {

@@ -4,6 +4,7 @@
 
     <head>
         <meta charset="UTF-8">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ $title }}</title>
 
@@ -218,7 +219,8 @@
         <div class="offcanvas offcanvas-end bg-white text-dark rounded-0" tabindex="-1" id="cartSidebar"
             aria-labelledby="cartSidebarLabel">
             <div class="offcanvas-header border-bottom border-light-subtle py-3">
-                <h5 class="offcanvas-title fw-bold text-uppercase tracking-wider fs-6" id="cartSidebarLabel">Your Bag
+                <h5 class="offcanvas-title fw-bold text-uppercase tracking-wider fs-6" id="cartSidebarLabel">
+                    {{__('front.your_cart')}}
                     (0)</h5>
                 <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>

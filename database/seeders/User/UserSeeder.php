@@ -59,6 +59,7 @@ class UserSeeder extends Seeder
         $admin = User::firstOrCreate(
             ['email' => 'admin@zerka.com'], 
             [
+                'country_id'=>1,
                 'phone'=>'01000000000',
                 'password' => bcrypt('zerka'), 
                 'email_verified_at' => now(),

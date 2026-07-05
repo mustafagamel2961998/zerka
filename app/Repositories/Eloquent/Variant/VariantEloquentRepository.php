@@ -7,25 +7,27 @@ class VariantEloquentRepository implements VariantRepositoryInterface
 {
     
 
-    public function store(array $variants,Product $product) 
+    public function store(array $variants, Product $product)
     {
-        foreach ($variants as $variant) {
-            $variantData = $product->variants()->create([
-                'size_id'  => $variant['size_id'],
-                'price'    => $variant['price'],
-                'sku'      => 10000 + $product->id . $variant['size_id'] . $variant['color_id'],
+        foreach ($variants as $variantData) {
+            $variant = $product->variants()->create([
+                'size_id' => $variantData['size_id'],
+                'price'   => $variantData['price'],
+                'sku'     => 10000 + $product->id . $variantData['size_id'] . 1,
             ]);
-            $color = $variantData->color()->create([
-                'color_id'=>$variant['color_id'],
-            ]);
-            $color->inventory()->create([
-                'warehouse_id'     => $variant['warehouse_id'],
-                'quantity'         => $variant['quantity'],
-                'minimum_quantity' => $variant['minimum_quantity'],
-            ]);
-        }
-       
-    }
 
+            foreach ($variantData['colors'] as $colorData) {
+                $variantColor = $variant->colors()->create([
+                    'color_id' => $colorData['color_id'],
+                ]);
+
+                $variantColor->inventory()->create([
+                    'warehouse_id'     => $colorData['warehouse_id'],
+                    'quantity'         => $colorData['quantity'],
+                    'minimum_quantity' => $colorData['minimum_quantity'],
+                ]);
+            }
+        }
+    }
     
 }

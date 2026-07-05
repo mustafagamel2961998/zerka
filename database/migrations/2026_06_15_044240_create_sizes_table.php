@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
-            $table->char('size', 1)->unique();
+            $table->char('size', 5)->unique();
             $table->string('status')->default('active');      
             $table->timestamps();
         });

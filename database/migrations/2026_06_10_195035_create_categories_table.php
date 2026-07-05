@@ -17,7 +17,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained('categories')
                 ->cascadeOnDelete(); 
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->string('status')->default('active');      
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class HomeController extends Controller
                 ->baseQuery()
                 ->active()
                 ->with([
-                    'currentTranslation:id,category_id,locale,name',
+                    'currentTranslation:id,category_id,locale,name,meta_title',
                     'media'
                 ])
                 ->take(3)
@@ -28,6 +28,9 @@ class HomeController extends Controller
     $first_products = $this->product_repository_interface
                 ->baseQuery()
                 ->active()
+                ->whereHas('variants',fn($q)=>$q->whereHas('size',fn($q)=>$q->active())
+                    ->whereHas('colors',fn($q)=>$q->whereHas('color',fn($q)=>$q->active()))
+                )
                 ->with([
                     'currentTranslation:id,product_id,locale,name',
                     'media',
@@ -40,6 +43,9 @@ class HomeController extends Controller
     $new_arrivals = $this->product_repository_interface
                 ->baseQuery()
                 ->active()
+                ->whereHas('variants',fn($q)=>$q->whereHas('size',fn($q)=>$q->active())
+                    ->whereHas('colors',fn($q)=>$q->whereHas('color',fn($q)=>$q->active()))
+                )
                 ->latest()
                 ->with([
                     'currentTranslation:id,product_id,locale,name',
@@ -48,10 +54,10 @@ class HomeController extends Controller
                 ])
                 ->take(4)
                 ->get();
-        return view('front.home.index',compact(
-            'categories',
-            'first_products',
-            'new_arrivals'
-            ));
+    return view('front.home.index',compact(
+        'categories',
+        'first_products',
+        'new_arrivals'
+        ));
     }
 }

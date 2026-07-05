@@ -8,34 +8,28 @@ class CreateDTO
 {
     public function __construct(
         public int $sizeId,
-        public int $colorId,
-        public int $warehouseId,
         public float $price,
-        public int $quantity,
-        public int $minimumQuantity
+        public array $colors
     ) {}
 
     public static function fromArray(array $data): self
     {
         return new self(
             sizeId: (int) $data['size_id'],
-            colorId:  $data['color_id'],
-            warehouseId: (int) $data['warehouse_id'],
             price: (float) $data['price'],
-            quantity: (int) $data['quantity'],
-            minimumQuantity: (int) $data['minimum_quantity']
+            colors: array_map(
+                fn (array $color) => CreateColorDTO::fromArray($color),
+                $data['colors']
+            )
         );
     }
 
     public function toArray(): array
     {
         return [
-            'size_id'          => $this->sizeId,
-            'color_id'         => $this->colorId,
-            'warehouse_id'     => $this->warehouseId,
-            'price'            => $this->price,
-            'quantity'         => $this->quantity,
-            'minimum_quantity' => $this->minimumQuantity,
+            'size_id' => $this->sizeId,
+            'price'   => $this->price,
+            'colors'  => array_map(fn (CreateColorDTO $c) => $c->toArray(), $this->colors),
         ];
     }
 }

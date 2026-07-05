@@ -52,6 +52,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request,CreateAction $create_action)
     {
+        // return $request;
         $dto = CreateDTO::fromRequest($request);
         $create_action->execute($dto);
         return redirect()->route('dashboard.v1.products.index')->with('success', __('crud.created'));

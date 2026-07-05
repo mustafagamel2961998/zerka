@@ -47,11 +47,11 @@ class ProductEloquentRepository implements ProductRepositoryInterface
         return Product::with([
             'media',
             'category',
-            'variants.size',
-            'variants.color.color',
             'minVariantPrice',
-            'variants.color.inventory',
-            'variants.color.inventory.warehouse',
+            'variants.size',
+            'variants.colors.color',
+            'variants.colors.inventory',
+            'variants.colors.inventory.warehouse',
             'currentTranslation',
             'translations'])
         ->findOrFail($id);
@@ -60,20 +60,23 @@ class ProductEloquentRepository implements ProductRepositoryInterface
 
       $product = Product::findOrFail($data['id']);
       $product->update($data);
+      
       $product->variants()->delete();
-     $this->variant_repository_interface->store($data['variants'], $product);
+      $this->variant_repository_interface->store($data['variants'], $product);
+      
 
-    //   $product->translations()->delete();
-    //   foreach($data['name'] as $key => $value){
-    //     $product->translations()->create([
-    //         'locale' => $key,
-    //         'name' => $value,
-    //         'description' => $data['description'][$key],
-    //         'long_description' => $data['long_description'][$key],
-    //         'meta_title' => $data['meta_title'][$key],
-    //         'meta_description' => $data['meta_description'][$key],
-    //     ]);
-    //   }
+
+      $product->translations()->delete();
+      foreach($data['name'] as $key => $value){
+        $product->translations()->create([
+            'locale' => $key,
+            'name' => $value,
+            'description' => $data['description'][$key],
+            'long_description' => $data['long_description'][$key],
+            'meta_title' => $data['meta_title'][$key],
+            'meta_description' => $data['meta_description'][$key],
+        ]);
+      }
         return $product;
     }
 }

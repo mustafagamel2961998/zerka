@@ -1,5 +1,7 @@
 <x-dashboard.layout title="{{ __('dashboard.categories') }}">
-
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/dashboard/pages/category/category.css') }}">
+    @endpush
     <div class="row">
 
         <x-dashboard.partial.category.statistics/>
