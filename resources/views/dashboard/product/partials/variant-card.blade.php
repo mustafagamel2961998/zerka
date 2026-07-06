@@ -67,7 +67,7 @@
                                     <select
                                         name="variants[{{ $vIndex }}][colors][{{ $cIndex }}][warehouse_id]"
                                         class="form-control form-control-sm" required>
-                                        <option value="">{{ __('form.warehouse') }}</option>
+                                        <option value="" disabled>{{ __('form.warehouse') }}</option>
                                         @foreach ($warehouses as $warehouse)
                                             <option value="{{ $warehouse->id }}" @selected($inv?->warehouse_id == $warehouse->id)>
                                                 {{ $warehouse->currentTranslation->name ?? $warehouse->name }}
@@ -106,7 +106,7 @@
                                     <select
                                         name="variants[{{ $vIndex }}][colors][{{ $cIndex }}][warehouse_id]"
                                         class="form-control form-control-sm" required>
-                                        <option value="">{{ __('form.warehouse') }}</option>
+                                        <option value="" disabled>{{ __('form.warehouse') }}</option>
                                         @foreach ($warehouses as $warehouse)
                                             <option value="{{ $warehouse->id }}" @selected(($oldColor['warehouse_id'] ?? null) == $warehouse->id)>
                                                 {{ $warehouse->currentTranslation->name ?? $warehouse->name }}

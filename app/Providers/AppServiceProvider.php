@@ -24,6 +24,8 @@ use App\Repositories\Contracts\Variant\VariantRepositoryInterface;
 use App\Repositories\Eloquent\Variant\VariantEloquentRepository;
 use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use App\Repositories\Eloquent\Order\OrderEloquentRepository;
+use App\Repositories\Contracts\Cart\CartRepositoryInterface;
+use App\Repositories\Eloquent\Cart\CartEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -54,7 +56,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepositoryInterface::class,ProductEloquentRepository::class);
         $this->app->bind(VariantRepositoryInterface::class,VariantEloquentRepository::class);
         $this->app->bind(OrderRepositoryInterface::class,OrderEloquentRepository::class);
-
+        $this->app->bind(CartRepositoryInterface::class,CartEloquentRepository::class);
     }
 
     /**

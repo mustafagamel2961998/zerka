@@ -31,7 +31,7 @@
                         {{-- كل سايز مع ألوانه هو تحت بعض، مش منفصلين --}}
                         <div class="mt-3">
                             <h5 class="text-dark fw-medium">{{ __('global.sizes') }} :</h5>
-
+                            
                             @foreach ($product->variants as $variant)
                                 <div class="mb-3 pb-2 border-bottom">
                                     <div class="d-flex align-items-center gap-2 mb-2">
@@ -394,7 +394,7 @@
                 <td>
                     <select name="variants[__vIndex__][colors][__cIndex__][warehouse_id]"
                         class="form-control form-control-sm" required>
-                        <option value="">{{ __('form.warehouse') }}</option>
+                        <option value="" disabled>{{ __('form.warehouse') }}</option>
                         @foreach ($warehouses as $warehouse)
                             <option value="{{ $warehouse->id }}">
                                 {{ $warehouse->currentTranslation->name ?? $warehouse->name }}</option>

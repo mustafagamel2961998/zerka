@@ -48,8 +48,9 @@ class ProductEloquentRepository implements ProductRepositoryInterface
             'media',
             'category',
             'minVariantPrice',
-            'variants.size',
-            'variants.colors.color',
+            'variants'=>fn($q)=>$q->whereHas('colors',fn($q)=>$q->whereHas('color',fn($q)=>$q->active()))
+                        ->whereHas('size',fn($q)=>$q->active())
+                        ->with('size','colors.color','colors.inventory','colors.inventory.warehouse'),
             'variants.colors.inventory',
             'variants.colors.inventory.warehouse',
             'currentTranslation',

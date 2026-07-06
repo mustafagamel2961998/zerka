@@ -56,7 +56,7 @@
     </section>
 
     <!-- 4. Promo Banners Grid -->
-    <section class="mb-5">
+    <section class="mb-5" id="collections">
         <div class="row g-0">
             <!-- Banner 1 -->
             @forelse ($categories as $category)

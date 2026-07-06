@@ -1,19 +1,23 @@
 <?php
 
-namespace App\View\Components\front;
+namespace App\View\Components\Front;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class layout extends Component
+class Layout extends Component
 {
     /**
      * Create a new component instance.
      */
+    public $cart;
     public function __construct(public $title)
     {
         $this->title = config('app.name') . ' - ' . $title;
+        if(auth()->check() && auth()->user()->cart){
+            $this->cart = auth()->user()->cart->with('items')->first();
+        }
     }
 
     /**

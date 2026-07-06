@@ -4,12 +4,11 @@ namespace App\Repositories\Eloquent\Order;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use App\Models\Order;
+use App\Models\User;
+use Illuminate\Support\Collection;
 class OrderEloquentRepository implements OrderRepositoryInterface
 {
-    public function __construct()
-    {
-
-    }
+    public function __construct(){}
     public function getPaginated($perPage = null) : LengthAwarePaginator
     {
         return Order::select([
@@ -34,5 +33,10 @@ class OrderEloquentRepository implements OrderRepositoryInterface
                             'items'=>fn($q)=>$q->with('product.currentTranslation:id,product_id,name','product.media'),
                             'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name','media')
                           ])->findOrFail($id);
+    }
+    public function findByAuthUser(User $user) : Collection
+    {
+        $user = User::with(['orders'])->find($user->id);
+        return $user->orders;
     }
 }

@@ -634,7 +634,7 @@
                                                   {{ __('dashboard.all_products') }}
                                              </a>
                                         </li>
-                                        <li class="sub-nav-item">
+                                        {{-- <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="product-grid.html">Grid</a>
                                         </li>
                                         <li class="sub-nav-item">
@@ -645,7 +645,7 @@
                                         </li>
                                         <li class="sub-nav-item">
                                              <a class="sub-nav-link" href="product-add.html">Create</a>
-                                        </li>
+                                        </li> --}}
                                    </ul>
                               </div>
                          </li>

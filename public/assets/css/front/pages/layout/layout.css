@@ -1,3 +1,34 @@
 .subscribe-email-input::placeholder {
     color: white;
 }
+
+@media (min-width: 992px) {
+
+    .custom-men-dropdown:hover .dropdown-menu {
+        display: block;
+        margin-top: 0;
+    }
+
+    .custom-men-dropdown {
+        position: relative;
+    }
+
+    .custom-men-dropdown .dropdown-menu {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+        min-width: 180px;
+    }
+}
+
+.custom-men-dropdown .dropdown-item {
+    text-align: justify;
+    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.5) !important;
+    transition: all 0.2s ease;
+}
+
+.custom-men-dropdown .dropdown-item:hover {
+    background-color: #111;
+    color: #fff !important;
+}
