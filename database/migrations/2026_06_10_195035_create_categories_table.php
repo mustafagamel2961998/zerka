@@ -18,6 +18,7 @@ return new class extends Migration
                 ->constrained('categories')
                 ->cascadeOnDelete(); 
             $table->string('slug');
+            $table->boolean('is_menu')->default(false);
             $table->string('status')->default('active');      
             $table->timestamps();
         });

@@ -45,7 +45,7 @@
                                         aria-current="{{ $loop->first ? 'true' : 'false' }}"
                                         aria-label="Slide {{ $index + 1 }}"
                                         class="w-auto h-auto rounded bg-light p-0 border {{ $loop->first ? 'active' : '' }}">
-                                        <img src="{{ $media->getUrl('thumb') }}" class="d-block avatar-md rounded"
+                                        <img src="{{ $media->getUrl('thumb') }}" class="d-block avatar-md  rounded"
                                             alt="thumb">
                                     </button>
                                 @endforeach
@@ -212,10 +212,13 @@
                                         <td class="fw-medium text-dark">{{ $variant->sku }}</td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <span class="d-inline-block rounded-circle border"
-                                                    style="width:18px;height:18px;background-color: {{ $variant->color->code }};"></span>
-                                                <span class="text-muted fs-13">{{ $variant->color->code }}</span>
-                                            </div>
+                                            @foreach ($variant->colors as $color)
+                                                    <span class="d-inline-block rounded-circle border"
+                                                        style="width:18px;height:18px;background-color: {{ $color->color->code }};">
+                                                    </span>
+                                            @endforeach
+                                           </div>
+                                           
                                         </td>
                                         <td>
                                             <span

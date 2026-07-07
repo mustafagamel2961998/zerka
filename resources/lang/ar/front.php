@@ -69,6 +69,21 @@ return [
     'current_password' => 'كلمة المرور الحالية',
     'new_password' => 'كلمة المرور الجديدة',
     'save_changes' => 'حفظ التعديلات',
-    
-
+    'name' => 'الاسم',
+    'phone' => 'الهاتف',
+    'country' => 'الدولة',
+    'city' => 'المدينة',
+    'no_addresses_found' => 'لا يوجد عناوين مسجلة',
+    'add_address_instructions' => 'لم تقم بإضافة أي عنوان بعد. يرجى إضافة عنوانك لتسهيل عملية الشحن والتوصيل.',
+    'no_orders_found' => 'لا توجد طلبات مسجلة',
+    'no_orders_desc' => 'يبدو أنك لم تقم بإجراء أي طلبات حتى الآن. تفقد منتجاتنا وابدأ التسوق الآن!',
+    'shop_now' => 'تسوق الآن',
+    'select_country' => 'اختر الدولة',
+    'select_city' => 'اختر المدينة',
+    'edit_address' => 'تعديل العنوان',
+    'first_name' => 'الاسم الاول',
+    'last_name' => 'الاسم الاخير',
+    'product_details' => 'تفاصيل المنتج',
+    'shipping_returns' => 'الشحن والمرتجعات',
+    'shipping_returns_text' => 'معلومات عن الشحن والمرتجعات',
 ];

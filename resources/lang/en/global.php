@@ -187,4 +187,5 @@ return [
         'placeholder' => 'Enter your email',
         'button'      => 'Subscribe',
     ],
+    'wrong_current_password' => 'Wrong current password',
 ];

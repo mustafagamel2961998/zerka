@@ -6,10 +6,14 @@ use App\Models\Country;
 use App\Repositories\Contracts\Country\CountryRepositoryInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Builder;
 class CountryEloquentRepository implements CountryRepositoryInterface
 {
     public function __construct(){}
     
+    public function baseQuery() : Builder{
+        return Country::query();
+    }
     public function all() : Collection{
         return Country::latest()->with('currentTranslation:id,country_id,name')->get();
     }

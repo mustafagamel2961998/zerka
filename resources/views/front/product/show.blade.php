@@ -175,6 +175,47 @@
                 </div>
             </div>
 
+            <div class="row mt-5">
+                <div class="col-lg-10 mx-auto">
+
+                    <div class="accordion accordion-flush border-top" id="productInfoAccordion">
+
+                        <div class="accordion-item border-bottom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-0 bg-transparent fw-bold text-uppercase py-3 px-0"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseDetails" aria-expanded="false">
+                                    {{ __('front.product_details') }}
+                                </button>
+                            </h2>
+                            <div id="collapseDetails" class="accordion-collapse collapse"
+                                data-bs-parent="#productInfoAccordion">
+                                <div class="accordion-body px-0 pb-4 text-muted small lh-lg">
+                                    {!! nl2br(e($product->currentTranslation->long_description)) !!}
+                                </div>
+                            </div>
+                        </div>
+
+                        {{-- الشحن والاسترجاع --}}
+                        <div class="accordion-item border-bottom">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed rounded-0 bg-transparent fw-bold text-uppercase py-3 px-0"
+                                        type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseShipping" aria-expanded="false">
+                                    {{ __('front.shipping_returns') }}
+                                </button>
+                            </h2>
+                            <div id="collapseShipping" class="accordion-collapse collapse"
+                                data-bs-parent="#productInfoAccordion">
+                                <div class="accordion-body px-0 pb-4 text-muted small lh-lg">
+                                    {{ __('front.shipping_returns_text') }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

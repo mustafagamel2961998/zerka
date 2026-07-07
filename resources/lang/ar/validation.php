@@ -204,7 +204,7 @@ return [
        'category_id'=>'القسم',
        'variants'=>'المتغيرات',
        'variants.*.size_id'=>'الحجم',
-       
+       'current_password'=>'كلمة المرور الحالية',
     ],
 
 ];

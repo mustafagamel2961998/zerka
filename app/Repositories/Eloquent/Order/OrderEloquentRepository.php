@@ -34,9 +34,5 @@ class OrderEloquentRepository implements OrderRepositoryInterface
                             'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name','media')
                           ])->findOrFail($id);
     }
-    public function findByAuthUser(User $user) : Collection
-    {
-        $user = User::with(['orders'])->find($user->id);
-        return $user->orders;
-    }
+   
 }

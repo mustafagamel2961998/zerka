@@ -14,6 +14,7 @@ class CategoryRequest extends FormRequest
     {
         $this->merge([
             'status' => $this->has('status') ? 'active' : 'inactive',
+            'is_menu' => $this->has('is_menu'),
         ]);
     }
     /**
@@ -76,6 +77,7 @@ class CategoryRequest extends FormRequest
                         }
                  }
             ],
+            'is_menu' => ['required', 'boolean'],
             'status'=>['required',Rule::in(array_column(Status::cases(), 'value'))],
             'description.ar'=>['nullable',
             'string',

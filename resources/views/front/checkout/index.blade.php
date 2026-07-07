@@ -16,11 +16,12 @@
                                 <span
                                     class="text-muted me-2">01.</span>{{ __('front.shipping_address') ?? 'عنوان الشحن' }}
                             </h5>
-                            <button type="button" class="btn btn-sm btn-outline-dark rounded-0 px-3 small"
-                                data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                            <a href="{{route('profile.index')}}" >
+                            <button type="button" class="btn btn-sm btn-outline-dark rounded-0 px-3 small">
                                 <i class="bi bi-plus-lg me-1"></i>
-                                {{ __('front.add_new_address') ?? 'إضافة عنوان جديد' }}
+                                {{ __('front.add_new_address')}}
                             </button>
+                            </a>
                         </div>
 
                         <div class="row g-3">
@@ -207,44 +208,7 @@
         </form>
     </div>
 
-    <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content rounded-0 border-dark">
-                <div class="modal-header border-bottom-0 py-3">
-                    <h5 class="modal-title fw-bold text-uppercase fs-6 tracking-wide" id="addAddressModalLabel">
-                        {{ __('front.add_new_address') ?? 'إضافة عنوان جديد' }}</h5>
-                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
-                </div>
-                <form action="#" method="POST" id="addAddressForm">
-                    <div class="modal-body py-0">
-                        <div class="mb-3">
-                            <label
-                                class="form-label small fw-bold text-muted">{{ __('front.address_title') ?? 'اسم مسمى العنوان (مثال: المنزل، العمل)' }}</label>
-                            <input type="text" class="form-control rounded-0 shadow-none form-control-sm" required>
-                        </div>
-                        <div class="mb-3">
-                            <label
-                                class="form-label small fw-bold text-muted">{{ __('front.governorate') ?? 'المحافظة' }}</label>
-                            <input type="text" class="form-control rounded-0 shadow-none form-control-sm" required>
-                        </div>
-                        <div class="mb-3">
-                            <label
-                                class="form-label small fw-bold text-muted">{{ __('front.address_details') ?? 'العنوان بالتفصيل (الشارع، رقم المبنى، الشقة)' }}</label>
-                            <textarea class="form-control rounded-0 shadow-none small" rows="3" required></textarea>
-                        </div>
-                    </div>
-                    <div class="modal-footer border-top-0 pt-0 pb-3">
-                        <button type="button" class="btn btn-sm btn-outline-secondary rounded-0 px-3"
-                            data-bs-dismiss="modal">{{ __('front.cancel') ?? 'إلغاء' }}</button>
-                        <button type="submit"
-                            class="btn btn-sm btn-dark rounded-0 px-4">{{ __('front.save') ?? 'حفظ العنوان' }}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+  
 
     @push('js')
         <script src="{{ asset('assets/js/front/pages/checkout/checkout.js') }}"></script>

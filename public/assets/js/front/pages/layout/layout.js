@@ -142,6 +142,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // أزرار زيادة / إنقاص الكمية
     // ------------------------------------------------------------
     if (qtyInput && btnPlus && btnMinus) {
+
+        const newBtnPlus = btnPlus.cloneNode(true);
+        btnPlus.parentNode.replaceChild(newBtnPlus, btnPlus);
+        btnPlus = newBtnPlus;
+
+        const newBtnMinus = btnMinus.cloneNode(true);
+        btnMinus.parentNode.replaceChild(newBtnMinus, btnMinus);
+        btnMinus = newBtnMinus;
+
         btnPlus.addEventListener('click', function (e) {
             e.preventDefault();
             let currentVal = parseInt(qtyInput.value, 10) || 0;

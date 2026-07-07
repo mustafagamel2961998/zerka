@@ -21,7 +21,7 @@ return new class extends Migration
                   ->restrictOnDelete();
             $table->string('code')->unique();
             $table->string('phone')->unique();
-            $table->string('street_details')->nullable();
+            $table->text('street_details')->nullable();
             $table->string('status')->default('active');      
             $table->timestamps();
         });

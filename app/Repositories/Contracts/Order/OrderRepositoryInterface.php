@@ -10,5 +10,4 @@ interface OrderRepositoryInterface
 {
     public function getPaginated($perPage = null) : LengthAwarePaginator;
     public function findById($id) : Order;
-    public function findByAuthUser(User $user) : Collection;
 }

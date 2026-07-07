@@ -187,5 +187,6 @@ return [
         'placeholder' => 'أدخل بريدك الإلكتروني',
         'button'      => 'اشترك الآن',
     ],
+    'wrong_current_password' => 'كلمة المرور الحالية غير صحيحة',
 ];
     

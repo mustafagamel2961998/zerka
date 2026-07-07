@@ -39,21 +39,33 @@
                                 {{ __('front.home') }}
                             </a>
                         </li>
-                        <!-- Men Dropdown -->
-                        <li class="nav-item dropdown custom-men-dropdown">
-                            <a class="text-uppercase nav-link text-white-50 dropdown-toggle" href="#"
-                                id="menDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Men
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-dark bg-black border border-secondary"
-                                aria-labelledby="menDropdown">
-                                <li><a class="dropdown-item" href="#">All Products</a></li>
-                                <li><a class="dropdown-item" href="#">Shirts</a></li>
-                                <li><a class="dropdown-item" href="#">Pants</a></li>
-                                <li><a class="dropdown-item" href="#">T-Shirts</a></li>
-                                <li><a class="dropdown-item" href="#">Shoes</a></li>
-                            </ul>
-                        </li>
+                        @foreach ($navbar_categories as $category)
+                              <!-- Men Dropdown -->
+                                <li class="nav-item dropdown custom-men-dropdown">
+                                    <a class="text-uppercase nav-link text-white-50 dropdown-toggle" href="#"
+                                        id="menDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {{$category->currentTranslation->name}}
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-menu-dark bg-black border border-secondary"
+                                        aria-labelledby="menDropdown">
+                                        @forelse ($category->children as $child)
+                                            <li>
+                                                <a class="dropdown-item" href="#">
+                                                    {{ $child->currentTranslation->name }} 
+                                                </a>
+                                            </li>
+                                        @empty
+                                        <li>
+                                             <a class="dropdown-item" href="#">
+                                                {{ __('front.no_categories_found') }}
+                                             </a>
+                                        </li>
+                                        @endforelse
+                                        
+                                    </ul>
+                                </li>
+                        @endforeach
+                      
 
                         <li class="nav-item">
                             <a class="text-uppercase nav-link text-white-50" href="#">Shop</a>
@@ -116,12 +128,12 @@
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2"
                                 aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="{{route('profile.index')}}"">
+                                    <a class="dropdown-item text-white-50" href="{{route('profile.index')}}">
                                         {{ __('global.profile') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="#">
+                                    <a class="dropdown-item text-white-50" href="{{route('profile.index')}}">
                                         {{ __('global.my_orders') }}
                                     </a>
                                 </li>
@@ -330,10 +342,52 @@
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <!-- Bootstrap 5.3 JavaScript Bundle CDN -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="{{ asset('assets/js/front/pages/layout/layout.js') }}"></script>
+        @if (session('success'))
+            <script>
+                const ToastSuccess = Swal.mixin({
+                    toast: true,
+                    position: "{{ app()->getLocale() == 'ar' ? 'top-start' : 'top-end' }}", // بيحدد الاتجاه تلقائياً حسب لغة الموقع
+                    showConfirmButton: false,
+                    timer: 3500,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
 
+                ToastSuccess.fire({
+                    icon: 'success',
+                    title: "{{ session('success') }}"
+                });
+            </script>
+            @endif
+
+            @if (session('error'))
+            <script>
+                const ToastError = Swal.mixin({
+                    toast: true,
+                    position: "{{ app()->getLocale() == 'ar' ? 'top-start' : 'top-end' }}",
+                    showConfirmButton: false,
+                    timer: 4500, // وقت أطول سنة عشان يلحق يقرأ الخطأ
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                });
+
+                ToastError.fire({
+                    icon: 'error',
+                    title: "{{ session('error') }}"
+                });
+            </script>
+            @endif
         @stack('js')
     </body>
 

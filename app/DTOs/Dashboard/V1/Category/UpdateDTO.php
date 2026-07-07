@@ -15,6 +15,7 @@ class UpdateDTO
         public ?string $description_ar,
         public ?string $description_en,
         public ?int $parent_id,
+        public bool $is_menu,
         public Status $status,
         public ?string $meta_title_ar,
         public ?string $meta_title_en,
@@ -36,6 +37,7 @@ class UpdateDTO
            description_ar:$request->validated('description.ar'),
            description_en:$request->validated('description.en'),
            parent_id:$request->validated('parent_id') ? (int) $request->validated('parent_id') : null,
+           is_menu:$request->validated('is_menu'),
            status:Status::from($request->validated('status')),
            meta_title_ar:$request->validated('meta_title.ar'),
            meta_title_en:$request->validated('meta_title.en'),
@@ -61,6 +63,7 @@ class UpdateDTO
                 'en' => $this->description_en,
             ],
             'parent_id' => $this->parent_id,
+            'is_menu' => $this->is_menu,
             'status' => $this->status->value,
             'meta_title' => [
                 'ar' => $this->meta_title_ar,

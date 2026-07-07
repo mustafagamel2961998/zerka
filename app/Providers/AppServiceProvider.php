@@ -26,6 +26,10 @@ use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use App\Repositories\Eloquent\Order\OrderEloquentRepository;
 use App\Repositories\Contracts\Cart\CartRepositoryInterface;
 use App\Repositories\Eloquent\Cart\CartEloquentRepository;
+use App\Repositories\Contracts\User\UserRepositoryInterface;
+use App\Repositories\Eloquent\User\UserEloquentRepository;
+use App\Repositories\Contracts\Address\AddressRepositoryInterface;
+use App\Repositories\Eloquent\Address\AddressEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -57,8 +61,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(VariantRepositoryInterface::class,VariantEloquentRepository::class);
         $this->app->bind(OrderRepositoryInterface::class,OrderEloquentRepository::class);
         $this->app->bind(CartRepositoryInterface::class,CartEloquentRepository::class);
-    }
+        $this->app->bind(UserRepositoryInterface::class,UserEloquentRepository::class);
+        $this->app->bind(AddressRepositoryInterface::class,AddressEloquentRepository::class);
 
+    }
     /**
      * Bootstrap any application services.
      */

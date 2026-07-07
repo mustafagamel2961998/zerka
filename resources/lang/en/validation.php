@@ -226,6 +226,7 @@ return [
        'category_id'=>'Category',
        'variants'=>'Variants',
        'variants.*.size_id'=>'Size',
+       'current_password'=>'Current Password',
         
         
     ],

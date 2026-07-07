@@ -157,6 +157,22 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-6">
+        <div class="mb-3">
+            
+            <div class="form-check form-switch">
+                <label for="is_menu" class="form-label required">{{ __('form.is_menu') }}</label>
+                <input class="form-check-input" type="checkbox" id="is_menu" name="is_menu" role="switch"
+                @checked(old('is_menu',$category->is_menu))>
+                @error('is_menu')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                @enderror
+            </div>
+        </div>
+    </div>
+    
 </div>
 
 <div class="row mb-4">
