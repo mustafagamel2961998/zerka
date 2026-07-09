@@ -43,7 +43,7 @@
                         {{$order->coupon_code ? $order->coupon_code : '-'}}
                     </td>
                     <td>
-                       @switch($order->payment_status)
+                       @switch($order->payment_status?->value)
                            @case('paid')
                                <span class="badge  bg-success text-light px-2 py-1 fs-13">
                                 {{__('global.paid')}}
@@ -61,11 +61,15 @@
                        @endswitch
                     </td>
                     <td> 
-                       {{ $order->created_at->translatedFormat('Y-m-d') }} /
-                        <small class="text-muted">({{ $order->created_at->diffForHumans() }})</small>
+                    @php
+                        $orderTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->created_at->toDateTimeString(), config('app_settings.timezone'));
+                    @endphp
+
+                    {{ $orderTime->translatedFormat('Y-m-d') }} /
+                    <small class="text-muted">({{ $orderTime->diffForHumans() }})</small>
                     </td>
                     <td> 
-                        {{ format_currency($order->grand_total,'EGP') }}
+                        {{ format_currency($order->grand_total,current_currency_code()) }}
                     </td>
                     <td>
                          @switch($order->status?->value)
@@ -81,7 +85,7 @@
                                 @break
                             @case('delivering')
                                 <span class="badge border border-info text-info px-2 py-1 fs-13">
-                                    {{__('global.delivered')}}
+                                    {{__('global.delivering')}}
                                 </span>
                                 @break
                         @case('received')
@@ -107,9 +111,12 @@
                     </td>
                     <td>
                         <div class="d-flex gap-2">
-                                <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-light btn-sm">
-                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                                </a>
+                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}" class="btn btn-soft-secondary btn-sm">
+                                <iconify-icon icon="solar:bill-list-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
+                            <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-light btn-sm">
+                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                            </a>
                             
                             <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>

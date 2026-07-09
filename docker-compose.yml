@@ -11,7 +11,8 @@ services:
       - zerka_storage:/var/www/storage
       - zerka_cache:/var/www/bootstrap/cache
       - zerka_vendor:/var/www/vendor
-
+    networks:
+      - zerka-network
     depends_on:
       - zerka-mysql
 
@@ -27,7 +28,8 @@ services:
       - zerka_storage:/var/www/storage
     depends_on:
       - zerka-service
-
+    networks:
+      - zerka-network
   zerka-mysql:
     image: mysql:8.0
     container_name: zerka-mysql
@@ -42,7 +44,11 @@ services:
       - ./docker/mysql-init:/docker-entrypoint-initdb.d
     ports:
       - "3308:3306"
-
+    networks:
+      - zerka-network
+networks:
+  zerka-network:
+    driver: bridge
 
 volumes:
   mysql_data:

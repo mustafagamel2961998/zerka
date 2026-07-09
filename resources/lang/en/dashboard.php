@@ -54,5 +54,18 @@ return [
     'all_orders'=>'All Orders',
     'item'=>'Item',
     'unique_exists'=>'Category name already exists inside this parent category.',
-  
+    'welcome'=>'Welcome,',
+    // invoice
+    'all_invoices'=>'All Invoices',
+    //users
+    'users'=>'Users',
+    'customers_and_managers'=>'Customers & Managers',
+    'all_customers'=>'All Customers',
+    'all_managers'=>'All Managers',
+    'total_orders'=>'Total Orders',
+    'total_users'=>'Total Users',
+    'total_products'=>'Total Products',
+    'total_categories'=>'Total Categories',
+    'view_more'=>'View More',
+    'recent_orders'=>'Recent Orders',
 ];

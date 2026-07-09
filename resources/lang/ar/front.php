@@ -86,4 +86,9 @@ return [
     'product_details' => 'تفاصيل المنتج',
     'shipping_returns' => 'الشحن والمرتجعات',
     'shipping_returns_text' => 'معلومات عن الشحن والمرتجعات',
+    'checkout_successfully' => 'تم استكمال الطلب بنجاح',
+    'cart_is_empty' => 'عربة التسوق فارغة',
+    'all_rights_reserved' => 'جميع الحقوق محفوظة.',
+    'about_us' => 'عنا',
+    'contact_us' => 'اتصل بنا',
 ];

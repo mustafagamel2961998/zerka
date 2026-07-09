@@ -92,7 +92,16 @@
             <label for="timezone" class="form-label">
                 {{ __('form.timezone') }} : {{__('global.example')}} - [ {{ __('form.timezone_example') }} ]
             </label>
-            <input type="text" name="timezone" id="timezone" class="form-control @error('timezone') is-invalid @enderror" value="{{old('timezone',$country->timezone)}}" placeholder="{{ __('form.timezone') }}">
+            <select name="timezone" id="timezone"
+                class="form-select @error('timezone') is-invalid @enderror">
+                <option value="">{{ __('form.select_timezone') }}</option>
+                @foreach (timezone_identifiers_list() as $tz)
+                    <option value="{{ $tz }}" @selected(old('timezone', $country->timezone) == $tz)>
+                        {{ $tz }}
+                    </option>
+                @endforeach
+            </select>
+
             @error('timezone')
                 <div class="invalid-feedback">
                     {{$message}}

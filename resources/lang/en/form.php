@@ -105,4 +105,16 @@ return [
     'sizes'=>'Sizes',
     'click_to_add' => 'Click to add',
     'remove' => 'Remove',
+    'site_name_ar'     => 'Site Name (Arabic)',
+    'site_name_en'     => 'Site Name (English)',
+    'email'            => 'Email Address',
+    'phone'            => 'Phone Number',
+    'tax_percentage'   => 'Tax Percentage',
+    'shipping_amount'  => 'Fixed Shipping Amount',
+    'default_currency' => 'Default Currency',
+    'select_timezone'  => 'Select Timezone...',
+    'save'             => 'Save Settings',
+    'logo'             => 'Logo',
+    'favicon'          => 'Favicon',
+    
 ];

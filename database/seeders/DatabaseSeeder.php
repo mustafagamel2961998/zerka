@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Database\Seeders\Currency\CurrencySeeder;
 use Database\Seeders\Country\CountrySeeder;
 use Database\Seeders\User\UserSeeder;
+use Database\Seeders\Setting\SettingSeeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             CurrencySeeder::class,
             CountrySeeder::class,
             UserSeeder::class,
+            SettingSeeder::class
         ]);
     }
 }

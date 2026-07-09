@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Web\Dashboard\V1\Home;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function __construct(){}
+    public function __construct(private OrderRepositoryInterface $order_repository_interface){}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        
-        return view('dashboard.home.index');
+        $orders = $this->order_repository_interface->baseQuery()
+                                                   ->whereDate('created_at', today())
+                                                   ->with('items','user')
+                                                   ->withCount('items')
+                                                   ->get();
+        return view('dashboard.home.index',compact('orders'));
     }
 
     /**

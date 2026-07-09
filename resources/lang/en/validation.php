@@ -227,8 +227,8 @@ return [
        'variants'=>'Variants',
        'variants.*.size_id'=>'Size',
        'current_password'=>'Current Password',
-        
-        
+       'address_id'=>'Address',
+       'payment_method'=>'Payment Method',
     ],
 
 ];

@@ -23,7 +23,9 @@
             <div class="container-fluid px-md-5">
                 <!-- Logo -->
                 <a class="navbar-brand fw-bold tracking-widest text-uppercase fs-3" href="{{route('home')}}"
-                    style="letter-spacing: 4px;">ZERKA</a>
+                    style="letter-spacing: 4px;">
+                {{config('app_settings.currentTranslation.name')}}
+             </a>
 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav">
@@ -68,11 +70,9 @@
                       
 
                         <li class="nav-item">
-                            <a class="text-uppercase nav-link text-white-50" href="#">Shop</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="text-uppercase nav-link text-white-50" href="#">About Us</a>
+                            <a class="text-uppercase nav-link text-white-50" href="#">
+                                {{ __('front.about_us') }}
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -236,16 +236,27 @@
             <footer class="pt-4 text-dark">
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                     <div>
-                        <h5 class="fw-bold text-uppercase m-0 tracking-widest" style="letter-spacing: 2px;">ZERKA</h5>
-                        <small class="text-muted" style="font-size: 0.7rem;">&copy; 2026 ZERKA. All Rights
-                            Reserved.</small>
+                        <h5 class="fw-bold text-uppercase m-0 tracking-widest" style="letter-spacing: 2px;">
+                            {{ config('app_settings.currentTranslation.name')}}
+                        </h5>
+                        
+                        <small class="text-muted" style="font-size: 0.7rem;">
+                            &copy; {{ date('Y') }} 
+                            {{ __('front.all_rights_reserved') }}
+                        
+                        </small>
                     </div>
                     <div class="d-flex gap-4 small text-uppercase text-muted"
                         style="font-size: 0.75rem; font-weight: 500;">
-                        <a href="#" class="text-dark text-decoration-none">Shop</a>
-                        <a href="#" class="text-dark text-decoration-none">Collections</a>
-                        <a href="#" class="text-dark text-decoration-none">About Us</a>
-                        <a href="#" class="text-dark text-decoration-none">Contact</a>
+                        <a href="#" class="text-dark text-decoration-none">
+                            {{ __('front.home') }}
+                        </a>
+                        <a href="#" class="text-dark text-decoration-none">
+                            {{ __('front.about_us') }}
+                        </a>
+                        <a href="#" class="text-dark text-decoration-none">
+                            {{ __('front.contact_us') }}
+                        </a>
                     </div>
                     <div class="d-flex gap-3 fs-5">
                         <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>

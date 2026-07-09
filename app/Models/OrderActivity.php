@@ -14,6 +14,8 @@ class OrderActivity extends Model
         'description',
         'properties',
         'status',
+        'created_at',
+        'updated_at',
     ];
     //-----------------------------------------------------------------------------//
     // start relationships

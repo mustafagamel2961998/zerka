@@ -26,7 +26,7 @@ class AddressEloquentRepository implements AddressRepositoryInterface
     
     public function destroy($id) : bool
     {
-        $address = $this->findById($data['id']);
+        $address = $this->findById($id);
         return $address->delete();
 
     }

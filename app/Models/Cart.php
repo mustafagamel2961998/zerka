@@ -10,10 +10,10 @@ class Cart extends Model
         'user_id',
         'coupon_id',
         'subtotal',
-        'tax_total',
-        'shipping_total',
+        // 'tax_total',
+        // 'shipping_total',
         'discount_total',
-        'grand_total'
+        // 'grand_total'
     ];
 
     //-----------------------------------------------------------------------------//

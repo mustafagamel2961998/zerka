@@ -205,6 +205,8 @@ return [
        'variants'=>'المتغيرات',
        'variants.*.size_id'=>'الحجم',
        'current_password'=>'كلمة المرور الحالية',
+       'address_id'=>'العنوان',
+       'payment_method'=>'طريقة الدفع',
     ],
 
 ];

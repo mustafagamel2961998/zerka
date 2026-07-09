@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Web\Dashboard\V1\Order;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Order\OrderRepositoryInterface;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\Dashboard\V1\Order\UpdateOrderRequest;
+use App\Actions\Dashboard\V1\Order\UpdateAction;
+use App\DTOs\Dashboard\V1\Order\UpdateDTO;
 class OrderController extends Controller
 {
     public function __construct(private OrderRepositoryInterface $order_repository_interface){}
@@ -54,9 +56,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateOrderRequest $request, string $id,UpdateAction $update_action)
     {
-        //
+        $dto = UpdateDTO::fromRequest($request);
+        $update_action->execute($dto);
+        return redirect()->back()->with('success', __('crud.updated'));
     }
 
     /**

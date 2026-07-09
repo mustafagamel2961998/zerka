@@ -25,7 +25,9 @@ return new class extends Migration
             $table->string('coupon_code')->nullable();
             $table->string('payment_status')->default('pending'); // pending, paid, failed
             $table->text('notes')->nullable();
+            $table->boolean('invoice_created')->default(false);
             $table->string('status')->default('pending');         // pending, processing, shipped, delivered, cancelled
+            $table->timestamp('stock_deducted_at')->nullable();
             $table->timestamps();
         });
     }

@@ -30,6 +30,12 @@ use App\Repositories\Contracts\User\UserRepositoryInterface;
 use App\Repositories\Eloquent\User\UserEloquentRepository;
 use App\Repositories\Contracts\Address\AddressRepositoryInterface;
 use App\Repositories\Eloquent\Address\AddressEloquentRepository;
+use App\Repositories\Contracts\Checkout\CheckoutRepositoryInterface;
+use App\Repositories\Eloquent\Checkout\CheckoutEloquentRepository;
+use App\Repositories\Contracts\Setting\SettingRepositoryInterface;
+use App\Repositories\Eloquent\Setting\SettingEloquentRepository;
+use App\Repositories\Contracts\Invoice\InvoiceRepositoryInterface;
+use App\Repositories\Eloquent\Invoice\InvoiceEloquentRepository;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -38,10 +44,14 @@ use Illuminate\Support\Facades\RateLimiter;
 use App\Observers\Warehouse\WarehouseObserver;
 use App\Observers\Product\ProductObserver;
 use App\Observers\Order\OrderObserver;
+use App\Observers\Invoice\InvoiceObserver;
 use App\Models\Warehouse;
 use App\Models\Product;
 use App\Models\Order;
-
+use App\Models\Invoice;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Config;
+use App\Models\Setting;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -63,8 +73,12 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CartRepositoryInterface::class,CartEloquentRepository::class);
         $this->app->bind(UserRepositoryInterface::class,UserEloquentRepository::class);
         $this->app->bind(AddressRepositoryInterface::class,AddressEloquentRepository::class);
+        $this->app->bind(CheckoutRepositoryInterface::class,CheckoutEloquentRepository::class);
+        $this->app->bind(SettingRepositoryInterface::class,SettingEloquentRepository::class);
+        $this->app->bind(InvoiceRepositoryInterface::class,InvoiceEloquentRepository::class);
 
     }
+
     /**
      * Bootstrap any application services.
      */
@@ -90,5 +104,16 @@ class AppServiceProvider extends ServiceProvider
         Warehouse::observe(WarehouseObserver::class);
         Product::observe(ProductObserver::class);
         Order::observe(OrderObserver::class);
+        Invoice::observe(InvoiceObserver::class);
+        if (app()->runningInConsole()) {
+            return;
+        }
+        if (Schema::hasTable('settings')) {
+            
+            $settings = cache()->rememberForever('app_settings', function () {
+                return Setting::query()->with('currentTranslation')->first();
+            });
+            Config::set('app_settings', $settings);
+        }
     }
 }

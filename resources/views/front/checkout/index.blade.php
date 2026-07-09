@@ -4,7 +4,7 @@
     @endpush
 
     <div class="container py-5">
-        <form action="#" method="POST" enctype="multipart/form-data" id="checkoutForm">
+        <form action="{{route('checkout.store')}}" method="POST" enctype="multipart/form-data" id="checkoutForm">
             @csrf
             <div class="row g-5">
 
@@ -13,46 +13,61 @@
                     <div class="mb-5">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="fw-bold text-uppercase tracking-wider fs-6 mb-0">
-                                <span
-                                    class="text-muted me-2">01.</span>{{ __('front.shipping_address') ?? 'عنوان الشحن' }}
+                                <span class="text-muted me-2">01.</span>{{ __('front.shipping_address')}}
                             </h5>
                             <a href="{{route('profile.index')}}" >
-                            <button type="button" class="btn btn-sm btn-outline-dark rounded-0 px-3 small">
-                                <i class="bi bi-plus-lg me-1"></i>
-                                {{ __('front.add_new_address')}}
-                            </button>
+                                <button type="button" class="btn btn-sm btn-outline-dark rounded-0 px-3 small">
+                                    <i class="bi bi-plus-lg me-1"></i>
+                                    {{ __('front.add_new_address')}}
+                                </button>
                             </a>
                         </div>
 
                         <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="border p-3 position-relative rounded-0 address-card bg-light-subtle">
+                            @forelse ($addresses as $address)
+                                <div class="col-md-6">
+                                    <div class="border p-3 position-relative rounded-0 address-card bg-light-subtle">
 
-                                    <input type="radio" name="address_id" id="address_1" value="1"
-                                        class="position-absolute top-0 end-0 m-3 form-check-input shadow-none" checked>
+                                        <input type="radio" name="address_id" id="address_{{$address->id}}" value="{{$address->id}}"
+                                            class="position-absolute top-0 end-0 m-3 form-check-input shadow-none" checked>
 
-                                    <label for="address_1" class="w-100 cursor-pointer pe-5">
-                                        <span class="d-block fw-bold small mb-1">المنزل (افتراضي)</span>
-                                        <span class="d-block text-muted small">حدائق أكتوبر، عمارة 14، شقة 5</span>
-                                        <span class="d-block text-muted small mt-2">الجيزة، مصر</span>
-                                    </label>
-
+                                        <label for="address_{{$address->id}}" class="w-100 cursor-pointer pe-5">
+                                            <span class="d-block fw-bold small mb-1">({{__('front.name')}}) : {{$address->name}} </span>
+                                            
+                                            <span class="d-block text-muted small">                                                
+                                                {{ $address->street_details }}
+                                            </span>
+                                            <span class="d-block text-muted small mt-2">
+                                                {{ $address->city->currentTranslation->name }}
+                                                ,
+                                                {{ $address->country->currentTranslation->name }}
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="border p-3 position-relative rounded-0 address-card bg-light-subtle">
-
-                                    <input type="radio" name="address_id" id="address_2" value="2"
-                                        class="position-absolute top-0 end-0 m-3 form-check-input shadow-none" checked>
-
-                                    <label for="address_2" class="w-100 cursor-pointer pe-5">
-                                        <span class="d-block fw-bold small mb-1">المنزل (افتراضي)</span>
-                                        <span class="d-block text-muted small">حدائق أكتوبر، عمارة 14، شقة 5</span>
-                                        <span class="d-block text-muted small mt-2">الجيزة، مصر</span>
-                                    </label>
-
+                            @empty
+                               <div class="col-12 text-center py-4">
+                                    <div class="mb-3">
+                                        <i class="bi bi-geo-alt text-muted fs-1 d-block mb-2"></i>
+                                        <p class="text-muted small fw-bold">{{ __('front.no_addresses_found') }}</p>
+                                    </div>
+                                    <div>
+                                        <a href="{{route('profile.index')}}">
+                                            <button type="button" class="btn btn-sm btn-outline-dark rounded-0 px-3 small">
+                                                <i class="bi bi-plus-lg me-1"></i>
+                                                {{ __('front.add_new_address') }}
+                                            </button>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            @endforelse
+                             
+                            @error('address_id')
+                                <div class="alert alert-danger">
+                                    {{$message}}
+                                </div>
+                            @enderror
+                            
                         </div>
                     </div>
 
@@ -60,7 +75,7 @@
 
                     <div class="mb-4">
                         <h5 class="fw-bold text-uppercase tracking-wider fs-6 mb-3">
-                            <span class="text-muted me-2">02.</span>{{ __('front.payment_method') ?? 'طريقة الدفع' }}
+                            <span class="text-muted me-2">02.</span>{{ __('front.payment_method')}}
                         </h5>
 
                         <div class="d-flex flex-column gap-2">
@@ -71,7 +86,7 @@
                                     <label class="form-check-label fw-semibold small ms-2 w-100 cursor-pointer"
                                         for="pay_cod">
                                         <i class="bi bi-cash-coin me-2"></i>
-                                        {{ __('front.cod') ?? 'الدفع عند الاستلام' }}
+                                        {{ __('front.cod') }}
                                     </label>
                                 </div>
                             </div>
@@ -83,7 +98,7 @@
                                     <label class="form-check-label fw-semibold small ms-2 w-100 cursor-pointer"
                                         for="pay_wallet">
                                         <i class="bi bi-wallet2 me-2"></i>
-                                        {{ __('front.e_wallet') ?? 'محفظة إلكترونية (فودافون كاش / إنستا باي)' }}
+                                        {{ __('front.e_wallet') }}
                                     </label>
                                 </div>
 
@@ -92,22 +107,34 @@
                                     <div class="alert alert-secondary rounded-0 small border-0 mb-3"
                                         style="background-color: #f8f9fa;">
                                         <i class="bi bi-info-circle me-2 text-dark"></i>
-                                        {{ __('front.wallet_instruction') ?? 'برجاء تحويل إجمالي المبلغ إلى الرقم التالي، ثم إرفاق لقطة شاشة تأكيد التحويل أدناه:' }}
-                                        <div class="mt-2 fw-bold text-dark fs-6 text-center tracking-wider">01012345678
+                                        {{ __('front.wallet_instruction')}}
+                                        <div class="mt-2 fw-bold text-dark fs-6 text-center tracking-wider">
+                                            {{ config('app_settings.phone') }}
                                         </div>
                                     </div>
 
                                     <div class="mb-0">
                                         <label for="screenshotInput"
-                                            class="form-label small fw-bold text-muted text-uppercase">{{ __('front.upload_receipt') ?? 'إرفاق إيصال التحويل' }}</label>
+                                            class="form-label small fw-bold text-muted text-uppercase">{{ __('front.upload_receipt') }}</label>
                                         <input class="form-control rounded-0 form-control-sm shadow-none" type="file"
-                                            id="screenshotInput" name="payment_screenshot" accept="image/*">
-                                        <div class="form-text small text-muted" style="font-size: 0.65rem;">يقبل الملفات
+                                            id="screenshotInput" name="screen_shot" accept="image/*">
+                                        <div class="form-text small text-muted" style="font-size: 0.65rem;">
+                                            يقبل الملفات
                                             من نوع صور فقط (JPG, PNG).</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                         @error('payment_method')
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
+                        @error('screen_shot')
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                     </div>
 
                 </div>
@@ -115,7 +142,7 @@
                 <div class="col-lg-5">
                     <div class="border p-4 bg-light-subtle rounded-0 position-sticky" style="top: 20px;">
                         <h5 class="fw-bold text-uppercase tracking-wider fs-6 mb-4">
-                            {{ __('front.order_summary') ?? 'ملخص الطلب' }}</h5>
+                            {{ __('front.order_summary')}}</h5>
 
                         <div class="checkout-items-list mb-4" style="max-height: 240px; overflow-y: auto;">
                             @if ($cart && $cart->items->count() > 0)
@@ -180,19 +207,25 @@
                             </div>
                             <div class="d-flex justify-content-between mb-2 text-muted">
                                 <span>{{ __('front.tax') }}</span>
-                                <span>{{ format_currency($cart->tax_total, current_currency_code()) }}</span>
+                                @php
+                                    $taxPercentage = (float) config('app_settings.tax_percentage', 0);
+                                    $tax = ($cart->subtotal * $taxPercentage) / 100;
+                                @endphp
+                                <span>{{ format_currency(number_format($tax, 2),current_currency_code()) }}</span>
                             </div>
                             <div class="d-flex justify-content-between mb-0 text-muted">
                                 <span>{{ __('front.shipping') }}</span>
-                                <span>{{ format_currency($cart->shipping_total, current_currency_code()) }}</span>
+                                <span>{{ format_currency(config('app_settings.shipping_amount'), current_currency_code()) }}</span>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <span
-                                class="text-uppercase small fw-bold text-dark">{{ __('front.total') ?? 'الإجمالي النهائي' }}</span>
+                            <span class="text-uppercase small fw-bold text-dark">{{ __('front.total')}}</span>
                             <span class="fw-bold fs-4 text-dark">
-                                {{ format_currency($cart->grand_total, current_currency_code()) }}
+                                @php
+                                    $grand_total = $tax + $cart->subtotal - $cart->discount_total + config('app_settings.shipping_amount');
+                                @endphp
+                                {{ format_currency($grand_total, current_currency_code()) }}
                             </span>
                         </div>
 

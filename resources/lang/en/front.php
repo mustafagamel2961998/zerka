@@ -86,4 +86,9 @@ return [
     'product_details' => 'Product Details',
     'shipping_returns' => 'Shipping & Returns',
     'shipping_returns_text' => 'Shipping & Returns information',
+    'checkout_successfully'=>'Thank you for shopping with us. Your order has been successfully placed.',
+    'cart_is_empty' => 'Your cart is empty',
+    'all_rights_reserved' => 'All Rights Reserved.',
+    'about_us' => 'About Us',
+    'contact_us' => 'Contact Us',
 ];

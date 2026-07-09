@@ -21,10 +21,10 @@ return new class extends Migration
                   ->constrained('coupons')
                   ->nullOnDelete();
             $table->decimal('subtotal', 10, 2)->default(0.00); 
-            $table->decimal('tax_total', 10, 2)->default(0.00);
-            $table->decimal('shipping_total', 10, 2)->default(0.00);
+            // $table->decimal('tax_total', 10, 2)->default(0.00);
+            // $table->decimal('shipping_total', 10, 2)->default(0.00);
             $table->decimal('discount_total', 10, 2)->default(0.00);
-            $table->decimal('grand_total', 10, 2)->default(0.00);      
+            // $table->decimal('grand_total', 10, 2)->default(0.00);      
             $table->timestamps();
         });
     }

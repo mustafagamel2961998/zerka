@@ -53,6 +53,18 @@ return [
     'all_orders'=>'جميع الطلبات',
     'item'=>'العنصر',
     'unique_exists'=>'اسم التصنيف هذا مستخدم بالفعل داخل هذا التصنيف الأب.',
-
-   
+    'welcome'=>'مرحبا',
+    // invoice
+    'all_invoices'=>'جميع الفواتير',
+    //users
+    'users'=>'المستخدمين',
+    'customers_and_managers'=>'العملاء والمديرين',
+    'all_customers'=>'جميع العملاء',
+    'all_managers'=>'جميع المديرين',
+    'total_orders'=>'اجمالي الطلبات',
+    'total_users'=>'اجمالي المستخدمين',
+    'total_products'=>'اجمالي المنتجات',
+    'total_categories'=>'اجمالي التصنيفات',
+    'view_more'=>'اظهار المزيد',
+    'recent_orders'=>'الطلبات الحديثة',
 ];

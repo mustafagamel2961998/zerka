@@ -12,6 +12,8 @@ use App\Http\Controllers\Web\Dashboard\V1\Product\ProductController;
 use App\Http\Controllers\Web\Dashboard\V1\Size\SizeController;
 use App\Http\Controllers\Web\Dashboard\V1\Warehouse\WarehouseController;
 use App\Http\Controllers\Web\Dashboard\V1\Order\OrderController;
+use App\Http\Controllers\Web\Dashboard\V1\Setting\SettingController;
+use App\Http\Controllers\Web\Dashboard\V1\Invoice\InvoiceController;
 Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,7 +74,12 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     //------------------------------------------------------------------------------------------ 
     //-Order Routes 
     Route::resource('orders',OrderController::class);
-    
+    //------------------------------------------------------------------------------------------ 
+    //-Invoice Routes 
+    Route::resource('invoices',InvoiceController::class);
+    //------------------------------------------------------------------------------------------ 
+    //-Setting Routes 
+    Route::resource('settings',SettingController::class);
     });
     //****************************************-:END:-****************************************/
 

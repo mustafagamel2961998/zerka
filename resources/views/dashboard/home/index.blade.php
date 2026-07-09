@@ -1,14 +1,15 @@
-<x-dashboard.layout title="{{ __('dashboard.dashboard') }}">
+
+    @php
+        use App\Enums\Order\Status;
+    @endphp
+    <x-dashboard.layout title="{{ __('dashboard.dashboard') }}">
+
+
     <!-- Start here.... -->
     <div class="row">
         <div class="col-xxl-5">
             <div class="row">
-                <div class="col-12">
-                    <div class="alert alert-primary text-truncate mb-3" role="alert">
-                        We regret to inform you that our server is currently experiencing technical difficulties.
-                    </div>
-                </div>
-
+                
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
@@ -18,102 +19,112 @@
                                         <iconify-icon icon="solar:cart-5-bold-duotone"
                                             class="avatar-title fs-32 text-primary"></iconify-icon>
                                     </div>
-                                </div> <!-- end col -->
+                                </div>
                                 <div class="col-6 text-end">
-                                    <p class="text-muted mb-0 text-truncate">Total Orders</p>
-                                    <h3 class="text-dark mt-1 mb-0">13, 647</h3>
-                                </div> <!-- end col -->
-                            </div> <!-- end row-->
-                        </div> <!-- end card body -->
+                                    <p class="text-muted mb-0 text-truncate">
+                                        {{ __('dashboard.total_orders') }}
+                                    </p>
+                                    <h3 class="text-dark mt-1 mb-0">34</h3>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i> 2.3%</span>
-                                    <span class="text-muted ms-1 fs-12">Last Week</span>
-                                </div>
-                                <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+                               
+                                <a href="" class="text-reset fw-semibold fs-12">
+                                    {{ __('dashboard.view_more') }}
+                                </a>
                             </div>
-                        </div> <!-- end card body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-md bg-soft-primary rounded">
-                                        <i class="bx bx-award avatar-title fs-24 text-primary"></i>
+                                        <iconify-icon icon="solar:users-group-rounded-bold-duotone"
+                                            class="avatar-title fs-32 text-primary"></iconify-icon>
                                     </div>
-                                </div> <!-- end col -->
+                                </div>
                                 <div class="col-6 text-end">
-                                    <p class="text-muted mb-0 text-truncate">New Leads</p>
-                                    <h3 class="text-dark mt-1 mb-0">9, 526</h3>
-                                </div> <!-- end col -->
-                            </div> <!-- end row-->
-                        </div> <!-- end card body -->
+                                    <p class="text-muted mb-0 text-truncate">
+                                        {{ __('dashboard.total_users') }}
+                                    </p>
+                                    <h3 class="text-dark mt-1 mb-0">2</h3>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="text-success"> <i class="bx bxs-up-arrow fs-12"></i> 8.1%</span>
-                                    <span class="text-muted ms-1 fs-12">Last Month</span>
-                                </div>
-                                <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+                               
+                                <a href="" class="text-reset fw-semibold fs-12">
+                                     {{ __('dashboard.view_more') }}
+                                </a>
                             </div>
-                        </div> <!-- end card body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-md bg-soft-primary rounded">
-                                        <i class="bx bxs-backpack avatar-title fs-24 text-primary"></i>
+                                        <iconify-icon icon="solar:t-shirt-bold-duotone"
+                                            class="avatar-title fs-32 text-primary"></iconify-icon>
                                     </div>
-                                </div> <!-- end col -->
+                                </div>
                                 <div class="col-6 text-end">
-                                    <p class="text-muted mb-0 text-truncate">Deals</p>
-                                    <h3 class="text-dark mt-1 mb-0">976</h3>
-                                </div> <!-- end col -->
-                            </div> <!-- end row-->
-                        </div> <!-- end card body -->
+                                    <p class="text-muted mb-0 text-truncate">
+                                        {{ __('dashboard.total_products') }}
+                                    </p>
+                                    <h3 class="text-dark mt-1 mb-0">3</h3>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i> 0.3%</span>
-                                    <span class="text-muted ms-1 fs-12">Last Month</span>
-                                </div>
-                                <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+                                
+                                <a href="" class="text-reset fw-semibold fs-12">
+                                     {{ __('dashboard.view_more') }}
+                                </a>
                             </div>
-                        </div> <!-- end card body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
+                        </div>
+                    </div>
+                </div>
+
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-6">
                                     <div class="avatar-md bg-soft-primary rounded">
-                                        <i class="bx bx-dollar-circle avatar-title text-primary fs-24"></i>
+                                        <iconify-icon icon="solar:widget-5-bold-duotone"
+                                            class="avatar-title fs-32 text-primary"></iconify-icon>
                                     </div>
-                                </div> <!-- end col -->
+                                </div>
                                 <div class="col-6 text-end">
-                                    <p class="text-muted mb-0 text-truncate">Booked Revenue</p>
-                                    <h3 class="text-dark mt-1 mb-0">$123.6k</h3>
-                                </div> <!-- end col -->
-                            </div> <!-- end row-->
-                        </div> <!-- end card body -->
+                                    <p class="text-muted mb-0 text-truncate">
+                                        {{ __('dashboard.total_categories') }}
+                                    </p>
+                                    <h3 class="text-dark mt-1 mb-0">3</h3>
+                                </div>
+                            </div>
+                        </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                                <div>
-                                    <span class="text-danger"> <i class="bx bxs-down-arrow fs-12"></i> 10.6%</span>
-                                    <span class="text-muted ms-1 fs-12">Last Month</span>
-                                </div>
-                                <a href="#!" class="text-reset fw-semibold fs-12">View More</a>
+                               
+                                <a href="" class="text-reset fw-semibold fs-12">
+                                     {{ __('dashboard.view_more') }}
+                                </a>
                             </div>
-                        </div> <!-- end card body -->
-                    </div> <!-- end card -->
-                </div> <!-- end col -->
+                        </div>
+                    </div>
+                </div>
             </div> <!-- end row -->
         </div> <!-- end col -->
 
@@ -326,192 +337,148 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">
-                            Recent Orders
+                           {{__('dashboard.recent_orders')}}
                         </h4>
-
-                        <a href="#!" class="btn btn-sm btn-soft-primary">
-                            <i class="bx bx-plus me-1"></i>Create Order
-                        </a>
                     </div>
                 </div>
                 <!-- end card body -->
                 <div class="table-responsive table-centered">
-                    <table class="table mb-0">
-                        <thead class="bg-light bg-opacity-50">
+                    <table id="my-order-html-table" class="table align-middle mb-0 table-hover table-centered">
+                        <thead class="bg-light-subtle">
                             <tr>
-                                <th class="ps-3">
-                                    Order ID.
-                                </th>
-                                <th>
-                                    Date
-                                </th>
-                                <th>
-                                    Product
-                                </th>
-                                <th>
-                                    Customer Name
-                                </th>
-                                <th>
-                                    Email ID
-                                </th>
-                                <th>
-                                    Phone No.
-                                </th>
-                                <th>
-                                    Address
-                                </th>
-                                <th>
-                                    Payment Type
-                                </th>
-                                <th>
-                                    Status
-                                </th>
-                            </tr>
+                                <th>{{__('global.order_number')}}</th>
+                                <th>{{__('global.customer')}}</th>
+                                <th>{{__('global.items_count')}}</th>
+                                <th>{{__('global.coupon_code')}}</th>
+                                <th>{{__('global.payment_status')}}</th>
+                                <th>{{__('global.created_at')}}</th>
+                                <th>{{__('global.grand_total')}}</th>
+                                <th>{{ __('global.status') }}</th>
+                                <th>{{ __('global.action') }}</th>
+                            </tr> 
+                            
                         </thead>
-                        <!-- end thead-->
                         <tbody>
-                            <tr>
-                                <td class="ps-3">
-                                    <a href="order-detail.html">#RB5625</a>
-                                </td>
-                                <td>29 April 2024</td>
-                                <td>
-                                    <img src="{{ asset('assets/images/dashboard/products/product-1(1).png') }}" alt="product-1(1)"
-                                        class="img-fluid avatar-sm">
-                                </td>
-                                <td>
-                                    <a href="#!">Anna M. Hines</a>
-                                </td>
-                                <td>anna.hines@mail.com</td>
-                                <td>(+1)-555-1564-261</td>
-                                <td>Burr Ridge/Illinois</td>
-                                <td>Credit Card</td>
-                                <td>
-                                    <i class="bx bxs-circle text-success me-1"></i>Completed
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3">
-                                    <a href="order-detail.html">#RB9652</a>
-                                </td>
-                                <td>25 April 2024</td>
-                                <td>
-                                    <img src="{{ asset('assets/images/dashboard/products/product-4.png') }}" alt="product-4"
-                                        class="img-fluid avatar-sm">
-                                </td>
-                                <td>
-                                    <a href="#!">Judith H. Fritsche</a>
-                                </td>
-                                <td>judith.fritsche.com</td>
-                                <td>(+57)-305-5579-759</td>
-                                <td>SULLIVAN/Kentucky</td>
-                                <td>Credit Card</td>
-                                <td>
-                                    <i class="bx bxs-circle text-success me-1"></i>Completed
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3">
-                                    <a href="order-detail.html">#RB5984</a>
-                                </td>
-                                <td>25 April 2024</td>
-                                <td>
-                                    <img src="{{ asset('assets/images/dashboard/products/product-5.png') }}" alt="product-5"
-                                        class="img-fluid avatar-sm">
-                                </td>
-                                <td>
-                                    <a href="#!">Peter T. Smith</a>
-                                </td>
-                                <td>peter.smith@mail.com</td>
-                                <td>(+33)-655-5187-93</td>
-                                <td>Yreka/California</td>
-                                <td>Pay Pal</td>
-                                <td>
-                                    <i class="bx bxs-circle text-success me-1"></i>Completed
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3">
-                                    <a href="order-detail.html">#RB3625</a>
-                                </td>
-                                <td>21 April 2024</td>
-                                <td>
-                                    <img src="{{ asset('assets/images/dashboard/products/product-6.png') }}" alt="product-6"
-                                        class="img-fluid avatar-sm">
-                                </td>
-                                <td>
-                                    <a href="#!">Emmanuel J. Delcid</a>
-                                </td>
-                                <td>
-                                    emmanuel.delicid@mail.com
-                                </td>
-                                <td>(+30)-693-5553-637</td>
-                                <td>Atlanta/Georgia</td>
-                                <td>Pay Pal</td>
-                                <td>
-                                    <i class="bx bxs-circle text-primary me-1"></i>Processing
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="ps-3">
-                                    <a href="order-detail.html">#RB8652</a>
-                                </td>
-                                <td>18 April 2024</td>
-                                <td>
-                                    <img src="{{ asset('assets/images/dashboard/products/product-1(2).png') }}" alt="product-1(2)"
-                                        class="img-fluid avatar-sm">
-                                </td>
-                                <td>
-                                    <a href="#!">William J. Cook</a>
-                                </td>
-                                <td>william.cook@mail.com</td>
-                                <td>(+91)-855-5446-150</td>
-                                <td>Rosenberg/Texas</td>
-                                <td>Credit Card</td>
-                                <td>
-                                    <i class="bx bxs-circle text-primary me-1"></i>Processing
-                                </td>
-                            </tr>
+                            @foreach ($orders as $order)
+                                <tr>
+                                    <td>
+                                        <a href="#!" class="link-primary fw-medium">
+                                            #{{$order->order_number}}
+                                        </a>
+                                    </td>
+                                    <td>
+                                        
+                                        <a href="#!" class="link-primary fw-medium">
+                                            <span class="d-flex align-items-center">
+                                                <img class="rounded-circle" width="32" src="{{$order->user->getFirstMediaUrl('avatar')}}" loading="lazy" alt="{{$order->user->profile->first_name .' '.$order->user->profile->last_name}}">
+                                                {{$order->user->profile->first_name .' '.$order->user->profile->last_name}}
+                                            </span>
+                                        </a>
+                                    </td>
+                                    
+                                    <td>
+                                        {{ $order->items_count }}
+                                    </td>
+                                
+                                    <td> 
+                                        {{$order->coupon_code ? $order->coupon_code : '-'}}
+                                    </td>
+                                    <td>
+                                    @switch($order->payment_status?->value)
+                                        @case('paid')
+                                            <span class="badge  bg-success text-light px-2 py-1 fs-13">
+                                                {{__('global.paid')}}
+                                            </span>
+                                            @break
+                                            @case('failed')
+                                                <span class="badge  bg-danger text-light px-2 py-1 fs-13">
+                                                    {{__('global.failed')}}
+                                                </span>
+                                            @break
+                                        @default
+                                            <span class="badge  bg-warning text-light px-2 py-1 fs-13">
+                                                {{__('global.pending')}}
+                                            </span>   
+                                    @endswitch
+                                    </td>
+                                    <td> 
+                                    @php
+                                        $orderTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->created_at->toDateTimeString(), config('app_settings.timezone'));
+                                    @endphp
+
+                                    {{ $orderTime->translatedFormat('Y-m-d') }} /
+                                    <small class="text-muted">({{ $orderTime->diffForHumans() }})</small>
+                                    </td>
+                                    <td> 
+                                        {{ format_currency($order->grand_total,current_currency_code()) }}
+                                    </td>
+                                    <td>
+                                        @switch($order->status?->value)
+                                            @case('processing')
+                                                <span class="badge border border-warning text-warning px-2 py-1 fs-13">
+                                                    {{__('global.processing')}}
+                                                </span>
+                                                @break
+                                            @case('shipped')
+                                                <span class="badge border border-primary text-primary px-2 py-1 fs-13">
+                                                    {{__('global.shipped')}}
+                                                </span>
+                                                @break
+                                            @case('delivering')
+                                                <span class="badge border border-info text-info px-2 py-1 fs-13">
+                                                    {{__('global.delivering')}}
+                                                </span>
+                                                @break
+                                        @case('received')
+                                                <span class="badge border px-2 py-1 fs-13" style="color: #ff6c2f !important; border-color: #ff6c2f !important;">
+                                                    {{ __('global.order_received') }}
+                                                </span>
+                                            @break 
+                                            @case('completed')
+                                                <span class="badge border border-success text-success px-2 py-1 fs-13">
+                                                    {{__('global.completed')}}
+                                                </span>
+                                                @break            
+                                            @case('cancelled')
+                                                <span class="badge border border-danger text-danger px-2 py-1 fs-13">
+                                                    {{__('global.cancelled')}}
+                                                </span>
+                                                @break
+                                            @default
+                                                <span class="badge border border-secondary text-secondary px-2 py-1 fs-13">
+                                                    {{__('global.pending')}}
+                                                </span>
+                                        @endswitch
+                                    </td>
+                                    <td>
+                                        <div class="d-flex gap-2">
+                                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}" class="btn btn-soft-secondary btn-sm">
+                                                <iconify-icon icon="solar:bill-list-broken" class="align-middle fs-18"></iconify-icon>
+                                            </a>
+                                            <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-light btn-sm">
+                                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                            </a>
+                                            
+                                            <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-soft-primary btn-sm">
+                                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                                            </a>
+                                            @if ($order->status?->value === Status::PENDING->value)
+                                                <a href="#!" class="btn btn-soft-danger btn-sm">
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            @endif
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                
                         </tbody>
-                        <!-- end tbody -->
                     </table>
                     <!-- end table -->
                 </div>
                 <!-- table responsive -->
 
-                <div class="card-footer border-top">
-                    <div class="row g-3">
-                        <div class="col-sm">
-                            <div class="text-muted">
-                                Showing
-                                <span class="fw-semibold">5</span>
-                                of
-                                <span class="fw-semibold">90,521</span>
-                                orders
-                            </div>
-                        </div>
-
-                        <div class="col-sm-auto">
-                            <ul class="pagination m-0">
-                                <li class="page-item">
-                                    <a href="#" class="page-link"><i class="bx bx-left-arrow-alt"></i></a>
-                                </li>
-                                <li class="page-item active">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link"><i class="bx bx-right-arrow-alt"></i></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
             </div>
             <!-- end card -->
         </div>

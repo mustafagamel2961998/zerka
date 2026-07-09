@@ -19,7 +19,11 @@ class Order extends Model
         'coupon_code',
         'payment_status',
         'notes',
+        'invoice_created',
         'status',
+        'stock_deducted_at',
+        'created_at',
+        'updated_at',
     ];
     //-----------------------------------------------------------------------------//
     // start relationships
@@ -34,6 +38,12 @@ class Order extends Model
     }
     public function items(){
         return $this->hasMany(OrderItem::class,'order_id','id');
+    }
+    public function address(){
+        return $this->hasOne(OrderAddress::class,'order_id','id');
+    }
+    public function invoice(){
+        return $this->hasOne(Invoice::class,'order_id','id');
     }
     // end relationships
     //-----------------------------------------------------------------------------//

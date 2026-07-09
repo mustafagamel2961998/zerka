@@ -32,6 +32,7 @@ use App\Http\Controllers\Web\Front\V1\Address\AddressController;
         //------------------------------------------------------------------------------------------ 
         //-Checkout Routes
         Route::get('checkout/index',[CheckoutController::class,'index'])->name('checkout.index');
+        Route::post('checkout/store',[CheckoutController::class,'store'])->name('checkout.store');
         //------------------------------------------------------------------------------------------ 
         //-Profile Routes
         Route::put('profile/update',[ProfileController::class,'update'])->name('profile.update');

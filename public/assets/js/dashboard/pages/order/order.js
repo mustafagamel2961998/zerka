@@ -22,3 +22,21 @@ document.addEventListener("DOMContentLoaded", function() {
             }).render(document.getElementById("table-order-gridjs"));
         }
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const statusButtons = document.querySelectorAll('.status-update-btn');
+    const form = document.getElementById('update-status-form');
+    const statusInput = document.getElementById('form-status-input');
+
+    statusButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const selectedStatus = this.getAttribute('data-status');
+
+            // رسالة تأكيد سريعة تظهر للمدير قبل التحديث
+            if (confirm('هل أنت متأكد من تغيير حالة هذا الطلب؟')) {
+                statusInput.value = selectedStatus;
+                form.submit();
+            }
+        });
+    });
+});
