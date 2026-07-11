@@ -110,10 +110,15 @@
                         @endswitch
                     </td>
                     <td>
+                        @can('manage-orders')
+                            
                         <div class="d-flex gap-2">
-                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}" class="btn btn-soft-secondary btn-sm">
-                                <iconify-icon icon="solar:bill-list-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
+                            @if ($order->invoice)
+                                <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}" class="btn btn-soft-secondary btn-sm">
+                                    <iconify-icon icon="solar:bill-list-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                            @endif
+
                             <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-light btn-sm">
                                 <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
                             </a>
@@ -126,8 +131,8 @@
                                     <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
                                 </a>
                             @endif
-
                         </div>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Dashboard\V1\Order\UpdateOrderRequest;
 use App\Actions\Dashboard\V1\Order\UpdateAction;
 use App\DTOs\Dashboard\V1\Order\UpdateDTO;
+use App\Enums\Order\Status;
 class OrderController extends Controller
 {
     public function __construct(private OrderRepositoryInterface $order_repository_interface){}
@@ -19,7 +20,13 @@ class OrderController extends Controller
         $orders = $this->order_repository_interface->getPaginated();
         return view('dashboard.order.index',compact('orders'));
     }
-
+    // public function refundRequest(){
+    //     $refund_request = $this->order_repository_interface
+    //                     ->baseQuery()
+    //                     ->where('status',Status::REFUND_REQUEST)
+    //                     ->paginate(20);
+    //     return view('dashboard.order.refund-request',compact('refund_request'));
+    // }
     /**
      * Show the form for creating a new resource.
      */

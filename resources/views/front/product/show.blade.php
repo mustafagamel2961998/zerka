@@ -18,9 +18,9 @@
 
                     <div class="col-lg-10">
                         <div class="position-relative bg-light border mb-2">
-                            <button class="btn btn-sm position-absolute top-0 end-0 m-3 p-0 text-dark border-0 bg-transparent" style="z-index: 10;">
+                            {{-- <button class="btn btn-sm position-absolute top-0 end-0 m-3 p-0 text-dark border-0 bg-transparent" style="z-index: 10;">
                                 <i class="bi bi-heart fs-4"></i>
-                            </button>
+                            </button> --}}
                             <img id="mainProductImage" src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" class="img-fluid main-preview-img" alt="{{ $product->currentTranslation->name }}">
                         </div>
                     </div>

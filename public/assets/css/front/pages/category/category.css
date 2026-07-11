@@ -1,0 +1,43 @@
+.size-filter-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #dee2e6;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.size-filter-input:checked + .size-filter-box {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.color-filter-swatch {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2px solid #dee2e6;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.color-filter-input:checked + .color-filter-swatch {
+    border-color: #000;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3px #000;
+}
+.subcategory-card {
+    border-radius: 0;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+.subcategory-card:hover {
+    transform: scale(1.02);
+}

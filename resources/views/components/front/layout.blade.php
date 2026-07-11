@@ -52,7 +52,7 @@
                                         aria-labelledby="menDropdown">
                                         @forelse ($category->children as $child)
                                             <li>
-                                                <a class="dropdown-item" href="#">
+                                                <a class="dropdown-item" href="{{ route('categories.show', $child->id) }}">
                                                     {{ $child->currentTranslation->name }} 
                                                 </a>
                                             </li>
@@ -108,10 +108,10 @@
 
                     @guest
                         <!-- مش مسجل دخول: لينكات Login / Register -->
-                        <a href="" class="text-white text-decoration-none small text-uppercase fw-medium">
+                        <a href="{{ route('login') }}" class="text-white text-decoration-none small text-uppercase fw-medium">
                             تسجيل الدخول
                         </a>
-                        <a href=""
+                        <a href="{{ route('register') }}"
                             class="text-white text-decoration-none small text-uppercase fw-medium border-{{ app()->getLocale() == 'ar' ? 'end' : 'start' }} border-secondary px-4">
                             حساب جديد
                         </a>
@@ -141,11 +141,11 @@
                                     <hr class="dropdown-divider border-secondary">
                                 </li>
                                 <li>
-                                    <form method="POST" action="">
-                                        @csrf
+                                    <a  href="{{ route('logout') }}" class="dropdown-item text-white-50" >
                                         <button type="submit" class="dropdown-item text-white-50">
                                             {{ __('global.logout') }}
                                         </button>
+                                    </a>
                                     </form>
                                 </li>
                             </ul>

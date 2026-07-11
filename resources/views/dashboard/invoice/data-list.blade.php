@@ -101,9 +101,11 @@
                         @endswitch
                    </td>
                  <td>
+                    @can('manage-invoices')
                       <a href="{{route('dashboard.v1.invoices.show', $invoice->id)}}" class="btn btn-light btn-sm">
                             <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
                       </a>
+                       @endcan
                  </td>
                </tr>
             @endforeach

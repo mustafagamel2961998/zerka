@@ -91,4 +91,42 @@ return [
     'all_rights_reserved' => 'All Rights Reserved.',
     'about_us' => 'About Us',
     'contact_us' => 'Contact Us',
+    'welcome_back_desc' => 'Welcome back! Please sign in to your account.',
+    'dont_have_account' => 'Don\'t have an account?',
+    'already_have_account' => 'Already have an account?',
+    'create_account_desc' => 'By creating an account, you agree to our Terms & Conditions and Privacy Policy.',
+    'request_refund' => 'Request Refund',
+    'quantity_to_refund' => 'Quantity to Refund',
+    'refund_reason' => 'Refund Reason',
+    'refund_reason_placeholder' => 'Please specify the reason for the refund',
+    'submit_request' => 'Submit Request',
+    'back_to_orders' => 'Back to Orders',
+    'action' => 'Action',
+    'price' => 'Price',
+    'order_details'=>'Order Details',       
+    'max_available'=>'Max Available',
+    'product'=>'Product',
+    'grand_total'=>'Grand Total',
+    'refund_approved' => 'Refund Approved',
+    'refund_rejected' => 'Refund Rejected',
+    'refund_pending' => 'Refund Pending',
+
+    'results_count' => ':count results found',
+
+    // Filters
+    'filter_by_price' => 'Filter by Price',
+    'min' => 'Min',
+    'max' => 'Max',
+    'filter_by_size' => 'Filter by Size',
+    'filter_by_color' => 'Filter by Color',
+    'apply_filters' => 'Apply Filters',
+    'reset' => 'Reset',
+
+    // Sorting
+    'sort_latest' => 'Latest',
+    'sort_oldest' => 'Oldest',
+    'sort_price_asc' => 'Price: Low to High',
+    'sort_price_desc' => 'Price: High to Low',
+    'products_count' => ':count products found',
+
 ];

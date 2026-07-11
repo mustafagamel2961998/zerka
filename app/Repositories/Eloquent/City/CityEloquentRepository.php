@@ -3,9 +3,13 @@
 namespace App\Repositories\Eloquent\City;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Repositories\Contracts\City\CityRepositoryInterface;
+use Illuminate\Support\Collection;
 use App\Models\City;
 class CityEloquentRepository implements CityRepositoryInterface
 {
+   public function all() : Collection{
+      return City::active()->with('currentTranslation')->get();
+   } 
    public function getPaginated($perPage = null) : LengthAwarePaginator{
       return City::with([
             'currentTranslation:id,city_id,name',

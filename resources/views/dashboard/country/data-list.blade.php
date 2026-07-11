@@ -53,20 +53,22 @@
                         </div>
                     </td>
                     <td>
-                        <div class="d-flex gap-2">
-                            <a href="{{route('dashboard.v1.countries.show', $country->id)}}" class="btn btn-light btn-sm">
-                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <a href="{{route('dashboard.v1.countries.edit', $country->id)}}" class="btn btn-soft-primary btn-sm">
-                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
-                                    data-url="{{ route('dashboard.v1.countries.destroy', $country->id) }}" 
-                                    data-name="{{ $country->currentTranslation->name}}">
-                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </button>
-                            
-                        </div>
+                        @can('manage-countries')
+                            <div class="d-flex gap-2">
+                                <a href="{{route('dashboard.v1.countries.show', $country->id)}}" class="btn btn-light btn-sm">
+                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                                <a href="{{route('dashboard.v1.countries.edit', $country->id)}}" class="btn btn-soft-primary btn-sm">
+                                    <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                                <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
+                                        data-url="{{ route('dashboard.v1.countries.destroy', $country->id) }}" 
+                                        data-name="{{ $country->currentTranslation->name}}">
+                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </button>
+                                
+                            </div>
+                        @endcan
                     </td>
                 </tr>
             

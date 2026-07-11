@@ -207,6 +207,7 @@ return [
        'current_password'=>'كلمة المرور الحالية',
        'address_id'=>'العنوان',
        'payment_method'=>'طريقة الدفع',
+       'order_item_id'=>'العنصر',
     ],
 
 ];

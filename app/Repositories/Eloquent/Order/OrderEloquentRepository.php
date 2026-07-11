@@ -39,7 +39,7 @@ class OrderEloquentRepository implements OrderRepositoryInterface
         return Order::with(['activities'=>fn($q)=>$q->latest()->with([
                                 'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name')
                             ]),
-                            'items'=>fn($q)=>$q->with('product.currentTranslation:id,product_id,name','product.media'),
+                            'items'=>fn($q)=>$q->with('product.currentTranslation:id,product_id,name','product.media','refunds','color.color'),
                             'user'=>fn($q)=>$q->with('profile:user_id,first_name,last_name','media'),
                             'address'
                           ])->findOrFail($id);

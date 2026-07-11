@@ -43,10 +43,15 @@ class CategoryEloquentRepository implements CategoryRepositoryInterface
         return $category;
     }
 
-    public function findById($id) : Category{
+    public function findById($id): Category
+    {
         return Category::with([
+            'children.currentTranslation',
+            'children.products',
+            'products',
             'currentTranslation',
-            'translations'])
+            'translations',
+        ])
         ->findOrFail($id);
     }
     public function update($id, array $data) : Category{

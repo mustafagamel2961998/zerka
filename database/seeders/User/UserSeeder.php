@@ -43,8 +43,32 @@ class UserSeeder extends Seeder
            'manage-orders',  
            
             //reports 
-           'view-reports',
-           'manage-reports',  
+           'view-users',
+           'manage-users',
+           
+           //currencies 
+           'view-currencies',
+           'manage-currencies',
+
+            //colors 
+           'view-colors',
+           'manage-colors',
+
+
+            //sizes 
+           'view-sizes',
+           'manage-sizes',
+
+            //warehouses 
+           'view-warehouses',
+           'manage-warehouses',
+
+            //invoices 
+           'view-invoices',
+           'manage-invoices',
+
+            //settings 
+           'view-settings',
            ];
 
         foreach ($permissions as $permission) {

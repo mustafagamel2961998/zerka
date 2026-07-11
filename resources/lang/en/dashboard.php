@@ -68,4 +68,15 @@ return [
     'total_categories'=>'Total Categories',
     'view_more'=>'View More',
     'recent_orders'=>'Recent Orders',
+    'sales'=>'Sales',
+    'total_sales'=>'Total Sales',
+    'logout'=>'Logout',
+    'managers'=>'Managers',
+    'roles_and_status'=>'Roles & Status',
+    'admin'=>'Admin',
+    'personal_information'=>'Personal Information',
+    'edit_user_details'=>'Edit User Details',
+    'select_all'=>'Select All',
+    'refund_request'=>'Refund Request',
+  
 ];

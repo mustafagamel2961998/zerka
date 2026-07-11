@@ -13,6 +13,7 @@ return [
     'completed' => 'مكتمل',
     'success' => 'ناجح',
     'failed' => 'فاشل',
+    'refund_request' => 'طلب مرتجع',
     'refunded' => 'مرتجع',
     'received'=>'تم الاستلام',
 ];

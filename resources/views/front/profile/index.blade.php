@@ -36,7 +36,7 @@
                         <i class="bi bi-person me-2"></i> {{ __('front.account_details') }}
                     </button>
 
-                    <a href="#"
+                    <a href="{{route('logout')}}"
                         class="nav-link text-start rounded-0 fw-semibold py-2.5 fs-7 text-danger border-top border-light-subtle mt-2">
                         <i class="bi bi-box-arrow-left me-2"></i> {{ __('front.logout') }}
                     </a>
@@ -133,10 +133,12 @@
                                                 {{ format_currency($order->grand_total, current_currency_code()) }}
                                             </td>
                                             <td>
-                                                <button class="btn btn-sm btn-outline-dark rounded-0 px-2.5 py-1"
-                                                    style="font-size: 0.65rem;">
-                                                    {{ __('front.view_details') }}
-                                                </button>
+                                                <a href="{{ route('orders.show', $order->id) }}">
+                                                    <button class="btn btn-sm btn-outline-dark rounded-0 px-2.5 py-1"
+                                                        style="font-size: 0.65rem;">
+                                                        {{ __('front.view_details') }}
+                                                    </button>
+                                                </a>
                                             </td>
                                         </tr>
                                         @empty
@@ -264,7 +266,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="last_name"
-                                            class="form-label small fw-bold text-muted text-uppercase">{{ __('front.last_namet_name') }}</label>
+                                            class="form-label small fw-bold text-muted text-uppercase">{{ __('front.last_name') }}</label>
                                         <input type="text" name="last_name" id="last_name" class="form-control rounded-0 shadow-none form-control-sm" 
                                             placeholder="{{ __('front.last_name') }}"
                                             value="{{ auth()->user()->profile->last_name }}" required>

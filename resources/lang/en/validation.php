@@ -229,6 +229,7 @@ return [
        'current_password'=>'Current Password',
        'address_id'=>'Address',
        'payment_method'=>'Payment Method',
+       'order_item_id'=>'Item',
     ],
 
 ];

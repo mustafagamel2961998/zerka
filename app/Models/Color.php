@@ -14,7 +14,9 @@ class Color extends Model
 
     //-----------------------------------------------------------------------------//
     // start relationships
-    
+        public function variantColors(){
+            return $this->hasMany(VariantColor::class,'color_id','id');
+        }
     // end relationships
     //-----------------------------------------------------------------------------//
     // start local scope

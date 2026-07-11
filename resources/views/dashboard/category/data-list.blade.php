@@ -56,6 +56,7 @@
                         </div>
                     </td>
                     <td>
+                        @can('manage-categories')
                         <div class="d-flex gap-2">
                             <a href="#!" class="btn btn-light btn-sm">
                                 <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
@@ -70,6 +71,7 @@
                             </button>
                             
                         </div>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

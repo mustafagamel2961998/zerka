@@ -1,15 +1,14 @@
-
-    @php
-        use App\Enums\Order\Status;
-    @endphp
-    <x-dashboard.layout title="{{ __('dashboard.dashboard') }}">
+@php
+    use App\Enums\Order\Status;
+@endphp
+<x-dashboard.layout title="{{ __('dashboard.dashboard') }}">
 
 
     <!-- Start here.... -->
     <div class="row">
         <div class="col-xxl-5">
             <div class="row">
-                
+
                 <div class="col-md-6">
                     <div class="card overflow-hidden">
                         <div class="card-body">
@@ -24,13 +23,15 @@
                                     <p class="text-muted mb-0 text-truncate">
                                         {{ __('dashboard.total_orders') }}
                                     </p>
-                                    <h3 class="text-dark mt-1 mb-0">34</h3>
+                                    <h3 class="text-dark mt-1 mb-0">
+                                        {{$orderCount}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                               
+
                                 <a href="" class="text-reset fw-semibold fs-12">
                                     {{ __('dashboard.view_more') }}
                                 </a>
@@ -53,15 +54,17 @@
                                     <p class="text-muted mb-0 text-truncate">
                                         {{ __('dashboard.total_users') }}
                                     </p>
-                                    <h3 class="text-dark mt-1 mb-0">2</h3>
+                                    <h3 class="text-dark mt-1 mb-0">
+                                        {{$userCount}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                               
+
                                 <a href="" class="text-reset fw-semibold fs-12">
-                                     {{ __('dashboard.view_more') }}
+                                    {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
                         </div>
@@ -82,15 +85,17 @@
                                     <p class="text-muted mb-0 text-truncate">
                                         {{ __('dashboard.total_products') }}
                                     </p>
-                                    <h3 class="text-dark mt-1 mb-0">3</h3>
+                                    <h3 class="text-dark mt-1 mb-0">
+                                        {{$productCount}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                                
+
                                 <a href="" class="text-reset fw-semibold fs-12">
-                                     {{ __('dashboard.view_more') }}
+                                    {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
                         </div>
@@ -111,15 +116,17 @@
                                     <p class="text-muted mb-0 text-truncate">
                                         {{ __('dashboard.total_categories') }}
                                     </p>
-                                    <h3 class="text-dark mt-1 mb-0">3</h3>
+                                    <h3 class="text-dark mt-1 mb-0">
+                                        {{$categoryCount}}
+                                    </h3>
                                 </div>
                             </div>
                         </div>
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
-                               
+
                                 <a href="" class="text-reset fw-semibold fs-12">
-                                     {{ __('dashboard.view_more') }}
+                                    {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
                         </div>
@@ -132,16 +139,23 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">Performance</h4>
+                        <h4 class="card-title">
+                            {{ __('dashboard.sales') }}
+                        </h4>
                         <div>
-                            <button type="button" class="btn btn-sm btn-outline-light">ALL</button>
-                            <button type="button" class="btn btn-sm btn-outline-light">1M</button>
-                            <button type="button" class="btn btn-sm btn-outline-light">6M</button>
-                            <button type="button" class="btn btn-sm btn-outline-light active">1Y</button>
+                            <!-- أضفنا الكلاس chart-filter والـ data-filter -->
+                            <button type="button" class="btn btn-sm btn-outline-light chart-filter"
+                                data-filter="ALL">ALL</button>
+                            <button type="button" class="btn btn-sm btn-outline-light chart-filter"
+                                data-filter="1M">1M</button>
+                            <button type="button" class="btn btn-sm btn-outline-light chart-filter"
+                                data-filter="6M">6M</button>
+                            <button type="button" class="btn btn-sm btn-outline-light chart-filter active"
+                                data-filter="1Y">1Y</button>
                         </div>
                     </div> <!-- end card-title-->
 
-                    <div dir="ltr">
+                    <div dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
                         <div id="dash-performance-chart" class="apex-charts"></div>
                     </div>
                 </div> <!-- end card body -->
@@ -150,7 +164,7 @@
     </div>
     <!-- end row -->
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -329,7 +343,7 @@
             </div> <!-- end card-->
         </div> <!-- end col-->
     </div>
-    <!-- end row -->
+    <!-- end row --> --}}
 
     <div class="row">
         <div class="col">
@@ -337,7 +351,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <h4 class="card-title">
-                           {{__('dashboard.recent_orders')}}
+                            {{ __('dashboard.recent_orders') }}
                         </h4>
                     </div>
                 </div>
@@ -346,125 +360,148 @@
                     <table id="my-order-html-table" class="table align-middle mb-0 table-hover table-centered">
                         <thead class="bg-light-subtle">
                             <tr>
-                                <th>{{__('global.order_number')}}</th>
-                                <th>{{__('global.customer')}}</th>
-                                <th>{{__('global.items_count')}}</th>
-                                <th>{{__('global.coupon_code')}}</th>
-                                <th>{{__('global.payment_status')}}</th>
-                                <th>{{__('global.created_at')}}</th>
-                                <th>{{__('global.grand_total')}}</th>
+                                <th>{{ __('global.order_number') }}</th>
+                                <th>{{ __('global.customer') }}</th>
+                                <th>{{ __('global.items_count') }}</th>
+                                <th>{{ __('global.coupon_code') }}</th>
+                                <th>{{ __('global.payment_status') }}</th>
+                                <th>{{ __('global.created_at') }}</th>
+                                <th>{{ __('global.grand_total') }}</th>
                                 <th>{{ __('global.status') }}</th>
                                 <th>{{ __('global.action') }}</th>
-                            </tr> 
-                            
+                            </tr>
+
                         </thead>
                         <tbody>
                             @foreach ($orders as $order)
                                 <tr>
                                     <td>
                                         <a href="#!" class="link-primary fw-medium">
-                                            #{{$order->order_number}}
+                                            #{{ $order->order_number }}
                                         </a>
                                     </td>
                                     <td>
-                                        
+
                                         <a href="#!" class="link-primary fw-medium">
                                             <span class="d-flex align-items-center">
-                                                <img class="rounded-circle" width="32" src="{{$order->user->getFirstMediaUrl('avatar')}}" loading="lazy" alt="{{$order->user->profile->first_name .' '.$order->user->profile->last_name}}">
-                                                {{$order->user->profile->first_name .' '.$order->user->profile->last_name}}
+                                                <img class="rounded-circle" width="32"
+                                                    src="{{ $order->user->getFirstMediaUrl('avatar') }}"
+                                                    loading="lazy"
+                                                    alt="{{ $order->user->profile->first_name . ' ' . $order->user->profile->last_name }}">
+                                                {{ $order->user->profile->first_name . ' ' . $order->user->profile->last_name }}
                                             </span>
                                         </a>
                                     </td>
-                                    
+
                                     <td>
                                         {{ $order->items_count }}
                                     </td>
-                                
-                                    <td> 
-                                        {{$order->coupon_code ? $order->coupon_code : '-'}}
+
+                                    <td>
+                                        {{ $order->coupon_code ? $order->coupon_code : '-' }}
                                     </td>
                                     <td>
-                                    @switch($order->payment_status?->value)
-                                        @case('paid')
-                                            <span class="badge  bg-success text-light px-2 py-1 fs-13">
-                                                {{__('global.paid')}}
-                                            </span>
-                                            @break
-                                            @case('failed')
-                                                <span class="badge  bg-danger text-light px-2 py-1 fs-13">
-                                                    {{__('global.failed')}}
+                                        @switch($order->payment_status?->value)
+                                            @case('paid')
+                                                <span class="badge  bg-success text-light px-2 py-1 fs-13">
+                                                    {{ __('global.paid') }}
                                                 </span>
                                             @break
-                                        @default
-                                            <span class="badge  bg-warning text-light px-2 py-1 fs-13">
-                                                {{__('global.pending')}}
-                                            </span>   
-                                    @endswitch
-                                    </td>
-                                    <td> 
-                                    @php
-                                        $orderTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->created_at->toDateTimeString(), config('app_settings.timezone'));
-                                    @endphp
 
-                                    {{ $orderTime->translatedFormat('Y-m-d') }} /
-                                    <small class="text-muted">({{ $orderTime->diffForHumans() }})</small>
+                                            @case('failed')
+                                                <span class="badge  bg-danger text-light px-2 py-1 fs-13">
+                                                    {{ __('global.failed') }}
+                                                </span>
+                                            @break
+
+                                            @default
+                                                <span class="badge  bg-warning text-light px-2 py-1 fs-13">
+                                                    {{ __('global.pending') }}
+                                                </span>
+                                        @endswitch
                                     </td>
-                                    <td> 
-                                        {{ format_currency($order->grand_total,current_currency_code()) }}
+                                    <td>
+                                        @php
+                                            $orderTime = \Carbon\Carbon::createFromFormat(
+                                                'Y-m-d H:i:s',
+                                                $order->created_at->toDateTimeString(),
+                                                config('app_settings.timezone'),
+                                            );
+                                        @endphp
+
+                                        {{ $orderTime->translatedFormat('Y-m-d') }} /
+                                        <small class="text-muted">({{ $orderTime->diffForHumans() }})</small>
+                                    </td>
+                                    <td>
+                                        {{ format_currency($order->grand_total, current_currency_code()) }}
                                     </td>
                                     <td>
                                         @switch($order->status?->value)
                                             @case('processing')
                                                 <span class="badge border border-warning text-warning px-2 py-1 fs-13">
-                                                    {{__('global.processing')}}
+                                                    {{ __('global.processing') }}
                                                 </span>
-                                                @break
+                                            @break
+
                                             @case('shipped')
                                                 <span class="badge border border-primary text-primary px-2 py-1 fs-13">
-                                                    {{__('global.shipped')}}
+                                                    {{ __('global.shipped') }}
                                                 </span>
-                                                @break
+                                            @break
+
                                             @case('delivering')
                                                 <span class="badge border border-info text-info px-2 py-1 fs-13">
-                                                    {{__('global.delivering')}}
+                                                    {{ __('global.delivering') }}
                                                 </span>
-                                                @break
-                                        @case('received')
-                                                <span class="badge border px-2 py-1 fs-13" style="color: #ff6c2f !important; border-color: #ff6c2f !important;">
+                                            @break
+
+                                            @case('received')
+                                                <span class="badge border px-2 py-1 fs-13"
+                                                    style="color: #ff6c2f !important; border-color: #ff6c2f !important;">
                                                     {{ __('global.order_received') }}
                                                 </span>
-                                            @break 
+                                            @break
+
                                             @case('completed')
                                                 <span class="badge border border-success text-success px-2 py-1 fs-13">
-                                                    {{__('global.completed')}}
+                                                    {{ __('global.completed') }}
                                                 </span>
-                                                @break            
+                                            @break
+
                                             @case('cancelled')
                                                 <span class="badge border border-danger text-danger px-2 py-1 fs-13">
-                                                    {{__('global.cancelled')}}
+                                                    {{ __('global.cancelled') }}
                                                 </span>
-                                                @break
+                                            @break
+
                                             @default
                                                 <span class="badge border border-secondary text-secondary px-2 py-1 fs-13">
-                                                    {{__('global.pending')}}
+                                                    {{ __('global.pending') }}
                                                 </span>
                                         @endswitch
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}" class="btn btn-soft-secondary btn-sm">
-                                                <iconify-icon icon="solar:bill-list-broken" class="align-middle fs-18"></iconify-icon>
+                                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}"
+                                                class="btn btn-soft-secondary btn-sm">
+                                                <iconify-icon icon="solar:bill-list-broken"
+                                                    class="align-middle fs-18"></iconify-icon>
                                             </a>
-                                            <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-light btn-sm">
-                                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                            <a href="{{ route('dashboard.v1.orders.show', $order->id) }}"
+                                                class="btn btn-light btn-sm">
+                                                <iconify-icon icon="solar:eye-broken"
+                                                    class="align-middle fs-18"></iconify-icon>
                                             </a>
-                                            
-                                            <a href="{{route('dashboard.v1.orders.show', $order->id)}}" class="btn btn-soft-primary btn-sm">
-                                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+
+                                            <a href="{{ route('dashboard.v1.orders.show', $order->id) }}"
+                                                class="btn btn-soft-primary btn-sm">
+                                                <iconify-icon icon="solar:pen-2-broken"
+                                                    class="align-middle fs-18"></iconify-icon>
                                             </a>
                                             @if ($order->status?->value === Status::PENDING->value)
                                                 <a href="#!" class="btn btn-soft-danger btn-sm">
-                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken"
+                                                        class="align-middle fs-18"></iconify-icon>
                                                 </a>
                                             @endif
 
@@ -472,7 +509,7 @@
                                     </td>
                                 </tr>
                             @endforeach
-                
+
                         </tbody>
                     </table>
                     <!-- end table -->
@@ -485,4 +522,10 @@
         <!-- end col -->
     </div>
     <!-- end row -->
+    @push('javascript')
+        <script>
+            const Total_sales = "{{__('dashboard.total_sales') }}";
+        </script>
+        <script src="{{ asset('assets/js/dashboard/pages/home/home.js') }}"></script>
+    @endpush
 </x-dashboard.layout>

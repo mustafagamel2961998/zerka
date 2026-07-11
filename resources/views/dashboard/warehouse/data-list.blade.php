@@ -55,20 +55,23 @@
                         </div>
                     </td>
                     <td>
-                        <div class="d-flex gap-2">
-                           <a href="{{route('dashboard.v1.warehouses.show', $warehouse->id)}}" class="btn btn-light btn-sm">
-                                <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <a href="{{route('dashboard.v1.warehouses.edit', $warehouse->id)}}" class="btn btn-soft-primary btn-sm">
-                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
-                                    data-url="{{ route('dashboard.v1.warehouses.destroy', $warehouse->id) }}" 
-                                    data-name="{{ $warehouse->translations->where('locale', app()->getLocale())->first()->name ?? '' }}">
-                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </button>
-                            
-                        </div>
+                        @can('manage-warehouses')
+                                
+                            <div class="d-flex gap-2">
+                            <a href="{{route('dashboard.v1.warehouses.show', $warehouse->id)}}" class="btn btn-light btn-sm">
+                                    <iconify-icon icon="solar:eye-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                                <a href="{{route('dashboard.v1.warehouses.edit', $warehouse->id)}}" class="btn btn-soft-primary btn-sm">
+                                    <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                                <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
+                                        data-url="{{ route('dashboard.v1.warehouses.destroy', $warehouse->id) }}" 
+                                        data-name="{{ $warehouse->translations->where('locale', app()->getLocale())->first()->name ?? '' }}">
+                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </button>
+                                
+                            </div>
+                        @endcan
                     </td>
                 </tr>
           

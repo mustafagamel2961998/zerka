@@ -260,11 +260,11 @@
                                 <span
                                     class="text-dark fw-medium">{{ $order->created_at->addDays(3)->translatedFormat('Y / m / D') }}</span>
                             </p>
-                            <div>
+                            {{-- <div>
                                 <a href="#!" class="btn btn-info">
                                     {{ __('global.transaction_history') }}
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="card">

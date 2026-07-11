@@ -70,7 +70,7 @@
                         <h5 class="fw-bold text-uppercase m-0 tracking-wide fs-6">
                             {{ $category->currentTranslation->name }}
                         </h5>
-                        <a href="#" class="text-white small text-uppercase text-decoration-none d-block mt-2"
+                        <a href="{{ route('categories.show', $category->id) }}" class="text-white small text-uppercase text-decoration-none d-block mt-2"
                             style="font-size: 0.7rem; font-weight: 600;">
                             {{ __('front.explore_now') }}
                             <i class="bi bi-arrow-right ms-1"></i>
@@ -117,10 +117,10 @@
                 <div class="col-6 col-md-3">
                     <div class="product-card">
                         <div class="position-relative p-3 text-center">
-                            <button
+                            {{-- <button
                                 class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent">
                                 <i class="bi bi-heart fs-5"></i>
-                            </button>
+                            </button> --}}
                             <a href="{{route('products.show',['id'=>$product->id,'slug'=>$product->slug])}}">
                             <img src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" loading="lazy"
                                 class="img-fluid mix-blend-multiply product-img"
@@ -181,10 +181,10 @@
                 <div class="col-6 col-md-3">
                     <div class="product-card">
                         <div class="position-relative p-3 text-center">
-                            <button
+                            {{-- <button
                                 class="btn btn-sm position-absolute top-0 end-0 m-2 p-0 text-dark border-0 bg-transparent">
                                 <i class="bi bi-heart fs-5"></i>
-                            </button>
+                            </button> --}}
                              <a href="{{route('products.show',['id'=>$product->id,'slug'=>$product->slug])}}">
                                 <img src="{{ $product->getFirstMediaUrl('images', 'optimized') }}" loading="lazy"
                                     class="img-fluid mix-blend-multiply product-img"

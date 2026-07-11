@@ -11,6 +11,8 @@ enum Status: string
     case RECEIVED = 'received';
     case CANCELLED = 'cancelled';
     case COMPLETED = 'completed';
+    case REFUND_REQUEST     = 'refund_request';
+    case REFUNDED = 'refunded';
 
     public function label(): string
     {
@@ -23,6 +25,8 @@ enum Status: string
             self::RECEIVED => trans('enum.received'),
             self::CANCELLED => trans('enum.cancelled'),
             self::COMPLETED =>trans('enum.completed'),
+            self::REFUND_REQUEST =>trans('enum.refund_request'),
+            self::REFUNDED =>trans('enum.refunded'),
         };
     }
 

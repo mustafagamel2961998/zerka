@@ -2,8 +2,7 @@
 
 namespace App\DTOs\Auth;
 
-use Illuminate\Foundation\Http\FormRequest;
-
+use App\Http\Requests\Auth\LoginRequest;
 class LoginDTO
 {
     public function __construct(
@@ -15,7 +14,7 @@ class LoginDTO
     /**
      * Create a DTO instance from a Form Request
      */
-    public static function fromRequest(FormRequest $request): self
+    public static function fromRequest(LoginRequest $request): self
     {
         return new self(
             login:$request->validated('login'),

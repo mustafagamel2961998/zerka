@@ -14,7 +14,9 @@ class Size extends Model
 
     //-----------------------------------------------------------------------------//
     // start relationships
-        
+    public function variants(){
+        return $this->hasMany(ProductVariant::class,'product_id','id');
+    }  
     // end relationships
     //-----------------------------------------------------------------------------//
     // start local scope

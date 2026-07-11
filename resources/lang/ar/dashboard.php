@@ -67,4 +67,15 @@ return [
     'total_categories'=>'اجمالي التصنيفات',
     'view_more'=>'اظهار المزيد',
     'recent_orders'=>'الطلبات الحديثة',
+    'sales'=>'المبيعات',
+    'total_sales'=>'اجمالي المبيعات',
+    'logout'=>'تسجيل الخروج',
+    'managers'=>'المديرين',
+    'roles_and_status'=>'الادوار والحالات',
+    'personal_information'=>'معلومات شخصية',
+    'edit_user_details'=>'تعديل معلومات المستخدم',
+    'select_all'=>'تحديد الكل',
+    'edit_user'=>'تعديل المستخدم',
+    'refund_request'=>'طلبات الاسترجاع',
+
 ];

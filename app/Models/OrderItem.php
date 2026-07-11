@@ -32,6 +32,11 @@ class OrderItem extends Model
     public function color(){
         return $this->belongsTo(VariantColor::class,'variant_color_id','id');
     }
+    public function refunds(){
+        return $this->hasMany(Refund::class, 'order_item_id', 'id');
+    }
+
+
     // end relationships
     //-----------------------------------------------------------------------------//
     protected function casts(): array
@@ -46,4 +51,15 @@ class OrderItem extends Model
         ];
     }
     //-----------------------------------------------------------------------------//
+    public function getRefundableQuantityAttribute(): int
+    {
+        $alreadyRequested = $this->refunds()
+            ->whereIn('status', [
+                \App\Enums\Refund\RefundStatus::PENDING,
+                \App\Enums\Refund\RefundStatus::APPROVED,
+            ])
+            ->sum('quantity');
+
+        return max(0, $this->quantity - $alreadyRequested);
+    }
 }

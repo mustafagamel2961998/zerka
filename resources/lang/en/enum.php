@@ -13,6 +13,7 @@ return [
     'completed' => 'Completed',
     'success' => 'Success',
     'failed' => 'Failed',
+    'refund_request' => 'Refund Request',
     'refunded' => 'Refunded',
     'received'=>'Received',
 

@@ -17,13 +17,13 @@ class CheckRoleMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if (!auth()->check()) {
-            return redirect()->route('dashboard.v1.login.index')
+            return redirect()->route('dashboard.v1.login')
                              ->with('error', __('dashboard.must_login_first'));
         }
 
-        if (!auth()->user()->hasRole('Super Admin')) {
+        if (auth()->user()->role !== 'admin') {
             Auth::logout();
-            return redirect()->back()
+            return redirect()->route('dashboard.v1.login')
                 ->with('error', __('dashboard.not_have_permission'));
         }
         return $next($request);

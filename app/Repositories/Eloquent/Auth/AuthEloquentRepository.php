@@ -14,4 +14,11 @@ class AuthEloquentRepository implements AuthRepositoryInterface
         return User::where('email', $data['login'])
                         ->orWhere('phone',$data['login'])->first();
     }
+
+    public function register(array $data) : ?object
+    {
+       $user = User::create($data);
+       $user->profile()->create($data);
+       return $user;
+    }
 }

@@ -36,6 +36,7 @@
                         </div>
                     </td>
                     <td>
+                        @can('manage-currencies')
                         <div class="d-flex gap-2">
                             <a href="{{route('dashboard.v1.currencies.edit', $currency->id)}}" class="btn btn-soft-primary btn-sm">
                                 <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
@@ -47,6 +48,7 @@
                             </button>
                             
                         </div>
+                        @endcan
                     </td>
                   
                 </tr>

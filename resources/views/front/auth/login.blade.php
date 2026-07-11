@@ -1,103 +1,110 @@
 <x-front.layout title="{{ __('global.sign_in') }}">
-<!-- فورمة تسجيل الدخول -->
-<section class="bg0 p-t-40 p-b-116">
-    <div class="container">
+    @push('css')
+        <link rel="stylesheet" href="{{ asset('assets/css/front/pages/auth/auth.css') }}">
+    @endpush
+
+    <div class="container py-5 my-5">
         <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-5 p-b-50">
+            <div class="col-12 col-md-6 col-lg-5">
                 
-                <!-- الفلتر أو الإطار الخارجي للفورم متناسق مع استايل CozaStore -->
-                <div class="bor10 p-lr-40 p-t-50 p-b-40 m-l-63 m-r-32 m-lr-0-xl p-lr-15-sm">
+                <!-- كارت تسجيل الدخول -->
+                <div class="auth-card p-4 p-sm-5">
                     
-                    <h4 class="mtext-105 cl2 txt-center p-b-30">
-                        Sign In
-                    </h4>
-
-                    <form action="{{ route('login') }}" method="POST">
-                        @csrf
-
-                        <!-- حقل اسم المستخدم أو الهاتف -->
-                        <div class="m-b-20 how-pos4-parent">
-                            <label class="stext-110 cl2 p-b-5 d-block" for="login">
-								{{ __('global.login_label') }}
-							</label>
-                            <div class="bor8 bg0 w-full pos-relative">
-                                <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30  
-									@error('login')
-										is-invalid
-									@enderror" 
-									type="text" id="login" name="login" placeholder="{{ __('global.login_input_placeholder') }}" required value="{{ old('login') }}">
-									 @error('login')
-										<div id="validationServer03Feedback" class="invalid-feedback">
-											{{ $message }}
-										</div>
-									@enderror
-                                <div class="how-pos4 pointer-none flex-c-m">
-                                    <i class="zmdi zmdi-account text-muted fs-18"></i>
-                                </div>
-                            </div>
-                            @error('login')
-                                <span class="text-danger stext-111 m-t-5 d-block">
-									{{ $message }}
-								</span>
-                            @enderror
-                        </div>
-
-                        <!-- حقل الرقم السري -->
-                        <div class="m-b-25 how-pos4-parent">
-                            <label class="stext-110 cl2 p-b-5 d-block" for="password">
-								{{ __('global.password_label') }}
-							</label>
-                            <div class="bor8 bg0 w-full pos-relative">
-                                <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30  
-								@error('password') is-invalid @enderror" 
-								type="password" id="password" name="password" placeholder="{{ __('global.password_input_placeholder') }}" required>
-                                <div class="how-pos4 pointer-none flex-c-m">
-                                    <i class="zmdi zmdi-lock text-muted fs-18"></i>
-                                </div>
-                            </div>
-							@error('password')
-								<div id="validationServer03Feedback" class="invalid-feedback">
-									{{ $message }}
-								</div>
-							@enderror
-                        </div>
-
-                        <!-- تذكرني ونسيت كلمة السر -->
-                        <div class="flex-w flex-sb-m p-b-30">
-                             <div class="mb-3">
-								<div class="form-check">
-									<input type="checkbox" class="form-check-input" id="checkbox-signin">
-									<label class="form-check-label" for="checkbox-signin">
-										{{ __('global.remember_me_text') }}
-									</label>
-								</div>
-							</div>
-
-                            <a href="#" class="stext-111 cl6 hov-cl1 trans-04 m-tb-5">
-								{{__('global.forgot_password_text')}}
-                            </a>
-                        </div>
-
-                        <!-- زرار تسجيل الدخول -->
-                        <button type="submit" class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer w-full">
+                    <!-- رأس الصفحة (العنوان) -->
+                    <div class="text-center mb-4">
+                        <i class="bi bi-shield-lock text-dark fs-1 mb-2 d-block"></i>
+                        <h4 class="fw-bold text-uppercase tracking-wider m-0" style="font-size: 1.25rem;">
                             {{ __('global.sign_in') }}
-                        </button>
-                    </form>
-
-                    <!-- رابط لإنشاء حساب جديد في حال لو مش مسجل -->
-                    <div class="txt-center p-t-30">
-                        <span class="stext-111 cl6">
-                            {{ __('global.no_account_text') }}
-                        </span>
-                        <a href="#" class="stext-111 cl1 hov-cl1 trans-04 font-weight-bold">
-                            {{ __('global.sign_up') }}
-                        </a>
+                        </h4>
+                        <p class="text-muted small mt-1">
+                            {{ __('front.welcome_back_desc') }}
+                        </p>
                     </div>
 
+                    <!-- فورم تسجيل الدخول -->
+                    <form action="{{ route('login.action') }}" method="POST" novalidate>
+                        @csrf
+
+                        <!-- حقل البريد الإلكتروني -->
+                        <div class="mb-3">
+                            <label for="login" class="form-label text-uppercase fw-semibold small text-muted" style="letter-spacing: 0.5px;">
+                                {{ __('global.login')}}
+                            </label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted rounded-0">
+                                    <i class="bi bi-person"></i>
+                                </span>
+                                <input type="login" name="login" id="login" 
+                                    class="form-control rounded-0 border-start-1 @error('login') is-invalid @enderror" 
+                                    placeholder="{{ __('global.login')}}" 
+                                    value="{{ old('login') }}" required autofocus>
+                                
+                                @error('login')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- حقل كلمة المرور -->
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label for="password" class="form-label text-uppercase fw-semibold small text-muted m-0" style="letter-spacing: 0.5px;">
+                                    {{ __('global.password')}}
+                                </label>
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}" class="text-dark small text-decoration-underline" style="font-size: 0.75rem;">
+                                        {{ __('global.forgot_password')}}
+                                    </a>
+                                @endif
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text bg-transparent border-end-0 text-muted rounded-0">
+                                    <i class="bi bi-lock"></i>
+                                </span>
+                                <input type="password" name="password" id="password" 
+                                    class="form-control rounded-0 border-start-1 @error('password') is-invalid @enderror" 
+                                    placeholder="••••••••" required autocomplete="current-password">
+                                
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- تذكرني -->
+                        <div class="mb-4 d-flex align-items-center">
+                            <input class="form-check-input rounded-0 me-2" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <label class="form-check-out text-muted small user-select-none" for="remember">
+                                {{ __('global.remember_me')}}
+                            </label>
+                        </div>
+
+                        <!-- زر تسجيل الدخول -->
+                        <div class="d-grid mb-4">
+                            <button type="submit" class="btn btn-black btn-sm py-2 text-uppercase fw-bold text-nowrap">
+                                {{ __('global.sign_in') }}
+                            </button>
+                        </div>
+
+                        <!-- رابط إنشاء حساب جديد -->
+                        <div class="text-center">
+                            <p class="text-muted small mb-0">
+                                {{ __('front.dont_have_account') }}
+                                <a href="{{route('register')}}" class="text-dark fw-bold text-decoration-none ms-1">
+                                    {{ __('global.register')}}
+                                    <i class="bi bi-arrow-right ms-1 small"></i>
+                                </a>
+                            </p>
+                        </div>
+
+                    </form>
                 </div>
+
             </div>
         </div>
     </div>
-</section>
-
 </x-front.layout>

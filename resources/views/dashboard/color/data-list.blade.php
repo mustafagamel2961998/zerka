@@ -33,18 +33,20 @@
                         </div>
                     </td>
                     <td>
-                        <div class="d-flex gap-2">
-                        
-                            <a href="{{route('dashboard.v1.colors.edit', $color->id)}}" class="btn btn-soft-primary btn-sm">
-                                <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </a>
-                            <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
-                                    data-url="{{ route('dashboard.v1.colors.destroy', $color->id) }}" 
-                                    data-name="{{ $color->code}}">
-                                <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
-                            </button>
+                        @can('manage-colors')
+                            <div class="d-flex gap-2">
                             
-                        </div>
+                                <a href="{{route('dashboard.v1.colors.edit', $color->id)}}" class="btn btn-soft-primary btn-sm">
+                                    <iconify-icon icon="solar:pen-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </a>
+                                <button type="button" class="btn btn-soft-danger btn-sm open-delete-modal"
+                                        data-url="{{ route('dashboard.v1.colors.destroy', $color->id) }}" 
+                                        data-name="{{ $color->code}}">
+                                    <iconify-icon icon="solar:trash-bin-minimalistic-2-broken" class="align-middle fs-18"></iconify-icon>
+                                </button>
+                                
+                            </div>
+                        @endcan
                     </td>
                 </tr>
           

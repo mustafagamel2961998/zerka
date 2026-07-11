@@ -33,6 +33,9 @@ class Category extends Model  implements HasMedia
     public function currentTranslation(){
         return $this->hasOne(CategoryTranslation::class,'category_id','id')->where('locale',app()->getLocale());
     }
+    public function products(){
+        return $this->hasMany(Product::class,'category_id','id');
+    }
     // end relationships
     //-----------------------------------------------------------------------------//
     // start local scope

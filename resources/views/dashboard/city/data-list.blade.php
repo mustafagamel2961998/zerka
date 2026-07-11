@@ -35,6 +35,7 @@
                         </div>
                     </td>
                     <td>
+                        @can('manage-cities')
                         <div class="d-flex gap-2">
                         
                             <a href="{{route('dashboard.v1.cities.edit', $city->id)}}" class="btn btn-soft-primary btn-sm">
@@ -47,6 +48,7 @@
                             </button>
                             
                         </div>
+                        @endcan
                     </td>
                 </tr>
           

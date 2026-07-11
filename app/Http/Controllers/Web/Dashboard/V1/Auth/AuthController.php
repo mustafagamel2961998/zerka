@@ -10,6 +10,9 @@ class AuthController extends Controller
 {
     public function __construct(){}
     public function index(){
+        if(auth()->check() && auth()->user()->role == 'admin'){
+            return redirect()->route('dashboard.v1.home');
+        }
         return view('dashboard.auth.index');
     }
 
@@ -19,6 +22,9 @@ class AuthController extends Controller
         return redirect()
                     ->intended(route('dashboard.v1.home'))
                     ->with('success',__('global.login_success'));
-       
+    }
+    public function logout(){
+        auth()->logout();
+        return redirect()->route('dashboard.v1.login');
     }
 }

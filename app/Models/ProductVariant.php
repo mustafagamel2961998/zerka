@@ -26,7 +26,6 @@ class ProductVariant extends Model
         return $this->hasMany(VariantColor::class,'product_variant_id','id');
     }
    
-
     // end relationships
     //-----------------------------------------------------------------------------//
     protected function casts(): array
