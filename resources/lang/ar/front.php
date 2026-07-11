@@ -128,4 +128,6 @@ return [
     'sort_price_asc' => 'السعر: من الأقل للأعلى',
     'sort_price_desc' => 'السعر: من الأعلى للأقل',
     'products_count' => 'عدد المنتجات :count',
+    'login' => 'تسجيل الدخول',
+    'register' => 'حساب جديد',
 ];

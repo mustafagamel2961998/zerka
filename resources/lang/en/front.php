@@ -128,5 +128,7 @@ return [
     'sort_price_asc' => 'Price: Low to High',
     'sort_price_desc' => 'Price: High to Low',
     'products_count' => ':count products found',
+    'login' => 'Login',
+    'register' => 'Register',
 
 ];

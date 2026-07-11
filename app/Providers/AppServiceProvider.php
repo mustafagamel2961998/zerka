@@ -111,7 +111,7 @@ class AppServiceProvider extends ServiceProvider
         if (Schema::hasTable('settings')) {
             
             $settings = cache()->rememberForever('app_settings', function () {
-                return Setting::query()->with('currentTranslation')->first();
+                return Setting::query()->with('translations')->first();
             });
             Config::set('app_settings', $settings);
         }

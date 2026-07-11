@@ -136,11 +136,11 @@
                         <!-- مش مسجل دخول: لينكات Login / Register -->
                         <a href="{{ route('login') }}"
                             class="text-white text-decoration-none small text-uppercase fw-medium">
-                            تسجيل الدخول
+                           {{ __('front.login') }}
                         </a>
                         <a href="{{ route('register') }}"
                             class="text-white text-decoration-none small text-uppercase fw-medium border-{{ app()->getLocale() == 'ar' ? 'end' : 'start' }} border-secondary px-4">
-                            حساب جديد
+                           {{ __('front.register') }} 
                         </a>
                     @else
                         <!-- مسجل دخول: Dropdown باسم اليوزر -->
