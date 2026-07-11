@@ -18,6 +18,23 @@
     </head>
 
     <body class="bg-white text-dark" style="font-family: system-ui, -apple-system, sans-serif;">
+        <!-- 0. Announcement Bar (Free Shipping Marquee) -->
+<div class="announcement-bar bg-black text-white overflow-hidden">
+    <div class="marquee-track">
+        <span class="marquee-item text-uppercase small fw-semibold">
+            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+        </span>
+        <span class="marquee-item text-uppercase small fw-semibold">
+            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+        </span>
+        <span class="marquee-item text-uppercase small fw-semibold">
+            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+        </span>
+        <span class="marquee-item text-uppercase small fw-semibold">
+            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+        </span>
+    </div>
+</div>
         <!-- 1. Navbar (Full Width) -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top py-3">
             <div class="container-fluid px-md-5">

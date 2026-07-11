@@ -43,3 +43,39 @@
 #searchResultsDropdown::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.2);
 }
+.announcement-bar {
+    width: 100%;
+    padding: 8px 0;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-flex;
+    animation: marquee-scroll 18s linear infinite;
+    will-change: transform;
+}
+
+/* لو الصفحة RTL، الحركة بتتعكس تلقائي عشان الـ direction بتاع الـ body،
+   فهنفرض اتجاه ثابت للأنميشن نفسه */
+[dir="rtl"] .marquee-track {
+    animation-direction: reverse;
+}
+
+.marquee-item {
+    padding: 0 40px;
+    letter-spacing: 1px;
+}
+
+@keyframes marquee-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* وقف الحركة لو المستخدم عامل hover (اختياري) */
+.announcement-bar:hover .marquee-track {
+    animation-play-state: paused;
+}

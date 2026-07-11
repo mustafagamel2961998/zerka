@@ -130,5 +130,6 @@ return [
     'products_count' => ':count products found',
     'login' => 'Login',
     'register' => 'Register',
+    'free_shipping' => 'Free Shipping',
 
 ];

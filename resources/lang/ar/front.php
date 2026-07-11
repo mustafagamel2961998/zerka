@@ -130,4 +130,5 @@ return [
     'products_count' => 'عدد المنتجات :count',
     'login' => 'تسجيل الدخول',
     'register' => 'حساب جديد',
+    'free_shipping' => 'شحن مجاني',
 ];
