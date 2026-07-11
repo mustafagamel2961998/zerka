@@ -32,3 +32,14 @@
     background-color: #111;
     color: #fff !important;
 }
+.search-result-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+#searchResultsDropdown::-webkit-scrollbar {
+    width: 4px;
+}
+
+#searchResultsDropdown::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+}

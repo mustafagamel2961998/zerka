@@ -12,6 +12,7 @@ use App\Http\Controllers\Web\Front\V1\Address\AddressController;
 use App\Http\Controllers\Web\Front\V1\Order\OrderController;
 use App\Http\Controllers\Web\Front\V1\Refund\RefundController;
 use App\Http\Controllers\Web\Front\V1\Category\CategoryController;
+use App\Http\Controllers\Web\Front\V1\Search\SearchController;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -36,6 +37,8 @@ use App\Http\Controllers\Web\Front\V1\Category\CategoryController;
     //-Category Routes
     Route::get('categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
     Route::get('categories/{id}/{slug}/products', [CategoryController::class, 'products'])->name('categories.products');
+    Route::get('search/products', [SearchController::class, 'products'])->name('search.products');
+
     // Authenticated Routes
     //****************************************-:START:-****************************************/
     //------------------------------------------------------------------------------------------ 

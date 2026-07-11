@@ -22,10 +22,10 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top py-3">
             <div class="container-fluid px-md-5">
                 <!-- Logo -->
-                <a class="navbar-brand fw-bold tracking-widest text-uppercase fs-3" href="{{route('home')}}"
+                <a class="navbar-brand fw-bold tracking-widest text-uppercase fs-3" href="{{ route('home') }}"
                     style="letter-spacing: 4px;">
-                {{config('app_settings.currentTranslation.name')}}
-             </a>
+                    {{ config('app_settings.currentTranslation.name') }}
+                </a>
 
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav">
@@ -42,32 +42,32 @@
                             </a>
                         </li>
                         @foreach ($navbar_categories as $category)
-                              <!-- Men Dropdown -->
-                                <li class="nav-item dropdown custom-men-dropdown">
-                                    <a class="text-uppercase nav-link text-white-50 dropdown-toggle" href="#"
-                                        id="menDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{$category->currentTranslation->name}}
-                                    </a>
-                                    <ul class="dropdown-menu dropdown-menu-dark bg-black border border-secondary"
-                                        aria-labelledby="menDropdown">
-                                        @forelse ($category->children as $child)
-                                            <li>
-                                                <a class="dropdown-item" href="{{ route('categories.show', $child->id) }}">
-                                                    {{ $child->currentTranslation->name }} 
-                                                </a>
-                                            </li>
-                                        @empty
+                            <!-- Men Dropdown -->
+                            <li class="nav-item dropdown custom-men-dropdown">
+                                <a class="text-uppercase nav-link text-white-50 dropdown-toggle" href="#"
+                                    id="menDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {{ $category->currentTranslation->name }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark bg-black border border-secondary"
+                                    aria-labelledby="menDropdown">
+                                    @forelse ($category->children as $child)
                                         <li>
-                                             <a class="dropdown-item" href="#">
-                                                {{ __('front.no_categories_found') }}
-                                             </a>
+                                            <a class="dropdown-item" href="{{ route('categories.show', $child->id) }}">
+                                                {{ $child->currentTranslation->name }}
+                                            </a>
                                         </li>
-                                        @endforelse
-                                        
-                                    </ul>
-                                </li>
+                                    @empty
+                                        <li>
+                                            <a class="dropdown-item" href="#">
+                                                {{ __('front.no_categories_found') }}
+                                            </a>
+                                        </li>
+                                    @endforelse
+
+                                </ul>
+                            </li>
                         @endforeach
-                      
+
 
                         <li class="nav-item">
                             <a class="text-uppercase nav-link text-white-50" href="#">
@@ -80,9 +80,35 @@
                 <!-- Icons Buttons -->
                 <div class="d-flex align-items-center gap-4 text-white">
                     <!-- Search: دايماً ظاهر -->
-                    <a href="#" class="text-white text-decoration-none">
-                        <i class="bi bi-search fs-5"></i>
-                    </a>
+                    <div class="position-relative" id="searchWrapper">
+                        <a href="#" class="text-white text-decoration-none" id="searchToggleBtn">
+                            <i class="bi bi-search fs-5"></i>
+                        </a>
+
+                        <div class="search-box-container position-absolute bg-black border border-secondary p-2 d-none"
+                            id="searchBoxContainer"
+                            style="top: 45px; {{ app()->getLocale() == 'ar' ? 'right' : 'left' }}: -80px; width: 320px; z-index: 1050;">
+
+                            <div class="position-relative">
+                                <input type="text" id="productSearchInput"
+                                    class="form-control form-control-sm bg-dark text-white border-secondary rounded-0"
+                                    placeholder="{{ __('front.search_placeholder') }}" autocomplete="off">
+                                <div class="spinner-border spinner-border-sm text-white position-absolute d-none"
+                                    id="searchSpinner"
+                                    style="top: 8px; {{ app()->getLocale() == 'ar' ? 'left' : 'right' }}: 8px; width: 1rem; height: 1rem;">
+                                </div>
+                            </div>
+
+                            <div id="searchResultsDropdown" class="mt-2 d-none"
+                                style="max-height: 350px; overflow-y: auto;">
+                                <!-- النتائج هتتحقن هنا -->
+                            </div>
+
+                            <div id="searchNoResults" class="text-white-50 small text-center py-3 d-none">
+                                {{ __('front.no_products_found') }}
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="dropdown">
                         <a class="text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-1"
@@ -108,7 +134,8 @@
 
                     @guest
                         <!-- مش مسجل دخول: لينكات Login / Register -->
-                        <a href="{{ route('login') }}" class="text-white text-decoration-none small text-uppercase fw-medium">
+                        <a href="{{ route('login') }}"
+                            class="text-white text-decoration-none small text-uppercase fw-medium">
                             تسجيل الدخول
                         </a>
                         <a href="{{ route('register') }}"
@@ -128,12 +155,12 @@
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2"
                                 aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="{{route('profile.index')}}">
+                                    <a class="dropdown-item text-white-50" href="{{ route('profile.index') }}">
                                         {{ __('global.profile') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="{{route('profile.index')}}">
+                                    <a class="dropdown-item text-white-50" href="{{ route('profile.index') }}">
                                         {{ __('global.my_orders') }}
                                     </a>
                                 </li>
@@ -141,7 +168,7 @@
                                     <hr class="dropdown-divider border-secondary">
                                 </li>
                                 <li>
-                                    <a  href="{{ route('logout') }}" class="dropdown-item text-white-50" >
+                                    <a href="{{ route('logout') }}" class="dropdown-item text-white-50">
                                         <button type="submit" class="dropdown-item text-white-50">
                                             {{ __('global.logout') }}
                                         </button>
@@ -152,14 +179,15 @@
                         </div>
 
                         <!-- Cart: يظهر بس لو مسجل دخول -->
-                     <button class="btn p-0 text-white position-relative border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
-                        <i class="bi bi-bag fs-5"></i>
-                        <span id="cartBadgeCount"
-                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-black fw-bold px-1.5 py-0.5"
-                            style="font-size: 0.6rem; min-width: 15px;">
-                            {{ $cart?->items->count() ?? 0 }}
-                        </span>
-                    </button>
+                        <button class="btn p-0 text-white position-relative border-0" type="button"
+                            data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
+                            <i class="bi bi-bag fs-5"></i>
+                            <span id="cartBadgeCount"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-black fw-bold px-1.5 py-0.5"
+                                style="font-size: 0.6rem; min-width: 15px;">
+                                {{ $cart?->items->count() ?? 0 }}
+                            </span>
+                        </button>
                     @endguest
                 </div>
             </div>
@@ -237,13 +265,13 @@
                 <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
                     <div>
                         <h5 class="fw-bold text-uppercase m-0 tracking-widest" style="letter-spacing: 2px;">
-                            {{ config('app_settings.currentTranslation.name')}}
+                            {{ config('app_settings.currentTranslation.name') }}
                         </h5>
-                        
+
                         <small class="text-muted" style="font-size: 0.7rem;">
-                            &copy; {{ date('Y') }} 
+                            &copy; {{ date('Y') }}
                             {{ __('front.all_rights_reserved') }}
-                        
+
                         </small>
                     </div>
                     <div class="d-flex gap-4 small text-uppercase text-muted"
@@ -338,7 +366,7 @@
                     </div>
 
                     @if ($cart?->items?->count() > 0)
-                        <a href="{{route('checkout.index')}}"
+                        <a href="{{ route('checkout.index') }}"
                             class="btn btn-black w-100 rounded-0 text-white text-uppercase fw-bold py-2.5 bg-black fs-7 mb-2">
                             {{ __('front.checkout') }}
                         </a>
@@ -357,7 +385,10 @@
 
         <!-- Bootstrap 5.3 JavaScript Bundle CDN -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+
         <script src="{{ asset('assets/js/front/pages/layout/layout.js') }}"></script>
+
         @if (session('success'))
             <script>
                 const ToastSuccess = Swal.mixin({
@@ -367,8 +398,8 @@
                     timer: 3500,
                     timerProgressBar: true,
                     didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
                 });
 
@@ -377,9 +408,9 @@
                     title: "{{ session('success') }}"
                 });
             </script>
-            @endif
+        @endif
 
-            @if (session('error'))
+        @if (session('error'))
             <script>
                 const ToastError = Swal.mixin({
                     toast: true,
@@ -388,8 +419,8 @@
                     timer: 4500, // وقت أطول سنة عشان يلحق يقرأ الخطأ
                     timerProgressBar: true,
                     didOpen: (toast) => {
-                            toast.addEventListener('mouseenter', Swal.stopTimer)
-                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
                     }
                 });
 
@@ -398,7 +429,93 @@
                     title: "{{ session('error') }}"
                 });
             </script>
-            @endif
+        @endif
+        <script>
+            $(document).ready(function() {
+
+                // فتح/قفل صندوق البحث
+                $('#searchToggleBtn').on('click', function(e) {
+                    e.preventDefault();
+                    $('#searchBoxContainer').toggleClass('d-none');
+                    if (!$('#searchBoxContainer').hasClass('d-none')) {
+                        $('#productSearchInput').focus();
+                    }
+                });
+
+                // قفل الصندوق لو دوس بره
+                $(document).on('click', function(e) {
+                    if (!$(e.target).closest('#searchWrapper').length) {
+                        $('#searchBoxContainer').addClass('d-none');
+                    }
+                });
+
+                // Debounce timer
+                let searchTimer = null;
+
+                $('#productSearchInput').on('input', function() {
+                    const query = $(this).val().trim();
+
+                    clearTimeout(searchTimer);
+
+                    if (query.length < 2) {
+                        $('#searchResultsDropdown').addClass('d-none').empty();
+                        $('#searchNoResults').addClass('d-none');
+                        return;
+                    }
+
+                    $('#searchSpinner').removeClass('d-none');
+
+                    // debounce 350ms عشان مانضربش الـ server كل حرف
+                    searchTimer = setTimeout(function() {
+                        $.ajax({
+                            url: '{{ route('search.products') }}',
+                            method: 'GET',
+                            data: {
+                                q: query
+                            },
+                            success: function(res) {
+                                $('#searchSpinner').addClass('d-none');
+                                renderSearchResults(res.products);
+                            },
+                            error: function() {
+                                $('#searchSpinner').addClass('d-none');
+                            }
+                        });
+                    }, 350);
+                });
+
+                function renderSearchResults(products) {
+                    const dropdown = $('#searchResultsDropdown');
+                    const noResults = $('#searchNoResults');
+
+                    dropdown.empty();
+
+                    if (products.length === 0) {
+                        dropdown.addClass('d-none');
+                        noResults.removeClass('d-none');
+                        return;
+                    }
+
+                    noResults.addClass('d-none');
+
+                    products.forEach(function(product) {
+                        const item = `
+                        <a href="${product.url}" class="d-flex align-items-center gap-2 p-2 text-decoration-none search-result-item border-bottom border-secondary">
+                            <img src="${product.image}" alt="${product.name}" style="width: 45px; height: 45px; object-fit: contain; background: #111;">
+                            <div class="flex-grow-1">
+                                <p class="text-white small mb-0 fw-medium">${product.name}</p>
+                                <span class="text-white-50 small">${product.price}</span>
+                            </div>
+                        </a>
+                    `;
+                        dropdown.append(item);
+                    });
+
+                    dropdown.removeClass('d-none');
+                }
+
+            });
+        </script>
         @stack('js')
     </body>
 
