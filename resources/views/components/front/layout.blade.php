@@ -18,28 +18,30 @@
     </head>
 
     <body class="bg-white text-dark" style="font-family: system-ui, -apple-system, sans-serif;">
-        <!-- 0. Announcement Bar (Free Shipping Marquee) -->
-<div class="announcement-bar bg-black text-white overflow-hidden">
-    <div class="marquee-track">
-        <span class="marquee-item text-uppercase small fw-semibold">
-            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
-        </span>
-        <span class="marquee-item text-uppercase small fw-semibold">
-            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
-        </span>
-        <span class="marquee-item text-uppercase small fw-semibold">
-            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
-        </span>
-        <span class="marquee-item text-uppercase small fw-semibold">
-            <i class="bi bi-truck me-2"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
-        </span>
-    </div>
-</div>
+
+       <!-- 0. Announcement Bar (Free Shipping Marquee) -->
+        <div class="announcement-bar bg-white text-dark border-bottom overflow-hidden">
+            <div class="marquee-track">
+                <span class="marquee-item text-uppercase small fw-semibold text-dark">
+                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                </span>
+                <span class="marquee-item text-uppercase small fw-semibold text-dark">
+                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                </span>
+                <span class="marquee-item text-uppercase small fw-semibold text-dark">
+                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                </span>
+                <span class="marquee-item text-uppercase small fw-semibold text-dark">
+                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                </span>
+            </div>
+        </div>
+
         <!-- 1. Navbar (Full Width) -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-black sticky-top py-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top py-3 border-bottom">
             <div class="container-fluid px-md-5">
                 <!-- Logo -->
-                <a class="navbar-brand fw-bold tracking-widest text-uppercase fs-3" href="{{ route('home') }}"
+                <a class="navbar-brand fw-bold tracking-widest text-uppercase fs-3 text-dark" href="{{ route('home') }}"
                     style="letter-spacing: 4px;">
                     {{ config('app_settings.currentTranslation.name') }}
                 </a>
@@ -54,40 +56,37 @@
                     <ul class="navbar-nav gap-4 small fw-medium">
                         <li class="nav-item">
                             <a href="{{ route('home') }}"
-                                class="text-uppercase nav-link active text-white border-bottom border-white pb-1">
+                                class="text-uppercase nav-link active text-dark border-bottom border-dark pb-1">
                                 {{ __('front.home') }}
                             </a>
                         </li>
                         @foreach ($navbar_categories as $category)
                             <!-- Men Dropdown -->
                             <li class="nav-item dropdown custom-men-dropdown">
-                                <a class="text-uppercase nav-link text-white-50 dropdown-toggle" href="#"
+                                <a class="text-uppercase nav-link text-secondary dropdown-toggle" href="#"
                                     id="menDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ $category->currentTranslation->name }}
                                 </a>
-                                <ul class="dropdown-menu dropdown-menu-dark bg-black border border-secondary"
-                                    aria-labelledby="menDropdown">
+                                <ul class="dropdown-menu bg-white border shadow-sm" aria-labelledby="menDropdown">
                                     @forelse ($category->children as $child)
                                         <li>
-                                            <a class="dropdown-item" href="{{ route('categories.show', $child->id) }}">
+                                            <a class="dropdown-item text-dark" href="{{ route('categories.show', $child->id) }}">
                                                 {{ $child->currentTranslation->name }}
                                             </a>
                                         </li>
                                     @empty
                                         <li>
-                                            <a class="dropdown-item" href="#">
+                                            <a class="dropdown-item text-muted" href="#">
                                                 {{ __('front.no_categories_found') }}
                                             </a>
                                         </li>
                                     @endforelse
-
                                 </ul>
                             </li>
                         @endforeach
 
-
                         <li class="nav-item">
-                            <a class="text-uppercase nav-link text-white-50" href="#">
+                            <a class="text-uppercase nav-link text-secondary" href="#">
                                 {{ __('front.about_us') }}
                             </a>
                         </li>
@@ -95,22 +94,22 @@
                 </div>
 
                 <!-- Icons Buttons -->
-                <div class="d-flex align-items-center gap-4 text-white">
+                <div class="d-flex align-items-center gap-4 text-dark">
                     <!-- Search: دايماً ظاهر -->
                     <div class="position-relative" id="searchWrapper">
-                        <a href="#" class="text-white text-decoration-none" id="searchToggleBtn">
+                        <a href="#" class="text-dark text-decoration-none" id="searchToggleBtn">
                             <i class="bi bi-search fs-5"></i>
                         </a>
 
-                        <div class="search-box-container position-absolute bg-black border border-secondary p-2 d-none"
+                        <div class="search-box-container position-absolute bg-white border shadow-sm p-2 d-none"
                             id="searchBoxContainer"
                             style="top: 45px; {{ app()->getLocale() == 'ar' ? 'right' : 'left' }}: -80px; width: 320px; z-index: 1050;">
 
                             <div class="position-relative">
                                 <input type="text" id="productSearchInput"
-                                    class="form-control form-control-sm bg-dark text-white border-secondary rounded-0"
+                                    class="form-control form-control-sm bg-light text-dark border rounded-0"
                                     placeholder="{{ __('front.search_placeholder') }}" autocomplete="off">
-                                <div class="spinner-border spinner-border-sm text-white position-absolute d-none"
+                                <div class="spinner-border spinner-border-sm text-dark position-absolute d-none"
                                     id="searchSpinner"
                                     style="top: 8px; {{ app()->getLocale() == 'ar' ? 'left' : 'right' }}: 8px; width: 1rem; height: 1rem;">
                                 </div>
@@ -121,28 +120,29 @@
                                 <!-- النتائج هتتحقن هنا -->
                             </div>
 
-                            <div id="searchNoResults" class="text-white-50 small text-center py-3 d-none">
+                            <div id="searchNoResults" class="text-muted small text-center py-3 d-none">
                                 {{ __('front.no_products_found') }}
                             </div>
                         </div>
                     </div>
 
+                    <!-- Language Dropdown -->
                     <div class="dropdown">
-                        <a class="text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-1"
+                        <a class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center gap-1"
                             href="#" role="button" id="langDropdown" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             <i class="bi bi-globe2 fs-5"></i>
                             <span class="small text-uppercase fw-medium">{{ app()->getLocale() }}</span>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2"
+                        <ul class="dropdown-menu dropdown-menu-end bg-white border shadow-sm mt-2"
                             aria-labelledby="langDropdown">
                             <li>
-                                <a class="dropdown-item text-white-50" href="{{ route('lang.switch', 'ar') }}">
+                                <a class="dropdown-item text-dark" href="{{ route('lang.switch', 'ar') }}">
                                     {{ __('global.arabic') }}
                                 </a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-white-50" href="{{ route('lang.switch', 'en') }}">
+                                <a class="dropdown-item text-dark" href="{{ route('lang.switch', 'en') }}">
                                     {{ __('global.english') }}
                                 </a>
                             </li>
@@ -152,55 +152,54 @@
                     @guest
                         <!-- مش مسجل دخول: لينكات Login / Register -->
                         <a href="{{ route('login') }}"
-                            class="text-white text-decoration-none small text-uppercase fw-medium">
-                           {{ __('front.login') }}
+                            class="text-dark text-decoration-none small text-uppercase fw-medium">
+                        {{ __('front.login') }}
                         </a>
                         <a href="{{ route('register') }}"
-                            class="text-white text-decoration-none small text-uppercase fw-medium border-{{ app()->getLocale() == 'ar' ? 'end' : 'start' }} border-secondary px-4">
-                           {{ __('front.register') }} 
+                            class="text-dark text-decoration-none small text-uppercase fw-medium border-{{ app()->getLocale() == 'ar' ? 'end' : 'start' }} border-secondary-subtle px-4">
+                        {{ __('front.register') }} 
                         </a>
                     @else
                         <!-- مسجل دخول: Dropdown باسم اليوزر -->
                         <div class="dropdown">
-                            <a class="text-white text-decoration-none dropdown-toggle d-flex align-items-center gap-2"
+                            <a class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center gap-2"
                                 href="#" role="button" id="userDropdown" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <i class="bi bi-person fs-5"></i>
                                 <span
                                     class="small text-uppercase fw-medium">{{ auth()->user()->profile->first_name }}</span>
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark bg-black border border-secondary mt-2"
+                            <ul class="dropdown-menu dropdown-menu-end bg-white border shadow-sm mt-2"
                                 aria-labelledby="userDropdown">
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="{{ route('profile.index') }}">
+                                    <a class="dropdown-item text-dark" href="{{ route('profile.index') }}">
                                         {{ __('global.profile') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item text-white-50" href="{{ route('profile.index') }}">
+                                    <a class="dropdown-item text-dark" href="{{ route('profile.index') }}">
                                         {{ __('global.my_orders') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <hr class="dropdown-divider border-secondary">
+                                    <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a href="{{ route('logout') }}" class="dropdown-item text-white-50">
-                                        <button type="submit" class="dropdown-item text-white-50">
+                                    <a href="{{ route('logout') }}" class="dropdown-item text-dark">
+                                        <button type="submit" class="dropdown-item text-dark p-0 border-0 bg-transparent">
                                             {{ __('global.logout') }}
                                         </button>
                                     </a>
-                                    </form>
                                 </li>
                             </ul>
                         </div>
 
                         <!-- Cart: يظهر بس لو مسجل دخول -->
-                        <button class="btn p-0 text-white position-relative border-0" type="button"
+                        <button class="btn p-0 text-dark position-relative border-0" type="button"
                             data-bs-toggle="offcanvas" data-bs-target="#cartSidebar">
                             <i class="bi bi-bag fs-5"></i>
                             <span id="cartBadgeCount"
-                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-white text-black fw-bold px-1.5 py-0.5"
+                                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark text-white fw-bold px-1.5 py-0.5"
                                 style="font-size: 0.6rem; min-width: 15px;">
                                 {{ $cart?->items->count() ?? 0 }}
                             </span>
@@ -263,10 +262,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
 
 

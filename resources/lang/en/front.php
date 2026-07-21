@@ -131,5 +131,6 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'free_shipping' => 'Free Shipping',
+    'search_placeholder'=>'بحث...'
 
 ];

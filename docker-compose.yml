@@ -36,14 +36,14 @@ services:
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: zerka_service
+      MYSQL_DATABASE: 
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     volumes:
       - mysql_data:/var/lib/mysql
       - ./docker/mysql-init:/docker-entrypoint-initdb.d
     ports:
-      - "3308:3306"
+      - "3311:3306"
     networks:
       - zerka-network
 networks:

@@ -131,4 +131,5 @@ return [
     'login' => 'تسجيل الدخول',
     'register' => 'حساب جديد',
     'free_shipping' => 'شحن مجاني',
+    'search_placeholder'=>'Search...'
 ];
