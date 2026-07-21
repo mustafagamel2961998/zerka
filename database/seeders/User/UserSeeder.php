@@ -87,6 +87,7 @@ class UserSeeder extends Seeder
                 'phone'=>'01000000000',
                 'password' => bcrypt('zerka'), 
                 'email_verified_at' => now(),
+                'role'=>'admin',
                 'status'=>'active',
             ]
         );
