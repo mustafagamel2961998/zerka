@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\v1\About\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\Dashboard\V1\Auth\AuthController;
 use App\Http\Controllers\Web\Dashboard\V1\Home\HomeController;
@@ -94,6 +95,8 @@ Route::prefix("dashboard/v1")->as("dashboard.v1.")->group(function () {
     Route::put('users/{user}',[UserController::class,'update'])->name('users.update');
     //------------------------------------------------------------------------------------------ 
     //-Setting Routes 
+    Route::get('about-us',[AboutController::class,'edit'])->name('about-us.index');
+    Route::put('about-us/update/{id}',[AboutController::class,'update'])->name('about-us.update');
     Route::resource('settings',SettingController::class);
     //------------------------------------------------------------------------------------------ 
     //-Logout Routes

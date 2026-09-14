@@ -78,5 +78,5 @@ return [
     'edit_user_details'=>'Edit User Details',
     'select_all'=>'Select All',
     'refund_request'=>'Refund Request',
-  
+    'about_us'=>'About Us',
 ];

@@ -18,7 +18,7 @@ class CheckoutController extends Controller
     public function index(){
         $cart = $this->cart_repository_interface->findUserCart(auth()->user());
         if(empty($cart)){
-            return redirect()->route('home.index')->with('error', __('front.cart_empty'));
+            return redirect()->route('home')->with('error', __('front.cart_empty'));
         }
         $user = $this->user_repository_interface->findById(auth()->user());
         $addresses = $user->addresses;

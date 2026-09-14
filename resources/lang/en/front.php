@@ -131,6 +131,9 @@ return [
     'login' => 'Login',
     'register' => 'Register',
     'free_shipping' => 'Free Shipping',
-    'search_placeholder'=>'بحث...'
-
+    'search_placeholder'=>'Search....',
+    'cart_empty' => 'Your cart is empty',
+    'about_us_en' => 'About Us (English)',
+    'about_us_ar'=>'About Us (Arabic)',
+    'about_us_updated' => 'About Us Updated',
 ];

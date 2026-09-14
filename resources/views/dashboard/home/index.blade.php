@@ -32,7 +32,7 @@
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
 
-                                <a href="" class="text-reset fw-semibold fs-12">
+                                <a href="{{route('dashboard.v1.orders.index')}}" class="text-reset fw-semibold fs-12">
                                     {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
@@ -63,7 +63,7 @@
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
 
-                                <a href="" class="text-reset fw-semibold fs-12">
+                                <a href="{{route('dashboard.v1.customers.index')}}" class="text-reset fw-semibold fs-12">
                                     {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
@@ -94,7 +94,7 @@
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
 
-                                <a href="" class="text-reset fw-semibold fs-12">
+                                <a href="{{route('dashboard.v1.products.index')}}" class="text-reset fw-semibold fs-12">
                                     {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
@@ -125,7 +125,7 @@
                         <div class="card-footer py-2 bg-light bg-opacity-50">
                             <div class="d-flex align-items-center justify-content-between">
 
-                                <a href="" class="text-reset fw-semibold fs-12">
+                                <a href="{{route('dashboard.v1.categories.index')}}" class="text-reset fw-semibold fs-12">
                                     {{ __('dashboard.view_more') }}
                                 </a>
                             </div>
@@ -373,7 +373,7 @@
 
                         </thead>
                         <tbody>
-                            @foreach ($orders as $order)
+                            @foreach ($orders->where('status', 'pending') as $order)
                                 <tr>
                                     <td>
                                         <a href="#!" class="link-primary fw-medium">
@@ -482,11 +482,13 @@
                                     </td>
                                     <td>
                                         <div class="d-flex gap-2">
-                                            <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}"
-                                                class="btn btn-soft-secondary btn-sm">
-                                                <iconify-icon icon="solar:bill-list-broken"
-                                                    class="align-middle fs-18"></iconify-icon>
-                                            </a>
+                                            @if($order->invoice)
+                                                <a href="{{ route('dashboard.v1.invoices.show', $order->invoice->id) }}"
+                                                    class="btn btn-soft-secondary btn-sm">
+                                                    <iconify-icon icon="solar:bill-list-broken"
+                                                        class="align-middle fs-18"></iconify-icon>
+                                                </a>
+                                            @endif
                                             <a href="{{ route('dashboard.v1.orders.show', $order->id) }}"
                                                 class="btn btn-light btn-sm">
                                                 <iconify-icon icon="solar:eye-broken"

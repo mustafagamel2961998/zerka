@@ -131,5 +131,9 @@ return [
     'login' => 'تسجيل الدخول',
     'register' => 'حساب جديد',
     'free_shipping' => 'شحن مجاني',
-    'search_placeholder'=>'Search...'
+    'search_placeholder'=>'Search...',
+    'cart_empty' => 'عربة التسوق فارغة',
+    'about_us_en' => 'عنا باللغة الانجليزية',
+    'about_us_ar'=>'عنا باللغة العربية',
+    'about_us_updated' => 'تحديث عنا',
 ];

@@ -77,5 +77,6 @@ return [
     'select_all'=>'تحديد الكل',
     'edit_user'=>'تعديل المستخدم',
     'refund_request'=>'طلبات الاسترجاع',
+    'about_us'=>'من نحن',
 
 ];

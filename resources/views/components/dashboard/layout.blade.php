@@ -777,6 +777,17 @@
 
                     @can('view-settings')
                         <li class="nav-item">
+                            <a class="nav-link @if (request()->routeIs('dashboard.v1.about-us.*')) active @endif"
+                                href="{{ route('dashboard.v1.about-us.index') }}">
+                                <span class="nav-icon">
+                                     <iconify-icon icon="solar:pen-bold-duotone"></iconify-icon>
+                                </span>
+                                <span class="nav-text">
+                                    {{ __('dashboard.about_us') }}
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link @if (request()->routeIs('dashboard.v1.settings.*')) active @endif"
                                 href="{{ route('dashboard.v1.settings.index') }}">
                                 <span class="nav-icon">

@@ -49,6 +49,7 @@ class CreateAction
         ];
         $checkout = $this->checkout_repository_interface->store($data);
         ActivitService::store($checkout,'انشاء طلب','انشاء طلب جديد',null,'pending');
+        $getCart->delete();
         return $checkout;
     }
 }

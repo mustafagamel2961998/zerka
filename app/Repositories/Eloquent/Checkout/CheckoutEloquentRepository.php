@@ -5,6 +5,7 @@ use App\Repositories\Contracts\Checkout\CheckoutRepositoryInterface;
 use App\Models\Order;
 use Illuminate\Support\Facades\DB;
 use App\Services\Dashboard\Media\MediaService;
+use App\Repositories\Contracts\Cart\CartRepositoryInterface;
 class CheckoutEloquentRepository implements CheckoutRepositoryInterface
 {
     public function __construct()

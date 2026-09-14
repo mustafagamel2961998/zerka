@@ -264,7 +264,7 @@
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}"
                                         {{ old('category_id', $product->category_id ?? '') == $category->id ? 'selected' : '' }}>
-                                        {{ $category->parent->currentTranslation->name . ' - ' . $category->currentTranslation->name }}
+                                        {{ $category->parent?->currentTranslation->name . ' - ' . $category->currentTranslation->name }}
                                     </option>
                                 @endforeach
                             </select>
