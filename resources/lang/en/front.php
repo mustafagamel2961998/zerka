@@ -130,10 +130,11 @@ return [
     'products_count' => ':count products found',
     'login' => 'Login',
     'register' => 'Register',
-    'free_shipping' => 'Free Shipping',
+    'free_shipping' => 'Free Shipping & 14-Day Free Returns',
     'search_placeholder'=>'Search....',
     'cart_empty' => 'Your cart is empty',
     'about_us_en' => 'About Us (English)',
     'about_us_ar'=>'About Us (Arabic)',
     'about_us_updated' => 'About Us Updated',
+    'welcome_to_store' => 'Welcome to our store',
 ];

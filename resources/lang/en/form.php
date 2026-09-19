@@ -116,5 +116,6 @@ return [
     'save'             => 'Save Settings',
     'logo'             => 'Logo',
     'favicon'          => 'Favicon',
+    'update'           => 'Update',
     
 ];

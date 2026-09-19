@@ -4,7 +4,7 @@
         <div class="card-body">
             <form action="{{ route('dashboard.v1.about-us.update', $about->id) }}" method="POST">
                 @csrf
-
+                @method('PUT')
                 <!-- المحتوى باللغة العربية -->
                 <div class="mb-4">
                     <label for="content_ar" class="form-label font-bold mb-2 block">
@@ -22,7 +22,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary px-4 py-2 bg-blue-600 text-white rounded">
-                    {{ __('front.about_us_update') }}
+                    {{ __('form.update') }}
                 </button>
             </form>
 

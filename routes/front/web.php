@@ -13,6 +13,7 @@ use App\Http\Controllers\Web\Front\V1\Order\OrderController;
 use App\Http\Controllers\Web\Front\V1\Refund\RefundController;
 use App\Http\Controllers\Web\Front\V1\Category\CategoryController;
 use App\Http\Controllers\Web\Front\V1\Search\SearchController;
+use App\Http\Controllers\Web\Front\V1\About\AboutController;
     ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -31,6 +32,9 @@ use App\Http\Controllers\Web\Front\V1\Search\SearchController;
     //-Home Routes 
     Route::get('/',[HomeController::class,'index'])->name('home');
     //------------------------------------------------------------------------------------------ 
+    //-About Routes
+    Route::get('about', [AboutController::class, 'index'])->name('about');    
+    //------------------------------------------------------------------------------------------ 
     //-Product Routes 
     Route::get('products/show/{id}/{slug}',[ProductController::class,'show'])->name('products.show');
     //------------------------------------------------------------------------------------------ 
@@ -38,6 +42,11 @@ use App\Http\Controllers\Web\Front\V1\Search\SearchController;
     Route::get('categories/{id}', [CategoryController::class, 'show'])->name('categories.show');
     Route::get('categories/{id}/{slug}/products', [CategoryController::class, 'products'])->name('categories.products');
     Route::get('search/products', [SearchController::class, 'products'])->name('search.products');
+
+    
+    //****************************************-:END:-****************************************/
+
+
 
     // Authenticated Routes
     //****************************************-:START:-****************************************/
@@ -67,27 +76,6 @@ use App\Http\Controllers\Web\Front\V1\Search\SearchController;
         Route::resource('addresses',AddressController::class);
     });
     //****************************************-:END:-****************************************/
-
-
-    
-    //****************************************-:END:-****************************************/
-
-
-
-
-
-    // Authenticated Routes
-    //****************************************-:START:-****************************************/
-    Route::middleware(['auth'])->group(function(){
-
-    //****************************************-:START:-****************************************/
-    //------------------------------------------------------------------------------------------ 
-    //-Profile Routes 
-   
-    
-    });
-    //****************************************-:END:-****************************************/
-
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////

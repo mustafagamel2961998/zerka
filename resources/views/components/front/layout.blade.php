@@ -23,16 +23,21 @@
         <div class="announcement-bar bg-white text-dark border-bottom overflow-hidden">
             <div class="marquee-track">
                 <span class="marquee-item text-uppercase small fw-semibold text-dark">
-                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                    <i class="bi bi-truck me-2 text-dark"></i> 
+
+                    {{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
                 </span>
                 <span class="marquee-item text-uppercase small fw-semibold text-dark">
-                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                    <i class="bi bi-truck me-2 text-dark"></i> 
+                    {{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
                 </span>
                 <span class="marquee-item text-uppercase small fw-semibold text-dark">
-                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                    <i class="bi bi-truck me-2 text-dark"></i> 
+                    {{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
                 </span>
                 <span class="marquee-item text-uppercase small fw-semibold text-dark">
-                    <i class="bi bi-truck me-2 text-dark"></i>{{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
+                    <i class="bi bi-truck me-2 text-dark"></i> 
+                    {{ __('front.free_shipping') ?? 'Free Shipping On All Orders' }}
                 </span>
             </div>
         </div>
@@ -76,9 +81,9 @@
                                         </li>
                                     @empty
                                         <li>
-                                            <a class="dropdown-item text-muted" href="#">
+                                            <p class="dropdown-item" style="color:black !important;" href="#">
                                                 {{ __('front.no_categories_found') }}
-                                            </a>
+                                            </p>
                                         </li>
                                     @endforelse
                                 </ul>
@@ -86,7 +91,7 @@
                         @endforeach
 
                         <li class="nav-item">
-                            <a class="text-uppercase nav-link text-secondary" href="#">
+                            <a class="text-uppercase nav-link text-secondary" href="{{route('about')}}">
                                 {{ __('front.about_us') }}
                             </a>
                         </li>
@@ -291,7 +296,7 @@
                         <a href="#" class="text-dark text-decoration-none">
                             {{ __('front.home') }}
                         </a>
-                        <a href="#" class="text-dark text-decoration-none">
+                        <a href="{{route('about')}}" class="text-dark text-decoration-none">
                             {{ __('front.about_us') }}
                         </a>
                         <a href="#" class="text-dark text-decoration-none">
