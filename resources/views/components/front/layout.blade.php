@@ -304,9 +304,9 @@
                         </a>
                     </div>
                     <div class="d-flex gap-3 fs-5">
-                        <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-tiktok"></i></a>
-                        <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/zerka.wear" class="text-dark"><i class="bi bi-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@zerkawear?_r=1&_t=ZS-9762kbaRakP" class="text-dark"><i class="bi bi-tiktok"></i></a>
+                        <a href="https://facebook.com/zerkawear" class="text-dark"><i class="bi bi-facebook"></i></a>
                     </div>
                 </div>
             </footer>
